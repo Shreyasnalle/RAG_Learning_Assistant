@@ -7,9 +7,9 @@
             trackurl : event.detail.trackurl,
             rawtext : event.detail.body,
         }
-        fetch("http://localhost:8000/api/cations", {
+        fetch("http://localhost:8000/api/captions", {
             method : "POST",
-            headers : {"content type" : "application/json"}, 
+            headers : {"content-type" : "application/json"}, 
             body : JSON.stringify(data)
         })
         .then(res => res.json())
@@ -32,6 +32,7 @@
             try {
                 const clonedResponse = response.clone();
                 const rawText = await clonedResponse.text();
+                console.log("Caption request detected via fetch");
                 window.dispatchEvent(
                     new CustomEvent(
                         "captions intercepted",
@@ -46,7 +47,7 @@
                 )
             }
             catch (err) {
-
+                
             }
         }
         return response;
@@ -64,6 +65,7 @@
             ) {
                 try {
                     const rawText = this.responseText;
+                    console.log("Caption request detected via XHR");
                     window.dispatchEvent(
                         new CustomEvent(
                             "captions intercepted",
@@ -84,4 +86,5 @@
         })
         return originalXHR.apply(this, [method, url, ...rest]);
     }
+    console.log("Interception hook attached");
 })();
