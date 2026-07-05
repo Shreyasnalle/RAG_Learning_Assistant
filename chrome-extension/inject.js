@@ -1,8 +1,20 @@
 (function () {
+    console.log("Caption interceptor loaded") ;
     window.addEventListener("captions intercepted", (event) => {
-        console.log("Source Webpage : ", event.detail.sourceurl);
-        console.log("Subtitle file url : ", event.detail.trackurl);
-        console.log("raw caption content sample : ", event.detail.body.substring(0, 300))
+        console.log("captions intercepted") ;
+        const data = {
+            videourl : event.detail.sourceurl,
+            trackurl : event.detail.trackurl,
+            rawtext : event.detail.body,
+        }
+        fetch("http://localhost:8000/api/cations", {
+            method : "POST",
+            headers : {"content type" : "application/json"}, 
+            body : JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(result => console.log("send to backend", result))
+        .catch(err => console.error("failed to send to backend", err))
     })
     const originalFetch = window.fetch;
     const originalXHR = window.XMLHttpRequest.prototype.open;
