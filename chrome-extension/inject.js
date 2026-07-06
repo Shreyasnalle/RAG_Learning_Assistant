@@ -1,21 +1,5 @@
 (function () {
     console.log("Caption interceptor loaded") ;
-    window.addEventListener("captions intercepted", (event) => {
-        console.log("captions intercepted") ;
-        const data = {
-            videourl : event.detail.sourceurl,
-            trackurl : event.detail.trackurl,
-            rawtext : event.detail.body,
-        }
-        fetch("http://localhost:8000/api/captions", {
-            method : "POST",
-            headers : {"content-type" : "application/json"}, 
-            body : JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(result => console.log("send to backend", result))
-        .catch(err => console.error("failed to send to backend", err))
-    })
     const originalFetch = window.fetch;
     const originalXHR = window.XMLHttpRequest.prototype.open;
     window.fetch = async function (...args) {
