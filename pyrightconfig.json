@@ -1,0 +1,13 @@
+{
+  "pythonVersion": "3.11",
+  "pythonPlatform": "Linux",
+  "venvPath": "/home/shreyas-nalle/anaconda3/envs",
+  "venv": "ragenv",
+  "extraPaths": [
+    "/home/shreyas-nalle/anaconda3/envs/ragenv/lib/python3.11/site-packages"
+  ],
+  "typeCheckingMode": "basic",
+  "useLibraryCodeForTypes": true,
+  "reportMissingImports": false,
+  "reportMissingModuleSource": false
+}

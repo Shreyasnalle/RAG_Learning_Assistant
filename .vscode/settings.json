@@ -1,0 +1,11 @@
+{
+    "python.defaultInterpreterPath": "/home/shreyas-nalle/anaconda3/envs/ragenv/bin/python",
+    "python.interpreterPath": "/home/shreyas-nalle/anaconda3/envs/ragenv/bin/python",
+    "python.analysis.extraPaths": [
+        "/home/shreyas-nalle/anaconda3/envs/ragenv/lib/python3.11/site-packages"
+    ],
+    "python.analysis.pythonPath": "/home/shreyas-nalle/anaconda3/envs/ragenv/bin/python",
+    "python.condaPath": "/home/shreyas-nalle/anaconda3/bin/conda",
+    "python.venvPath": "",
+    "python.analysis.typeCheckingMode": "basic"
+}

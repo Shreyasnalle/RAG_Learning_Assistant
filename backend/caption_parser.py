@@ -47,9 +47,10 @@ class CaptionParser :
             start_seconds = int(seg["start_time"] % 60)
             end_minutes = int(seg["end_time"] // 60)
             end_seconds = int(seg["end_time"] % 60)
-            print(f"{start_minutes : 02d}:{start_seconds :02d} --> "f"{end_minutes : 02d}:{end_seconds :02d} | {seg["text"]}")
+            print(f"{start_minutes : 02d}:{start_seconds :02d} --> "f"{end_minutes : 02d}:{end_seconds :02d} | {seg['text']}")
 if __name__ == "__main__" :
     parser = CaptionParser()
-    segments = parser.parse_raw_captions("/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/9409788f-32cc-4c1d-a953-29902345aa40.txt")
+    segments = parser.parse_raw_captions("/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/b117ad4f-6ef5-4165-9c18-f59ae2d75e47.txt")
     print(f"Total segments parsed : {len(segments)}")
     parser.print_segments(segments, limit = 15)
+    
