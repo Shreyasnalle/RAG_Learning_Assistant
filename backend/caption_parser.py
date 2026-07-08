@@ -50,7 +50,7 @@ class CaptionParser :
             print(f"{start_minutes : 02d}:{start_seconds :02d} --> "f"{end_minutes : 02d}:{end_seconds :02d} | {seg['text']}")
 if __name__ == "__main__" :
     parser = CaptionParser()
-    segments = parser.parse_raw_captions("/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/b117ad4f-6ef5-4165-9c18-f59ae2d75e47.txt")
+    segments = parser.parse_raw_captions("/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/e01010fd-134e-4b89-8634-629fba4da689.txt")
     print(f"Total segments parsed : {len(segments)}")
     parser.print_segments(segments, limit = 15)
     

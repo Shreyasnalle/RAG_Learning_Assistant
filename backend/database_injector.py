@@ -20,7 +20,7 @@ class ChunkInjector:
         print("connected to database")
     def store_video_chunks(self, video_url: str, segments: List[Dict]):
         if self.conn is None:
-            raise RuntimeError("Database not connected. Call connect() before storing chunks.")
+            raise RuntimeError("database not connected, Call connect() before storing chunks")
         if not segments:
             print("No segments to store")
             return
@@ -54,7 +54,7 @@ def load_video_url(caption_file_path : str) -> str :
         meta = json.load(f)
     return meta["video_url"]
 if __name__ == "__main__":
-    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/b117ad4f-6ef5-4165-9c18-f59ae2d75e47.txt"
+    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/e01010fd-134e-4b89-8634-629fba4da689.txt" 
     parser = CaptionParser()
     segments = parser.parse_raw_captions(caption_file)
     video_url = load_video_url(caption_file)
