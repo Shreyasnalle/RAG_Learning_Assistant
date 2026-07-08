@@ -6,6 +6,7 @@ import uuid
 import os
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.middleware.cors import CORSMiddleware
+import json
 app = FastAPI(title = "backend to grab captions")
 app.add_middleware(
     CORSMiddleware,
@@ -30,9 +31,16 @@ async def receive_captions(data: CaptionData):
     os.makedirs("raw_captions", exist_ok = True)
     file_id = str(uuid.uuid4())
     file_path = f"raw_captions/{file_id}.txt"
+    meta_path = f"raw_captions/{file_id}_meta.json"
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(data.rawtext)
+    with open(meta_path, "w", encoding = "utf-8") as f :
+        json.dump({
+            "video_url" : data.videourl,
+            "track_url" : data.trackurl
+        }, f)
     print(f"Saved to: {file_path}")
+    print(f"Saved metadata to : {meta_path}")
     print(f"Size: {len(data.rawtext)} characters")
     return {
         "status": "success",
