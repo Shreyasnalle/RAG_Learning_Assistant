@@ -1,13 +1,17 @@
 import os
 from openai import OpenAI 
 from typing import List, Dict
+from retriever import VideoRetriever
+import json
+from dotenv import load_dotenv
+load_dotenv("groq_api.env")
 class RAGPipeline :
     def __init__(self) :
         self.client = OpenAI(
-            api_key = os.getenv(""),
-            base_url = ""
+            api_key = os.getenv("GROQ_API_KEY"),
+            base_url = "https://api.groq.com/openai/v1"
         )
-    def generate_anaswer(self, question : str, retrieved : list) -> str :
+    def generate_answer(self, question : str, retrieved : list) -> str :
         if not retrieved :
             return "I don't have relevant information from this video to answer this question"
         context = []
@@ -24,3 +28,27 @@ class RAGPipeline :
             temperature = 0.7
         )
         return response.choices[0].message.content
+def load_video_url(caption_file_path : str) -> str :
+    meta_path = caption_file_path.replace(".txt", "_meta.json")
+    with open(meta_path, "r", encoding = "utf-8") as f :
+        meta = json.load(f)
+    return meta["video_url"]
+if __name__ == "__main__" :
+    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/e01010fd-134e-4b89-8634-629fba4da689.txt"
+    video_url = load_video_url(caption_file)
+    question = "what is machine learning pipeline?"
+    retriever = VideoRetriever()
+    retriever.connect()
+    retrieved_chunks = retriever.retrieve(query = question, video_url = video_url, top_k = 5)
+    retriever.close()
+    if not retrieved_chunks :
+        print(f"no chunks found for this {video_url}, check that it matches what was stored")
+    else :
+        rag = RAGPipeline()
+        answer = rag.generate_answer(question, retrieved_chunks)
+        print("Question:", question)
+        print("\nRetrieved chunks used :")
+        for chunk in retrieved_chunks :
+            print(f"[{chunk['start_time']:.1f}s] {chunk['text']}")
+        print("\nAnswer", answer)
+
