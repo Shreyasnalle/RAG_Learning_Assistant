@@ -27,16 +27,16 @@ class RAGPipeline :
             ],
             temperature = 0.7
         )
-        return response.choices[0].message.content
+        return response.choices[0].message.content or ""
 def load_video_url(caption_file_path : str) -> str :
     meta_path = caption_file_path.replace(".txt", "_meta.json")
     with open(meta_path, "r", encoding = "utf-8") as f :
         meta = json.load(f)
     return meta["video_url"]
 if __name__ == "__main__" :
-    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/e01010fd-134e-4b89-8634-629fba4da689.txt"
+    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/3738ac0e-de84-425a-8e92-5df7db97dc68.txt"
     video_url = load_video_url(caption_file)
-    question = "what is machine learning pipeline?"
+    question = "what will the winners get?"
     retriever = VideoRetriever()
     retriever.connect()
     retrieved_chunks = retriever.retrieve(query = question, video_url = video_url, top_k = 5)
@@ -51,4 +51,3 @@ if __name__ == "__main__" :
         for chunk in retrieved_chunks :
             print(f"[{chunk['start_time']:.1f}s] {chunk['text']}")
         print("\nAnswer", answer)
-

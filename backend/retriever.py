@@ -41,7 +41,7 @@ class VideoRetriever :
             print("connection closed")
 if __name__ == "__main__" :
     import json
-    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/e01010fd-134e-4b89-8634-629fba4da689.txt"
+    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/3738ac0e-de84-425a-8e92-5df7db97dc68.txt"
     meta_path = caption_file.replace(".txt", "_meta.json")
     with open(meta_path, "r", encoding = "utf8") as f :
         meta = json.load(f)

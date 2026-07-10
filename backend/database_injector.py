@@ -4,6 +4,7 @@ import psycopg2
 from pgvector.psycopg2 import register_vector
 from typing import List, Dict
 from caption_parser import CaptionParser
+from chunk_merger import ChunkMerger
 import json
 class ChunkInjector:
     def __init__(self):
@@ -54,11 +55,17 @@ def load_video_url(caption_file_path : str) -> str :
         meta = json.load(f)
     return meta["video_url"]
 if __name__ == "__main__":
-    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/e01010fd-134e-4b89-8634-629fba4da689.txt" 
+    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/3738ac0e-de84-425a-8e92-5df7db97dc68.txt"
     parser = CaptionParser()
     segments = parser.parse_raw_captions(caption_file)
+    print(f"Parsed {len(segments)} raw segments")
+    
+    merger = ChunkMerger()
+    chunks = merger.merge_segments(segments, target_duration = 45.0)
+    print(f"Merged into {len(chunks)} chunks")
+
     video_url = load_video_url(caption_file)
     injector = ChunkInjector()
     injector.connect()
-    injector.store_video_chunks(video_url, segments)
+    injector.store_video_chunks(video_url, chunks)
     injector.close()
