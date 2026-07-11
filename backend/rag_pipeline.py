@@ -4,6 +4,7 @@ from typing import List, Dict
 from retriever import VideoRetriever
 import json
 from dotenv import load_dotenv
+from file_util import get_latest_caption_file
 load_dotenv("groq_api.env")
 class RAGPipeline :
     def __init__(self) :
@@ -34,13 +35,17 @@ def load_video_url(caption_file_path : str) -> str :
         meta = json.load(f)
     return meta["video_url"]
 if __name__ == "__main__" :
-    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/3738ac0e-de84-425a-8e92-5df7db97dc68.txt"
+    caption_file = get_latest_caption_file("raw_captions")
+    print(f"using latest caption file : {caption_file}")
+
     video_url = load_video_url(caption_file)
     question = "what will the winners get?"
+
     retriever = VideoRetriever()
     retriever.connect()
     retrieved_chunks = retriever.retrieve(query = question, video_url = video_url, top_k = 5)
     retriever.close()
+
     if not retrieved_chunks :
         print(f"no chunks found for this {video_url}, check that it matches what was stored")
     else :
