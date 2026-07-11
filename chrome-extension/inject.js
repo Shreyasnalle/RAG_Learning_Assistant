@@ -17,12 +17,17 @@
                 const clonedResponse = response.clone();
                 const rawText = await clonedResponse.text();
                 console.log("Caption request detected via fetch");
+                const trackUrlStr = args[0] ? args[0].toString() : "";
+                const videoIdMatch = trackUrlStr.match(/[?&]v=([^&]+)/);
+                const videoUrl = videoIdMatch
+                    ? `https://www.youtube.com/watch?v=${videoIdMatch[1]}`
+                    : window.location.href;
                 window.dispatchEvent(
                     new CustomEvent(
                         "captions intercepted",
                         {
                             detail: {
-                                sourceurl: window.location.href,
+                                sourceurl: videoUrl,
                                 trackurl: args[0],
                                 body: rawText
                             }
@@ -50,12 +55,17 @@
                 try {
                     const rawText = this.responseText;
                     console.log("Caption request detected via XHR");
+                    const trackUrlStr = url ? url.toString() : "";
+                    const videoIdMatch = trackUrlStr.match(/[?&]v=([^&]+)/);
+                    const videoUrl = videoIdMatch
+                        ? `https://www.youtube.com/watch?v=${videoIdMatch[1]}`
+                        : window.location.href;
                     window.dispatchEvent(
                         new CustomEvent(
                             "captions intercepted",
                             {
                                 detail: {
-                                    sourceurl: window.location.href,
+                                    sourceurl: videoUrl,
                                     trackurl: url,
                                     body: rawText
                                 }
