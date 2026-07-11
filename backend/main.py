@@ -4,9 +4,10 @@ from pydantic import BaseModel
 from typing import Optional
 import uuid
 import os
+import re
+import json
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-import json
 app = FastAPI(title = "backend to grab captions")
 app.add_middleware(
     CORSMiddleware,
@@ -28,24 +29,31 @@ class CaptionData(BaseModel):
 @app.post("/api/captions")
 async def receive_captions(data: CaptionData):
     print(f"Received captions for: {data.videourl[:70]}...")
-    os.makedirs("raw_captions", exist_ok = True)
-    file_id = str(uuid.uuid4())
-    file_path = f"raw_captions/{file_id}.txt"
-    meta_path = f"raw_captions/{file_id}_meta.json"
+    if len(data.rawtext) < 5000:
+        print(f"Skipping — payload too small ({len(data.rawtext)} chars), likely a partial caption")
+        return {"status": "skipped", "reason": "payload too small"}
+    match = re.search(r"[?&]v=([^&]+)", data.videourl)
+    video_id = match.group(1) if match else str(uuid.uuid4())
+
+    os.makedirs("raw_captions", exist_ok=True)
+    file_path = f"raw_captions/{video_id}.txt"
+    meta_path = f"raw_captions/{video_id}_meta.json"
+
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(data.rawtext)
-    with open(meta_path, "w", encoding = "utf-8") as f :
+    with open(meta_path, "w", encoding="utf-8") as f:
         json.dump({
-            "video_url" : data.videourl,
-            "track_url" : data.trackurl
+            "video_url": data.videourl,
+            "track_url": data.trackurl
         }, f)
+
     print(f"Saved to: {file_path}")
     print(f"Saved metadata to : {meta_path}")
     print(f"Size: {len(data.rawtext)} characters")
     return {
         "status": "success",
         "message": "captions received and saved successfully",
-        "file_id": file_id,
+        "video_id": video_id,
         "video_url": data.videourl
     }
 @app.get("/")

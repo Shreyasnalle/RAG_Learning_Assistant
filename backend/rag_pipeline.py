@@ -4,7 +4,7 @@ from typing import List, Dict
 from retriever import VideoRetriever
 import json
 from dotenv import load_dotenv
-from file_util import get_latest_caption_file
+from file_utils import get_latest_caption_file
 load_dotenv("groq_api.env")
 class RAGPipeline :
     def __init__(self) :
@@ -39,7 +39,7 @@ if __name__ == "__main__" :
     print(f"using latest caption file : {caption_file}")
 
     video_url = load_video_url(caption_file)
-    question = "what will the winners get?"
+    question = input("Ask any question : ")
 
     retriever = VideoRetriever()
     retriever.connect()
