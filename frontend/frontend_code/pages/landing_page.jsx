@@ -83,8 +83,8 @@ const decorativeIcons = [
 ];
 
 const aboutBullets = [
-  'Switching tabs for explanations, documentation or answers to your doubts interrupts your learning experience',
-  'stays on your current tab to answer questions, summarize content, explain concepts and navigate you to the relevant part of the lecture',
+  'Switching tabs for answers to your doubts interrupts your learning experience',
+  'stays on your current tab, an assistant which you always needed',
   'Download and install the Chrome extension',
 ];
 
@@ -312,6 +312,7 @@ export default function LandingPage() {
   const [hoveredCube, setHoveredCube] = useState(null);
   const [hoveredAbout, setHoveredAbout] = useState(null);
   const [hoveredFooter, setHoveredFooter] = useState(null);
+  const [simplyParticles, setSimplyParticles] = useState([]);
 
   useEffect(() => {
     const node = aboutRef.current;
@@ -325,6 +326,24 @@ export default function LandingPage() {
         if (entry.isIntersecting) {
           setAboutActive(true);
           observer.disconnect();
+          // Lock scroll during color-sweep animation, release after it completes
+          document.body.style.overflow = 'hidden';
+          const unlockTimer = setTimeout(() => {
+            document.body.style.overflow = '';
+          }, 4600);
+          // Spawn shooting-star particles from "Simply" word
+          const colors = ['#ffd348', '#ff6b6b', '#7ee8fa', '#fff', '#a8ff78', '#ff9f43'];
+          const particles = Array.from({ length: 12 }, (_, i) => ({
+            id: i,
+            angle: (i / 12) * 360,
+            color: colors[i % colors.length],
+            size: 4 + Math.random() * 5,
+            dist: 28 + Math.random() * 36,
+            delay: Math.random() * 0.4,
+          }));
+          setTimeout(() => setSimplyParticles(particles), 1720);
+          setTimeout(() => setSimplyParticles([]), 3000);
+          return () => clearTimeout(unlockTimer);
         }
       },
       { threshold: 0.36 },
@@ -435,32 +454,37 @@ export default function LandingPage() {
       position: 'relative',
       minHeight: 860,
       overflow: 'hidden',
-      padding: '92px 24px 120px',
-      backgroundColor: '#f7f8f8',
+      padding: '80px 24px 100px',
+      // Light yellow outer background with large static grid
+      backgroundColor: '#fff9c8',
+      backgroundImage:
+        'linear-gradient(rgba(160,130,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(160,130,0,0.1) 1px, transparent 1px)',
+      backgroundSize: '80px 80px',
       fontFamily: fontScript,
       isolation: 'isolate',
     },
     aboutRow: {
       position: 'relative',
       zIndex: 1,
-      width: 'min(1540px, calc(100vw - 48px))',
+      width: 'min(960px, calc(100vw - 48px))',
       margin: '0 auto',
       display: 'flex',
-      alignItems: 'center',
+      flexDirection: 'column',
+      alignItems: 'stretch',
       justifyContent: 'center',
-      gap: 34,
+      gap: 0,
     },
     aboutOuterFrame: {
-      position: 'relative', padding: '40px',
+      position: 'relative',
       zIndex: 1,
-      flex: '1 1 960px',
-      maxWidth: 980,
-      minHeight: 690,
-      padding: '92px 72px 88px',
-      border: '4px solid #11100f',
-      borderRadius: 8,
-      background: '#f7f8f8',
+      width: '100%',
+      minHeight: 560,
+      padding: '76px 56px 72px',
+      border: '5px solid #11100f',
+      borderRadius: '22px 22px 0 0',
+      background: '#ee6831',
       overflow: 'hidden',
+      boxShadow: 'none',
     },
     aboutWavyTop: {
       position: 'absolute',
@@ -472,29 +496,31 @@ export default function LandingPage() {
       pointerEvents: 'none',
     },
     aboutInnerPanel: {
-      position: 'relative', padding: '60px',
+      position: 'relative',
       width: '100%',
-      minHeight: 640,
-      borderRadius: 8,
-      padding: '54px 42px 82px',
-      backgroundColor: '#f5eddc',
+      minHeight: 520,
+      borderRadius: '12px 12px 0 0',
+      padding: '48px 42px 72px',
+      backgroundColor: '#ee6831',
+      // Same animated grid as section 1
       backgroundImage:
-        'linear-gradient(rgba(82, 61, 36, 0.15) 2px, transparent 2px), linear-gradient(90deg, rgba(82, 61, 36, 0.15) 2px, transparent 2px)',
-      backgroundSize: '48px 48px',
+        'linear-gradient(rgba(13,13,13,0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(13,13,13,0.28) 1px, transparent 1px)',
+      backgroundSize: '40px 40px',
+      animation: 'gridScroll 3s linear infinite',
       overflow: 'hidden',
     },
     aboutSweep: {
       position: 'absolute',
       inset: 0,
       zIndex: 0,
-      backgroundColor: '#df6635',
+      backgroundColor: '#d94f2d',
       backgroundImage:
-        'linear-gradient(rgba(255, 242, 210, 0.2) 2px, transparent 2px), linear-gradient(90deg, rgba(255, 242, 210, 0.2) 2px, transparent 2px)',
-      backgroundSize: '48px 48px',
-      transformOrigin: 'right center',
+        'linear-gradient(rgba(255, 242, 210, 0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 242, 210, 0.18) 1px, transparent 1px)',
+      backgroundSize: '40px 40px',
+      transformOrigin: 'left center',
       transform: 'scaleX(0)',
       animation: aboutActive
-        ? 'aboutSweep 1.12s cubic-bezier(.72,0,.18,1) 2.92s both'
+        ? 'aboutSweep 1.18s cubic-bezier(.72,0,.18,1) 2.92s both'
         : 'none',
     },
     aboutStage: {
@@ -505,12 +531,12 @@ export default function LandingPage() {
     },
     browserFrame: {
       position: 'relative',
-      minHeight: 575,
-      border: ' 4px solid #11100f',
-      borderRadius: '28px 28px 22px 22px',
+      minHeight: 500,
+      border: '5px solid #11100f',
+      borderRadius: '20px 20px 0 0',
       background: '#f6eedc',
-      boxShadow: '10px 10px 0 rgba(17, 16, 15, 0.78)',
-      overflow: 'visible',
+      boxShadow: '8px 8px 0 #11100f',
+      overflow: 'hidden',
       opacity: aboutActive ? 1 : 0,
       animation: aboutActive
         ? 'aboutBlockIn 0.56s cubic-bezier(.2,.9,.25,1.18) 0.08s both'
@@ -528,24 +554,26 @@ export default function LandingPage() {
     },
     aboutTag: {
       position: 'absolute',
-      top: -31,
-      right: -18,
+      top: -36,
+      right: -6,
       zIndex: 5,
-      minWidth: 250,
-      height: 87,
+      minWidth: 220,
+      height: 80,
       border: '4px solid #11100f',
       borderRadius: 14,
-      background: '#ee6831',
-      color: '#fff7df',
+      background: '#ffc928',
+      color: '#0a0907',
       display: 'grid',
       placeItems: 'center',
       fontFamily: fontScript,
-      fontSize: '3.35rem',
+      fontSize: '3.1rem',
       fontWeight: 900,
       letterSpacing: 0,
       lineHeight: 1,
-      textShadow: '3px 4px 0 rgba(17,16,15,.24)',
-      boxShadow: '7px 8px 0 rgba(17, 16, 15, 0.78)',
+      textShadow: '2px 3px 0 rgba(17,16,15,.18)',
+      boxShadow: hoveredAbout === 'tag'
+        ? '8px 10px 0 #11100f'
+        : '5px 6px 0 #11100f',
       cursor: 'pointer',
       opacity: aboutActive ? 1 : 0,
       animation: aboutActive
@@ -553,15 +581,15 @@ export default function LandingPage() {
         : 'none',
       transform:
         hoveredAbout === 'tag'
-          ? 'translateY(-7px) rotate(-2deg) scale(1.04)'
-          : 'translateY(0) rotate(0deg) scale(1)',
+          ? 'translateY(-10px) rotate(-4deg) scale(1.07)'
+          : 'translateY(0) rotate(-2deg) scale(1)',
       transition: 'transform 180ms ease, box-shadow 180ms ease',
     },
     blueBox: {
       position: 'relative',
-      minHeight: 501,
-      padding: '34px 56px 42px',
-      borderRadius: '0 0 18px 18px',
+      minHeight: 380,
+      padding: '32px 48px 40px',
+      borderRadius: 0,
       background: '#1260ad',
       color: '#fff9e8',
       overflow: 'hidden',
@@ -597,29 +625,31 @@ export default function LandingPage() {
         : 'none',
     },
     extensionCard: {
-      position: 'relative', width: '100%', maxWidth: '1120px', margin: '0 auto',
-      flex: '0 0 430px',
-      height: 470,
-      border: '4px solid #11100f',
-      borderRadius: 24,
+      position: 'relative',
+      width: '100%',
+      minHeight: 340,
+      border: '5px solid #11100f',
+      borderTop: '0',
+      borderRadius: '0 0 22px 22px',
       background: '#6936db',
       overflow: 'hidden',
-      boxShadow: '9px 11px 0 rgba(17, 16, 15, 0.82)',
+      boxShadow: '8px 8px 0 #11100f',
       opacity: aboutActive ? 1 : 0,
       animation: aboutActive
         ? 'aboutBlockIn 0.58s cubic-bezier(.2,.9,.25,1.18) 0.46s both'
         : 'none',
     },
     extensionWindow: {
-      position: 'absolute', transform: 'scale(1.25)', transformOrigin: 'top center',
+      position: 'absolute',
       left: 54,
       right: 44,
-      top: 108,
+      top: 72,
       zIndex: 5,
-      height: 238,
-      border: '3px solid #11100f',
+      height: 200,
+      border: '4px solid #11100f',
+      borderRadius: 8,
       background: '#fffdf7',
-      boxShadow: '5px 6px 0 rgba(17,16,15,.76)',
+      boxShadow: '6px 6px 0 #11100f',
       opacity: aboutActive ? 1 : 0,
       animation: aboutActive
         ? 'aboutBlockIn 0.54s cubic-bezier(.2,.9,.25,1.18) 0.66s both'
@@ -807,6 +837,17 @@ export default function LandingPage() {
           @keyframes aboutSweep {
             from { transform: scaleX(0); }
             to { transform: scaleX(1); }
+          }
+
+          @keyframes simplyShoot {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            60% { opacity: 0.8; }
+            100% { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(0.3); }
+          }
+
+          @keyframes simplyStarSpin {
+            from { rotate: 0deg; }
+            to { rotate: 360deg; }
           }
 
           @keyframes orangeBallTravel {
@@ -1182,117 +1223,73 @@ export default function LandingPage() {
         aria-label="About Simply"
       >
         <div className="about-row" style={styles.aboutRow}>
+        {/* ABOUT OUTER FRAME — orange background */}
         <div className="about-outer-frame" style={styles.aboutOuterFrame}>
-          <svg
-            aria-hidden="true"
-            preserveAspectRatio="none"
-            viewBox="0 0 1100 54"
-            style={styles.aboutWavyTop}
-          >
-            <path
-              d="M0 16 C30 52 66 52 96 16 C126 -18 162 -18 192 16 C222 50 258 50 288 16 C318 -18 354 -18 384 16 C414 50 450 50 480 16 C510 -18 546 -18 576 16 C606 50 642 50 672 16 C702 -18 738 -18 768 16 C798 50 834 50 864 16 C894 -18 930 -18 960 16 C990 50 1026 50 1056 16 C1072 -2 1088 -2 1100 16"
-              fill="none"
-              stroke="#11100f"
-              strokeWidth="8"
-              strokeLinecap="round"
-            />
-          </svg>
 
           <div className="about-inner-panel" style={styles.aboutInnerPanel}>
             <div style={styles.aboutSweep} aria-hidden="true" />
 
+            {/* Decorative blob — far bottom-left corner, behind text */}
+            <div
+              aria-hidden="true"
+              onMouseEnter={() => setHoveredAbout('orange-ball')}
+              onMouseLeave={() => setHoveredAbout(null)}
+              style={{
+                position: 'absolute',
+                left: -50,
+                bottom: -30,
+                zIndex: 0,
+                width: 110,
+                height: 110,
+                borderRadius: '50%',
+                background: '#b53820',
+                border: '4px solid #11100f',
+                boxShadow: '6px 6px 0 #11100f',
+                clipPath:
+                  'polygon(50% 0%, 57% 11%, 69% 5%, 73% 18%, 87% 17%, 86% 31%, 98% 38%, 90% 50%, 98% 62%, 86% 69%, 87% 83%, 73% 82%, 69% 95%, 57% 89%, 50% 100%, 43% 89%, 31% 95%, 27% 82%, 13% 83%, 14% 69%, 2% 62%, 10% 50%, 2% 38%, 14% 31%, 13% 17%, 27% 18%, 31% 5%, 43% 11%)',
+                opacity: aboutActive ? 0.85 : 0,
+                animation: aboutActive
+                  ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.44s both'
+                  : 'none',
+                transform:
+                  hoveredAbout === 'orange-ball'
+                    ? 'scale(1.1) rotate(10deg)'
+                    : 'scale(1) rotate(0deg)',
+                transition: 'transform 180ms ease',
+              }}
+            />
+
+            {/* Decorative blob — far top-right corner, behind text */}
+            <div
+              aria-hidden="true"
+              onMouseEnter={() => setHoveredAbout('green-blob')}
+              onMouseLeave={() => setHoveredAbout(null)}
+              style={{
+                position: 'absolute',
+                right: -55,
+                top: -40,
+                zIndex: 0,
+                width: 130,
+                height: 130,
+                background: '#7fbd59',
+                border: '4px solid #11100f',
+                boxShadow: '6px 6px 0 #11100f',
+                clipPath:
+                  'polygon(50% 0%, 57% 11%, 69% 4%, 75% 17%, 88% 14%, 88% 29%, 100% 37%, 91% 49%, 99% 62%, 86% 69%, 89% 84%, 74% 83%, 68% 96%, 56% 89%, 48% 100%, 40% 88%, 27% 94%, 23% 80%, 9% 82%, 12% 67%, 0% 59%, 10% 48%, 2% 35%, 16% 29%, 15% 15%, 30% 18%, 37% 5%)',
+                opacity: aboutActive ? 0.85 : 0,
+                animation: aboutActive
+                  ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.52s both'
+                  : 'none',
+                transform:
+                  hoveredAbout === 'green-blob'
+                    ? 'scale(1.08) rotate(-8deg)'
+                    : 'scale(1) rotate(0deg)',
+                transition: 'transform 180ms ease',
+              }}
+            />
+
+
             <div className="about-stage" style={styles.aboutStage}>
-          <div
-            aria-hidden="true"
-            onMouseEnter={() => setHoveredAbout('orange-ball')}
-            onMouseLeave={() => setHoveredAbout(null)}
-            style={{
-              position: 'absolute',
-              left: -66,
-              top: 360,
-              zIndex: 4,
-              width: 102,
-              height: 102,
-              borderRadius: '50%',
-              background: '#d93f2d',
-              border: '4px solid #11100f',
-              boxShadow: '8px 9px 0 rgba(17,16,15,.82)',
-              clipPath:
-                'polygon(50% 0%, 57% 11%, 69% 5%, 73% 18%, 87% 17%, 86% 31%, 98% 38%, 90% 50%, 98% 62%, 86% 69%, 87% 83%, 73% 82%, 69% 95%, 57% 89%, 50% 100%, 43% 89%, 31% 95%, 27% 82%, 13% 83%, 14% 69%, 2% 62%, 10% 50%, 2% 38%, 14% 31%, 13% 17%, 27% 18%, 31% 5%, 43% 11%)',
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.44s both, orangeBallTravel 1.12s cubic-bezier(.72,0,.18,1) 2.92s both'
-                : 'none',
-              transform:
-                hoveredAbout === 'orange-ball'
-                  ? 'scale(1.08) rotate(8deg)'
-                  : 'scale(1) rotate(0deg)',
-              transition: 'transform 180ms ease, box-shadow 180ms ease',
-            }}
-          />
-
-          <div
-            aria-hidden="true"
-            onMouseEnter={() => setHoveredAbout('green-blob')}
-            onMouseLeave={() => setHoveredAbout(null)}
-            style={{
-              position: 'absolute',
-              right: -78,
-              top: 250,
-              zIndex: 1,
-              width: 142,
-              height: 142,
-              background: '#7fbd59',
-              border: '4px solid #11100f',
-              boxShadow: '8px 9px 0 rgba(17,16,15,.82)',
-              clipPath:
-                'polygon(50% 0%, 57% 11%, 69% 4%, 75% 17%, 88% 14%, 88% 29%, 100% 37%, 91% 49%, 99% 62%, 86% 69%, 89% 84%, 74% 83%, 68% 96%, 56% 89%, 48% 100%, 40% 88%, 27% 94%, 23% 80%, 9% 82%, 12% 67%, 0% 59%, 10% 48%, 2% 35%, 16% 29%, 15% 15%, 30% 18%, 37% 5%)',
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.52s both, greenBlobTravel 1.05s cubic-bezier(.66,0,.18,1) 4.1s both'
-                : 'none',
-              transform:
-                hoveredAbout === 'green-blob'
-                  ? 'scale(1.07) rotate(-7deg)'
-                  : 'scale(1) rotate(0deg)',
-              transition: 'transform 180ms ease, box-shadow 180ms ease',
-            }}
-          />
-
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              right: -40,
-              top: 135,
-              zIndex: 5,
-              width: 82,
-              height: 82,
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.6s both, sparkleBlink 2.3s cubic-bezier(0.34, 1.56, 0.64, 1) 2.8s infinite'
-                : 'none',
-            }}
-          >
-            <span
-              style={{
-                position: 'absolute',
-                inset: '8% 41%',
-                background: '#ffd557',
-                border: '4px solid #11100f',
-                borderRadius: 999,
-              }}
-            />
-            <span
-              style={{
-                position: 'absolute',
-                inset: '41% 8%',
-                background: '#ffd557',
-                border: '4px solid #11100f',
-                borderRadius: 999,
-              }}
-            />
-          </div>
 
           <div className="about-browser-frame" style={styles.browserFrame}>
             <div
@@ -1327,15 +1324,15 @@ export default function LandingPage() {
                         ? `aboutBlockIn 0.44s cubic-bezier(.2,.9,.25,1.18) ${0.28 + index * 0.1}s both`
                         : 'none',
                       boxShadow: hoveredDot
-                        ? `0 0 0 7px ${dot.glow}, 0 8px 0 rgba(17,16,15,.32)`
+                        ? `0 0 0 10px ${dot.glow}, 0 10px 0 rgba(17,16,15,.38)`
                         : '0 4px 0 rgba(17,16,15,.22)',
                       transform:
                         dot.id === 'close' && hoveredDot
-                          ? 'scale(1.18) rotate(-10deg)'
+                          ? 'scale(1.28) rotate(-15deg)'
                           : dot.id === 'minimize' && hoveredDot
-                            ? 'translateY(-5px) scale(1.14)'
+                            ? 'translateY(-7px) scale(1.22)'
                             : dot.id === 'maximize' && hoveredDot
-                              ? 'scale(1.2) rotate(12deg)'
+                              ? 'scale(1.28) rotate(18deg)'
                               : 'scale(1) rotate(0deg)',
                       transition:
                         'transform 180ms ease, box-shadow 180ms ease, filter 180ms ease',
@@ -1374,13 +1371,44 @@ export default function LandingPage() {
                   }}
                 >
                   <span style={{ fontSize: '2rem', lineHeight: 1 }}>&bull;</span>
-                  <span>
+                  <span
+                    style={{ position: 'relative', display: 'inline' }}
+                  >
                     <strong
                       style={{
                         ...styles.simplyPop,
                       }}
                     >
                       Simply
+                      {/* Shooting-star particles */}
+                      {simplyParticles.map((p) => {
+                        const rad = (p.angle * Math.PI) / 180;
+                        const sx = Math.round(Math.cos(rad) * p.dist);
+                        const sy = Math.round(Math.sin(rad) * p.dist);
+                        return (
+                          <span
+                            key={p.id}
+                            aria-hidden="true"
+                            style={{
+                              position: 'absolute',
+                              left: '50%',
+                              top: '50%',
+                              width: p.size,
+                              height: p.size,
+                              borderRadius: p.id % 3 === 0 ? '50%' : '2px',
+                              background: p.color,
+                              border: '1.5px solid rgba(0,0,0,0.2)',
+                              marginLeft: -p.size / 2,
+                              marginTop: -p.size / 2,
+                              pointerEvents: 'none',
+                              zIndex: 10,
+                              '--sx': `${sx}px`,
+                              '--sy': `${sy}px`,
+                              animation: `simplyShoot 0.9s cubic-bezier(.22,1,.36,1) ${p.delay}s both`,
+                            }}
+                          />
+                        );
+                      })}
                     </strong>{' '}
                     {aboutBullets[1]}
                   </span>
@@ -1405,11 +1433,11 @@ export default function LandingPage() {
           </div>
 
           {[
-            { id: 'orange-pill', left: -102, bottom: -42, width: 300, color: '#ee6831', delay: 5.28 },
-            { id: 'green-pill', left: 238, bottom: -40, width: 250, color: '#78b957', delay: 5.38 },
-            { id: 'blue-pill', right: 178, bottom: -58, width: 92, color: '#1260ad', delay: 5.48 },
-            { id: 'purple-pill', right: -86, bottom: -56, width: 236, color: '#a783c8', delay: 5.58 },
-            { id: 'yellow-pill', right: -82, bottom: 64, width: 205, color: '#f5c63d', delay: 5.68 },
+            { id: 'orange-pill', left: -60, bottom: -36, width: 240, color: '#f16424', delay: 2.6 },
+            { id: 'green-pill', left: 200, bottom: -36, width: 200, color: '#78b957', delay: 2.7 },
+            { id: 'blue-pill', right: 140, bottom: -50, width: 90, color: '#1260ad', delay: 2.8 },
+            { id: 'purple-pill', right: -60, bottom: -50, width: 200, color: '#a783c8', delay: 2.9 },
+            { id: 'yellow-pill', right: -60, bottom: 48, width: 180, color: '#f5c63d', delay: 3.0 },
           ].map((shape) => {
             const isHovered = hoveredAbout === shape.id;
 
@@ -1426,20 +1454,20 @@ export default function LandingPage() {
                   bottom: shape.bottom,
                   zIndex: 3,
                   width: shape.width,
-                  height: 72,
+                  height: 64,
                   borderRadius: 999,
                   border: '4px solid #11100f',
                   background: shape.color,
                   boxShadow: isHovered
-                    ? '8px 12px 0 rgba(17,16,15,.82)'
-                    : '6px 8px 0 rgba(17,16,15,.72)',
+                    ? '10px 14px 0 #11100f'
+                    : '5px 6px 0 #11100f',
                   cursor: 'pointer',
                   opacity: aboutActive ? 1 : 0,
                   animation: aboutActive
                     ? `aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) ${shape.delay}s both`
                     : 'none',
                   transform: isHovered
-                    ? 'translateY(-6px) scale(1.04)'
+                    ? 'translateY(-9px) scale(1.07)'
                     : 'translateY(0) scale(1)',
                   transition: 'transform 180ms ease, box-shadow 180ms ease',
                 }}
@@ -1455,6 +1483,46 @@ export default function LandingPage() {
           style={styles.extensionCard}
           aria-label="Chrome Extension"
         >
+          {/* Navigation label badge — mirrors the "About" tag above */}
+          <div
+            onMouseEnter={() => setHoveredAbout('nav-tag')}
+            onMouseLeave={() => setHoveredAbout(null)}
+            style={{
+              position: 'absolute',
+              top: -36,
+              left: -6,
+              zIndex: 5,
+              minWidth: 280,
+              height: 80,
+              border: '4px solid #11100f',
+              borderRadius: 14,
+              background: '#74c98f',
+              color: '#0a0907',
+              display: 'grid',
+              placeItems: 'center',
+              fontFamily: fontScript,
+              fontSize: '3.1rem',
+              fontWeight: 900,
+              letterSpacing: 0,
+              lineHeight: 1,
+              textShadow: '2px 3px 0 rgba(17,16,15,.18)',
+              boxShadow: hoveredAbout === 'nav-tag'
+                ? '8px 10px 0 #11100f'
+                : '5px 6px 0 #11100f',
+              cursor: 'pointer',
+              opacity: aboutActive ? 1 : 0,
+              animation: aboutActive
+                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.54s both'
+                : 'none',
+              transform: hoveredAbout === 'nav-tag'
+                ? 'translateY(-10px) rotate(3deg) scale(1.07)'
+                : 'translateY(0) rotate(2deg) scale(1)',
+              transition: 'transform 180ms ease, box-shadow 180ms ease',
+            }}
+          >
+            Navigation
+          </div>
+
           <div
             aria-hidden="true"
             style={{
