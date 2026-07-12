@@ -326,23 +326,22 @@ export default function LandingPage() {
         if (entry.isIntersecting) {
           setAboutActive(true);
           observer.disconnect();
-          // Lock scroll during color-sweep animation, release after it completes
+          // Lock scroll until positioning animation finishes (~2s)
           document.body.style.overflow = 'hidden';
           const unlockTimer = setTimeout(() => {
             document.body.style.overflow = '';
-          }, 4600);
-          // Spawn shooting-star particles from "Simply" word
-          const colors = ['#ffd348', '#ff6b6b', '#7ee8fa', '#fff', '#a8ff78', '#ff9f43'];
-          const particles = Array.from({ length: 12 }, (_, i) => ({
-            id: i,
-            angle: (i / 12) * 360,
-            color: colors[i % colors.length],
-            size: 4 + Math.random() * 5,
-            dist: 28 + Math.random() * 36,
-            delay: Math.random() * 0.4,
-          }));
-          setTimeout(() => setSimplyParticles(particles), 1720);
-          setTimeout(() => setSimplyParticles([]), 3000);
+          }, 2200);
+          // Spawn blinking star particles around "Simply" word
+          const starColors = ['#ffd348', '#fff', '#ffe87a', '#ffedb8'];
+          const stars = [
+            { id: 0, x: -18, y: -22, size: 18, color: starColors[0], delay: 0.1 },
+            { id: 1, x: 105, y: -28, size: 14, color: starColors[1], delay: 0.3 },
+            { id: 2, x: 120, y: 8, size: 10, color: starColors[2], delay: 0.5 },
+            { id: 3, x: -10, y: 12, size: 8, color: starColors[3], delay: 0.2 },
+            { id: 4, x: 55, y: -32, size: 12, color: starColors[0], delay: 0.45 },
+            { id: 5, x: 85, y: 18, size: 9, color: starColors[1], delay: 0.65 },
+          ];
+          setTimeout(() => setSimplyParticles(stars), 1400);
           return () => clearTimeout(unlockTimer);
         }
       },
@@ -455,11 +454,7 @@ export default function LandingPage() {
       minHeight: 860,
       overflow: 'hidden',
       padding: '80px 24px 100px',
-      // Light yellow outer background with large static grid
-      backgroundColor: '#fff9c8',
-      backgroundImage:
-        'linear-gradient(rgba(160,130,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(160,130,0,0.1) 1px, transparent 1px)',
-      backgroundSize: '80px 80px',
+      backgroundColor: '#fffaeb',
       fontFamily: fontScript,
       isolation: 'isolate',
     },
@@ -470,73 +465,53 @@ export default function LandingPage() {
       margin: '0 auto',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'stretch',
+      alignItems: 'center',
       justifyContent: 'center',
-      gap: 0,
+      gap: 48,
+    },
+    // Yellow grid wrapper — sized to fit the About box only
+    aboutYellowWrap: {
+      position: 'relative',
+      width: '150%',
+      padding: '60px 60px 60px 60px',
+      borderRadius: 24,
+      backgroundColor: '#fff3b0',
+      backgroundImage:
+        'linear-gradient(rgba(160,120,0,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(160,120,0,0.09) 1px, transparent 1px)',
+      backgroundSize: '64px 64px',
     },
     aboutOuterFrame: {
       position: 'relative',
       zIndex: 1,
-      width: '100%',
-      minHeight: 560,
-      padding: '76px 56px 72px',
-      border: '5px solid #11100f',
-      borderRadius: '22px 22px 0 0',
-      background: '#ee6831',
-      overflow: 'hidden',
-      boxShadow: 'none',
-    },
-    aboutWavyTop: {
-      position: 'absolute',
-      left: -5,
-      right: -5,
-      top: 28,
-      height: 54,
-      zIndex: 3,
-      pointerEvents: 'none',
-    },
-    aboutInnerPanel: {
-      position: 'relative',
-      width: '100%',
+      width: '80%',
+      margin: '0 auto',
       minHeight: 520,
-      borderRadius: '12px 12px 0 0',
-      padding: '48px 42px 72px',
+      padding: '60px',
+      border: '5px solid #11100f',
+      borderRadius: 18,
+      // Single orange background with animated grid (matching section 1)
       backgroundColor: '#ee6831',
-      // Same animated grid as section 1
       backgroundImage:
         'linear-gradient(rgba(13,13,13,0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(13,13,13,0.28) 1px, transparent 1px)',
       backgroundSize: '40px 40px',
       animation: 'gridScroll 3s linear infinite',
-      overflow: 'hidden',
-    },
-    aboutSweep: {
-      position: 'absolute',
-      inset: 0,
-      zIndex: 0,
-      backgroundColor: '#d94f2d',
-      backgroundImage:
-        'linear-gradient(rgba(255, 242, 210, 0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 242, 210, 0.18) 1px, transparent 1px)',
-      backgroundSize: '40px 40px',
-      transformOrigin: 'left center',
-      transform: 'scaleX(0)',
-      animation: aboutActive
-        ? 'aboutSweep 1.18s cubic-bezier(.72,0,.18,1) 2.92s both'
-        : 'none',
+      overflow: 'visible',
+      boxShadow: '10px 10px 0 #11100f',
     },
     aboutStage: {
       position: 'relative',
       zIndex: 2,
-      width: 'min(860px, 100%)',
+      width: 'min(820px, 100%)',
       margin: '0 auto',
     },
     browserFrame: {
       position: 'relative',
-      minHeight: 500,
+      minHeight: 460,
       border: '5px solid #11100f',
-      borderRadius: '20px 20px 0 0',
+      borderRadius: 20,
       background: '#f6eedc',
       boxShadow: '8px 8px 0 #11100f',
-      overflow: 'hidden',
+      overflow: 'visible',
       opacity: aboutActive ? 1 : 0,
       animation: aboutActive
         ? 'aboutBlockIn 0.56s cubic-bezier(.2,.9,.25,1.18) 0.08s both'
@@ -554,9 +529,9 @@ export default function LandingPage() {
     },
     aboutTag: {
       position: 'absolute',
-      top: -36,
+      top: -44,
       right: -6,
-      zIndex: 5,
+      zIndex: 20,
       minWidth: 220,
       height: 80,
       border: '4px solid #11100f',
@@ -574,7 +549,6 @@ export default function LandingPage() {
       boxShadow: hoveredAbout === 'tag'
         ? '8px 10px 0 #11100f'
         : '5px 6px 0 #11100f',
-      cursor: 'pointer',
       opacity: aboutActive ? 1 : 0,
       animation: aboutActive
         ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.2s both'
@@ -629,8 +603,7 @@ export default function LandingPage() {
       width: '100%',
       minHeight: 340,
       border: '5px solid #11100f',
-      borderTop: '0',
-      borderRadius: '0 0 22px 22px',
+      borderRadius: 22,
       background: '#6936db',
       overflow: 'hidden',
       boxShadow: '8px 8px 0 #11100f',
@@ -839,25 +812,22 @@ export default function LandingPage() {
             to { transform: scaleX(1); }
           }
 
-          @keyframes simplyShoot {
-            0% { opacity: 1; transform: translate(0, 0) scale(1); }
-            60% { opacity: 0.8; }
-            100% { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(0.3); }
+          @keyframes simplyStarBlink {
+            0% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+            20% { opacity: 1; transform: scale(1.1) rotate(15deg); }
+            50% { opacity: 0.9; transform: scale(0.9) rotate(-5deg); }
+            80% { opacity: 1; transform: scale(1.05) rotate(10deg); }
+            100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
           }
 
-          @keyframes simplyStarSpin {
-            from { rotate: 0deg; }
-            to { rotate: 360deg; }
+          @keyframes rotateBlobClockwise {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
           }
 
-          @keyframes orangeBallTravel {
-            from { translate: -360px 0; rotate: 0deg; }
-            to { translate: 790px 0; rotate: 410deg; }
-          }
-
-          @keyframes greenBlobTravel {
-            from { translate: 285px 0; rotate: 0deg; }
-            to { translate: -890px 0; rotate: -16deg; }
+          @keyframes rotateBlobAntiClockwise {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
           }
 
           @keyframes sparkleBlink {
@@ -1223,71 +1193,129 @@ export default function LandingPage() {
         aria-label="About Simply"
       >
         <div className="about-row" style={styles.aboutRow}>
-        {/* ABOUT OUTER FRAME — orange background */}
+        {/* Yellow grid wrapper — sized to fit the About box only */}
+        <div style={styles.aboutYellowWrap}>
         <div className="about-outer-frame" style={styles.aboutOuterFrame}>
 
-          <div className="about-inner-panel" style={styles.aboutInnerPanel}>
-            <div style={styles.aboutSweep} aria-hidden="true" />
-
-            {/* Decorative blob — far bottom-left corner, behind text */}
+            {/* Decorative blob — bottom-left corner, behind text */}
+            {/* Decorative blob — bottom-left corner, behind text */}
             <div
-              aria-hidden="true"
               onMouseEnter={() => setHoveredAbout('orange-ball')}
               onMouseLeave={() => setHoveredAbout(null)}
               style={{
                 position: 'absolute',
-                left: -50,
-                bottom: -30,
+                left: -60,
+                bottom: -40,
                 zIndex: 0,
                 width: 110,
                 height: 110,
-                borderRadius: '50%',
-                background: '#b53820',
-                border: '4px solid #11100f',
-                boxShadow: '6px 6px 0 #11100f',
-                clipPath:
-                  'polygon(50% 0%, 57% 11%, 69% 5%, 73% 18%, 87% 17%, 86% 31%, 98% 38%, 90% 50%, 98% 62%, 86% 69%, 87% 83%, 73% 82%, 69% 95%, 57% 89%, 50% 100%, 43% 89%, 31% 95%, 27% 82%, 13% 83%, 14% 69%, 2% 62%, 10% 50%, 2% 38%, 14% 31%, 13% 17%, 27% 18%, 31% 5%, 43% 11%)',
-                opacity: aboutActive ? 0.85 : 0,
-                animation: aboutActive
-                  ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.44s both'
-                  : 'none',
-                transform:
-                  hoveredAbout === 'orange-ball'
-                    ? 'scale(1.1) rotate(10deg)'
-                    : 'scale(1) rotate(0deg)',
-                transition: 'transform 180ms ease',
               }}
-            />
+            >
+              <div
+                aria-hidden="true"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  background: '#b53820',
+                  clipPath:
+                    'polygon(50% 0%, 57% 11%, 69% 5%, 73% 18%, 87% 17%, 86% 31%, 98% 38%, 90% 50%, 98% 62%, 86% 69%, 87% 83%, 73% 82%, 69% 95%, 57% 89%, 50% 100%, 43% 89%, 31% 95%, 27% 82%, 13% 83%, 14% 69%, 2% 62%, 10% 50%, 2% 38%, 14% 31%, 13% 17%, 27% 18%, 31% 5%, 43% 11%)',
+                  opacity: aboutActive ? 0.85 : 0,
+                  animation: aboutActive
+                    ? `aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.44s both,
+                      rotateBlobClockwise 12s linear infinite`
+                    : 'none',
+                  animationPlayState: hoveredAbout === 'orange-ball' ? 'paused' : 'running',
+                  transform: hoveredAbout === 'orange-ball' ? 'scale(1.1)' : 'scale(1)',
+                  transition: 'transform 180ms ease',
+                }}
+              />
+              {simplyParticles.map((p) => (
+                <svg
+                  key={`ob-${p.id}`}
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  style={{
+                    position: 'absolute',
+                    left: 20 + p.x * 0.5,
+                    top: 20 + p.y * 0.5,
+                    width: p.size * 0.7,
+                    height: p.size * 0.7,
+                    pointerEvents: 'none',
+                    zIndex: 10,
+                    opacity: 0,
+                    animation: `simplyStarBlink 1.4s ease-in-out ${p.delay + 0.2}s infinite`,
+                    filter: 'drop-shadow(0 0 3px rgba(255,211,72,0.6))',
+                  }}
+                >
+                  <path
+                    d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
+                    fill={p.color}
+                    stroke="#11100f"
+                    strokeWidth="0.8"
+                  />
+                </svg>
+              ))}
+            </div>
 
-            {/* Decorative blob — far top-right corner, behind text */}
+            {/* Decorative blob — top-right corner, behind text */}
             <div
-              aria-hidden="true"
-              onMouseEnter={() => setHoveredAbout('green-blob')}
-              onMouseLeave={() => setHoveredAbout(null)}
-              style={{
-                position: 'absolute',
-                right: -55,
-                top: -40,
-                zIndex: 0,
-                width: 130,
-                height: 130,
-                background: '#7fbd59',
-                border: '4px solid #11100f',
-                boxShadow: '6px 6px 0 #11100f',
-                clipPath:
-                  'polygon(50% 0%, 57% 11%, 69% 4%, 75% 17%, 88% 14%, 88% 29%, 100% 37%, 91% 49%, 99% 62%, 86% 69%, 89% 84%, 74% 83%, 68% 96%, 56% 89%, 48% 100%, 40% 88%, 27% 94%, 23% 80%, 9% 82%, 12% 67%, 0% 59%, 10% 48%, 2% 35%, 16% 29%, 15% 15%, 30% 18%, 37% 5%)',
-                opacity: aboutActive ? 0.85 : 0,
-                animation: aboutActive
-                  ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.52s both'
-                  : 'none',
-                transform:
-                  hoveredAbout === 'green-blob'
-                    ? 'scale(1.08) rotate(-8deg)'
-                    : 'scale(1) rotate(0deg)',
-                transition: 'transform 180ms ease',
-              }}
-            />
-
+                onMouseEnter={() => setHoveredAbout('green-blob')}
+                onMouseLeave={() => setHoveredAbout(null)}
+                style={{
+                  position: 'absolute',
+                  right: -55,
+                  top: -40,
+                  zIndex: 0,
+                  width: 130,
+                  height: 130,
+                }}
+              >
+              <div
+                aria-hidden="true"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: '#7fbd59',
+                  clipPath:
+                    'polygon(50% 0%, 57% 11%, 69% 4%, 75% 17%, 88% 14%, 88% 29%, 100% 37%, 91% 49%, 99% 62%, 86% 69%, 89% 84%, 74% 83%, 68% 96%, 56% 89%, 48% 100%, 40% 88%, 27% 94%, 23% 80%, 9% 82%, 12% 67%, 0% 59%, 10% 48%, 2% 35%, 16% 29%, 15% 15%, 30% 18%, 37% 5%)',
+                  opacity: aboutActive ? 0.85 : 0,
+                  animation: aboutActive
+                    ? `aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.52s both,
+                      rotateBlobAntiClockwise 12s linear infinite`
+                    : 'none',
+                  animationPlayState: hoveredAbout === 'green-blob' ? 'paused' : 'running',
+                  transform: hoveredAbout === 'green-blob' ? 'scale(1.1)' : 'scale(1)',
+                  transition: 'transform 180ms ease',
+                }}
+              />
+              {simplyParticles.map((p) => (
+                <svg
+                  key={`gb-${p.id}`}
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  style={{
+                    position: 'absolute',
+                    left: 20 + p.x * 0.5,
+                    top: 20 + p.y * 0.5,
+                    width: p.size * 0.8,
+                    height: p.size * 0.8,
+                    pointerEvents: 'none',
+                    zIndex: 10,
+                    opacity: 0,
+                    animation: `simplyStarBlink 1.4s ease-in-out ${p.delay + 0.4}s infinite`,
+                    filter: 'drop-shadow(0 0 3px rgba(255,211,72,0.6))',
+                  }}
+                >
+                  <path
+                    d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
+                    fill={p.color}
+                    stroke="#11100f"
+                    strokeWidth="0.8"
+                  />
+                </svg>
+              ))}
+            </div>
 
             <div className="about-stage" style={styles.aboutStage}>
 
@@ -1380,35 +1408,33 @@ export default function LandingPage() {
                       }}
                     >
                       Simply
-                      {/* Shooting-star particles */}
-                      {simplyParticles.map((p) => {
-                        const rad = (p.angle * Math.PI) / 180;
-                        const sx = Math.round(Math.cos(rad) * p.dist);
-                        const sy = Math.round(Math.sin(rad) * p.dist);
-                        return (
-                          <span
-                            key={p.id}
-                            aria-hidden="true"
-                            style={{
-                              position: 'absolute',
-                              left: '50%',
-                              top: '50%',
-                              width: p.size,
-                              height: p.size,
-                              borderRadius: p.id % 3 === 0 ? '50%' : '2px',
-                              background: p.color,
-                              border: '1.5px solid rgba(0,0,0,0.2)',
-                              marginLeft: -p.size / 2,
-                              marginTop: -p.size / 2,
-                              pointerEvents: 'none',
-                              zIndex: 10,
-                              '--sx': `${sx}px`,
-                              '--sy': `${sy}px`,
-                              animation: `simplyShoot 0.9s cubic-bezier(.22,1,.36,1) ${p.delay}s both`,
-                            }}
+                      {/* Blinking star particles around "Simply" */}
+                      {simplyParticles.map((p) => (
+                        <svg
+                          key={p.id}
+                          aria-hidden="true"
+                          viewBox="0 0 24 24"
+                          style={{
+                            position: 'absolute',
+                            left: p.x,
+                            top: p.y,
+                            width: p.size,
+                            height: p.size,
+                            pointerEvents: 'none',
+                            zIndex: 10,
+                            opacity: 0,
+                            animation: `simplyStarBlink 1.4s ease-in-out ${p.delay}s infinite`,
+                            filter: 'drop-shadow(0 0 3px rgba(255,211,72,0.6))',
+                          }}
+                        >
+                          <path
+                            d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
+                            fill={p.color}
+                            stroke="#11100f"
+                            strokeWidth="0.8"
                           />
-                        );
-                      })}
+                        </svg>
+                      ))}
                     </strong>{' '}
                     {aboutBullets[1]}
                   </span>
@@ -1475,8 +1501,11 @@ export default function LandingPage() {
             );
           })}
             </div>
+          {/* /about-stage */}
           </div>
+        {/* /about-outer-frame */}
         </div>
+        {/* /aboutYellowWrap */}
 
         <aside
           className="extension-card"
