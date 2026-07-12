@@ -5,11 +5,9 @@ from typing import List, Dict
 
 class SummaryChunking :
     def single_chunk_for_summary(self, segments : List[Dict]) -> str :
-        total_number_of_chunks = len(segments)
-        final_chunk = ""
-        for i in range(total_number_of_chunks) :
-            final_chunk.join(segments[i]["text"])
-        return final_chunk
+        all_texts = [seg["text"] for seg in segments]    
+        final_chunk = " ".join(all_texts)
+        return final_chunk       
 
 if __name__ == "__main__" :
     caption_file_path = get_latest_caption_file("raw_captions")
@@ -18,4 +16,8 @@ if __name__ == "__main__" :
     segments = parser.parse_raw_captions(caption_file_path)
     print(f"captions parsing done")
     merger = ChunkMerger()
-    chunks = 
+    chunks = merger.merge_segments(segments, target_duration = 45.0)
+    print(f"merged into {len(chunks)} chunks")
+    summary_chunker = SummaryChunking()
+    full_text = summary_chunker.single_chunk_for_summary(chunks)
+    print(f"combined transcript length: {len(full_text)} characters")
