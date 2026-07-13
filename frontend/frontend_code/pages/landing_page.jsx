@@ -8,12 +8,16 @@ const PricingVisual = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    let width = 200;
-    let height = 350;
+    let width = 300;
+    let height = 300;
     canvas.width = width;
     canvas.height = height;
 
-    let ball = { x: width / 2, y: 50, targetX: width / 2, targetY: 50 };
+    const homeX = width / 2;
+    const homeY = height / 2;
+
+    let ball = { x: homeX, y: homeY, targetX: homeX, targetY: homeY };
+    let time = 0;
 
     const handleMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -21,16 +25,16 @@ const PricingVisual = () => {
       const localY = e.clientY - rect.top;
 
       // Limit influence area to make it subtle
-      ball.targetX = width / 2 + (localX - width / 2) * 0.15;
-      ball.targetY = 50 + (localY - 50) * 0.15;
+      ball.targetX = homeX + (localX - homeX) * 0.2;
+      ball.targetY = homeY + (localY - homeY) * 0.2;
 
-      // Clamp movement within 30px
-      const dx = ball.targetX - width / 2;
-      const dy = ball.targetY - 50;
+      // Clamp movement within 35px
+      const dx = ball.targetX - homeX;
+      const dy = ball.targetY - homeY;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist > 30) {
-        ball.targetX = width / 2 + (dx / dist) * 30;
-        ball.targetY = 50 + (dy / dist) * 30;
+      if (dist > 35) {
+        ball.targetX = homeX + (dx / dist) * 35;
+        ball.targetY = homeY + (dy / dist) * 35;
       }
     };
 
@@ -42,26 +46,48 @@ const PricingVisual = () => {
 
       ball.x += (ball.targetX - ball.x) * 0.1;
       ball.y += (ball.targetY - ball.y) * 0.1;
+      time += 0.025; // Control animation speed
+
+      // Draw background dot grid inside the circular bounds
+      ctx.fillStyle = 'rgba(251, 133, 105, 0.15)';
+      const dotSpacing = 16;
+      for (let x = dotSpacing / 2; x < width; x += dotSpacing) {
+        for (let y = dotSpacing / 2; y < height; y += dotSpacing) {
+          const dx = x - homeX;
+          const dy = y - homeY;
+          if (dx * dx + dy * dy < 142 * 142) {
+            ctx.beginPath();
+            ctx.arc(x, y, 1, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
 
       const numCircles = 8;
       const baseRadius = 15;
-      const spacing = 18;
+      const spacing = 16;
+
+      // Orbit offset for the wave effect
+      const orbitX = Math.cos(time) * 22;
+      const orbitY = Math.sin(time) * 22;
 
       for (let i = numCircles - 1; i >= 0; i--) {
         const radius = baseRadius + i * spacing;
-        const factor = (numCircles - i) / numCircles;
-        const cx = width / 2 + (ball.x - width / 2) * factor;
-        const cy = 50 + (ball.y - 50) * factor;
+        const factor = (numCircles - i) / numCircles; // Inner circles offset more
+        
+        // Combine mouse displacement and the rolling orbit wave
+        const cx = homeX + (ball.x - homeX) * factor + orbitX * factor;
+        const cy = homeY + (ball.y - homeY) * factor + orbitY * factor;
 
         ctx.beginPath();
         ctx.arc(cx, cy, radius, 0, Math.PI * 2);
         
         if (i === 0) {
-          ctx.fillStyle = '#fb8569';
+          ctx.fillStyle = '#fb8569'; // Strong orange solid circle
           ctx.fill();
         } else {
-          ctx.strokeStyle = 'rgba(251, 133, 105, 0.25)';
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = 'rgba(251, 133, 105, 0.8)'; // Darker orange outlines
+          ctx.lineWidth = 1.5;
           ctx.stroke();
         }
       }
@@ -81,9 +107,12 @@ const PricingVisual = () => {
     <canvas 
       ref={canvasRef} 
       style={{ 
-        width: '200px', 
-        height: '350px', 
-        opacity: 0.85 
+        width: '300px', 
+        height: '300px', 
+        opacity: 0.95,
+        borderRadius: '50%',
+        border: '1.5px solid rgba(251, 133, 105, 0.45)', // Outer rim matching the others
+        boxSizing: 'border-box'
       }} 
     />
   );
@@ -452,7 +481,7 @@ export default function LandingPage() {
 
         {/* Navigation Part */}
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em'}}>
             <span>NAVIGATION</span>
             <span>PART [02]</span>
           </div>
@@ -477,15 +506,16 @@ export default function LandingPage() {
               lineHeight: '1.2',
               margin: 0,
               maxWidth: '850px',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.15em'
             }}>
               "Download SIMPLY from browser extensions"
             </h3>
             
             <a href="#" className="signup-btn" style={{
               padding: '12px 28px',
-              fontSize: '0.9rem',
+              fontSize: '1rem',
               fontWeight: '700',
+              letterSpacing: '0.35em'
             }}>
               GET EXTENSION
             </a>
@@ -534,10 +564,10 @@ export default function LandingPage() {
               flexDirection: 'column',
               alignItems: 'flex-start',
               gap: '24px',
-              boxSizing: 'border-box'
+              boxSizing: 'border-box',
             }}>
               <div>
-                <h3 style={{ fontSize: '1.6rem', fontWeight: 'bold', margin: '0 0 8px 0', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.05em' }}>STUDENT</h3>
+                <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: '0 0 8px 0', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.05em' }}>STUDENT</h3>
                 <p style={{ fontSize: '0.9rem', opacity: 0.7, margin: 0, fontFamily: '"Satoshi", sans-serif' }}>Perfect for getting started with SIMPLY</p>
               </div>
 
@@ -562,12 +592,13 @@ export default function LandingPage() {
                 width: '100%',
                 boxSizing: 'border-box',
                 padding: '12px 20px',
-                fontSize: '0.9rem',
+                fontSize: '0.95rem',
                 fontWeight: '700',
                 marginTop: '10px',
-                textAlign: 'center'
+                textAlign: 'center',
+                letterSpacing: '0.3em'
               }}>
-                GET STARTER
+                GET STARTED
               </a>
             </div>
 
@@ -587,7 +618,7 @@ export default function LandingPage() {
               boxSizing: 'border-box'
             }}>
               <div>
-                <h3 style={{ fontSize: '1.6rem', fontWeight: 'bold', margin: '0 0 8px 0', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.05em' }}>INSTITUTIONS</h3>
+                <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: '0 0 8px 0', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.05em' }}>INSTITUTIONS</h3>
                 <p style={{ fontSize: '0.9rem', opacity: 0.7, margin: 0, fontFamily: '"Satoshi", sans-serif' }}>Scale learning across your organization</p>
               </div>
 
@@ -605,7 +636,7 @@ export default function LandingPage() {
                 fontSize: '0.9rem',
                 fontWeight: '700',
                 textTransform: 'uppercase',
-                letterSpacing: '0.08em'
+                letterSpacing: '0.3em',
               }}>
                 COMING SOON
               </div>
