@@ -17,7 +17,6 @@ const PricingVisual = () => {
     const homeY = height / 2;
 
     let ball = { x: homeX, y: homeY, targetX: homeX, targetY: homeY };
-    let time = 0;
 
     const handleMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -44,9 +43,8 @@ const PricingVisual = () => {
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      ball.x += (ball.targetX - ball.x) * 0.1;
-      ball.y += (ball.targetY - ball.y) * 0.1;
-      time += 0.025; // Control animation speed
+      ball.x += (ball.targetX - ball.x) * 0.5;
+      ball.y += (ball.targetY - ball.y) * 0.5;
 
       // Draw background dot grid inside the circular bounds
       ctx.fillStyle = 'rgba(251, 133, 105, 0.15)';
@@ -67,17 +65,13 @@ const PricingVisual = () => {
       const baseRadius = 15;
       const spacing = 16;
 
-      // Orbit offset for the wave effect
-      const orbitX = Math.cos(time) * 22;
-      const orbitY = Math.sin(time) * 22;
-
       for (let i = numCircles - 1; i >= 0; i--) {
         const radius = baseRadius + i * spacing;
         const factor = (numCircles - i) / numCircles; // Inner circles offset more
         
-        // Combine mouse displacement and the rolling orbit wave
-        const cx = homeX + (ball.x - homeX) * factor + orbitX * factor;
-        const cy = homeY + (ball.y - homeY) * factor + orbitY * factor;
+        // Offset circles only in the direction of the mouse displacement
+        const cx = homeX + (ball.x - homeX) * factor;
+        const cy = homeY + (ball.y - homeY) * factor;
 
         ctx.beginPath();
         ctx.arc(cx, cy, radius, 0, Math.PI * 2);
@@ -651,6 +645,92 @@ export default function LandingPage() {
 
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer style={{
+        position: 'relative',
+        zIndex: 5,
+        width: '100%',
+        backgroundColor: '#0d1f1c',
+        padding: '60px 48px 40px 48px',
+        boxSizing: 'border-box',
+        color: '#fb8569',
+        fontFamily: '"Satoshi", sans-serif',
+      }}>
+        {/* Top border bar */}
+        <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.25)', width: '100%', marginBottom: '24px' }} />
+
+        {/* First Row: Brand, terms, socials */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '20px',
+          fontSize: '0.85rem',
+          fontWeight: '500',
+          letterSpacing: '0.08em'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '1.3rem', fontWeight: '800', letterSpacing: '0.15em' }}>SIMPLY</span>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Terms</a>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Privacy</a>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Disclosures</a>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Cookie Settings</a>
+            <span style={{ opacity: 0.6 }}>© AL Advisors Management Inc.</span>
+          </div>
+
+          {/* Social Links styled like reference brackets */}
+          <div style={{ display: 'flex', gap: '16px' }}>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
+              <span>[ </span>
+              <span style={{ fontWeight: 'bold' }}>f</span>
+              <span> ]</span>
+            </a>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
+              <span>[ </span>
+              <span style={{ fontWeight: 'bold' }}>in</span>
+              <span> ]</span>
+            </a>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
+              <span>[ </span>
+              <span style={{ fontWeight: 'bold' }}>𝕏</span>
+              <span> ]</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Middle border bar */}
+        <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.25)', width: '100%', margin: '24px 0' }} />
+
+        {/* Explore Section */}
+        <div style={{ textAlign: 'left', marginBottom: '40px' }}>
+          <h4 style={{ fontSize: '1.1rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 16px 0' }}>Explore</h4>
+          <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', fontSize: '0.9rem', fontWeight: '600', letterSpacing: '0.1em' }}>
+            <a href="#about" style={{ color: 'inherit', textDecoration: 'none' }}>ABOUT</a>
+            <a href="#navigation" style={{ color: 'inherit', textDecoration: 'none' }}>NAVIGATION</a>
+            <a href="#pricing" style={{ color: 'inherit', textDecoration: 'none' }}>PRICING</a>
+            <a href="#signup" style={{ color: 'inherit', textDecoration: 'none' }}>SIGN IN/SIGN UP</a>
+          </div>
+        </div>
+
+        {/* Very thin separator line */}
+        <div style={{ height: '1px', backgroundColor: 'rgba(251, 133, 105, 0.1)', width: '100%', marginBottom: '24px' }} />
+
+        {/* Copyright & Made with love Row */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          fontSize: '0.8rem',
+          opacity: 0.7,
+          letterSpacing: '0.05em'
+        }}>
+          <span>© 2026 Make Design. All rights reserved.</span>
+          <span style={{ margin: '0 12px' }}>|</span>
+          <span>Made with <span style={{ color: '#ff3b30' }}>❤️</span> by Shreyas Nalle</span>
+        </div>
+      </footer>
     </div>
   );
 }
