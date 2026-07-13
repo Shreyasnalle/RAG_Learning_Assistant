@@ -1,2152 +1,298 @@
-import { useEffect, useRef, useState } from 'react';
-
-const navItems = [
-  { label: 'About', background: '#8dd0f0', rotate: '-5deg', delay: '0.22s' },
-  { label: 'Navigation', background: '#74c98f', rotate: '4deg', delay: '0.3s' },
-  { label: 'Contact', background: '#d8a1f2', rotate: '3deg', delay: '0.38s' },
-];
-
-const letterCubes = [
-  {
-    letter: 'S',
-    background: '#f16424',
-    side: '#b53820',
-    left: '5%',
-    top: '18%',
-    rotate: '-8deg',
-    delay: '0.82s',
-    float: '3.9s',
-  },
-  {
-    letter: 'I',
-    background: '#efe5ff',
-    side: '#60b7e9',
-    left: '10%',
-    top: '44%',
-    rotate: '14deg',
-    delay: '0.93s',
-    float: '4.2s',
-  },
-  {
-    letter: 'M',
-    background: '#7a6cf6',
-    side: '#e77ac7',
-    left: '3%',
-    top: '62%',
-    rotate: '-5deg',
-    delay: '1.04s',
-    float: '4.6s',
-  },
-  {
-    letter: 'P',
-    background: '#69d79b',
-    side: '#52b7ec',
-    left: '12%',
-    top: '76%',
-    rotate: '-9deg',
-    delay: '1.15s',
-    float: '3.8s',
-  },
-  {
-    letter: 'L',
-    background: '#f8d85d',
-    side: '#64c57c',
-    right: '10%',
-    top: '55%',
-    rotate: '13deg',
-    delay: '1.06s',
-    float: '4.1s',
-  },
-  {
-    letter: 'Y',
-    background: '#f3a1b7',
-    side: '#d872bc',
-    right: '3%',
-    top: '72%',
-    rotate: '12deg',
-    delay: '1.17s',
-    float: '4.4s',
-  },
-];
-
-const decorativeIcons = [
-  { type: 'sparkle', left: '15%', top: '32%', delay: '1.25s', scale: 1.15 },
-  { type: 'sparkleSmall', left: '17%', top: '36%', delay: '1.32s', scale: 0.9 },
-  { type: 'moon', left: '7%', top: '76%', delay: '1.36s', scale: 1 },
-  { type: 'dot', left: '15%', top: '62%', delay: '1.42s', color: '#675cf2' },
-  { type: 'diamond', left: '2%', top: '50%', delay: '1.48s', color: '#ffffff' },
-  { type: 'chat', right: '8%', top: '35%', delay: '1.28s', scale: 1 },
-  { type: 'magnet', right: '2.5%', top: '35%', delay: '1.38s', rotate: '22deg' },
-  { type: 'magnet', right: '4%', top: '50%', delay: '1.45s', rotate: '-12deg' },
-  { type: 'diamond', right: '12%', top: '50%', delay: '1.52s', color: '#f7cf4b' },
-  { type: 'pointer', right: '13%', top: '78%', delay: '1.58s', scale: 0.95 },
-];
-
-const aboutBullets = [
-  'Switching tabs for answers to your doubts interrupts your learning experience',
-  'stays on your current tab, an assistant which you always needed',
-  'Download and install the Chrome extension',
-];
-
-const browserDots = [
-  { id: 'close', color: '#f35a4f', glow: '#ff9189' },
-  { id: 'minimize', color: '#ffd65a', glow: '#fff0a6' },
-  { id: 'maximize', color: '#79c863', glow: '#b6ef9f' },
-];
-
-const fontScript =
-  '"Brush Script MT", "Segoe Script", "Comic Sans MS", cursive';
-
-function getIcon(icon) {
-  const base = {
-    position: 'absolute',
-    animation: `riseIn 0.72s cubic-bezier(.2,.9,.25,1.18) ${icon.delay} both`,
-    transform: `scale(${icon.scale || 1}) rotate(${icon.rotate || '0deg'})`,
-    zIndex: 4,
-  };
-
-  const placement = {
-    left: icon.left,
-    right: icon.right,
-    top: icon.top,
-  };
-
-  if (icon.type === 'sparkle' || icon.type === 'sparkleSmall') {
-    const size = icon.type === 'sparkle' ? 42 : 25;
-
-    return (
-      <div
-        key={`${icon.type}-${icon.left}-${icon.top}`}
-        style={{ ...base, ...placement, width: size, height: size }}
-        aria-hidden="true"
-      >
-        <span
-          style={{
-            position: 'absolute',
-            inset: '16% 42%',
-            background: '#fffaf0',
-            border: '2px solid #15120f',
-            borderRadius: '999px',
-            boxShadow: '0 2px 0 rgba(0,0,0,0.2)',
-          }}
-        />
-        <span
-          style={{
-            position: 'absolute',
-            inset: '42% 16%',
-            background: '#fffaf0',
-            border: '2px solid #15120f',
-            borderRadius: '999px',
-          }}
-        />
-      </div>
-    );
-  }
-
-  if (icon.type === 'moon') {
-    return (
-      <div
-        key={`${icon.type}-${icon.left}-${icon.top}`}
-        style={{
-          ...base,
-          ...placement,
-          width: 34,
-          height: 34,
-          borderRadius: '50%',
-          background: '#ffd45a',
-          border: '3px solid #15120f',
-          boxShadow: '6px 5px 0 rgba(0,0,0,0.22)',
-        }}
-        aria-hidden="true"
-      >
-        <span
-          style={{
-            position: 'absolute',
-            top: -5,
-            left: 10,
-            width: 31,
-            height: 31,
-            borderRadius: '50%',
-            background: '#d94f2d',
-          }}
-        />
-      </div>
-    );
-  }
-
-  if (icon.type === 'chat') {
-    return (
-      <div
-        key={`${icon.type}-${icon.right}-${icon.top}`}
-        style={{
-          ...base,
-          ...placement,
-          width: 78,
-          height: 43,
-          border: '3px solid #15120f',
-          borderRadius: '26px 26px 22px 22px',
-          background: '#fff9e8',
-          boxShadow: '8px 8px 0 #1a1512',
-        }}
-        aria-hidden="true"
-      >
-        {['#f18ca4', '#d7b1f5', '#9ed6bf'].map((color, index) => (
-          <span
-            key={color}
-            style={{
-              position: 'absolute',
-              left: 19 + index * 16,
-              top: 12,
-              width: 9,
-              height: 9,
-              borderRadius: '50%',
-              background: color,
-              border: '2px solid #15120f',
-            }}
-          />
-        ))}
-      </div>
-    );
-  }
-
-  if (icon.type === 'magnet') {
-    return (
-      <div
-        key={`${icon.type}-${icon.right}-${icon.top}-${icon.rotate}`}
-        style={{ ...base, ...placement, width: 39, height: 47 }}
-        aria-hidden="true"
-      >
-        <span
-          style={{
-            position: 'absolute',
-            inset: 0,
-            border: '8px solid #72bde9',
-            borderBottomColor: 'transparent',
-            borderRadius: '28px 28px 8px 8px',
-            boxShadow: '4px 4px 0 #1a1512',
-          }}
-        />
-        <span
-          style={{
-            position: 'absolute',
-            left: 0,
-            bottom: 5,
-            width: 10,
-            height: 12,
-            background: '#f392a8',
-            border: '2px solid #15120f',
-          }}
-        />
-        <span
-          style={{
-            position: 'absolute',
-            right: 0,
-            bottom: 5,
-            width: 10,
-            height: 12,
-            background: '#f392a8',
-            border: '2px solid #15120f',
-          }}
-        />
-      </div>
-    );
-  }
-
-  if (icon.type === 'pointer') {
-    return (
-      <div
-        key={`${icon.type}-${icon.right}-${icon.top}`}
-        style={{ ...base, ...placement, width: 58, height: 43 }}
-        aria-hidden="true"
-      >
-        <span
-          style={{
-            position: 'absolute',
-            left: 5,
-            top: 16,
-            width: 42,
-            height: 13,
-            background: '#f6eee0',
-            border: '3px solid #15120f',
-            transform: 'rotate(-18deg)',
-          }}
-        />
-        <span
-          style={{
-            position: 'absolute',
-            left: 2,
-            top: 6,
-            width: 24,
-            height: 24,
-            background: '#f4cf45',
-            border: '3px solid #15120f',
-            transform: 'rotate(17deg)',
-            boxShadow: '7px 7px 0 #e68ca8',
-          }}
-        />
-      </div>
-    );
-  }
-
-  return (
-    <span
-      key={`${icon.type}-${icon.left}-${icon.right}-${icon.top}`}
-      style={{
-        ...base,
-        ...placement,
-        width: 12,
-        height: 12,
-        border: '2px solid #15120f',
-        background: icon.color,
-        transform: `rotate(45deg) scale(${icon.scale || 1})`,
-      }}
-      aria-hidden="true"
-    />
-  );
-}
+import React, { useEffect, useRef } from 'react';
 
 export default function LandingPage() {
-  const aboutRef = useRef(null);
-  const [aboutActive, setAboutActive] = useState(false);
-  const [hoveredNav, setHoveredNav] = useState(null);
-  const [hoveredCube, setHoveredCube] = useState(null);
-  const [hoveredAbout, setHoveredAbout] = useState(null);
-  const [hoveredFooter, setHoveredFooter] = useState(null);
-  const [simplyParticles, setSimplyParticles] = useState([]);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
-    const node = aboutRef.current;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
 
-    if (!node) {
-      return undefined;
-    }
+    let width, height;
+    let dots = [];
+    const DOT_SPACING = 32;
+    const DOT_RADIUS = 1.5;
+    const INTERACTION_RADIUS = 120;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAboutActive(true);
-          observer.disconnect();
-          // Lock scroll until positioning animation finishes (~2s)
-          document.body.style.overflow = 'hidden';
-          const unlockTimer = setTimeout(() => {
-            document.body.style.overflow = '';
-          }, 2200);
-          // Spawn blinking star particles around "Simply" word
-          const starColors = ['#ffd348', '#fff', '#ffe87a', '#ffedb8'];
-          const stars = [
-            { id: 0, x: -18, y: -22, size: 18, color: starColors[0], delay: 0.1 },
-            { id: 1, x: 105, y: -28, size: 14, color: starColors[1], delay: 0.3 },
-            { id: 2, x: 120, y: 8, size: 10, color: starColors[2], delay: 0.5 },
-            { id: 3, x: -10, y: 12, size: 8, color: starColors[3], delay: 0.2 },
-            { id: 4, x: 55, y: -32, size: 12, color: starColors[0], delay: 0.45 },
-            { id: 5, x: 85, y: 18, size: 9, color: starColors[1], delay: 0.65 },
-          ];
-          setTimeout(() => setSimplyParticles(stars), 1400);
-          return () => clearTimeout(unlockTimer);
+    let mouse = { x: -1000, y: -1000 };
+
+    const init = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+
+      dots = [];
+      for (let x = 0; x < width; x += DOT_SPACING) {
+        for (let y = 0; y < height; y += DOT_SPACING) {
+          dots.push({ 
+            x, 
+            y, 
+            baseX: x, 
+            baseY: y, 
+            vx: 0, 
+            vy: 0, 
+            size: DOT_RADIUS, 
+            color: '#fb8569',
+            scatterTimer: 0,
+            mouseNearby: false
+          });
         }
-      },
-      { threshold: 0.36 },
-    );
+      }
+    };
 
-    observer.observe(node);
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
 
-    return () => observer.disconnect();
+      dots.forEach(dot => {
+        const dx = mouse.x - dot.x;
+        const dy = mouse.y - dot.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Spring force returning to base position slowly
+        const springForceX = (dot.baseX - dot.x) * 0.02;
+        const springForceY = (dot.baseY - dot.y) * 0.02;
+        dot.vx += springForceX;
+        dot.vy += springForceY;
+
+        // When mouse gets close, trigger a 3-second (180 frames) decaying jitter
+        if (distance < INTERACTION_RADIUS) {
+          if (!dot.mouseNearby) {
+            dot.mouseNearby = true;
+            dot.scatterTimer = 180; 
+          }
+        } else {
+          dot.mouseNearby = false;
+        }
+
+        if (dot.scatterTimer > 0) {
+          dot.scatterTimer--;
+          const decay = dot.scatterTimer / 180;
+          const angle = Math.random() * Math.PI * 2;
+          dot.vx += Math.cos(angle) * decay * 1.5;
+          dot.vy += Math.sin(angle) * decay * 1.5;
+        }
+
+        // Apply friction and update position (dampened for slower ease-back)
+        dot.vx *= 0.90;
+        dot.vy *= 0.90;
+        dot.x += dot.vx;
+        dot.y += dot.vy;
+
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
+        ctx.fillStyle = '#fb8569';
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    init();
+    animate();
+
+    const handleMouseMove = (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+    const handleResize = () => {
+      init();
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  const styles = {
-    section: {
-      position: 'relative',
-      minHeight: '750px',
-      overflow: 'hidden',
-      backgroundColor: '#d94f2d',
-      backgroundImage:
-        'linear-gradient(rgba(13, 13, 13, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 13, 13, 0.4) 1px, transparent 2px)',
-      backgroundSize: '40px 40px',
-      animation: 'gridScroll 3s linear infinite',
-      color: '#11100f',
-      fontFamily: '"Arial Rounded MT Bold", Arial, sans-serif',
-      isolation: 'isolate',
-    },
-    header: {
-      position: 'relative',
-      zIndex: 8,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      gap: 50,
-      width: 'min(1120px, calc(100% - 72px))',
-      margin: '0 auto',
-      paddingTop: 20,
-      animation: 'riseIn 0.72s cubic-bezier(.2,.9,.25,1.18) 0.06s both',
-    },
-    logo: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minWidth: 150,
-      height: 65,
-      padding: '0 30px 15px',
-      border: '4px solid #100f0d',
-      borderRadius: 999,
-      background: '#ffc928',
-      boxShadow: '-5px 5px 0 #100f0d',
-      color: '#050505',
-      fontFamily: fontScript,
-      fontSize: '3rem',
-      fontWeight: 800,
-      lineHeight: 1,
-      letterSpacing: 1,
-    },
-    navShell: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 10,
-      height: 70,
-      padding: '0 1px',
-      background: '#ffd9a2',
-      border: '4px solid #100f0d',
-      boxShadow: '12px 13px 0 #100f0d',
-      clipPath: 'polygon(6% 0, 100% 0, 96% 100%, 0 100%)',
-      transform: 'skewX(-7deg)',
-      flex: '0 1 665px',
-    },
-    navInner: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 15,
-      transform: 'skewX(7deg)',
-    },
-    hero: {
-      position: 'relative',
-      zIndex: 5,
-      width: 'min(850px, 68vw)',
-      margin: '90px auto 0',
-      textAlign: 'center',
-      animation: 'riseIn 0.8s cubic-bezier(.2,.9,.25,1.12) 0.55s both',
-    },
-    tagline: {
-      margin: 5,
-      color: '#fff8e7',
-      fontFamily: fontScript,
-      fontSize: '4.2rem',
-      fontWeight: 800,
-      lineHeight: 1.17,
-      letterSpacing: 0,
-      textShadow:
-        '-4px 4px 0 #181412, -1px 1px 0 #181412, 0 4px 0 rgba(0,0,0,0.28)',
-    },
-    scallop: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      bottom: -2,
-      height: 84,
-      zIndex: 7,
-      background:
-        'radial-gradient(circle at 28px -7px, transparent 34px, #fffdf0 35px) 0 0 / 56px 84px repeat-x',
-      pointerEvents: 'none',
-    },
-    aboutSection: {
-      position: 'relative',
-      minHeight: 860,
-      overflow: 'hidden',
-      padding: '80px 24px 100px',
-      backgroundColor: '#fffaeb',
-      fontFamily: fontScript,
-      isolation: 'isolate',
-    },
-    aboutRow: {
-      position: 'relative',
-      zIndex: 1,
-      width: 'min(960px, calc(100vw - 48px))',
-      margin: '0 auto',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 48,
-    },
-    // Yellow grid wrapper — sized to fit the About box only
-    aboutYellowWrap: {
-      position: 'relative',
-      width: '150%',
-      padding: '60px 60px 60px 60px',
-      borderRadius: 24,
-      backgroundColor: '#fff3b0',
-      backgroundImage:
-        'linear-gradient(rgba(160,120,0,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(160,120,0,0.09) 1px, transparent 1px)',
-      backgroundSize: '64px 64px',
-    },
-    aboutOuterFrame: {
-      position: 'relative',
-      zIndex: 1,
-      width: '80%',
-      margin: '0 auto',
-      minHeight: 520,
-      padding: '60px',
-      border: '5px solid #11100f',
-      borderRadius: 18,
-      // Single orange background with animated grid (matching section 1)
-      backgroundColor: '#ee6831',
-      backgroundImage:
-        'linear-gradient(rgba(13,13,13,0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(13,13,13,0.28) 1px, transparent 1px)',
-      backgroundSize: '40px 40px',
-      animation: 'gridScroll 3s linear infinite',
-      overflow: 'visible',
-      boxShadow: '10px 10px 0 #11100f',
-    },
-    aboutStage: {
-      position: 'relative',
-      zIndex: 2,
-      width: 'min(820px, 100%)',
-      margin: '0 auto',
-    },
-    browserFrame: {
-      position: 'relative',
-      minHeight: 460,
-      border: '5px solid #11100f',
-      borderRadius: 20,
-      background: '#f6eedc',
-      boxShadow: '8px 8px 0 #11100f',
-      overflow: 'visible',
-      opacity: aboutActive ? 1 : 0,
-      animation: aboutActive
-        ? 'aboutBlockIn 0.56s cubic-bezier(.2,.9,.25,1.18) 0.08s both'
-        : 'none',
-    },
-    browserTop: {
-      height: 70,
-      display: 'flex',
-      alignItems: 'center',
-      gap: 13,
-      padding: '0 30px',
-      borderBottom: '4px solid #11100f',
-      borderRadius: '24px 24px 0 0',
-      background: '#f6eedc',
-    },
-    aboutTag: {
-      position: 'absolute',
-      top: -44,
-      right: -6,
-      zIndex: 20,
-      minWidth: 220,
-      height: 80,
-      border: '4px solid #11100f',
-      borderRadius: 14,
-      background: '#ffc928',
-      color: '#0a0907',
-      display: 'grid',
-      placeItems: 'center',
-      fontFamily: fontScript,
-      fontSize: '3.1rem',
-      fontWeight: 900,
-      letterSpacing: 0,
-      lineHeight: 1,
-      textShadow: '2px 3px 0 rgba(17,16,15,.18)',
-      boxShadow: hoveredAbout === 'tag'
-        ? '8px 10px 0 #11100f'
-        : '5px 6px 0 #11100f',
-      opacity: aboutActive ? 1 : 0,
-      animation: aboutActive
-        ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.2s both'
-        : 'none',
-      transform:
-        hoveredAbout === 'tag'
-          ? 'translateY(-10px) rotate(-4deg) scale(1.07)'
-          : 'translateY(0) rotate(-2deg) scale(1)',
-      transition: 'transform 180ms ease, box-shadow 180ms ease',
-    },
-    blueBox: {
-      position: 'relative',
-      minHeight: 380,
-      padding: '32px 48px 40px',
-      borderRadius: 0,
-      background: '#1260ad',
-      color: '#fff9e8',
-      overflow: 'hidden',
-      opacity: aboutActive ? 1 : 0,
-      animation: aboutActive
-        ? 'aboutBlockIn 0.55s cubic-bezier(.2,.9,.25,1.18) 0.28s both'
-        : 'none',
-    },
-    bulletList: {
-      position: 'relative',
-      zIndex: 2,
-      display: 'grid',
-      gap: 25,
-      margin: 0,
-      padding: 0,
-      listStyle: 'none',
-      fontFamily: fontScript,
-      fontSize: '2.14rem',
-      fontWeight: 800,
-      lineHeight: 1.27,
-      letterSpacing: 0,
-      textShadow: '1px 2px 0 rgba(17,16,15,.26)',
-    },
-    simplyPop: {
-      color: '#ffd348',
-      fontFamily: fontScript,
-      fontWeight: 900,
-      letterSpacing: 0,
-      display: 'inline-block',
-      textShadow: '3px 4px 0 #11100f',
-      animation: aboutActive
-        ? 'simplyInlineLoop 2.35s cubic-bezier(0.34, 1.56, 0.64, 1) 1.72s infinite'
-        : 'none',
-    },
-    extensionCard: {
-      position: 'relative',
-      width: '100%',
-      minHeight: 340,
-      border: '5px solid #11100f',
-      borderRadius: 22,
-      background: '#6936db',
-      overflow: 'hidden',
-      boxShadow: '8px 8px 0 #11100f',
-      opacity: aboutActive ? 1 : 0,
-      animation: aboutActive
-        ? 'aboutBlockIn 0.58s cubic-bezier(.2,.9,.25,1.18) 0.46s both'
-        : 'none',
-    },
-    extensionWindow: {
-      position: 'absolute',
-      left: 54,
-      right: 44,
-      top: 72,
-      zIndex: 5,
-      height: 200,
-      border: '4px solid #11100f',
-      borderRadius: 8,
-      background: '#fffdf7',
-      boxShadow: '6px 6px 0 #11100f',
-      opacity: aboutActive ? 1 : 0,
-      animation: aboutActive
-        ? 'aboutBlockIn 0.54s cubic-bezier(.2,.9,.25,1.18) 0.66s both'
-        : 'none',
-    },
-    extensionTitleBar: {
-      height: 31,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      gap: 9,
-      padding: '0 12px',
-      borderBottom: '3px solid #11100f',
-      background: '#f26178',
-    },
-    extensionHeading: {
-      margin: '34px 28px 26px',
-      color: '#250826',
-      fontFamily: '"Arial Black", "Arial Rounded MT Bold", Arial, sans-serif',
-      fontSize: '2.05rem',
-      fontWeight: 900,
-      lineHeight: 1.05,
-      letterSpacing: 0,
-      textTransform: 'uppercase',
-    },
-    extensionButtonRail: {
-      margin: '0 26px',
-      height: 54,
-      border: '3px solid #11100f',
-      display: 'flex',
-      alignItems: 'center',
-      padding: 6,
-      background: '#fffdf7',
-    },
-    footerSection: {
-      position: 'relative',
-      minHeight: 650,
-      overflow: 'hidden',
-      padding: '54px 28px 0',
-      background: '#d94f2d',
-      color: '#fff8e7',
-      fontFamily: '"Arial Rounded MT Bold", Arial, sans-serif',
-    },
-    footerPanel: {
-      position: 'relative',
-      width: 'min(1220px, calc(100vw - 56px))',
-      minHeight: 560,
-      margin: '0 auto',
-      border: '4px solid rgba(255, 248, 231, 0.95)',
-      borderRadius: 18,
-      overflow: 'hidden',
-    },
-    footerTop: {
-      height: 96,
-      display: 'grid',
-      gridTemplateColumns: '1fr auto 1fr',
-      alignItems: 'center',
-      padding: '0 28px',
-      color: '#fff8e7',
-      fontFamily: fontScript,
-      fontSize: '1.72rem',
-      fontWeight: 900,
-      letterSpacing: 0,
-    },
-    footerInfoBar: {
-      position: 'relative',
-      zIndex: 4,
-      margin: '34px 24px 0',
-      minHeight: 130,
-      border: '3px solid rgba(255, 248, 231, 0.88)',
-      borderRadius: 14,
-      background: 'rgba(255, 248, 231, 0.08)',
-      display: 'grid',
-      gridTemplateColumns: '1fr auto',
-      alignItems: 'center',
-      gap: 24,
-      padding: '24px 28px',
-      color: '#fff8e7',
-    },
-    footerLabel: {
-      display: 'inline-flex',
-      width: 'fit-content',
-      padding: '5px 13px',
-      borderRadius: 999,
-      background: '#fff8e7',
-      color: '#11100f',
-      fontFamily: '"Arial Rounded MT Bold", Arial, sans-serif',
-      fontSize: '0.92rem',
-      fontWeight: 900,
-      letterSpacing: 0,
-      marginBottom: 12,
-    },
-    footerEmail: {
-      color: '#fff8e7',
-      fontFamily: '"Arial Black", "Arial Rounded MT Bold", Arial, sans-serif',
-      fontSize: '2rem',
-      fontWeight: 900,
-      lineHeight: 1.1,
-      letterSpacing: 0,
-      textDecoration: 'none',
-      textShadow: '2px 3px 0 rgba(17,16,15,.24)',
-    },
-    footerWordmark: {
-      position: 'absolute',
-      left: '50%',
-      bottom: -78,
-      zIndex: 2,
-      color: hoveredFooter === 'wordmark' ? '#fff1ce' : '#fff8e7',
-      fontFamily: fontScript,
-      fontSize: '17rem',
-      fontWeight: 900,
-      lineHeight: 0.78,
-      letterSpacing: 0,
-      textShadow: '8px 10px 0 rgba(17,16,15,.26)',
-      cursor: 'default',
-      transform:
-        hoveredFooter === 'wordmark'
-          ? 'translateX(-50%) scale(1.035) rotate(-1deg)'
-          : 'translateX(-50%) scale(1) rotate(0deg)',
-      transition: 'transform 220ms ease, color 220ms ease',
-      whiteSpace: 'nowrap',
-    },
-  };
+  const navItem = (text) => (
+    <div style={{ position: 'relative', display: 'inline-block' }} className="nav-link-wrapper">
+      <a href="#" className="nav-link" style={{
+        position: 'relative',
+        color: '#fb8569',
+        textDecoration: 'none',
+        fontSize: '1rem',
+        fontWeight: '600',
+        letterSpacing: '0.25em',
+        textTransform: 'uppercase',
+        paddingBottom: '4px',
+        display: 'inline-block'
+      }}>
+        {text}
+      </a>
+      <div
+        className="nav-underline"
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '2px',
+          backgroundColor: '#fb8569',
+          transform: 'scaleX(0)',
+          transformOrigin: 'left',
+          transition: 'transform 0.4s cubic-bezier(0.19, 1, 0.22, 1)'
+        }}
+      />
+    </div>
+  );
 
   return (
-    <>
-      <section style={styles.section} aria-label="Simply landing hero">
-      <style>
-        {`
-          *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-          html, body, #root { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+    <div style={{
+      position: 'relative',
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: '#0d1f1c',
+      color: '#fb8569',
+      fontFamily: '"Satoshi", sans-serif',
+      overflow: 'hidden'
+    }}>
+      <style>{`
+        body, html {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
 
-          @keyframes gridScroll {
-            from { background-position: 0 0, 0 0; }
+        .nav-link-wrapper:hover .nav-underline {
+          transform: scaleX(1) !important;
+        }
+        
+        .signup-btn {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 16px;
+          color: #0d1f1c; /* Dark text */
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          border-radius: 2px;
+          overflow: hidden;
+          transition: color 0.3s ease;
+          background-color: transparent;
+        }
 
-          /* Hover Classes */
-          .hover-lift { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-          .hover-lift:hover { transform: translateY(-4px) scale(1.02) !important; filter: brightness(1.05); }
-          
-          .hover-scale { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-          .hover-scale:hover { transform: scale(1.05) !important; }
+        .signup-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #fb8569; /* Solid coral fill */
+          z-index: -1;
+          transform-origin: bottom;
+          transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+        }
 
-          .hover-dot { transition: all 0.2s ease-out; cursor: pointer; }
-          .hover-dot:hover { filter: brightness(1.2); transform: scale(1.1); }
-          
-          .simply-nav-item, .click-here-btn, .footer-icon { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important; }
-          .simply-nav-item:hover, .click-here-btn:hover, .footer-icon:hover { transform: translateY(-4px) scale(1.03) !important; }
+        .signup-btn:hover {
+          color: #fb8569;
+        }
 
-            to { background-position: 0 42px, 0 42px; }
-          }
+        .signup-btn:hover::before {
+          transform: scaleY(0);
+        }
+      `}</style>
 
-          @keyframes riseIn {
-            from { opacity: 0; translate: 0 46px; }
-            to { opacity: 1; translate: 0 0; }
-          }
+      {/* Canvas Background */}
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+          zIndex: 0
+        }}
+      />
 
-          @keyframes floatCube {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-16px); }
-          }
-
-          @keyframes aboutBlockIn {
-            from { opacity: 0; translate: 0 42px; scale: .96; }
-            to { opacity: 1; translate: 0 0; scale: 1; }
-          }
-
-          @keyframes aboutTextIn {
-            from { opacity: 0; translate: 0 24px; }
-            to { opacity: 1; translate: 0 0; }
-          }
-
-          @keyframes simplyInlineLoop {
-            0%, 100% {
-              translate: 0 0;
-              scale: 1;
-              filter: drop-shadow(0 0 0 rgba(255, 211, 72, 0));
-            }
-            50% {
-              translate: 0 -5px;
-              scale: 1.06;
-              filter: drop-shadow(0 0 8px rgba(255, 211, 72, .55));
-            }
-          }
-
-          @keyframes aboutSweep {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
-          }
-
-          @keyframes simplyStarBlink {
-            0% { opacity: 0; transform: scale(0.3) rotate(0deg); }
-            20% { opacity: 1; transform: scale(1.1) rotate(15deg); }
-            50% { opacity: 0.9; transform: scale(0.9) rotate(-5deg); }
-            80% { opacity: 1; transform: scale(1.05) rotate(10deg); }
-            100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
-          }
-
-          @keyframes rotateBlobClockwise {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-
-          @keyframes rotateBlobAntiClockwise {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-          }
-
-          @keyframes sparkleBlink {
-            0%, 100% { scale: 1; rotate: 0deg; }
-            50% { scale: 1.14; rotate: 10deg; }
-          }
-
-          @keyframes extensionFloat {
-            0%, 100% { translate: 0 0; rotate: -1deg; }
-            50% { translate: 0 -12px; rotate: 1.5deg; }
-          }
-
-          @keyframes extensionFloatReverse {
-            0%, 100% { translate: 0 0; rotate: 2deg; }
-            50% { translate: -8px 10px; rotate: -2deg; }
-          }
-
-          @keyframes extensionGridDrift {
-            from { background-position: 0 0, 0 0; }
-            to { background-position: 0 22px, 22px 0; }
-          }
-
-          @keyframes extensionBadgeWobble {
-            0%, 100% { rotate: -20deg; translate: 0 0; }
-            50% { rotate: -14deg; translate: 5px -4px; }
-          }
-
-          @keyframes footerStickerFloat {
-            0%, 100% { translate: 0 0; rotate: -3deg; }
-            50% { translate: 0 -14px; rotate: 4deg; }
-          }
-
-          @keyframes footerStickerFloatReverse {
-            0%, 100% { translate: 0 0; rotate: 4deg; }
-            50% { translate: 8px 12px; rotate: -4deg; }
-          }
-
-          @media (max-width: 900px) {
-            .simply-header {
-              align-items: flex-start !important;
-              flex-direction: column !important;
-              width: calc(100% - 32px) !important;
-              gap: 22px !important;
-              padding-top: 24px !important;
-            }
-
-            .simply-logo {
-              height: 60px !important;
-              min-width: 148px !important;
-              padding: 0 26px !important;
-              font-size: 2.55rem !important;
-              box-shadow: 7px 8px 0 #100f0d !important;
-            }
-
-            .simply-nav-shell {
-              align-self: stretch !important;
-              flex: none !important;
-              min-height: 68px !important;
-              padding: 0 20px !important;
-              box-shadow: 8px 9px 0 #100f0d !important;
-            }
-
-            .simply-nav-inner {
-              gap: 10px !important;
-              width: 100% !important;
-            }
-
-            .simply-hero {
-              width: calc(100% - 58px) !important;
-              margin-top: 92px !important;
-            }
-
-            .simply-tagline {
-              font-size: 2.42rem !important;
-            }
-
-            .letter-cube-wrap {
-              scale: .78;
-            }
-
-            .about-row {
-              width: calc(100vw - 28px) !important;
-              flex-direction: column !important;
-              gap: 36px !important;
-            }
-
-            .about-outer-frame {
-              width: 100% !important;
-              flex: none !important;
-              padding: 82px 24px 70px !important;
-            }
-
-            .extension-card {
-              width: min(430px, 100%) !important;
-              flex: none !important;
-            }
-
-            .about-inner-panel {
-              padding: 48px 20px 76px !important;
-            }
-
-            .about-stage {
-              width: 100% !important;
-            }
-
-            .about-tag {
-              right: 10px !important;
-              min-width: 178px !important;
-              height: 66px !important;
-              font-size: 2.5rem !important;
-            }
-
-            .about-blue-box {
-              padding: 28px 28px 36px !important;
-            }
-
-            .about-list {
-              font-size: 1.64rem !important;
-              gap: 22px !important;
-            }
-
-            .about-simply-pop {
-              font-size: 4.15rem !important;
-            }
-
-            .footer-info-bar {
-              grid-template-columns: 1fr !important;
-              gap: 18px !important;
-            }
-
-            .footer-wordmark {
-              font-size: 11rem !important;
-              bottom: -52px !important;
-            }
-          }
-
-          @media (max-width: 560px) {
-            .simply-nav-shell {
-              clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%) !important;
-            }
-
-            .simply-nav-inner {
-              gap: 6px !important;
-            }
-
-            .simply-tagline {
-              font-size: 2rem !important;
-            }
-
-            .letter-cube-wrap {
-              scale: .62;
-            }
-
-            .about-section {
-              padding: 72px 12px 96px !important;
-            }
-
-            .about-row {
-              width: calc(100vw - 24px) !important;
-            }
-
-            .about-outer-frame {
-              width: 100% !important;
-              min-height: 760px !important;
-              padding: 78px 12px 58px !important;
-            }
-
-            .extension-card {
-              height: 420px !important;
-            }
-
-            .extension-window {
-              left: 28px !important;
-              right: 24px !important;
-              top: 98px !important;
-              height: 220px !important;
-            }
-
-            .extension-heading {
-              font-size: 1.62rem !important;
-              margin: 28px 20px 22px !important;
-            }
-
-            .about-inner-panel {
-              min-height: 690px !important;
-              padding: 42px 10px 70px !important;
-            }
-
-            .about-browser-frame {
-              min-height: 650px !important;
-            }
-
-            .about-blue-box {
-              min-height: 580px !important;
-              padding: 26px 20px 34px !important;
-            }
-
-            .about-list {
-              font-size: 1.34rem !important;
-              gap: 18px !important;
-            }
-
-            .about-simply-pop {
-              font-size: 3.25rem !important;
-            }
-
-            .footer-section {
-              min-height: 560px !important;
-              padding: 34px 12px 0 !important;
-            }
-
-            .footer-panel {
-              width: calc(100vw - 24px) !important;
-              min-height: 505px !important;
-            }
-
-            .footer-top {
-              height: 78px !important;
-              padding: 0 16px !important;
-              font-size: 1.32rem !important;
-            }
-
-            .footer-info-bar {
-              margin: 20px 14px 0 !important;
-              padding: 18px !important;
-            }
-
-            .footer-email {
-              font-size: 1.35rem !important;
-            }
-
-            .footer-wordmark {
-              font-size: 6.9rem !important;
-              bottom: -30px !important;
-            }
-          }
-        `}
-      </style>
-
-      <header className="simply-header" style={styles.header}>
-        <div
-          className="simply-logo hover-scale"
-          style={{
-            ...styles.logo,
-            animation: 'riseIn 0.7s cubic-bezier(.2,.9,.25,1.18) 0.14s both',
-          }}
-        >
-          Simply
+      {/* Header */}
+      <header style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '4.5rem',
+        padding: '30px 48px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        justify: 'center',
+        zIndex: 10,
+        boxSizing: 'border-box',
+        backgroundColor: '#0d1f1c',
+        boxShadow: '0 0.25px 3px rgba(255, 201, 159, 0.33)',
+      }}>
+        <div style={{
+          fontSize: '1.55rem',
+          fontWeight: '800',
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase'
+        }}>
+          SIMPLY
         </div>
 
-        <nav className="simply-nav-shell" style={styles.navShell} aria-label="Primary navigation">
-          <div className="simply-nav-inner" style={styles.navInner}>
-            {navItems.map((item) => {
-              const isHovered = hoveredNav === item.label;
+        <nav style={{
+          display: 'flex',
+          gap: '2vw',
+          alignItems: 'center'
+        }}>
+          {navItem('[ ABOUT ]')}
+          {navItem('NAVIGATION')}
+          {navItem('PRICING')}
+          {navItem('CONTACT')}
+          {navItem('NEXT')}
 
-              return (
-                <button
-                  key={item.label}
-                  type="button"
-                  onMouseEnter={() => setHoveredNav(item.label)}
-                  onMouseLeave={() => setHoveredNav(null)}
-                  style={{
-                    minWidth: item.label === 'Navigation' ? 172 : 126,
-                    height: 50,
-                    padding: '0 24px',
-                    border: '3px solid #100f0d',
-                    borderRadius: 999,
-                    background: item.background,
-                    color: '#0a0907',
-                    cursor: 'pointer',
-                    fontFamily: fontScript,
-                    fontSize: '1.72rem',
-                    fontWeight: 900,
-                    lineHeight: 1,
-                    letterSpacing: 0,
-                    boxShadow: isHovered
-                      ? '0 8px 0 rgba(16, 15, 13, 0.8)'
-                      : '0 4px 0 rgba(16, 15, 13, 0.55)',
-                    transform: `${isHovered ? 'translateY(-5px) scale(1.06)' : 'translateY(0) scale(1)'} rotate(${item.rotate})`,
-                    transition:
-                      'transform 180ms ease, box-shadow 180ms ease, filter 180ms ease',
-                    filter: isHovered ? 'saturate(1.12)' : 'saturate(1)',
-                    animation: `riseIn 0.66s cubic-bezier(.2,.9,.25,1.18) ${item.delay} both`,
-                  }}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
+          <a href="#" className="signup-btn">
+            SIGN IN/SIGN UP
+          </a>
         </nav>
       </header>
 
-      <main className="simply-hero" style={styles.hero}>
-        <h1 className="simply-tagline" style={styles.tagline}>
-          Ask questions, understand concepts and learn beyond the video &mdash; without ever leaving the page.
+      {/* Main Content */}
+      <main style={{
+        position: 'relative',
+        zIndex: 5,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+        padding: '0 8vw 15vh 8vw', 
+        textAlign: 'center',
+        gap : '2rem'
+      }}>
+        <h1 style={{
+          fontSize: 'clamp(4rem, 8vw, 11rem)',
+          fontWeight: '400',
+          fontFamily: '"Satoshi", sans-serif', 
+          letterSpacing: '0.05em',
+          margin: '0 0 16px 0',
+          lineHeight: '0.9',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
+          <span>Learning shouldn't need ten tabs</span>
         </h1>
+        <p style={{
+          fontFamily: '"Satoshi", sans-serif',
+          fontSize: 'clamp(0.95rem, 1.5vw, 1.35rem)',
+          margin: 0,
+          fontWeight: '500',
+          letterSpacing: '0.08em',
+        }}>
+          No more tab switching for getting answers
+        </p>
       </main>
-
-      {letterCubes.map((cube) => {
-        const isHovered = hoveredCube === cube.letter;
-
-        return (
-          <div
-            className="letter-cube-wrap"
-            key={cube.letter}
-            style={{
-              position: 'absolute',
-              left: cube.left,
-              right: cube.right,
-              top: cube.top,
-              zIndex: 6,
-              animation: `riseIn 0.72s cubic-bezier(.2,.9,.25,1.18) ${cube.delay} both`,
-            }}
-          >
-            <div
-              style={{
-                animation: `floatCube ${cube.float} cubic-bezier(0.34, 1.56, 0.64, 1) ${cube.delay} infinite`,
-              }}
-            >
-              <button
-                type="button"
-                aria-label={`${cube.letter} decorative letter cube`}
-                onMouseEnter={() => setHoveredCube(cube.letter)}
-                onMouseLeave={() => setHoveredCube(null)}
-                style={{
-                  position: 'relative',
-                  width: 76,
-                  height: 76,
-                  border: '4px solid #100f0d',
-                  borderRadius: 11,
-                  background: cube.background,
-                  boxShadow: `10px 10px 0 ${cube.side}, 18px 18px 0 #100f0d`,
-                  color: '#100f0d',
-                  cursor: 'pointer',
-                  display: 'grid',
-                  placeItems: 'center',
-                  fontFamily: '"Arial Black", "Arial Rounded MT Bold", Arial, sans-serif',
-                  fontSize: '2.35rem',
-                  fontWeight: 900,
-                  lineHeight: 1,
-                  transform: `${isHovered ? 'translateY(-8px) scale(1.1)' : 'translateY(0) scale(1)'} rotate(${cube.rotate})`,
-                  transformOrigin: 'center',
-                  transition: 'transform 190ms ease, box-shadow 190ms ease',
-                }}
-              >
-                {cube.letter}
-              </button>
-            </div>
-          </div>
-        );
-      })}
-
-      {decorativeIcons.map(getIcon)}
-
-      <div style={styles.scallop} aria-hidden="true" />
-      </section>
-
-      <section
-        ref={aboutRef}
-        className="about-section"
-        style={styles.aboutSection}
-        aria-label="About Simply"
-      >
-        <div className="about-row" style={styles.aboutRow}>
-        {/* Yellow grid wrapper — sized to fit the About box only */}
-        <div style={styles.aboutYellowWrap}>
-        <div className="about-outer-frame" style={styles.aboutOuterFrame}>
-
-            {/* Decorative blob — bottom-left corner, behind text */}
-            {/* Decorative blob — bottom-left corner, behind text */}
-            <div
-              onMouseEnter={() => setHoveredAbout('orange-ball')}
-              onMouseLeave={() => setHoveredAbout(null)}
-              style={{
-                position: 'absolute',
-                left: -60,
-                bottom: -40,
-                zIndex: 0,
-                width: 110,
-                height: 110,
-              }}
-            >
-              <div
-                aria-hidden="true"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '50%',
-                  background: '#b53820',
-                  clipPath:
-                    'polygon(50% 0%, 57% 11%, 69% 5%, 73% 18%, 87% 17%, 86% 31%, 98% 38%, 90% 50%, 98% 62%, 86% 69%, 87% 83%, 73% 82%, 69% 95%, 57% 89%, 50% 100%, 43% 89%, 31% 95%, 27% 82%, 13% 83%, 14% 69%, 2% 62%, 10% 50%, 2% 38%, 14% 31%, 13% 17%, 27% 18%, 31% 5%, 43% 11%)',
-                  opacity: aboutActive ? 0.85 : 0,
-                  animation: aboutActive
-                    ? `aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.44s both,
-                      rotateBlobClockwise 12s linear infinite`
-                    : 'none',
-                  animationPlayState: hoveredAbout === 'orange-ball' ? 'paused' : 'running',
-                  transform: hoveredAbout === 'orange-ball' ? 'scale(1.1)' : 'scale(1)',
-                  transition: 'transform 180ms ease',
-                }}
-              />
-              {simplyParticles.map((p) => (
-                <svg
-                  key={`ob-${p.id}`}
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  style={{
-                    position: 'absolute',
-                    left: 20 + p.x * 0.5,
-                    top: 20 + p.y * 0.5,
-                    width: p.size * 0.7,
-                    height: p.size * 0.7,
-                    pointerEvents: 'none',
-                    zIndex: 10,
-                    opacity: 0,
-                    animation: `simplyStarBlink 1.4s ease-in-out ${p.delay + 0.2}s infinite`,
-                    filter: 'drop-shadow(0 0 3px rgba(255,211,72,0.6))',
-                  }}
-                >
-                  <path
-                    d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                    fill={p.color}
-                    stroke="#11100f"
-                    strokeWidth="0.8"
-                  />
-                </svg>
-              ))}
-            </div>
-
-            {/* Decorative blob — top-right corner, behind text */}
-            <div
-                onMouseEnter={() => setHoveredAbout('green-blob')}
-                onMouseLeave={() => setHoveredAbout(null)}
-                style={{
-                  position: 'absolute',
-                  right: -55,
-                  top: -40,
-                  zIndex: 0,
-                  width: 130,
-                  height: 130,
-                }}
-              >
-              <div
-                aria-hidden="true"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  background: '#7fbd59',
-                  clipPath:
-                    'polygon(50% 0%, 57% 11%, 69% 4%, 75% 17%, 88% 14%, 88% 29%, 100% 37%, 91% 49%, 99% 62%, 86% 69%, 89% 84%, 74% 83%, 68% 96%, 56% 89%, 48% 100%, 40% 88%, 27% 94%, 23% 80%, 9% 82%, 12% 67%, 0% 59%, 10% 48%, 2% 35%, 16% 29%, 15% 15%, 30% 18%, 37% 5%)',
-                  opacity: aboutActive ? 0.85 : 0,
-                  animation: aboutActive
-                    ? `aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.52s both,
-                      rotateBlobAntiClockwise 12s linear infinite`
-                    : 'none',
-                  animationPlayState: hoveredAbout === 'green-blob' ? 'paused' : 'running',
-                  transform: hoveredAbout === 'green-blob' ? 'scale(1.1)' : 'scale(1)',
-                  transition: 'transform 180ms ease',
-                }}
-              />
-              {simplyParticles.map((p) => (
-                <svg
-                  key={`gb-${p.id}`}
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  style={{
-                    position: 'absolute',
-                    left: 20 + p.x * 0.5,
-                    top: 20 + p.y * 0.5,
-                    width: p.size * 0.8,
-                    height: p.size * 0.8,
-                    pointerEvents: 'none',
-                    zIndex: 10,
-                    opacity: 0,
-                    animation: `simplyStarBlink 1.4s ease-in-out ${p.delay + 0.4}s infinite`,
-                    filter: 'drop-shadow(0 0 3px rgba(255,211,72,0.6))',
-                  }}
-                >
-                  <path
-                    d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                    fill={p.color}
-                    stroke="#11100f"
-                    strokeWidth="0.8"
-                  />
-                </svg>
-              ))}
-            </div>
-
-            <div className="about-stage" style={styles.aboutStage}>
-
-          <div className="about-browser-frame" style={styles.browserFrame}>
-            <div
-              className="about-tag hover-lift"
-              onMouseEnter={() => setHoveredAbout('tag')}
-              onMouseLeave={() => setHoveredAbout(null)}
-              style={styles.aboutTag}
-            >
-              About
-            </div>
-
-            <div style={styles.browserTop}>
-              {browserDots.map((dot, index) => {
-                const hoveredDot = hoveredAbout === dot.id;
-
-                return (
-                  <button
-                    key={dot.id}
-                    type="button"
-                    aria-label={`${dot.id} browser control`}
-                    onMouseEnter={() => setHoveredAbout(dot.id)}
-                    onMouseLeave={() => setHoveredAbout(null)}
-                    style={{
-                      width: 33,
-                      height: 33,
-                      borderRadius: '50%',
-                      border: '4px solid #11100f',
-                      background: dot.color,
-                      cursor: 'pointer',
-                      opacity: aboutActive ? 1 : 0,
-                      animation: aboutActive
-                        ? `aboutBlockIn 0.44s cubic-bezier(.2,.9,.25,1.18) ${0.28 + index * 0.1}s both`
-                        : 'none',
-                      boxShadow: hoveredDot
-                        ? `0 0 0 10px ${dot.glow}, 0 10px 0 rgba(17,16,15,.38)`
-                        : '0 4px 0 rgba(17,16,15,.22)',
-                      transform:
-                        dot.id === 'close' && hoveredDot
-                          ? 'scale(1.28) rotate(-15deg)'
-                          : dot.id === 'minimize' && hoveredDot
-                            ? 'translateY(-7px) scale(1.22)'
-                            : dot.id === 'maximize' && hoveredDot
-                              ? 'scale(1.28) rotate(18deg)'
-                              : 'scale(1) rotate(0deg)',
-                      transition:
-                        'transform 180ms ease, box-shadow 180ms ease, filter 180ms ease',
-                    }}
-                  />
-                );
-              })}
-            </div>
-
-            <div className="about-blue-box" style={styles.blueBox}>
-              <ul className="about-list" style={styles.bulletList}>
-                <li
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '22px 1fr',
-                    gap: 18,
-                    opacity: aboutActive ? 1 : 0,
-                    animation: aboutActive
-                      ? 'aboutTextIn 0.5s cubic-bezier(.2,.9,.25,1.12) 0.86s both'
-                      : 'none',
-                  }}
-                >
-                  <span style={{ fontSize: '2rem', lineHeight: 1 }}>&bull;</span>
-                  <span>{aboutBullets[0]}</span>
-                </li>
-
-                <li
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '22px 1fr',
-                    gap: 18,
-                    opacity: aboutActive ? 1 : 0,
-                    animation: aboutActive
-                      ? 'aboutTextIn 0.5s cubic-bezier(.2,.9,.25,1.12) 1.02s both'
-                      : 'none',
-                  }}
-                >
-                  <span style={{ fontSize: '2rem', lineHeight: 1 }}>&bull;</span>
-                  <span
-                    style={{ position: 'relative', display: 'inline' }}
-                  >
-                    <strong
-                      style={{
-                        ...styles.simplyPop,
-                      }}
-                    >
-                      Simply
-                      {/* Blinking star particles around "Simply" */}
-                      {simplyParticles.map((p) => (
-                        <svg
-                          key={p.id}
-                          aria-hidden="true"
-                          viewBox="0 0 24 24"
-                          style={{
-                            position: 'absolute',
-                            left: p.x,
-                            top: p.y,
-                            width: p.size,
-                            height: p.size,
-                            pointerEvents: 'none',
-                            zIndex: 10,
-                            opacity: 0,
-                            animation: `simplyStarBlink 1.4s ease-in-out ${p.delay}s infinite`,
-                            filter: 'drop-shadow(0 0 3px rgba(255,211,72,0.6))',
-                          }}
-                        >
-                          <path
-                            d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                            fill={p.color}
-                            stroke="#11100f"
-                            strokeWidth="0.8"
-                          />
-                        </svg>
-                      ))}
-                    </strong>{' '}
-                    {aboutBullets[1]}
-                  </span>
-                </li>
-
-                <li
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '22px 1fr',
-                    gap: 18,
-                    opacity: aboutActive ? 1 : 0,
-                    animation: aboutActive
-                      ? 'aboutTextIn 0.5s cubic-bezier(.2,.9,.25,1.12) 1.18s both'
-                      : 'none',
-                  }}
-                >
-                  <span style={{ fontSize: '2rem', lineHeight: 1 }}>&bull;</span>
-                  <span>{aboutBullets[2]}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {[
-            { id: 'orange-pill', left: -60, bottom: -36, width: 240, color: '#f16424', delay: 2.6 },
-            { id: 'green-pill', left: 200, bottom: -36, width: 200, color: '#78b957', delay: 2.7 },
-            { id: 'blue-pill', right: 140, bottom: -50, width: 90, color: '#1260ad', delay: 2.8 },
-            { id: 'purple-pill', right: -60, bottom: -50, width: 200, color: '#a783c8', delay: 2.9 },
-            { id: 'yellow-pill', right: -60, bottom: 48, width: 180, color: '#f5c63d', delay: 3.0 },
-          ].map((shape) => {
-            const isHovered = hoveredAbout === shape.id;
-
-            return (
-              <div
-                key={shape.id}
-                aria-hidden="true"
-                onMouseEnter={() => setHoveredAbout(shape.id)}
-                onMouseLeave={() => setHoveredAbout(null)}
-                style={{
-                  position: 'absolute',
-                  left: shape.left,
-                  right: shape.right,
-                  bottom: shape.bottom,
-                  zIndex: 3,
-                  width: shape.width,
-                  height: 64,
-                  borderRadius: 999,
-                  border: '4px solid #11100f',
-                  background: shape.color,
-                  boxShadow: isHovered
-                    ? '10px 14px 0 #11100f'
-                    : '5px 6px 0 #11100f',
-                  cursor: 'pointer',
-                  opacity: aboutActive ? 1 : 0,
-                  animation: aboutActive
-                    ? `aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) ${shape.delay}s both`
-                    : 'none',
-                  transform: isHovered
-                    ? 'translateY(-9px) scale(1.07)'
-                    : 'translateY(0) scale(1)',
-                  transition: 'transform 180ms ease, box-shadow 180ms ease',
-                }}
-              />
-            );
-          })}
-            </div>
-          {/* /about-stage */}
-          </div>
-        {/* /about-outer-frame */}
-        </div>
-        {/* /aboutYellowWrap */}
-
-        <aside
-          className="extension-card"
-          style={styles.extensionCard}
-          aria-label="Chrome Extension"
-        >
-          {/* Navigation label badge — mirrors the "About" tag above */}
-          <div
-            onMouseEnter={() => setHoveredAbout('nav-tag')}
-            onMouseLeave={() => setHoveredAbout(null)}
-            style={{
-              position: 'absolute',
-              top: -36,
-              left: -6,
-              zIndex: 5,
-              minWidth: 280,
-              height: 80,
-              border: '4px solid #11100f',
-              borderRadius: 14,
-              background: '#74c98f',
-              color: '#0a0907',
-              display: 'grid',
-              placeItems: 'center',
-              fontFamily: fontScript,
-              fontSize: '3.1rem',
-              fontWeight: 900,
-              letterSpacing: 0,
-              lineHeight: 1,
-              textShadow: '2px 3px 0 rgba(17,16,15,.18)',
-              boxShadow: hoveredAbout === 'nav-tag'
-                ? '8px 10px 0 #11100f'
-                : '5px 6px 0 #11100f',
-              cursor: 'pointer',
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.54s both'
-                : 'none',
-              transform: hoveredAbout === 'nav-tag'
-                ? 'translateY(-10px) rotate(3deg) scale(1.07)'
-                : 'translateY(0) rotate(2deg) scale(1)',
-              transition: 'transform 180ms ease, box-shadow 180ms ease',
-            }}
-          >
-            Navigation
-          </div>
-
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              top: 48,
-              left: 45,
-              width: 106,
-              height: 106,
-              borderRadius: '50%',
-              border: '3px solid #11100f',
-              background: '#48bbb8',
-              overflow: 'hidden',
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.74s both, extensionFloat 4.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s infinite'
-                : 'none',
-            }}
-          >
-            <span
-              style={{
-                position: 'absolute',
-                left: 22,
-                top: 29,
-                width: 62,
-                height: 40,
-                border: '3px solid #11100f',
-                borderBottom: 0,
-                borderRadius: '54px 54px 0 0',
-              }}
-            />
-            <span
-              style={{
-                position: 'absolute',
-                left: 52,
-                top: 28,
-                width: 3,
-                height: 43,
-                background: '#11100f',
-              }}
-            />
-            <span
-              style={{
-                position: 'absolute',
-                left: 27,
-                right: 27,
-                top: 48,
-                height: 3,
-                background: '#11100f',
-              }}
-            />
-          </div>
-
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              right: -46,
-              top: 155,
-              width: 98,
-              height: 98,
-              border: '3px solid #11100f',
-              background: '#ef6674',
-              clipPath:
-                'polygon(50% 0%, 57% 13%, 70% 5%, 73% 20%, 89% 19%, 84% 35%, 100% 43%, 86% 53%, 96% 67%, 80% 70%, 81% 88%, 65% 82%, 56% 100%, 45% 84%, 31% 94%, 27% 76%, 10% 79%, 17% 62%, 0% 53%, 15% 42%, 5% 28%, 23% 27%, 22% 10%, 38% 17%)',
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.86s both, extensionFloatReverse 4.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s infinite'
-                : 'none',
-            }}
-          >
-            <span
-              style={{
-                position: 'absolute',
-                inset: 24,
-                border: '3px solid #11100f',
-                borderRadius: '50%',
-              }}
-            />
-          </div>
-
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              right: 14,
-              top: -16,
-              width: 96,
-              height: 78,
-              backgroundImage:
-                'radial-gradient(circle, #fff2da 3px, transparent 4px)',
-              backgroundSize: '18px 18px',
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 0.98s both, extensionFloat 5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.6s infinite'
-                : 'none',
-            }}
-          />
-
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              left: -14,
-              bottom: -4,
-              width: 190,
-              height: 108,
-              backgroundImage:
-                'linear-gradient(#fff8e8 3px, transparent 3px), linear-gradient(90deg, #fff8e8 3px, transparent 3px)',
-              backgroundSize: '32px 32px',
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 1.08s both, extensionGridDrift 4.5s linear 1.4s infinite'
-                : 'none',
-            }}
-          />
-
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              left: -47,
-              bottom: 72,
-              zIndex: 4,
-              width: 186,
-              height: 58,
-              border: '3px solid #11100f',
-              borderRadius: '50%',
-              background: '#ef6674',
-              display: 'grid',
-              placeItems: 'center',
-              color: '#240826',
-              fontFamily: '"Arial Black", "Arial Rounded MT Bold", Arial, sans-serif',
-              fontSize: '1.04rem',
-              fontWeight: 900,
-              letterSpacing: 0,
-              opacity: aboutActive ? 1 : 0,
-              animation: aboutActive
-                ? 'aboutBlockIn 0.5s cubic-bezier(.2,.9,.25,1.18) 1.18s both, extensionBadgeWobble 3.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.7s infinite'
-                : 'none',
-            }}
-          >
-            Waiting
-          </div>
-
-          <div className="extension-window" style={styles.extensionWindow}>
-            <div style={styles.extensionTitleBar}>
-              <span
-                aria-hidden="true"
-                style={{
-                  width: 15,
-                  height: 3,
-                  background: '#11100f',
-                  display: 'inline-block',
-                }}
-              />
-              <span
-                aria-hidden="true"
-                style={{
-                  width: 14,
-                  height: 14,
-                  border: '3px solid #11100f',
-                  display: 'inline-block',
-                  boxShadow: '-5px 5px 0 -2px #f26178, -7px 7px 0 -2px #11100f',
-                }}
-              />
-              <span
-                aria-hidden="true"
-                style={{
-                  position: 'relative',
-                  width: 18,
-                  height: 18,
-                  display: 'inline-block',
-                }}
-              >
-                <span
-                  style={{
-                    position: 'absolute',
-                    left: 8,
-                    top: 0,
-                    width: 3,
-                    height: 20,
-                    background: '#11100f',
-                    transform: 'rotate(45deg)',
-                  }}
-                />
-                <span
-                  style={{
-                    position: 'absolute',
-                    left: 8,
-                    top: 0,
-                    width: 3,
-                    height: 20,
-                    background: '#11100f',
-                    transform: 'rotate(-45deg)',
-                  }}
-                />
-              </span>
-            </div>
-
-            <h2 className="extension-heading" style={styles.extensionHeading}>
-              Chrome Extension
-            </h2>
-
-            <div style={styles.extensionButtonRail}>
-              <button
-                type="button"
-                onMouseEnter={() => setHoveredAbout('extension-button')}
-                onMouseLeave={() => setHoveredAbout(null)}
-                style={{
-                  width: 144,
-                  height: 38,
-                  border: '3px solid #11100f',
-                  background:
-                    hoveredAbout === 'extension-button' ? '#59cac5' : '#42b8b3',
-                  color: '#19061c',
-                  cursor: 'pointer',
-                  fontFamily: '"Arial Black", "Arial Rounded MT Bold", Arial, sans-serif',
-                  fontSize: '0.96rem',
-                  fontWeight: 900,
-                  letterSpacing: 0,
-                  boxShadow:
-                    hoveredAbout === 'extension-button'
-                      ? '6px 7px 0 rgba(17,16,15,.72)'
-                      : '3px 4px 0 rgba(17,16,15,.55)',
-                  transform:
-                    hoveredAbout === 'extension-button'
-                      ? 'translateY(-4px) scale(1.06)'
-                      : 'translateY(0) scale(1)',
-                  transition:
-                    'transform 180ms ease, box-shadow 180ms ease, background 180ms ease',
-                }}
-              >
-                Click Here
-              </button>
-            </div>
-          </div>
-        </aside>
-        </div>
-      </section>
-
-      <footer
-        className="footer-section"
-        style={styles.footerSection}
-        aria-label="Footer contact"
-      >
-        <div className="footer-panel" style={styles.footerPanel}>
-          <div className="footer-top" style={styles.footerTop}>
-            <span
-              style={{
-                justifySelf: 'start',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-              }}
-            >
-              <span
-                aria-hidden="true"
-                style={{
-                  width: 42,
-                  height: 34,
-                  background: '#f4d44e',
-                  border: '3px solid #11100f',
-                  clipPath:
-                    'polygon(50% 0%, 61% 31%, 95% 20%, 72% 47%, 100% 70%, 64% 67%, 58% 100%, 43% 70%, 10% 83%, 29% 52%, 0% 33%, 36% 35%)',
-                }}
-              />
-              Simply
-            </span>
-            <span style={{ justifySelf: 'center' }}>Simply</span>
-            <span
-              aria-hidden="true"
-              style={{
-                justifySelf: 'end',
-                width: 20,
-                height: 20,
-                borderRadius: '50%',
-                background: '#11100f',
-                boxShadow: 'inset 6px -2px 0 #fff8e7',
-              }}
-            />
-          </div>
-
-          <div className="footer-info-bar" style={styles.footerInfoBar}>
-            <div>
-              <span style={styles.footerLabel}>Contact</span>
-              <a
-                className="footer-email"
-                href="mailto:your.email@example.com"
-                style={styles.footerEmail}
-              >
-                your.email@example.com
-              </a>
-            </div>
-
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 16,
-              }}
-              aria-label="Social links"
-            >
-              {[
-                { id: 'x', label: 'X', href: 'https://x.com' },
-                { id: 'linkedin', label: 'in', href: 'https://www.linkedin.com' },
-              ].map((link) => {
-                const isHovered = hoveredFooter === link.id;
-
-                return (
-                  <a
-                    key={link.id}
-                    href={link.href}
-                    aria-label={link.id === 'x' ? 'X profile' : 'LinkedIn profile'}
-                    onMouseEnter={() => setHoveredFooter(link.id)}
-                    onMouseLeave={() => setHoveredFooter(null)}
-                    style={{
-                      width: 48,
-                      height: 48,
-                      border: '3px solid #fff8e7',
-                      borderRadius: link.id === 'x' ? '50%' : 9,
-                      color: '#fff8e7',
-                      display: 'grid',
-                      placeItems: 'center',
-                      textDecoration: 'none',
-                      fontFamily:
-                        link.id === 'x'
-                          ? '"Arial Black", "Arial Rounded MT Bold", Arial, sans-serif'
-                          : '"Arial Rounded MT Bold", Arial, sans-serif',
-                      fontSize: link.id === 'x' ? '1.25rem' : '1.45rem',
-                      fontWeight: 900,
-                      letterSpacing: 0,
-                      background: isHovered ? 'rgba(255,248,231,.18)' : 'transparent',
-                      boxShadow: isHovered
-                        ? '0 8px 0 rgba(17,16,15,.34)'
-                        : '0 4px 0 rgba(17,16,15,.22)',
-                      transform: isHovered
-                        ? 'translateY(-5px) scale(1.09) rotate(-3deg)'
-                        : 'translateY(0) scale(1) rotate(0deg)',
-                      transition:
-                        'transform 180ms ease, box-shadow 180ms ease, background 180ms ease',
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          <div
-            className="footer-wordmark"
-            style={styles.footerWordmark}
-            onMouseEnter={() => setHoveredFooter('wordmark')}
-            onMouseLeave={() => setHoveredFooter(null)}
-          >
-            Simply
-          </div>
-
-          {[
-            {
-              id: 'bam',
-              left: '2%',
-              bottom: '12%',
-              width: 88,
-              height: 82,
-              background: '#ff7a3f',
-              text: 'BAM',
-              rotate: '-14deg',
-              animation: 'footerStickerFloat 4.1s cubic-bezier(0.34, 1.56, 0.64, 1) .2s infinite',
-              shape:
-                'polygon(50% 0%, 61% 27%, 92% 12%, 78% 43%, 100% 62%, 68% 66%, 65% 100%, 45% 74%, 16% 91%, 26% 57%, 0% 41%, 34% 35%)',
-            },
-            {
-              id: 'smile',
-              left: '21%',
-              bottom: '24%',
-              width: 98,
-              height: 98,
-              background: '#8ea7f4',
-              animation: 'footerStickerFloatReverse 4.5s cubic-bezier(0.34, 1.56, 0.64, 1) .4s infinite',
-              smile: true,
-            },
-            {
-              id: 'heart',
-              left: '43%',
-              bottom: '27%',
-              width: 98,
-              height: 78,
-              background: '#fff8e7',
-              animation: 'footerStickerFloat 4.8s cubic-bezier(0.34, 1.56, 0.64, 1) .1s infinite',
-              heart: true,
-            },
-            {
-              id: 'cash',
-              left: '54%',
-              bottom: '12%',
-              width: 86,
-              height: 64,
-              background: '#4fa978',
-              animation: 'footerStickerFloatReverse 5s cubic-bezier(0.34, 1.56, 0.64, 1) .5s infinite',
-              cash: true,
-            },
-            {
-              id: 'hundred',
-              right: '34%',
-              bottom: '31%',
-              width: 92,
-              height: 72,
-              background: '#f4a0c3',
-              text: '100',
-              rotate: '-10deg',
-              animation: 'footerStickerFloat 4.3s cubic-bezier(0.34, 1.56, 0.64, 1) .25s infinite',
-            },
-            {
-              id: 'camera',
-              right: '12%',
-              bottom: '20%',
-              width: 104,
-              height: 82,
-              background: '#fff8e7',
-              animation: 'footerStickerFloatReverse 4.7s cubic-bezier(0.34, 1.56, 0.64, 1) .35s infinite',
-              camera: true,
-            },
-          ].map((sticker) => (
-            <div
-              key={sticker.id}
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                left: sticker.left,
-                right: sticker.right,
-                bottom: sticker.bottom,
-                zIndex: 5,
-                width: sticker.width,
-                height: sticker.height,
-                border: '4px solid #fff8e7',
-                borderRadius: sticker.shape ? 0 : 18,
-                background: sticker.background,
-                color: '#11100f',
-                display: 'grid',
-                placeItems: 'center',
-                fontFamily: '"Arial Black", "Arial Rounded MT Bold", Arial, sans-serif',
-                fontSize: '1.42rem',
-                fontWeight: 900,
-                letterSpacing: 0,
-                clipPath: sticker.shape,
-                boxShadow: '5px 7px 0 rgba(17,16,15,.25)',
-                transform: `rotate(${sticker.rotate || '0deg'})`,
-                animation: sticker.animation,
-              }}
-            >
-              {sticker.text}
-              {sticker.smile && (
-                <span
-                  style={{
-                    position: 'absolute',
-                    inset: 16,
-                    border: '3px solid #fff8e7',
-                    borderRadius: '50%',
-                  }}
-                >
-                  <span
-                    style={{
-                      position: 'absolute',
-                      left: 20,
-                      top: 24,
-                      width: 7,
-                      height: 7,
-                      borderRadius: '50%',
-                      background: '#fff8e7',
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      right: 20,
-                      top: 24,
-                      width: 7,
-                      height: 7,
-                      borderRadius: '50%',
-                      background: '#fff8e7',
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      left: 20,
-                      right: 20,
-                      bottom: 19,
-                      height: 18,
-                      borderBottom: '3px solid #fff8e7',
-                      borderRadius: '0 0 999px 999px',
-                    }}
-                  />
-                </span>
-              )}
-              {sticker.heart && (
-                <span
-                  style={{
-                    position: 'relative',
-                    width: 48,
-                    height: 42,
-                    transform: 'rotate(-18deg)',
-                  }}
-                >
-                  <span
-                    style={{
-                      position: 'absolute',
-                      left: 4,
-                      top: 5,
-                      width: 26,
-                      height: 26,
-                      borderRadius: '50%',
-                      background: '#c23a55',
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      right: 4,
-                      top: 5,
-                      width: 26,
-                      height: 26,
-                      borderRadius: '50%',
-                      background: '#c23a55',
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      left: 10,
-                      top: 16,
-                      width: 29,
-                      height: 29,
-                      background: '#c23a55',
-                      transform: 'rotate(45deg)',
-                    }}
-                  />
-                </span>
-              )}
-              {sticker.cash && (
-                <span
-                  style={{
-                    width: 54,
-                    height: 34,
-                    border: '3px solid #fff8e7',
-                    borderRadius: 10,
-                    display: 'grid',
-                    placeItems: 'center',
-                    color: '#fff8e7',
-                    fontSize: '1.2rem',
-                  }}
-                >
-                  $
-                </span>
-              )}
-              {sticker.camera && (
-                <span
-                  style={{
-                    position: 'relative',
-                    width: 68,
-                    height: 46,
-                    border: '4px solid #11100f',
-                    borderRadius: 13,
-                    transform: 'rotate(14deg)',
-                  }}
-                >
-                  <span
-                    style={{
-                      position: 'absolute',
-                      left: 21,
-                      top: 10,
-                      width: 22,
-                      height: 22,
-                      border: '4px solid #11100f',
-                      borderRadius: '50%',
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      right: 8,
-                      top: 7,
-                      width: 7,
-                      height: 7,
-                      borderRadius: '50%',
-                      background: '#11100f',
-                    }}
-                  />
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-      </footer>
-    </>
+    </div>
   );
 }
