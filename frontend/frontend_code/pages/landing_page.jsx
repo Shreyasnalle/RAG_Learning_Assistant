@@ -1,5 +1,94 @@
 import React, { useEffect, useRef } from 'react';
 
+const PricingVisual = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width = 200;
+    let height = 350;
+    canvas.width = width;
+    canvas.height = height;
+
+    let ball = { x: width / 2, y: 50, targetX: width / 2, targetY: 50 };
+
+    const handleMouseMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const localX = e.clientX - rect.left;
+      const localY = e.clientY - rect.top;
+
+      // Limit influence area to make it subtle
+      ball.targetX = width / 2 + (localX - width / 2) * 0.15;
+      ball.targetY = 50 + (localY - 50) * 0.15;
+
+      // Clamp movement within 30px
+      const dx = ball.targetX - width / 2;
+      const dy = ball.targetY - 50;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > 30) {
+        ball.targetX = width / 2 + (dx / dist) * 30;
+        ball.targetY = 50 + (dy / dist) * 30;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    let animationFrameId;
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      ball.x += (ball.targetX - ball.x) * 0.1;
+      ball.y += (ball.targetY - ball.y) * 0.1;
+
+      const numCircles = 8;
+      const baseRadius = 15;
+      const spacing = 18;
+
+      for (let i = numCircles - 1; i >= 0; i--) {
+        const radius = baseRadius + i * spacing;
+        const factor = (numCircles - i) / numCircles;
+        const cx = width / 2 + (ball.x - width / 2) * factor;
+        const cy = 50 + (ball.y - 50) * factor;
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        
+        if (i === 0) {
+          ctx.fillStyle = '#fb8569';
+          ctx.fill();
+        } else {
+          ctx.strokeStyle = 'rgba(251, 133, 105, 0.25)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas 
+      ref={canvasRef} 
+      style={{ 
+        width: '200px', 
+        height: '350px', 
+        opacity: 0.85 
+      }} 
+    />
+  );
+};
+
 export default function LandingPage() {
   const canvasRef = useRef(null);
 
@@ -143,12 +232,13 @@ export default function LandingPage() {
   return (
     <div style={{
       position: 'relative',
-      width: '100vw',
-      height: '100vh',
+      width: '100%',
+      minHeight: '100vh',
       backgroundColor: '#0d1f1c',
       color: '#fb8569',
       fontFamily: '"Satoshi", sans-serif',
-      overflow: 'hidden'
+      overflowX: 'hidden',
+      overflowY: 'auto'
     }}>
       <style>{`
         body, html {
@@ -205,7 +295,7 @@ export default function LandingPage() {
       <canvas
         ref={canvasRef}
         style={{
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
           left: 0,
           width: '100%',
@@ -266,10 +356,11 @@ export default function LandingPage() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
+        height: '100vh', 
         padding: '0 8vw 15vh 8vw', 
         textAlign: 'center',
-        gap : '2rem'
+        gap : '2rem',
+        boxSizing: 'border-box'
       }}>
         <h1 style={{
           fontSize: 'clamp(4rem, 8vw, 11rem)',
@@ -293,6 +384,242 @@ export default function LandingPage() {
           No more tab switching for getting answers
         </p>
       </main>
+
+      <section style={{
+        position: 'relative',
+        zIndex: 5,
+        width: '90%',
+        margin: '0 auto 100px auto',
+        backgroundColor: '#0d1f1c',
+        borderRadius: '24px',
+        padding: '60px 48px',
+        boxShadow: '0 20px 80px rgba(0, 0, 0, 0.6)',
+        boxSizing: 'border-box',
+      }}>
+        {/* About Part */}
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
+            <span>ABOUT</span>
+            <span>PART [01]</span>
+          </div>
+          <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.2)', width: '100%', margin: '16px 0 60px 0' }} />
+          
+          <div style={{ display: 'flex', gap: '80px', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 300px', textAlign: 'left' }}>
+              <h2 style={{ fontSize: '3rem', fontWeight: '400', margin: '0 0 24px 0', lineHeight: '1.1', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.25rem'}}>
+                SIMPLY by the numbers
+              </h2>
+              <p style={{ letterSpacing:'0.15rem',fontSize: '1.2rem', lineHeight: '1.6', opacity: 0.8, margin: '0 0 20px 0', fontFamily: '"Satoshi", sans-serif',}}>
+                Simply is a modern RAG-based learning assistant designed specifically for YouTube videos. It allows you to query,answers, summarize and extract core insights from videos without the tedious tab switching
+              </p>
+              <p style={{ letterSpacing:'0.15rem', fontSize: '1.1rem', lineHeight: '1.6', opacity: 0.8, margin: 0 }}>
+                Built to streamline your learning pipeline, it processes transcripts, understands it and answers where you watch.
+              </p>
+            </div>
+            
+            <div style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <div style={{ 
+                border: '1px solid rgba(251, 133, 105, 0.3)', 
+                borderRadius: '16px', 
+                width: '100%', 
+                padding: '40px',
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '20px',
+                boxSizing: 'border-box'
+              }}>
+                <span style={{ fontSize: '1.2rem', opacity: 0.7 , letterSpacing:'0.15rem', fontFamily: '"Satoshi", sans-serif'}}>PRODUCTIVITY</span>
+                <div style={{ width: '1px', height: '40px', backgroundColor: 'rgba(251, 133, 105, 0.3)' }} />
+                <div style={{ 
+                  display: 'inline-flex', 
+                  border: '1px solid rgba(251, 133, 105, 0.3)',
+                  borderRadius: '8px',
+                  overflow: 'hidden'
+                }}>
+                  <span style={{ backgroundColor: '#fb8569', color: '#0d1f1c', padding: '16px 24px', fontSize: '1.5rem', fontWeight: 'bold', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.25rem'}}>10X</span>
+                  <span style={{ padding: '16px 24px', fontSize: '1.5rem', fontWeight: 'bold', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.25rem'}}>FASTER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Separator Gap inside the single container */}
+        <div style={{ height: '100px' }} />
+
+        {/* Navigation Part */}
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
+            <span>NAVIGATION</span>
+            <span>PART [02]</span>
+          </div>
+          <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.2)', width: '100%', margin: '16px 0 60px 0' }} />
+          
+          <div style={{
+            border: '1.5px solid rgba(251, 133, 105, 0.3)',
+            borderRadius: '24px',
+            padding: '80px 48px',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '40px',
+            boxSizing: 'border-box',
+            position: 'relative'
+          }}>
+            <h3 style={{
+              fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+              fontWeight: '400',
+              lineHeight: '1.2',
+              margin: 0,
+              maxWidth: '850px',
+              letterSpacing: '0.05em'
+            }}>
+              "Download SIMPLY from browser extensions"
+            </h3>
+            
+            <a href="#" className="signup-btn" style={{
+              padding: '12px 28px',
+              fontSize: '0.9rem',
+              fontWeight: '700',
+            }}>
+              GET EXTENSION
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section (Part 04) */}
+      <section style={{
+        position: 'relative',
+        zIndex: 5,
+        width: '90%',
+        margin: '0 auto 100px auto',
+        backgroundColor: '#0d1f1c',
+        borderRadius: '24px',
+        padding: '60px 48px',
+        boxShadow: '0 20px 80px rgba(0, 0, 0, 0.6)',
+        boxSizing: 'border-box',
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
+          <span>PRICING</span>
+          <span>PART [04]</span>
+        </div>
+        <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.2)', width: '100%', margin: '16px 0 60px 0' }} />
+        
+        {/* Container for Visuals and Pricing Cards */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '20px', flexWrap: 'wrap' }}>
+          
+          {/* Left Interactive Sphere Visual */}
+          <div style={{ display: 'flex', justifyContent: 'center', flex: '1 1 200px', minWidth: '200px' }}>
+            <PricingVisual />
+          </div>
+
+          {/* Pricing Cards Container */}
+          <div style={{ display: 'flex', gap: '30px', flex: '3 1 600px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            
+            {/* Student Card */}
+            <div style={{
+              flex: '1 1 280px',
+              maxWidth: '360px',
+              backgroundColor: 'rgba(255, 255, 255, 0.015)',
+              border: '1.5px solid rgba(251, 133, 105, 0.3)',
+              borderRadius: '24px',
+              padding: '40px 30px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: '24px',
+              boxSizing: 'border-box'
+            }}>
+              <div>
+                <h3 style={{ fontSize: '1.6rem', fontWeight: 'bold', margin: '0 0 8px 0', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.05em' }}>STUDENT</h3>
+                <p style={{ fontSize: '0.9rem', opacity: 0.7, margin: 0, fontFamily: '"Satoshi", sans-serif' }}>Perfect for getting started with SIMPLY</p>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '4px' }}>
+                <div style={{ position: 'relative', display: 'inline-block' }}>
+                  <span style={{ fontSize: '2.5rem', fontWeight: '700', color: 'rgba(251, 133, 105, 0.3)' }}>$5<span style={{ fontSize: '1.1rem', fontWeight: '400' }}>/mo</span></span>
+                  {/* Diagonal cut line */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '55%',
+                    left: '-5%',
+                    width: '110%',
+                    height: '2.5px',
+                    backgroundColor: '#fb8569',
+                    transform: 'rotate(-12deg)'
+                  }} />
+                </div>
+                <span style={{ fontSize: '3rem', fontWeight: '800', color: '#fb8569', lineHeight: '1' }}>FREE</span>
+              </div>
+
+              <a href="#" className="signup-btn" style={{
+                width: '100%',
+                boxSizing: 'border-box',
+                padding: '12px 20px',
+                fontSize: '0.9rem',
+                fontWeight: '700',
+                marginTop: '10px',
+                textAlign: 'center'
+              }}>
+                GET STARTER
+              </a>
+            </div>
+
+            {/* Institutions Card */}
+            <div style={{
+              flex: '1 1 280px',
+              maxWidth: '360px',
+              backgroundColor: 'rgba(255, 255, 255, 0.015)',
+              border: '1.5px solid rgba(251, 133, 105, 0.15)',
+              borderRadius: '24px',
+              padding: '40px 30px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+              minHeight: '340px',
+              boxSizing: 'border-box'
+            }}>
+              <div>
+                <h3 style={{ fontSize: '1.6rem', fontWeight: 'bold', margin: '0 0 8px 0', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.05em' }}>INSTITUTIONS</h3>
+                <p style={{ fontSize: '0.9rem', opacity: 0.7, margin: 0, fontFamily: '"Satoshi", sans-serif' }}>Scale learning across your organization</p>
+              </div>
+
+              <div style={{ margin: '30px 0' }}>
+                <span style={{ fontSize: '2rem', fontWeight: '800', opacity: 0.8, letterSpacing: '0.1em' }}>YET TO COME</span>
+              </div>
+
+              <div style={{
+                width: '100%',
+                border: '1.5px dashed rgba(251, 133, 105, 0.25)',
+                borderRadius: '2px',
+                color: 'rgba(251, 133, 105, 0.5)',
+                textAlign: 'center',
+                padding: '12px 0',
+                fontSize: '0.9rem',
+                fontWeight: '700',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em'
+              }}>
+                COMING SOON
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Interactive Sphere Visual */}
+          <div style={{ display: 'flex', justifyContent: 'center', flex: '1 1 200px', minWidth: '200px' }}>
+            <PricingVisual />
+          </div>
+
+        </div>
+      </section>
     </div>
   );
 }
