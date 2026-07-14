@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const PricingVisual = () => {
   const canvasRef = useRef(null);
@@ -114,6 +114,7 @@ const PricingVisual = () => {
 
 export default function LandingPage() {
   const canvasRef = useRef(null);
+  const [activeHighlight, setActiveHighlight] = useState(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -220,37 +221,51 @@ export default function LandingPage() {
     };
   }, []);
 
-  const navItem = (text) => (
-    <div style={{ position: 'relative', display: 'inline-block' }} className="nav-link-wrapper">
-      <a href="#" className="nav-link" style={{
-        position: 'relative',
-        color: '#fb8569',
-        textDecoration: 'none',
-        fontSize: '1rem',
-        fontWeight: '600',
-        letterSpacing: '0.25em',
-        textTransform: 'uppercase',
-        paddingBottom: '4px',
-        display: 'inline-block'
-      }}>
-        {text}
-      </a>
-      <div
-        className="nav-underline"
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          height: '2px',
-          backgroundColor: '#fb8569',
-          transform: 'scaleX(0)',
-          transformOrigin: 'left',
-          transition: 'transform 0.4s cubic-bezier(0.19, 1, 0.22, 1)'
-        }}
-      />
-    </div>
-  );
+  const navItem = (text, targetId) => {
+    const handleClick = (e) => {
+      e.preventDefault();
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (targetId !== 'contact') {
+          setActiveHighlight(targetId);
+          setTimeout(() => setActiveHighlight(null), 1000);
+        }
+      }
+    };
+
+    return (
+      <div style={{ position: 'relative', display: 'inline-block' }} className="nav-link-wrapper">
+        <a href={`#${targetId}`} onClick={handleClick} className="nav-link" style={{
+          position: 'relative',
+          color: '#fb8569',
+          textDecoration: 'none',
+          fontSize: '1rem',
+          fontWeight: '600',
+          letterSpacing: '0.25em',
+          textTransform: 'uppercase',
+          paddingBottom: '4px',
+          display: 'inline-block'
+        }}>
+          {text}
+        </a>
+        <div
+          className="nav-underline"
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            height: '2px',
+            backgroundColor: '#fb8569',
+            transform: 'scaleX(0)',
+            transformOrigin: 'left',
+            transition: 'transform 0.4s cubic-bezier(0.19, 1, 0.22, 1)'
+          }}
+        />
+      </div>
+    );
+  };
 
   return (
     <div style={{
@@ -359,11 +374,10 @@ export default function LandingPage() {
           gap: '2vw',
           alignItems: 'center'
         }}>
-          {navItem('[ ABOUT ]')}
-          {navItem('NAVIGATION')}
-          {navItem('PRICING')}
-          {navItem('CONTACT')}
-          {navItem('NEXT')}
+          {navItem('[ ABOUT ]', 'about')}
+          {navItem('NAVIGATION', 'navigation')}
+          {navItem('PRICING', 'pricing')}
+          {navItem('CONTACT', 'contact')}
 
           <a href="#" className="signup-btn">
             SIGN IN/SIGN UP
@@ -380,7 +394,7 @@ export default function LandingPage() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh', 
-        padding: '0 8vw 15vh 8vw', 
+        padding: '0 8vw', 
         textAlign: 'center',
         gap : '2rem',
         boxSizing: 'border-box'
@@ -420,7 +434,11 @@ export default function LandingPage() {
         boxSizing: 'border-box',
       }}>
         {/* About Part */}
-        <div>
+        <div id="about" style={{
+          transform: activeHighlight === 'about' ? 'scale(1.025)' : 'scale(1)',
+          transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+          transformOrigin: 'center'
+        }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
             <span>ABOUT</span>
             <span>PART [01]</span>
@@ -474,7 +492,11 @@ export default function LandingPage() {
         <div style={{ height: '100px' }} />
 
         {/* Navigation Part */}
-        <div>
+        <div id="navigation" style={{
+          transform: activeHighlight === 'navigation' ? 'scale(1.025)' : 'scale(1)',
+          transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+          transformOrigin: 'center'
+        }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em'}}>
             <span>NAVIGATION</span>
             <span>PART [02]</span>
@@ -518,7 +540,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section (Part 04) */}
-      <section style={{
+      <section id="pricing" style={{
         position: 'relative',
         zIndex: 5,
         width: '90%',
@@ -528,6 +550,9 @@ export default function LandingPage() {
         padding: '60px 48px',
         boxShadow: '0 20px 80px rgba(0, 0, 0, 0.6)',
         boxSizing: 'border-box',
+        transform: activeHighlight === 'pricing' ? 'scale(1.025)' : 'scale(1)',
+        transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+        transformOrigin: 'center'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
           <span>PRICING</span>
@@ -647,7 +672,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer Section */}
-      <footer style={{
+      <footer id="contact" style={{
         position: 'relative',
         zIndex: 5,
         width: '100%',
@@ -703,14 +728,12 @@ export default function LandingPage() {
         {/* Middle border bar */}
         <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.25)', width: '100%', margin: '24px 0' }} />
 
-        {/* Explore Section */}
+        {/* Features Section */}
         <div style={{ textAlign: 'left', marginBottom: '40px' }}>
-          <h4 style={{ fontSize: '1.1rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 16px 0' }}>Explore</h4>
+          <h4 style={{ fontSize: '1.1rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 16px 0' }}>FEATURES</h4>
           <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', fontSize: '0.9rem', fontWeight: '600', letterSpacing: '0.1em' }}>
-            <a href="#about" style={{ color: 'inherit', textDecoration: 'none' }}>ABOUT</a>
-            <a href="#navigation" style={{ color: 'inherit', textDecoration: 'none' }}>NAVIGATION</a>
-            <a href="#pricing" style={{ color: 'inherit', textDecoration: 'none' }}>PRICING</a>
-            <a href="#signup" style={{ color: 'inherit', textDecoration: 'none' }}>SIGN IN/SIGN UP</a>
+            <span style={{ opacity: 0.8 }}>RETRIEVAL</span>
+            <span style={{ opacity: 0.8 }}>SUMMARY</span>
           </div>
         </div>
 
