@@ -112,7 +112,7 @@ const PricingVisual = () => {
   );
 };
 
-export default function LandingPage({ onNavigateToAccount }) {
+export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval, onNavigateToSummary }) {
   const canvasRef = useRef(null);
   const [activeHighlight, setActiveHighlight] = useState(null);
 
@@ -732,8 +732,22 @@ export default function LandingPage({ onNavigateToAccount }) {
         <div style={{ textAlign: 'left', marginBottom: '40px' }}>
           <h4 style={{ fontSize: '1.1rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 16px 0' }}>FEATURES</h4>
           <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', fontSize: '0.9rem', fontWeight: '600', letterSpacing: '0.1em' }}>
-            <span style={{ opacity: 0.8 }}>RETRIEVAL</span>
-            <span style={{ opacity: 0.8 }}>SUMMARY</span>
+            <span 
+              onClick={onNavigateToRetrieval} 
+              style={{ opacity: 0.8, cursor: 'pointer', transition: 'opacity 0.2s' }}
+              onMouseEnter={(e) => e.target.style.opacity = '1'}
+              onMouseLeave={(e) => e.target.style.opacity = '0.8'}
+            >
+              RETRIEVAL
+            </span>
+            <span 
+              onClick={onNavigateToSummary} 
+              style={{ opacity: 0.8, cursor: 'pointer', transition: 'opacity 0.2s' }}
+              onMouseEnter={(e) => e.target.style.opacity = '1'}
+              onMouseLeave={(e) => e.target.style.opacity = '0.8'}
+            >
+              SUMMARY
+            </span>
           </div>
         </div>
 
