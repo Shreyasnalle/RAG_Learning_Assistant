@@ -26,7 +26,7 @@ class QueryRouter :
                 "type" : "answer",
                 "answer" : answer
             }
-        if intent == "vauge" :
+        if intent == "vague" :
             return {
                 "type" : "needs_clarification",
                 "options" : [
@@ -111,4 +111,10 @@ if __name__ == "__main__" :
             chunks,
             last_question = "which are the latest model of chatgpt?"
         )
-        print("resolved answer : ", resolved)
+        print("resolved answer for the last question : ", resolved)
+        resolved_video = router.resolve_clarification(
+            "video",
+            video_url,
+            chunks
+        )
+        print("resolved answer for video", resolved_video)
