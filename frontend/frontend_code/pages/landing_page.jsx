@@ -112,7 +112,7 @@ const PricingVisual = () => {
   );
 };
 
-export default function LandingPage() {
+export default function LandingPage({ onNavigateToAccount }) {
   const canvasRef = useRef(null);
   const [activeHighlight, setActiveHighlight] = useState(null);
 
@@ -379,7 +379,7 @@ export default function LandingPage() {
           {navItem('PRICING', 'pricing')}
           {navItem('CONTACT', 'contact')}
 
-          <a href="#" className="signup-btn">
+          <a href="#/account" onClick={(e) => { e.preventDefault(); onNavigateToAccount(); }} className="signup-btn">
             SIGN IN/SIGN UP
           </a>
         </nav>
