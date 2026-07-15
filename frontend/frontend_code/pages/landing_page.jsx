@@ -698,11 +698,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
             <span style={{ fontSize: '1.3rem', fontWeight: '800', letterSpacing: '0.15em' }}>SIMPLY</span>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Terms</a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Privacy</a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Disclosures</a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Cookie Settings</a>
-            <span style={{ opacity: 0.6 }}>© AL Advisors Management Inc.</span>
           </div>
 
           {/* Social Links styled like reference brackets */}
