@@ -7,19 +7,15 @@ from caption_parser import CaptionParser
 from chunk_merger import ChunkMerger
 from file_utils import get_latest_caption_file
 import json
+from db_utils import get_db_connection
 class ChunkInjector:
     def __init__(self):
         self.model = SentenceTransformer("all-MiniLM-L6-v2")
         self.conn = None
-    def connect(self):
-        self.conn = psycopg2.connect(
-            dbname="rag_assistant",
-            user="shreyas",
-            password="root123",
-            host="localhost"
-        )
+    def connect(self): 
+        self.conn = get_db_connection()
         register_vector(self.conn)
-        print("connected to database")
+        print("connected to supabase database for chunk injector")
     def store_video_chunks(self, video_url: str, segments: List[Dict]):
         if self.conn is None:
             raise RuntimeError("database not connected, Call connect() before storing chunks")

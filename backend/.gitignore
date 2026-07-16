@@ -2,3 +2,4 @@ groq_api.env
 __pycache__/
 .venv/
 *.pyc
+supabase_key.env

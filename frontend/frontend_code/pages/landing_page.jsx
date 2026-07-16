@@ -437,7 +437,10 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         <div id="about" style={{
           transform: activeHighlight === 'about' ? 'scale(1.025)' : 'scale(1)',
           transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-          transformOrigin: 'center'
+          transformOrigin: 'center',
+          willChange: 'transform',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
             <span>ABOUT</span>
@@ -495,7 +498,10 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         <div id="navigation" style={{
           transform: activeHighlight === 'navigation' ? 'scale(1.025)' : 'scale(1)',
           transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-          transformOrigin: 'center'
+          transformOrigin: 'center',
+          willChange: 'transform',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em'}}>
             <span>NAVIGATION</span>
@@ -552,7 +558,10 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         boxSizing: 'border-box',
         transform: activeHighlight === 'pricing' ? 'scale(1.025)' : 'scale(1)',
         transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-        transformOrigin: 'center'
+        transformOrigin: 'center',
+        willChange: 'transform',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%', fontSize: '1rem', fontWeight: 'bold', letterSpacing: '0.15em' }}>
           <span>PRICING</span>

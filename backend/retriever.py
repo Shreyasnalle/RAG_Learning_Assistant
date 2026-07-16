@@ -1,24 +1,20 @@
 from sentence_transformers.util import similarity
 import psycopg2
-import psycopg2
 from pgvector.psycopg2 import register_vector
 from sentence_transformers import SentenceTransformer
 from typing import List, Dict
 import json
 import os
+from db_utils import get_db_connection
+
 class VideoRetriever :
     def __init__(self) :
         self.model = SentenceTransformer("all-MiniLM-L6-v2")
         self.conn = None
     def connect(self) :
-        self.conn = psycopg2.connect(
-            dbname = "rag_assistant",
-            user = "shreyas",
-            password = "root123",
-            host = "localhost"
-        )
+        self.conn = get_db_connection()
         register_vector(self.conn)
-        print("Connected to database for retrieval")
+        print("Connected to supabase database for retrieval")
     def retrieve(self, query : str, video_url : str, top_k : int = 5) -> List[Dict] :
         if not self.conn :
             raise RuntimeError("not connected to the database, make sure to call connect() first")
@@ -40,8 +36,8 @@ class VideoRetriever :
             self.conn.close()
             print("connection closed")
 if __name__ == "__main__" :
-    import json
-    caption_file = "/home/shreyas-nalle/Desktop/RAG_teaching_assistant/backend/raw_captions/3738ac0e-de84-425a-8e92-5df7db97dc68.txt"
+    from file_utils import get_latest_caption_file
+    caption_file = get_latest_caption_file("raw_captions")
     meta_path = caption_file.replace(".txt", "_meta.json")
     with open(meta_path, "r", encoding = "utf8") as f :
         meta = json.load(f)
