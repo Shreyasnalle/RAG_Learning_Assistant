@@ -25,7 +25,7 @@ class AuthManager :
         if not auth_response.user :
             return {
                 "success" : False,
-                "error" : "sign up failed and no user was created"
+                "error" : "sign up failed and new no user was created"
             }
         user_id = auth_response.user.id
         try :
