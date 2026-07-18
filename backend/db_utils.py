@@ -10,7 +10,10 @@ def get_db_connection() :
         )
     try :
         conn = psycopg2.connect(db_url)
+        print(f"connection of the pgvector to the supabase done")
         return conn
     except Exception as e :
         print(f"could not connect to the supabase")
         raise e 
+if __name__ == "__main__":
+    get_db_connection()
