@@ -1,6 +1,7 @@
 from typing import Optional, List, Dict
 from rag_pipeline import RAGPipeline
 from summary_rag_pipeline import SummaryPipeline
+from chat_history import ChatHistoryManager
 
 specific_video_words = ["video", "whole video", "entire video", "full video", "full lecture", "complete video", "complete lecture", "lecture"]
 summary_trigger_words = ["summarize", "summary", "brief", "intro"]
@@ -18,7 +19,9 @@ class QueryRouter :
     def __init__(self) :
         self.rag_pipeline = RAGPipeline()
         self.summary_pipeline = SummaryPipeline()
-    def handle_query(self, question : str, video_url : str, chunks : List[Dict], last_question : Optional[str] = None, last_answer : Optional[str] = None) :
+        self.chat_history = ChatHistoryManager()
+    def handle_query(self, question : str, video_url : str, chunks : List[Dict], user_id : str) -> Dict :
+        self.chat_history.save_message(user_id, video_url, "user", question)
         intent = classify_intent(question)
         if intent == "specific_summary" :
             answer = self.summary_pipeline.generate_video_summary(chunks)
@@ -27,6 +30,14 @@ class QueryRouter :
                 "answer" : answer
             }
         if intent == "vague" :
+            last_question = self.chat_history.get_last_user_question(user_id, video_url)
+            if not last_question :
+                answer = self.summary_pipeline.generate_video_summary(chunks)
+                self.chat_history.save_message(user_id, video_url, "asistant", answer)
+                return {
+                    "type" : "answer",
+                    "answer" : answer
+                }
             return {
                 "type" : "needs_clarification",
                 "options" : [
@@ -36,33 +47,41 @@ class QueryRouter :
             }
         retriever_result = self._retrieve_chunks(question, video_url)
         answer = self.rag_pipeline.generate_answer(question, retriever_result)
+        self.chat_history.save_message(user_id, video_url, "assitant", answer)
         return {
             "type" : "answer",
             "answer" : answer
         }
 
-    def resolve_clarification(self, choice_key : str, video_url : str, chunks : List[Dict], last_question : Optional[str] = None) -> Dict :
+    def resolve_clarification(self, choice_key : str, video_url : str, chunks : List[Dict], user_id : str) -> Dict :
         if choice_key == "video" :
             answer = self.summary_pipeline.generate_video_summary(chunks)
+            self.chat_history.save_message(user_id, video_url, "assistant", answer)
             return {
                 "type" : "answer",
                 "answer" : answer
             }
         if choice_key == "last_question" :
+            last_question = self.chat_history.get_last_user_question(user_id, video_url)
             if not last_question :
+                answer = "I dont have a previous question to refer back to"
+                self.chat_history.save_message(user_id, video_url, "assitant", answer)
                 return {
                     "type" : "answer",
-                    "answer" : "I don't have a previous question oto refer back to, thank you"
+                    "answer" : answer
                 }
             retriever_results = self._retrieve_chunks(last_question, video_url)
             answer = self.rag_pipeline.generate_answer(last_question, retriever_results)
+            self.chat_history.save_message(user_id, video_url, "assitant", answer)
             return {
                 "type" : "answer",
                 "answer" : answer
             }
+        answer = "Sorry, I didn't understand that choice"
+        self.chat_history.save_message(user_id, video_url, "assitant", answer)
         return {
             "type" : "answer",
-            "answer" : "Sorry, I did'nt understand that choice, please reprompt properly"
+            "answer" : answer
         }
 
     def _retrieve_chunks(self, question : str, video_url : str) -> List[Dict] :
@@ -88,33 +107,19 @@ if __name__ == "__main__" :
     meta_path = caption_file.replace(".txt", "_meta.json")
     with open(meta_path, "r", encoding = "utf-8") as f :
         video_url = json.load(f)["video_url"]
+    
+    test_user_id = "d9b7a76d-6a7f-42ed-ab90-fc250d2d6a53"
 
     router = QueryRouter()
 
-    # example 1 : normal question
-    result = router.handle_query("which is the latest model launched by anthropic?", video_url, chunks)
-    print("normal question result : ", result)
+    # first question, no history yet 
+    result = router.handle_query("which is the latest model of anthropic?", video_url, chunks, test_user_id)
+    print("First question result : ", result)
 
-    # example 2 : summary request
-    result = router.handle_query("summarize this video", video_url, chunks)
-    print("secific summary result : ", result["answer"])
+    # vauge question, should ask for clarification
+    result = router.handle_query("brief it", video_url, chunks, test_user_id)
+    print("Vauge follow up result : ", result)
 
-    #example 3 : a vauge request, ask for clarification
-    result = router.handle_query("brief it", video_url, chunks)
-    print("vauge request result : ", result)
-
-    #example 4 resolving clarification user picks lat question
     if result["type"] == "needs_clarification" :
-        resolved = router.resolve_clarification(
-            "last_question",
-            video_url,
-            chunks,
-            last_question = "which are the latest model of chatgpt?"
-        )
-        print("resolved answer for the last question : ", resolved)
-        resolved_video = router.resolve_clarification(
-            "video",
-            video_url,
-            chunks
-        )
-        print("resolved answer for video", resolved_video)
+        resolved = router.resolve_clarification("last_question", video_url, chunks, test_user_id)
+        print("Resolved answer : ", resolved["answer"])
