@@ -8,6 +8,13 @@ import re
 import json
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.middleware.cors import CORSMiddleware
+
+from auth import AuthManager
+from query_router import QueryRouter
+from caption_parser import CaptionParser
+from chunk_merger import ChunkMerger
+from database_injector import ChunkInjector
+
 app = FastAPI(title = "backend to grab captions")
 app.add_middleware(
     CORSMiddleware,
@@ -16,6 +23,24 @@ app.add_middleware(
     allow_methods = ["*"],
     allow_headers = ["*"],
 )
+auth_manager = AuthManager()
+query_router = QueryRouter()
+
+class CaptionData(BaseModel) :
+    videourl : str
+    trackurl : Optional[str] = None
+    rawtext : str
+class SIgnUpData(BaseModel) :
+    email : str
+    password : str
+    name : str
+    mobile_number : Optional[str] = None
+class SIgnInData(BaseModel) :
+    email : str
+    password : str
+class IngestData(BaseModel) :
+    video_url : str
+    file_id = str
 class PrivateNetworkMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request, call_next):
         response = await call_next(request)
