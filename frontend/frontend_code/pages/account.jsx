@@ -252,9 +252,9 @@ export default function AccountPage({ onNavigate }) {
     let dots = [];
     const DOT_SPACING = 32;
     const DOT_RADIUS = 1.5;
-    const INTERACTION_RADIUS = 120;
+    const INTERACTION_RADIUS = 180;
 
-    let mouse = { x: -1000, y: -1000 };
+    let mouse = { x: -1000, y: -1000, lastMove: 0 };
 
     const init = () => {
       width = window.innerWidth;
@@ -284,33 +284,25 @@ export default function AccountPage({ onNavigate }) {
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
 
+      const isMouseMoving = (Date.now() - mouse.lastMove) < 150;
+
       dots.forEach(dot => {
         const dx = mouse.x - dot.x;
         const dy = mouse.y - dot.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         // Spring force returning to base position slowly
-        const springForceX = (dot.baseX - dot.x) * 0.02;
-        const springForceY = (dot.baseY - dot.y) * 0.02;
+        const springForceX = (dot.baseX - dot.x) * 0.025;
+        const springForceY = (dot.baseY - dot.y) * 0.025;
         dot.vx += springForceX;
         dot.vy += springForceY;
 
-        // When mouse gets close, trigger a 3-second (180 frames) decaying jitter
-        if (distance < INTERACTION_RADIUS) {
-          if (!dot.mouseNearby) {
-            dot.mouseNearby = true;
-            dot.scatterTimer = 180; 
-          }
-        } else {
-          dot.mouseNearby = false;
-        }
-
-        if (dot.scatterTimer > 0) {
-          dot.scatterTimer--;
-          const decay = dot.scatterTimer / 180;
+        // If mouse is close and moving, apply jitter
+        if (distance < INTERACTION_RADIUS && isMouseMoving) {
+          const force = (INTERACTION_RADIUS - distance) / INTERACTION_RADIUS;
           const angle = Math.random() * Math.PI * 2;
-          dot.vx += Math.cos(angle) * decay * 1.5;
-          dot.vy += Math.sin(angle) * decay * 1.5;
+          dot.vx += Math.cos(angle) * force * 2.0;
+          dot.vy += Math.sin(angle) * force * 2.0;
         }
 
         // Apply friction and update position (dampened for slower ease-back)
@@ -334,6 +326,7 @@ export default function AccountPage({ onNavigate }) {
     const handleMouseMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
+      mouse.lastMove = Date.now();
     };
     const handleResize = () => {
       init();

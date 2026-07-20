@@ -86,9 +86,8 @@ export default function RetrievalPage({ onNavigate }) {
           overflow-x: hidden;
           background-color: #0d1f1c;
         }
-        .back-btn:hover {
-          opacity: 1 !important;
-          text-shadow: 0 0 8px rgba(251, 133, 105, 0.6);
+        .nav-link-wrapper:hover .nav-underline {
+          width: 100% !important;
         }
         .step-card {
           background-color: rgba(255, 255, 255, 0.015);
@@ -128,7 +127,7 @@ export default function RetrievalPage({ onNavigate }) {
         boxSizing: 'border-box'
       }}>
         {/* Back Link */}
-        <div style={{ position: 'absolute', top: '25px', left: '30px' }}>
+        <div style={{ position: 'absolute', top: '25px', left: '30px', display: 'inline-block' }} className="nav-link-wrapper">
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); onNavigate(); }}
@@ -140,12 +139,24 @@ export default function RetrievalPage({ onNavigate }) {
               fontWeight: '600',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              opacity: 0.8,
-              transition: 'opacity 0.2s ease'
+              paddingBottom: '4px',
+              display: 'inline-block'
             }}
           >
             ← BACK TO LANDING
           </a>
+          <div
+            className="nav-underline"
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              width: '0%',
+              height: '2px',
+              backgroundColor: '#fb8569',
+              transition: 'width 0.4s cubic-bezier(0.19, 1, 0.22, 1)'
+            }}
+          />
         </div>
 
         {/* Title */}
