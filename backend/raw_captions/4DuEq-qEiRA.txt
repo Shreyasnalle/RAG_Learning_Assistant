@@ -1,0 +1,322 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  }, {
+    "mhModeHint": 2,
+    "juJustifCode": 0,
+    "sdScrollDir": 3
+  } ],
+  "wpWinPositions": [ {
+  
+  }, {
+    "apPoint": 6,
+    "ahHorPos": 20,
+    "avVerPos": 100,
+    "rcRows": 2,
+    "ccCols": 40
+  } ],
+  "events": [ {
+    "tStartMs": 0,
+    "id": 1,
+    "wpWinPosId": 1,
+    "wsWinStyleId": 1
+  }, {
+    "tStartMs": 1964,
+    "dDurationMs": 5756,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "[music]\n\u003e\u003e Guys, before this I made two videos, one"
+    } ]
+  }, {
+    "tStartMs": 5960,
+    "dDurationMs": 6200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "on registration guide and another on how\nto claim 750 credits without any bug."
+    } ]
+  }, {
+    "tStartMs": 10440,
+    "dDurationMs": 5640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "But while reading your comment, I\nrealized many people still don't know"
+    } ]
+  }, {
+    "tStartMs": 14160,
+    "dDurationMs": 5320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "what Google Arcade actually is. So\nbefore we continue, let's quickly"
+    } ]
+  }, {
+    "tStartMs": 17520,
+    "dDurationMs": 6040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "understand what is the simplest way\npossible actually."
+    } ]
+  }, {
+    "tStartMs": 21920,
+    "dDurationMs": 6480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Let understand what Google Cloud\nactually is. Google Cloud is Google"
+    } ]
+  }, {
+    "tStartMs": 25920,
+    "dDurationMs": 9480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Cloud computing platform. Just like\nAmazon have AWS, Microsoft has Azure."
+    } ]
+  }, {
+    "tStartMs": 32680,
+    "dDurationMs": 7280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "That's same, Google has their own cloud,\nGoogle Cloud. It provides servers like"
+    } ]
+  }, {
+    "tStartMs": 37680,
+    "dDurationMs": 5920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "virtual machine, database, AI tool,\nstorage, networking and many more cloud"
+    } ]
+  }, {
+    "tStartMs": 42400,
+    "dDurationMs": 5400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "services.\nNow if you are from non-tech background,"
+    } ]
+  }, {
+    "tStartMs": 45840,
+    "dDurationMs": 5720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "don't worry. Let me explain with a very\nsimple example."
+    } ]
+  }, {
+    "tStartMs": 49320,
+    "dDurationMs": 7840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Have you ever backup your WhatsApp chat\nto Google Drive or uploaded your photos"
+    } ]
+  }, {
+    "tStartMs": 54640,
+    "dDurationMs": 7400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to the Google Photos? Yes, I know that's\nyour private photos as well. Where is"
+    } ]
+  }, {
+    "tStartMs": 59320,
+    "dDurationMs": 7320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "all that data stored? Obviously, not in\nthe real cloud that you might see in the"
+    } ]
+  }, {
+    "tStartMs": 64320,
+    "dDurationMs": 8560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "sky. It actually stored in the Google\nCloud server. This is what we call the"
+    } ]
+  }, {
+    "tStartMs": 69480,
+    "dDurationMs": 7520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "cloud computing. Okay, now let's coming\nto the Google Cloud Arcade. So Google"
+    } ]
+  }, {
+    "tStartMs": 74880,
+    "dDurationMs": 7280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Cloud Arcade is the gamified learning\nplatform. Means where you learn Google"
+    } ]
+  }, {
+    "tStartMs": 79960,
+    "dDurationMs": 7720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Cloud in a practical and fun way.\nInstead of just asking theory, you"
+    } ]
+  }, {
+    "tStartMs": 84800,
+    "dDurationMs": 8240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "complete real hands-on lab, earn skill\nbadges, collect points and complete"
+    } ]
+  }, {
+    "tStartMs": 90280,
+    "dDurationMs": 6440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "milestone. And the best part here is if\nyou successfully completed the"
+    } ]
+  }, {
+    "tStartMs": 94480,
+    "dDurationMs": 7800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "milestone, you can become eligible for\nthe Google Cloud official swag and other"
+    } ]
+  }, {
+    "tStartMs": 99440,
+    "dDurationMs": 7400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "program reward. Now inside the Google\nCloud Arcade, there is the one important"
+    } ]
+  }, {
+    "tStartMs": 104400,
+    "dDurationMs": 7560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "program called the facilitator program.\nLet understand that next."
+    } ]
+  }, {
+    "tStartMs": 109560,
+    "dDurationMs": 6880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Now let talk about the why should you\njoin the facilitator program. As I told"
+    } ]
+  }, {
+    "tStartMs": 114280,
+    "dDurationMs": 6080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you, a facilitator is like your mentor.\nThey guide you throughout the program."
+    } ]
+  }, {
+    "tStartMs": 118240,
+    "dDurationMs": 7360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "They share important updates and help\nyou when you get stuck in solving games"
+    } ]
+  }, {
+    "tStartMs": 122400,
+    "dDurationMs": 8079,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and labs. But the biggest benefit is the\nbonus point. In Google Arcade"
+    } ]
+  }, {
+    "tStartMs": 127479,
+    "dDurationMs": 7361,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Facilitator 2026, you can earn up to 35\nfree bonus points just by completing the"
+    } ]
+  }, {
+    "tStartMs": 132360,
+    "dDurationMs": 9040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "facilitator milestone. Last year maximum\nbonus point was up to 25. On the top of"
+    } ]
+  }, {
+    "tStartMs": 138200,
+    "dDurationMs": 8520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that, you can also earn 10 extra bonus\npoint by completing gear bonus"
+    } ]
+  }, {
+    "tStartMs": 143360,
+    "dDurationMs": 8440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "milestone. Trust me, earning 35 bonus\npoint normally take a lot of effort. So,"
+    } ]
+  }, {
+    "tStartMs": 149959,
+    "dDurationMs": 6201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "getting this bonus point is actually the\nhuge advantage. I won't go into the"
+    } ]
+  }, {
+    "tStartMs": 154320,
+    "dDurationMs": 6480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "deeper complete calculation in this\nvideo because it deserve actually the"
+    } ]
+  }, {
+    "tStartMs": 158120,
+    "dDurationMs": 7160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "separate complete explanation. One more\nimportant thing that last year there"
+    } ]
+  }, {
+    "tStartMs": 162440,
+    "dDurationMs": 6320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "were two facilitator cohort, but this\nyear Google has announced only one"
+    } ]
+  }, {
+    "tStartMs": 166800,
+    "dDurationMs": 7280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "facilitator program that actually\nrunning from now July to September. So,"
+    } ]
+  }, {
+    "tStartMs": 171480,
+    "dDurationMs": 6840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "don't wait until the last moment. Every\nmonth new arcade games are released and"
+    } ]
+  }, {
+    "tStartMs": 176560,
+    "dDurationMs": 6520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "once they expire, you won't able to earn\nthe bonus point from this game. Missing"
+    } ]
+  }, {
+    "tStartMs": 180720,
+    "dDurationMs": 7600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "them can make it much harder to reach\nthe higher milestone and claim your"
+    } ]
+  }, {
+    "tStartMs": 185519,
+    "dDurationMs": 6201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "favorite swag. So guys, if you haven't\nregistered it, the link is in the"
+    } ]
+  }, {
+    "tStartMs": 189959,
+    "dDurationMs": 5401,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "description [music] and if you need any\nhelp with registration, I have already"
+    } ]
+  }, {
+    "tStartMs": 193440,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "made the dedicated video. You can check\nthem out after this."
+    } ]
+  } ]
+}

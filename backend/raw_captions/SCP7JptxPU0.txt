@@ -1,0 +1,1900 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  }, {
+    "mhModeHint": 2,
+    "juJustifCode": 0,
+    "sdScrollDir": 3
+  } ],
+  "wpWinPositions": [ {
+  
+  }, {
+    "apPoint": 6,
+    "ahHorPos": 20,
+    "avVerPos": 100,
+    "rcRows": 2,
+    "ccCols": 40
+  } ],
+  "events": [ {
+    "tStartMs": 0,
+    "id": 1,
+    "wpWinPosId": 1,
+    "wsWinStyleId": 1
+  }, {
+    "tStartMs": 799,
+    "dDurationMs": 5641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "okay so we're going to start off with a\nprobability question say you work at a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 4720,
+    "dDurationMs": 5999,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "shoe factory and you're working on\ncreating boxes with pairs of shoes",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 8840,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "currently in front of you imagine there\nare three pairs of shoes for a total of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 12840,
+    "dDurationMs": 9840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "six individual shoes with the following\nsizes two size fours two size fives and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 19439,
+    "dDurationMs": 8721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "two size sixes the factory defines an\nacceptable pair as two shoes that differ",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 25119,
+    "dDurationMs": 7721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "in size by a maximum of one size so a\nshoe with a size five and a shoe with a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 30439,
+    "dDurationMs": 7481,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "size six would count as an acceptable\npair if you close your eyes and randomly",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 35760,
+    "dDurationMs": 6440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "pick three pairs of shoes without\nreplacement what is the probability that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 40160,
+    "dDurationMs": 8280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you end up drawing three acceptable\npairs okay",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 44559,
+    "dDurationMs": 9520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "so let's see so we have\nthese six shoes um size four five and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 52480,
+    "dDurationMs": 8680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "six\nand um you're saying we pick three pairs",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 58160,
+    "dDurationMs": 9279,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um using just these six shoes only\nthere's no replacement or anything like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 62800,
+    "dDurationMs": 10359,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that agreed okay um so in that case\nlet's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 69080,
+    "dDurationMs": 11280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "see so um if you said that the\nacceptable pairs differ by one size then",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 77159,
+    "dDurationMs": 7801,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "I guess you could have pairs that are\nboth of the same size like say four and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 82360,
+    "dDurationMs": 9880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "four or you could also have pairs like\nfour five or 5 six and in fact I think",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 89119,
+    "dDurationMs": 10000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "uh what I noticed is that the only um\nillegal pair would be 14 and six um and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 96520,
+    "dDurationMs": 9160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "so I think um that's something I noticed\nstraight away um and so I guess in terms",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 103040,
+    "dDurationMs": 7359,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of finding the probability that um these\nthree pairs of shoes will work I think",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 108360,
+    "dDurationMs": 8320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "uh one way to do that would be to\nactually count the uh complement um the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 113880,
+    "dDurationMs": 7879,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "or the cases where you do have four and\na six together and um kind of find",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 120039,
+    "dDurationMs": 4961,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probability of that happening over all\nthe",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 122920,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "cases like we've covered in the lecture\nvideos in the last modules right off the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 127280,
+    "dDurationMs": 4840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "bat the candidate realizes that solving\nfor the compliment could be a very",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 130479,
+    "dDurationMs": 4961,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "straightforward\napproach having a good understanding of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 134239,
+    "dDurationMs": 5481,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the various approaches that we've\ndiscussed in the course is incredibly",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 136920,
+    "dDurationMs": 6000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "important and will speed you right up\nright when the interviewer tells you the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 141080,
+    "dDurationMs": 5080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "question you'll have an intuition for\nwhat strategy your direction is likely",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 144400,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to be favorable as you get through the\ncourse you're going to be able to answer",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 147640,
+    "dDurationMs": 5720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "even the most challenging of Quant\ninterview questions with minutes because",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 151200,
+    "dDurationMs": 5679,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you'll have the intuition needed to know\nwhat direction makes the most sense and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 155400,
+    "dDurationMs": 5240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "if that direction doesn't yield results\nyou'll be able to go down your tool belt",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 158400,
+    "dDurationMs": 6880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to the next strategy for approaching the\nquestion let's continue with the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 162879,
+    "dDurationMs": 7640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interview like you said I think\ncalculating the compliment is a great",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 166920,
+    "dDurationMs": 9880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "idea go ahead uh yeah so I I guess I'll\njust start counting that and um I think",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 174840,
+    "dDurationMs": 7960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one way we could think about picking\nthese three pairs is if we kind of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 180200,
+    "dDurationMs": 7360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "ordered these six shoes in a line and\njust took one and two together to be a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 185000,
+    "dDurationMs": 8519,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "pair uh three and four are a pair and\nfive and six are up here so um in that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 190640,
+    "dDurationMs": 7920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "case we would have um 6 factorial which\nis",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 194280,
+    "dDurationMs": 11239,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "720 uh cases in total for the number of\num pairings we could do and out of these",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 201879,
+    "dDurationMs": 9360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "we want to count how many that have a\npair of four and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 207040,
+    "dDurationMs": 12600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "six um so\nI think we can count this um like this",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 214879,
+    "dDurationMs": 9360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "so say we have these three pairs and um\nwe want one of them to be this four and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 221720,
+    "dDurationMs": 9000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "six pair\nso um first of all we have to pick which",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 227400,
+    "dDurationMs": 10839,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of these three pairs um is going to be\nthat pair uh the four and six so that's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 233879,
+    "dDurationMs": 10161,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "three uh possibilities for that and um\nin that four and six pair",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 240239,
+    "dDurationMs": 10481,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "we also need to pick um the ordering so\nit could be 46 or 64 so that's two",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 247680,
+    "dDurationMs": 10360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "possibilities um and we also need to\npick which uh four pick uh which size",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 255959,
+    "dDurationMs": 8441,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "four shoe it is of the two which is\nanother two and same for six so another",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 260519,
+    "dDurationMs": 8321,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "two so in total that's 3 * 2 * 2 * 2 and\nas for the other four shoes that are",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 266040,
+    "dDurationMs": 8680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "left um there's four factorial ways to\norder them in the remain remaining four",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 270320,
+    "dDurationMs": 10760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "spots so in total this would\nbe um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 277800,
+    "dDurationMs": 7160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "24 *\n24 um which",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 286720,
+    "dDurationMs": 11680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "is 96 and that will be\n576 um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 293240,
+    "dDurationMs": 11640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "ways to pick these um shoes that have a\nfour and a six pair",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 300199,
+    "dDurationMs": 12641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "them um and I think one other thing is\nthat there's actually two pairs of um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 309440,
+    "dDurationMs": 10000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "fours and two pairs of sixes so it could\nbe possible that there's multiple four",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 315360,
+    "dDurationMs": 8559,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "six pairs um inside um these three pairs\nof shoes that we pick and in that case",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 321840,
+    "dDurationMs": 8880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "we'll be double counting those in this\nmethod that we just did so to account",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 326800,
+    "dDurationMs": 12360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "for that I think we should also count\nthe number of pairings that have two",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 334840,
+    "dDurationMs": 8079,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "pairs of a four and a six and then um\nsubtract that from the number we just",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 343080,
+    "dDurationMs": 10600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "got so um to count that that's fairly\nstraightforward because um the only",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 350440,
+    "dDurationMs": 12560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "possible pairs are 46 46 and\n55 so we need to pick um again which of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 359240,
+    "dDurationMs": 8760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the pairs pairs is the double five pair\num",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 365000,
+    "dDurationMs": 9199,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and um as for the other two pairs we\nneed to pick",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 370800,
+    "dDurationMs": 8720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um basically which four goes in the\nfirst 4 six pair and which six goes into",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 376319,
+    "dDurationMs": 10361,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the first 4 six pair so that's 2 *\n2 um and there's also the problem of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 383840,
+    "dDurationMs": 9240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "ordering between 46 and 64 for both so\nthat's another 2 * 2 and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 390440,
+    "dDurationMs": 7759,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um yeah and also as well for the five\nfive pair we would need to um account",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 395960,
+    "dDurationMs": 8079,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "for the two different ways we could pick\nthose um and so in total this looks like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 403000,
+    "dDurationMs": 13039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "3\n* uh 2 to the 5th which is 3 * 32 or",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 409880,
+    "dDurationMs": 13200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "96 um pairings that have uh two four six\npairs and so if we subtract this from",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 419680,
+    "dDurationMs": 13040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the number we got earlier um then that\nwould be leave us with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 427560,
+    "dDurationMs": 12919,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "480 pairs in total um that we don't\nwant and um so out of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 437319,
+    "dDurationMs": 8880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "720 if we subtract those then we're left\nwith",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 441479,
+    "dDurationMs": 11321,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "240 um pairs that are legal and um we\nwould have a 1/3 probability 240 over 7",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 449680,
+    "dDurationMs": 9199,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "20 of uh randomly picking three pairs\nthat have um that kind of fit the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 456599,
+    "dDurationMs": 6361,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "conditions that were given great job\nthat is correct let's walk through how",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 461000,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to come to this answer if you've\nenrolled in the course you'll see this",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 464680,
+    "dDurationMs": 6600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "is actually very similar to number 13 in\nthe course's probability interview",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 468479,
+    "dDurationMs": 7241,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "questions Bank the candidate found the\ncompliment to answer this question let's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 474080,
+    "dDurationMs": 6600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "look at another totally reasonable way\nto answer this question as the candidate",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 478479,
+    "dDurationMs": 6961,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "mentions the only configuration that is\nnot acceptable is the four and six",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 483479,
+    "dDurationMs": 6521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "configuration therefore we can find the\nprobability of the following two",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 486919,
+    "dDurationMs": 12761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "mutually exclusive events say that we\nlabel the shoes instead of 44 55 6 and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 493599,
+    "dDurationMs": 10880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "six as A1 A2 B1 B2 C1 and C2 in the\nfirst case the fours are paired together",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 502240,
+    "dDurationMs": 6359,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "meaning that A1 and A2 are paired\ntogether A1 is just as likely to be",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 506879,
+    "dDurationMs": 6321,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "paired with any of the other five shoes\nso the probability that it's paired with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 510280,
+    "dDurationMs": 7960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "A2 is 1 and five the second case is\nwhere the two size fours are each paired",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 515159,
+    "dDurationMs": 8880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "with a size five so in this case we want\nthe probability that A1 is paired with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 520519,
+    "dDurationMs": 10081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one of B1 and B2 and then A2 is paired\nwith the other of B1 and B2 this can be",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 527279,
+    "dDurationMs": 9721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "written as the probability that A1 is\npaired with one of B1 and B2 and A2 is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 534800,
+    "dDurationMs": 7080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "paired with the other of them we know\nfrom the lectures in Bay's rule that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 538920,
+    "dDurationMs": 9640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "this can be Rewritten as the probability\nthat A1 is paired with one of B1 and B2",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 545200,
+    "dDurationMs": 9120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "times the probability that A2 is paired\nwith the other of them given A1 is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 551200,
+    "dDurationMs": 7319,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "paired with one of B1 and B2 the first\nterm is equal to 2 over5 since A1 is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 557120,
+    "dDurationMs": 8240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "just as likely to be paired with any\nother shoe so there's a 2 over five",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 561440,
+    "dDurationMs": 9079,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "chance that it's one of B1 or B2 given\nthat A1 is paired with B1 or B2 that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 568120,
+    "dDurationMs": 8040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "leaves three equally likely shoes for A2\nto be paired with only one of which is a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 573079,
+    "dDurationMs": 9041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "b shoe or size five so that happens with\na 1 over3 probability case two therefore",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 579200,
+    "dDurationMs": 10000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "gives us a 2 over 15 probability summing\nup these two cases we get 1 over 5 plus",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 585640,
+    "dDurationMs": 7160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "2 over 15 equals 1 over 3 in the written\nsolution to this question you'll see",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 590959,
+    "dDurationMs": 5081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "this approach in detail and another\napproach using",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 594040,
+    "dDurationMs": 6200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "complements make sure you understand\nboth of these at the bottom of the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 598279,
+    "dDurationMs": 6041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "solution you'll see a simulation run for\nthis and that also checks out and shows",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 602680,
+    "dDurationMs": 6240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "us that as the number of Trials\napproaches Infinity this final",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 606320,
+    "dDurationMs": 7320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probability approaches 1 over\nthree okay so let's change gears I'm",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 611920,
+    "dDurationMs": 6039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "going to ask you a totally new question\ninvolving a coin so let's say you are",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 616120,
+    "dDurationMs": 7880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "flipping a Fair coin until you obtain\nyour first heads if the first heads",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 620399,
+    "dDurationMs": 9081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "occurs on the K flip we're given K balls\nwe're going to put these K balls into",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 625920,
+    "dDurationMs": 7000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "three bins labeled 1 2 and three totally\nrandomly you want to find the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 631320,
+    "dDurationMs": 6560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probability that none of these three\nbins end up empty okay",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 635880,
+    "dDurationMs": 12280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "so\num just to clarify so K is the um number",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 644839,
+    "dDurationMs": 9120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of the flip that uh we first see heads\non and we're not given any bosss for any",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 651440,
+    "dDurationMs": 6680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of the previous flips just that one yes\nK represents the flip number on which we",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 656120,
+    "dDurationMs": 10360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "first get the heads and so after\nflipping that heads we then given K",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 660399,
+    "dDurationMs": 14761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "balls okay so um yeah I\nguess so if we are given K balls",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 671079,
+    "dDurationMs": 11801,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um I think the first thing would be to\nkind of calculate the probability of um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 678399,
+    "dDurationMs": 9641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "getting any of these numbers of balls so\num for instance there's a 1/ half",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 685320,
+    "dDurationMs": 9280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probability that you'll see a heads on\nthe first flip so you'll just have one",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 689800,
+    "dDurationMs": 11599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "ball and um for every flip after that um\nyou'll have half of that probability for",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 697839,
+    "dDurationMs": 8881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "getting that number of balls so uh for\ntwo balls for instance it would be 1",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 703240,
+    "dDurationMs": 10719,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "over four and so\non that makes sense",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 709920,
+    "dDurationMs": 10840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "yeah um okay and for the bins there's\nalways three bins is that correct",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 715839,
+    "dDurationMs": 7201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "correct just three fixed bins okay um so\nlet's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 724639,
+    "dDurationMs": 8801,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "see let's pause for 10 seconds to do\nwell on Quant interviews you need an",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 730040,
+    "dDurationMs": 9440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "unwavering intuition for probability EV\nbetting strategy Market making brain",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 736480,
+    "dDurationMs": 6919,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "teasers and more if you want to develop\nthis intuition learn the fundamental",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 741519,
+    "dDurationMs": 6560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "math Theory to crush every type of Quant\ninterview question see hundreds of pages",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 745680,
+    "dDurationMs": 7920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of guides and solutions talk to real\nquants and so much more then head over",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 750720,
+    "dDurationMs": 10040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to the Quant guide.com and enroll now\ncorrect just three fixed bins okay um so",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 758480,
+    "dDurationMs": 2280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "let's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 772079,
+    "dDurationMs": 13200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "see yeah so um again if you want to find\nthe probability that none of these bins",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 780600,
+    "dDurationMs": 10960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "end up empty um then I think we could do\na similar um Counting method where we",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 789399,
+    "dDurationMs": 11161,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "kind of count instead the cases where\nthere is at least um one bin that is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 795880,
+    "dDurationMs": 4680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "empty um and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 800839,
+    "dDurationMs": 5641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "so let's see so one two",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 808120,
+    "dDurationMs": 8360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "okay\nyeah so",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 813000,
+    "dDurationMs": 11519,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um so with these three bins suppose we\nhave um K of these balls then um the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 821959,
+    "dDurationMs": 8921,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probability that one of these bins will\nend up empty uh would essentially be um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 829000,
+    "dDurationMs": 8639,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "well the basically the way we could\ncount that is there's three sort of uh",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 833920,
+    "dDurationMs": 9159,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "choices for the bin that is left empty\nand um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 839759,
+    "dDurationMs": 12681,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the K balls then could be distributed\nanyway um within the other Tu bins that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 846800,
+    "dDurationMs": 10719,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "are left so um essentially that's 3 * 2\nto the k for the number of ways we can",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 854600,
+    "dDurationMs": 8120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "distribute these balls in these two bins\nand um that's out of a total of 3 to the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 861440,
+    "dDurationMs": 8360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "K\npossibilities um and so that would be um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 868160,
+    "dDurationMs": 8280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "kind of\nuh the number of ways we can do that um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 872519,
+    "dDurationMs": 10560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "leaving one bin empty um but this also\nkind of double counts the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 879000,
+    "dDurationMs": 7680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um basically cases where uh there's two\nof these pins are empty because you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 885160,
+    "dDurationMs": 8520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "could also have all the balls going to\none bin and that would um basically I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 891680,
+    "dDurationMs": 8159,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "mean there's only three possibilities\nfor that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 895800,
+    "dDurationMs": 13039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um and so we would just have to subtract\nuh those three possibilities from the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 904839,
+    "dDurationMs": 13721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "initial count that we did okay yeah so\nin total we have um a probability with K",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 912560,
+    "dDurationMs": 18399,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "balls of 3 * 2 K - 3 over 3 to the\nk um which is also 2 to the K -1/ 3 to K",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 926120,
+    "dDurationMs": 4839,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "-1 um and so",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 934519,
+    "dDurationMs": 18921,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "see so yeah um we can split this um up\ninto two fractions which is 2 K and 3",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 946800,
+    "dDurationMs": 11240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Kus 1 and 1- 1 over 3 Kus 1\nand if we combine this with the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 956160,
+    "dDurationMs": 8560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probabilities of getting each of the K\nballs",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 960120,
+    "dDurationMs": 7920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um then let's see\nso it's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 974399,
+    "dDurationMs": 12721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one so you'll have K balls with\nprobability 1/ 2 the K so we just need",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 982399,
+    "dDurationMs": 4721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to multiply that um to",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 987920,
+    "dDurationMs": 3000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "this",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 993839,
+    "dDurationMs": 5081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "so I think that leaves us with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 999079,
+    "dDurationMs": 14081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um the\nsum uh of 1/ 3 Kus 1 - 3 6",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1007480,
+    "dDurationMs": 13120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "k um and this is the sum with from K = 1\nto uh infinity and so we can just do",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1017199,
+    "dDurationMs": 9681,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "this as an infinite geometric series for\num both of these fractions and so that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1024480,
+    "dDurationMs": 2400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "would",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1031679,
+    "dDurationMs": 16280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "give yeah so I think in total that gives\num 15 / 10 - 6 over 10 which would be 9/",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1044919,
+    "dDurationMs": 10481,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "10 okay so what does this 9/ 10\nrepresent yeah so um yeah I think 9 / 10",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1052480,
+    "dDurationMs": 10600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "is the probability uh that you\nhave at least one bucket empty and so",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1060559,
+    "dDurationMs": 8641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the complement of that would be the\nprobability that you have every bucket",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1065160,
+    "dDurationMs": 7120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "full um which is 1 over 10 awesome looks\ngood to me do you want to just briefly",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1071080,
+    "dDurationMs": 9240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "walk me through your\nmethodology yeah so um I think for this",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1078280,
+    "dDurationMs": 9960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "problem there there's kind of two\ncomponents to the probability which is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1084320,
+    "dDurationMs": 9400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um the probability of getting the caes\nwhich is what the coin is doing and then",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1090960,
+    "dDurationMs": 10400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "given these cables the probability that\nyou'll be able to cover all these",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1095880,
+    "dDurationMs": 11720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "buckets that you have and so um as for\nthe probability of having K voles is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1104240,
+    "dDurationMs": 9480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "fairly simple um there's a 1/ half\nchance that you'll end up with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1110240,
+    "dDurationMs": 8679,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one um ball if you flip a head on the\nfirst try and then thereafter you'll",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1116280,
+    "dDurationMs": 7279,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "have half of that for every uh\nincreasing number of balls so for",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1121039,
+    "dDurationMs": 6921,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "example there's a 1 to the 4th or sorry\n1 over4 probability of having two balls",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1126000,
+    "dDurationMs": 11240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one over8 of having three balls and so\non which is 1 over",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1130320,
+    "dDurationMs": 10560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "2K um for the buckets um filling the\nbuckets uh I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1139320,
+    "dDurationMs": 7960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "want to count\nessentially um the number of ways we can",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1144400,
+    "dDurationMs": 9560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "leave at least one bucket empty uh which\nis the complement of what we want so um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1150799,
+    "dDurationMs": 9521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "in order to do that I sort of imagin\nthis um scenario of having one of these",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1158000,
+    "dDurationMs": 7600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "three buckets empty and so there's three\nchoices for which bucket to leave empty",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1162919,
+    "dDurationMs": 8561,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and then um we count essentially the\nnumber of ways we can fill the other two",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1167880,
+    "dDurationMs": 9240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "buckets so given each ball there's two\nchoices so with K balls there's two to",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1174000,
+    "dDurationMs": 9159,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the K ways we can make that distribution\num and since this also double counts the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1180960,
+    "dDurationMs": 7640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "cases in which two of the buckets are\nempty and all the balls are in one of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1184880,
+    "dDurationMs": 10240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "them we have to subtract that from the\ntotal number of cases so that's 3 * 2 K",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1191880,
+    "dDurationMs": 9520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "minus 3 over 3 to the K possible\ndistributions of these",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1197120,
+    "dDurationMs": 10240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "balls um and finally we can multiply\nthis um by the probability of having",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1204840,
+    "dDurationMs": 8959,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "these K balls which is 1 over 2K and if\nwe do that this actually simplifies out",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1210000,
+    "dDurationMs": 11760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to a nice um kind of two fractions which\nis 1 over 3 to the K - 1 and then - 3",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1218159,
+    "dDurationMs": 9640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "over 6 the k um and then we can\nessentially just sum that with K from 1",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1225280,
+    "dDurationMs": 8960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to Infinity just as a standard geometric\nseries and um we can that gives us 9",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1232120,
+    "dDurationMs": 6039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "over 10 which again is the complement of\nthe probability that we want and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1235960,
+    "dDurationMs": 7120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "subtracting it from one gives us 1 over\n10 this is a fairly involved question as",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1241720,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you work through this module and the\nquestions associated with it you'll be",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1245200,
+    "dDurationMs": 6080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "able to come to the solutions within a\ncouple of minutes let's discuss the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1249280,
+    "dDurationMs": 6200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "theory of how we got here there are two\nimportant aspects to this question one",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1253799,
+    "dDurationMs": 7721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "is finding the probability that we end\nup with K balls so we know that for a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1258600,
+    "dDurationMs": 9319,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "fixed value K the first head occurs on\nflip K exactly when the first K minus",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1264240,
+    "dDurationMs": 10000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one flips yield a tails and the K flip\nyields a heads these K events are all",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1271480,
+    "dDurationMs": 7760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "independent and each have a one over two\nprobability therefore the probability",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1276919,
+    "dDurationMs": 7640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that the first head occurs on flip k\nequals 1/ 2 to the K the probability",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1282440,
+    "dDurationMs": 6760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that no bins are empty given that the\nfirst head occurs on flip K is equal to",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1287240,
+    "dDurationMs": 6960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the probability that no bins are empty\ngiven K balls are placed into the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1292159,
+    "dDurationMs": 6041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "bins we can calculate this by\ndetermining the probability of the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1295559,
+    "dDurationMs": 7281,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "complimentary event the probability that\nat least one bin is empty given K balls",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1300799,
+    "dDurationMs": 6601,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "are placed into the bins to calculate\nthis we can use the principle of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1304320,
+    "dDurationMs": 8760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "inclusion exclusion with K balls the\nprobability that any bin I remains empty",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1309919,
+    "dDurationMs": 7281,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "is 2 over 3 to the K because each ball\ngoes into one of the other bins with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1314760,
+    "dDurationMs": 7760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probability 2 over three this is true\nfor all three choices of one empty bin",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1319400,
+    "dDurationMs": 8480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "giving 3 * 2 3 to the\nK however this overcounts cases when two",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1325559,
+    "dDurationMs": 6841,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of the bins remain empty for example the\nscenarios where bins 1 and two remain",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1329919,
+    "dDurationMs": 8000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "empty are counted twice once when\ncounting 2 over 3 to the k for bin one",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1335039,
+    "dDurationMs": 7201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "being empty and once again when counting\n2 over3 to the k for bin 2 being empty",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1340559,
+    "dDurationMs": 5401,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "we correct for overcounting these parts\nof the probability space which is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1343919,
+    "dDurationMs": 6841,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "counted twice by subtracting their\nprobability once for example the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1348960,
+    "dDurationMs": 8120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probability of bins 1 and two being\nempty so all balls go in bin three is 1",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1354000,
+    "dDurationMs": 10600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "over 3 to the K this is true for all 3\nchoose 2 or three pairs of balls so we",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1360600,
+    "dDurationMs": 8040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "subtract 3 CH 2 * 1 over 3 to the K the\nanswer is asking us to solve for the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1366320,
+    "dDurationMs": 7080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "complement of this value here's the\ndetailed math but once we simplify this",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1370640,
+    "dDurationMs": 6279,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "series we end up getting 1 over 10 at\nthe bottom of the solution in the course",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1375159,
+    "dDurationMs": 6041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "also check out the code for this\nsimulation you'll see that as the number",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1379080,
+    "dDurationMs": 8120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of Trials approaches Infinity this\nprobability also approaches 1",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1383720,
+    "dDurationMs": 6880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "10 well we're done in the course you've\nlearned how to answer these questions in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1388679,
+    "dDurationMs": 5401,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "many that are significantly more\nchallenging keep going through the mock",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1392600,
+    "dDurationMs": 5679,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interview videos and get through the\nquestions and detailed solutions for",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1395919,
+    "dDurationMs": 8120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "this section and you will be an absolute\nveteran when it comes to these interview",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1401039,
+    "dDurationMs": 3000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "questions",
+      "acAsrConf": 0
+    } ]
+  } ]
+}

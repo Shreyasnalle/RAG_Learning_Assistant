@@ -1,0 +1,1148 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  }, {
+    "mhModeHint": 2,
+    "juJustifCode": 0,
+    "sdScrollDir": 3
+  } ],
+  "wpWinPositions": [ {
+  
+  }, {
+    "apPoint": 6,
+    "ahHorPos": 20,
+    "avVerPos": 100,
+    "rcRows": 2,
+    "ccCols": 40
+  } ],
+  "events": [ {
+    "tStartMs": 0,
+    "id": 1,
+    "wpWinPosId": 1,
+    "wsWinStyleId": 1
+  }, {
+    "tStartMs": 240,
+    "dDurationMs": 6000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you\nbeing weather forecast.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 4720,
+    "dDurationMs": 4799,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Thank you so much for doing this. My\ngood friend uh Michael told me a lot",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 8000,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "about you. First question, what's your\nname? Where are you from? And what are",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 10639,
+    "dDurationMs": 5601,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you studying at MIT? My name is Hilal.\nI'm studying computer science and math",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 14400,
+    "dDurationMs": 5760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and I'm from Virginia. Junior. Junior.\nOkay. Very nice. Theme of today's video",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 18000,
+    "dDurationMs": 6640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "is I'm interviewing MIT students who are\neither doing quant or doing a startup. I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 22720,
+    "dDurationMs": 7200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "has told you work worked at Jane Street.\nSo I'd argue that quant is probably the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 26800,
+    "dDurationMs": 6880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "most lucrative career out of college. So\nwalk me through like what could be like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 31279,
+    "dDurationMs": 5921,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "an expected salary range and like what's\nlike the salary progression generally",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 35520,
+    "dDurationMs": 4480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "how quant compensation works and it's\ndifferent for different firms but you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 38640,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "have your base salary which is like\nposted on the website posted like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 41600,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "publicly everyone can look at it and\nthen you'll have your bonus. Can you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 44879,
+    "dDurationMs": 4561,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "just share it? Yeah. Yeah. Yeah. Well\nJane Street you can see this on the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 48000,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "website. Space salary I believe is like\n300,000 and then like the bonus is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 51760,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probably something like similar very\nperson specific. Depends on like your",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 54960,
+    "dDurationMs": 5599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "offers and whatnot. But I think like\ngood firms you can like expect in the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 58559,
+    "dDurationMs": 6161,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "range of like you know probably 400 to\n700,000 word of mouth obviously I I'm",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 62879,
+    "dDurationMs": 4881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "not full-time just what I've heard and\nobviously very lucrative but definitely",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 66320,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "takes a lot of work to get there\ndefinitely like a lot of competition",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 69280,
+    "dDurationMs": 5760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you're in the space right so if you were\nto define quant in simple terms like how",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 73760,
+    "dDurationMs": 4719,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "would you define it from my\nunderstanding of what quant is it's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 76640,
+    "dDurationMs": 5760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "essentially developing complex\nalgorithms to make the market more",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 80720,
+    "dDurationMs": 5600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "efficient is that yeah that's exactly\nwhat they know so what does Jane Street",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 84640,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "focus on it's a it's a market making\nfirm meaning that basically makes",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 87920,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "markets efficient. In the most simple\nexample, say you're trying to buy the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 90799,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "S\u0026P 500 and basically the way like\nbuying assets work is that you know",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 94240,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "there's someone willing to bid a certain\namount, someone willing to offer a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 96960,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "certain amount and say like the highest\nsomeone's willing to pay is $99 and the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 100880,
+    "dDurationMs": 5599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "highest willing someone's willing to\nsell for is $1001. Market makers will",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 104400,
+    "dDurationMs": 6560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "then like determine what the fair value\nis in between the 99 and 101 and then",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 109119,
+    "dDurationMs": 5921,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "tighten that market, make more uh liquid\nflow people are willing to buy and sell",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 113040,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "around like a true fair value. walk me\nthrough uh like how many interviews you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 116640,
+    "dDurationMs": 4240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "had to go through like you know like\njust like the process of getting this",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 119439,
+    "dDurationMs": 4561,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "job throughout that entire freshman\nsummer when I decided I want to do quant",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 122880,
+    "dDurationMs": 4559,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "actually a book called the green book\nit's called quantitative guide to",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 125840,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "finance or whatever it's a pretty\nwell-known book I like read through that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 128959,
+    "dDurationMs": 4961,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "worked through that some cool websites\nlike quantu.io IO just talked to friends",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 132480,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "who had like interviewed and and\nbasically asked them like yeah you know",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 135120,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "what can I expect um what should I study\nand it was basically just green book and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 138640,
+    "dDurationMs": 4480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like you know practice problems\ndifferent firms have different processes",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 141280,
+    "dDurationMs": 5679,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "but you can expect probably like three\nto six interviews mostly technical some",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 145280,
+    "dDurationMs": 4319,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "behavioral what are some uh notable\nquestions they they would ask you in an",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 148400,
+    "dDurationMs": 3919,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interview probably just like look at the\ngreen book and and like you know it's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 150879,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like first question in the green book is\nabout like some probability question",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 154000,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "about like coin flips like you know\nprobably pretty pretty basic one but",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 157360,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like you know say you flip a coin a\nbunch of times how many times can you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 160640,
+    "dDurationMs": 4800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "expect to flip flip the coin until you\nsee two heads in a row. I think that's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 163360,
+    "dDurationMs": 5599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that's probably a pretty classic one. Um\nOh, yeah. What's What's the answer? It's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 166879,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "six. Everyone says four. Um because it's\nlike, you know, one half chance times",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 170400,
+    "dDurationMs": 4559,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "two. But but like that's like sort of\nlike the nuance in in preparing. Anyone",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 173840,
+    "dDurationMs": 4000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "who does like any sort of like\npreparation and like studies like the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 176560,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "concepts behind it. Wait, so why is\nthere six? Cuz you just say why it's Do",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 180080,
+    "dDurationMs": 4799,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you like do like some something called a\nmarov chain? Keep track of like the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 183360,
+    "dDurationMs": 4879,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "states. You have a state of one head and\nthen you have a state of like no heads",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 186239,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "or like you see a tails or a start and\nthen you have like your goal state. If",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 189760,
+    "dDurationMs": 5119,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you like solve out that system and just\nget everything in like the sort of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 192879,
+    "dDurationMs": 5521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "expectation formula, solve it out, you\nget an answer of six, which is it's very",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 197200,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "confusing even for me to think about,\nbut yeah, it just it just works out like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 200560,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that. For a more personal question, how\nwould you sort of describe like your",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 204640,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "relationship with money growing up?\nQuant's a, you know, very lucrative",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 207280,
+    "dDurationMs": 5039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "career. It's a very desired career. Is\nthat a big reason why you want to do",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 210799,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "quant or do you think it's like a\nskill-based thing? Like you think you're",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 213840,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "good at what it takes to be, you know,\nHonestly, it's a combination of both.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 217280,
+    "dDurationMs": 5519,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Probably like 50/50. like I really\nenjoyed math. I really enjoy coding. I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 221040,
+    "dDurationMs": 5279,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "really enjoy like statistics, modeling,\nprobability, playing poker, that sort of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 224560,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "thing. And like there's no job that like\nreally emphasizes all of those things",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 227840,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like besides quantitative finance. I\nthink like that's kind of what drew me",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 231360,
+    "dDurationMs": 4879,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "in. But obviously like you know the the\nfinancial opportunity that you get from",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 234480,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "it. I think growing up my mom always\nshe's a very loving mother always",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 237680,
+    "dDurationMs": 4559,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "supported me no matter what I do, no\nmatter how much money I make, no matter",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 240560,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like you know what's going on. My dad\ntoo. But I think like at the end of the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 243920,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "day they're like you know it's good to\nbe successful and money is a measure of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 246959,
+    "dDurationMs": 5121,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "success and like having a lot of money\nis just never a bad thing. So they",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 250239,
+    "dDurationMs": 5761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "didn't push you towards this not at all\nactually. No cuz cuz from my perspective",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 254319,
+    "dDurationMs": 6721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the idea of doing quant like never came\ninto my head cuz I'm not that sharp with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 258560,
+    "dDurationMs": 5600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you know numbers and stuff. So I guess\nfor you it's more of a you realize",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 262560,
+    "dDurationMs": 4800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you're good at this and it just so\nhappens to be a lucrative career.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 265759,
+    "dDurationMs": 4160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Honestly actually um it's a pretty funny\nstory. It was actually in high school",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 268479,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "when I first learned about like Jane\nStreet and like Citadel and like HRT and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 271919,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "all these like awesome quant firms. And\nit's because of these math competitions",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 275120,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "I used to do. Like these firms are\nrecruiting early at my high school.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 278639,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "We're like math team was very big.\nThomas Jefferson High School um",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 281840,
+    "dDurationMs": 4799,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Alexandria Virginia you know very very\nbig math team. We attend tons of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 285199,
+    "dDurationMs": 4481,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "competitions and stuff and so like\nyou'll see like Jane Street on some of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 288240,
+    "dDurationMs": 6800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "my like high school shirts I'd get from\nlike CMIMC HMMT even like the AMC Yumo",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 293520,
+    "dDurationMs": 4399,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "if you've heard of like that series. I\nthink like being in that environment and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 296400,
+    "dDurationMs": 4400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "around people who like you know like\nsome of like the kids I would compete",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 299360,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "with or like be on teams with would\nalways talk about quant since high",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 302400,
+    "dDurationMs": 6560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "school. That's like you've been in that\nenvironment. Exactly. Rank the top three",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 306800,
+    "dDurationMs": 4959,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "uh quant firms. Like just three really\nbig firms that you'll like see a lot",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 310320,
+    "dDurationMs": 5920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "around MIT are like Jane Street,\nCitadel, HRT. Some other like really",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 314240,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "cool ones are like SIG, Optiver, Jump,\nDRW. You like just like see these firms",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 318400,
+    "dDurationMs": 7920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like everywhere like on our our shirts\nlike just hanging around like posters,",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 322960,
+    "dDurationMs": 8640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "job job postings and whatnot. So now\ngetting like you being quantity",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 330160,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "I feel like I feel like they're going to\nweirdly want to know about that. Yeah,",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 333039,
+    "dDurationMs": 5841,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that's a great question actually. I I\nguess. Yeah. So yeah, interesting",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 337199,
+    "dDurationMs": 4641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "question. And um I'm sure like there are\npeople out there that look for like you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 340240,
+    "dDurationMs": 4480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "know like oh this guy works at this firm\nand you know he makes a lot of money and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 343440,
+    "dDurationMs": 4080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you know I like him because he makes a\nlot of money and I think that's natural",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 346240,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "but I think like one thing I've noticed\nabout like quants in general is that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 348800,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "they like really like aren't about that.\nA lot of them have like long-term",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 352160,
+    "dDurationMs": 5680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "girlfriends. I myself had a girlfriend\nfor like 2 years here. Once you realize",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 356000,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like all this money and whatnot and like\nall these things like they're they're",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 359680,
+    "dDurationMs": 4639,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "nice but um really like what matters in\nlife is like the people you surround",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 362960,
+    "dDurationMs": 5519,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "yourself in and like the relationships\nyou create. I think like a lot of like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 366000,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "quants do think pretty similar like to\nme in terms of that at MIT you know what",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 370639,
+    "dDurationMs": 5361,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "percentage of the population do you\nthink that's ends up doing quant",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 374400,
+    "dDurationMs": 5600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "probably lower than you'd expect I think\nit's mostly the math and CS majors some",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 378080,
+    "dDurationMs": 4559,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "physic majors uh actually I think like\nquant they they don't recruit",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 381199,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "specifically like if you've done like\nstatistics classes or or computer",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 384639,
+    "dDurationMs": 4881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "science like physics majors like that's\nthe sort of thinking the sort of problem",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 387600,
+    "dDurationMs": 4719,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "solving present in physics is also just\nlike really amazing for like the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 391039,
+    "dDurationMs": 5201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "thinking that you need in quant\nespecially like the modeling and like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 393680,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that side of it maybe 5 to 10% if not\nlower. Like MIT that's still pretty",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 398000,
+    "dDurationMs": 5039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that's like a good amount honestly.\nYeah, I think MIT probably is like has",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 401440,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one of the highest quant populations out\nof like any college. I think it's very",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 404639,
+    "dDurationMs": 4721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like personto person. I know people here\nthat want to just work in like you know",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 407680,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "very highpaying jobs for the sake of\nmaking bread and then like retiring",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 410880,
+    "dDurationMs": 5039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "early and living a good life. But at the\nsame time like there are just people who",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 414160,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "love what they do and like success is\nlike a byproduct. Actually have a friend",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 417680,
+    "dDurationMs": 4480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "here. His name's Ethan Thornton. He\nisn't here anymore. He dropped out to",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 420720,
+    "dDurationMs": 4800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like do a startup called Mock\nIndustries. He was in this fraternity.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 424000,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "um played football with uh with us back\nin the day, but now his company's worth",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 427360,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like many hundreds of millions. And but\nthe guy himself just doesn't care about",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 430800,
+    "dDurationMs": 4799,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "money. Like the guy himself is just one\nof the most wholesome, hardworking dudes",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 434080,
+    "dDurationMs": 4480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "I know. And he just loves what he does\nand wants to like contribute to the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 436880,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "world and like you know, you just get\nlike so many different people that are",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 440000,
+    "dDurationMs": 5599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like just have such different views on\nmoney here. Okay. But I say that's a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 443919,
+    "dDurationMs": 5761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "very good perspective. Yeah. What's your\nfriend's uh company? What does he do?",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 447680,
+    "dDurationMs": 6480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "It's called uh Mock Industries. It's a\ndefense startup. He's a defense startup.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 451840,
+    "dDurationMs": 5359,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Defense startup. Yeah. with the uh US\nmilitary. I'm actually not too sure of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 455440,
+    "dDurationMs": 4080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the specifics. Um I definitely like they\nhave a website and everything like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 458639,
+    "dDurationMs": 4000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "definitely check them out. They're\nreally cool. But yeah, he doesn't really",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 460880,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "tell anyone like too much about it. Oh,\nit's like a confidential thing. I don't",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 464000,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "even know. It's never happened to Never\nhappened to like stumble upon it. So,",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 467360,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "it's worth hundreds of millions. Did it\ngo like IPO? Like how where this money",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 471440,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "did he raise that money? I think he\nraised it. All the details were just",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 474639,
+    "dDurationMs": 6400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "like available on like how much he like\nresearch. Very cool. Oh, that's good.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 479520,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Yeah, that's it. Oh, awesome. Thank you\nso much, bro.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 482319,
+    "dDurationMs": 2641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Very nice meeting",
+      "acAsrConf": 0
+    } ]
+  } ]
+}

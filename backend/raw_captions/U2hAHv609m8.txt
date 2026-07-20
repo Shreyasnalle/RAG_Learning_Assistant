@@ -1,0 +1,2447 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  }, {
+    "mhModeHint": 2,
+    "juJustifCode": 0,
+    "sdScrollDir": 3
+  } ],
+  "wpWinPositions": [ {
+  
+  }, {
+    "apPoint": 6,
+    "ahHorPos": 20,
+    "avVerPos": 100,
+    "rcRows": 2,
+    "ccCols": 40
+  } ],
+  "events": [ {
+    "tStartMs": 0,
+    "id": 1,
+    "wpWinPosId": 1,
+    "wsWinStyleId": 1
+  }, {
+    "tStartMs": 80,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "In my college, I was not able to sit\neven for a single placement through",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 3439,
+    "dDurationMs": 5681,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "college because I had a low CGPA. But\neven after that, I tried to work with",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 7200,
+    "dDurationMs": 6399,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the TNP sale, but I could not sit for\neven a single placement company and my",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 11679,
+    "dDurationMs": 5121,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "CGPA was not even present in my resume.\nI just highlighted that which college",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 15120,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "I'm from when I'm graduated and what\nbranch I am in. But I never mentioned my",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 18320,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "CGPA because it definitely would have\nbeen something that would have put them",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 21359,
+    "dDurationMs": 5281,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "off. I applied for an Adobe internship.\nI cleared two rounds and after that some",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 24880,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "random person asked me my CGPA because\nof which I got rejected right there. My",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 28560,
+    "dDurationMs": 4240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "two rounds were extremely good. I was\ngoing for the third round. I had",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 31439,
+    "dDurationMs": 4881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "confirmation that I'll be appearing for\nthe third round. But then HR actually",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 34239,
+    "dDurationMs": 4801,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "asked me my CGP and then they canled the\ninterviews.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 37280,
+    "dDurationMs": 6400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e The very first freelance I did.\n\u003e\u003e Before this I had never even worked with",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 40879,
+    "dDurationMs": 6081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "AWS or Azure. I had zero experience in\nterms of working with any cloud",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 45120,
+    "dDurationMs": 4800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "infrastructures. [music] But I knew\nabout the problem statement they wanted",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 48320,
+    "dDurationMs": 4879,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to solve. And I took a day and I\nliterally watched anything and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 51600,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "everything I wanted to watch. And then\nthe next day we had a meeting in which I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 54879,
+    "dDurationMs": 4881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "showed very clear confidence that I know\nhow to build this and I can build this",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 58320,
+    "dDurationMs": 5839,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "even though I had no idea how to build\nthis.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 61520,
+    "dDurationMs": 6240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Hi everyone. So here is Naman. Nan could\nyou please introduce yourself?",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 65439,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Yeah sure. So uh hi I'm Nam. Uh\ncurrently I'm working in Microsoft and",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 69119,
+    "dDurationMs": 5761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "I've been here for the last 4 years.\nBefore Microsoft I was at Adobe for 2",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 72705,
+    "dDurationMs": 6550,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "[music]"
+    }, {
+      "utf8": " years and right before Adobe I\nhad a very short stint at Dsha for 4",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 76720,
+    "dDurationMs": 6960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "months. I graduated in 2020 from JP\n[music] Nida and the fun fact is I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 81439,
+    "dDurationMs": 5761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "graduated with a 6C GPA uh but directly\nwent into Disha after that.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 85200,
+    "dDurationMs": 5680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So you you were in the majority of the\nstudents who are not able to get a high",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 89200,
+    "dDurationMs": 6080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "GPA and generally what we say to\nstudents is at least maintain 7.5 or 8GB",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 93920,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "so that you can qualify it for\ninterviews. So how was your journey",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 97600,
+    "dDurationMs": 5199,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "during your college? because there are\ncompanies who visit your college. Were",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 101200,
+    "dDurationMs": 4959,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you able to even qualify the\nshortlisting bar?",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 104000,
+    "dDurationMs": 5520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Right. Uh so in my college I was not\nable to sit even for a single placement",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 107920,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "through college because I had a low\nCGPA. Even though I had few teachers who",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 111600,
+    "dDurationMs": 5519,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "were extremely supportive of me but even\nafter that I tried to work with the T\u0026P",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 115439,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "cell but I could not sit for even a\nsingle placement company. What I did",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 119119,
+    "dDurationMs": 4721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "different was I used to do a lot of\ncompetitive programming and I became a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 122159,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "candidate master on code forces. Because\nof which first I had few teachers who",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 125840,
+    "dDurationMs": 5119,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "used to support me a lot. Even if I\napply anywhere, I had very good ranks at",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 129360,
+    "dDurationMs": 4320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "different coding competitions [music]\nwhich helped me a lot. For example,",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 132319,
+    "dDurationMs": 4881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "there was a long challenge in which I\ngot a global rank one and I had taken",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 135520,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that and put that as the very first\npoint in my resume and my CGPA was not",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 139360,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "even present in my resume. I just\nhighlighted that which college I'm from",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 142319,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "when I'm graduated and what branch I am\nin but I never mentioned my CGPA because",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 145840,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "it definitely would have been something\nthat would have put them off.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 148560,
+    "dDurationMs": 5759,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Correct. [music] That's amazing. So\nessentially you put your biggest",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 152319,
+    "dDurationMs": 5681,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "strength in the spotlight, not your\nbiggest loss. That is amazing. Okay,",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 156560,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "let's come to that question. What\nhappened when you got get your first",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 159840,
+    "dDurationMs": 3679,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "job? How did you get your first job\nthen?",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 161599,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So, right before I got my first job, I\nalso did an internship which again was",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 165440,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "something I had previously applied for\nmultiple internship but I never got into",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 168640,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "any again like my CGPA was a huge\nbottleneck. I applied for an Adobe",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 172319,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "internship. I cleared two rounds and\nafter that some random person asked me",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 175519,
+    "dDurationMs": 5521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "my CGPA because of which I got rejected\nright there. Like I did not even my two",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 179360,
+    "dDurationMs": 4080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "rounds were extremely good. I was going\nfor the third round. And I had",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 182080,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "confirmation that I'll be appearing for\nthe third round but then HR actually",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 184879,
+    "dDurationMs": 4961,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "asked me my CGPA and then they canceled\nthe interviews. God",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 187840,
+    "dDurationMs": 6240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e even though like exactly an year after I\nwent to Adobe as well with the same CGPA",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 191920,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "because before that I went to Disha and\nnow I had Dshaw as well in my resume",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 195760,
+    "dDurationMs": 2320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "because of which now Adobe was\ninterested.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 197680,
+    "dDurationMs": 4800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Got it.\n\u003e\u003e Similarly for going to Dshaw as well I",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 200400,
+    "dDurationMs": 3919,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "actually did an internship in makeup.\n\u003e\u003e Okay.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 202800,
+    "dDurationMs": 3527,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e And for that internship the only thing\nthat helped me was my computer",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 205680,
+    "dDurationMs": 3520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "programming journey.\n\u003e\u003e [music]",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 206480,
+    "dDurationMs": 6800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So generally startups they are more into\nif you have those skills from solving",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 210959,
+    "dDurationMs": 5761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "your skills and that's so so you got\nthat opportunity through LinkedIn or",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 214959,
+    "dDurationMs": 3041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "directly applying randomly on their\ncareer.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 217040,
+    "dDurationMs": 4000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So I got a referral.\n\u003e\u003e Oh you got a referral with referral you",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 219519,
+    "dDurationMs": 5521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "were able to get the make my trip\nopportunity which led to a dish",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 223280,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "opportunity that also through referral.\n\u003e\u003e Uh no dshaw was actually they had a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 226959,
+    "dDurationMs": 6481,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "hiring drive which was completely open.\nSo applied for that hiring drive with my",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 231680,
+    "dDurationMs": 5119,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "resume only again in which I had few\nthings highlighted about my competitive",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 235120,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "programming ranks and I got an\ninterview. I had four rounds of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 238080,
+    "dDurationMs": 4400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interview [music] and I got into Disha\nafter that.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 240480,
+    "dDurationMs": 6640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Correct. So your initial struggle was\nsolved even though you had like very low",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 244720,
+    "dDurationMs": 7360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "CGPA. What happened later on when you\nswitched from Dshaw to Adobe from Adobe",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 249519,
+    "dDurationMs": 5201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to Microsoft did that CGPA factor came\ninto the picture?",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 252959,
+    "dDurationMs": 6641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e No I don't think so since I have never\nmentioned about my CGPA in my resume at",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 256799,
+    "dDurationMs": 6721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "all. The only time when CGP affected me\nwas when I was appearing for Adobe for",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 261280,
+    "dDurationMs": 5680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interns. Apart from that, CGP has never\nbeen a part of my journey or at least I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 265199,
+    "dDurationMs": 5681,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "kept it that way because of which it has\nnever been a problem for me.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 268240,
+    "dDurationMs": 6399,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Got it. So that's a hack but that hack\nwill only work if you're able to if",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 273120,
+    "dDurationMs": 4400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you're confident enough in your skills\nthat you can crack interviews.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 276000,
+    "dDurationMs": 5520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e I would still say don't ever play with\nyour CGPA. It is an important aspect. I",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 279520,
+    "dDurationMs": 5119,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "realized this later on. I was very clear\nin terms of what I want to do, how I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 283120,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "want to do it. That is why I never took\nCGPA as my primary thing. But let's say",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 286800,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "later on you decide to go for a masters\nor something. CGP plays a very important",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 290080,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "role and not just a CGP part the\nsubjects that you actually learn in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 293520,
+    "dDurationMs": 5760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "college some of them are actually\nimportant because I never studied OS",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 296880,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "DBMS oops in college I had to study\neverything after I graduated because I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 301199,
+    "dDurationMs": 4081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "realized that okay I actually need\nthese. So I started reading books on",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 303759,
+    "dDurationMs": 4321,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "these things. So all these things are\nimportant.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 306080,
+    "dDurationMs": 7679,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So it is on to you how you study them.\nYou will have to study them.",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 309360,
+    "dDurationMs": 8318,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Very valid point. See his case was can\nbe an exception and that exception only",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 316080,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "worked because you were talented enough\n[music] in the right spots. So in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 319759,
+    "dDurationMs": 6081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "general if you are you should focus on\nbuilding your CGPA in the initial years",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 323919,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of college. So my question was you have\nhidden the CGPA thing in your next",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 328080,
+    "dDurationMs": 5520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "companies also for someone who is in\ncollege who is getting low GGPA right",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 331680,
+    "dDurationMs": 5760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "now or for someone who has already\ngraduated in a service- based company",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 335680,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "maybe how should they position\nthemselves even with the low CGPA. Uh so",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 340240,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the answer would have been different 6\nyears back because that time we didn't",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 343520,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "have AI so much. Right now I would say\nthe only thing that matters is how",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 347120,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you're building with AI.\n\u003e\u003e So for me I would say like start [music]",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 349919,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "with something something an idea that\nyou have build a project. Don't be",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 353199,
+    "dDurationMs": 5201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "bottlenecked on I don't know front end\nor back end or design or anything. AI",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 356800,
+    "dDurationMs": 4000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "will help you at every pace. You have to\nbe the person who understands",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 359440,
+    "dDurationMs": 4080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "everything. Correct. So start building\nsomething and put it [music] out there.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 362160,
+    "dDurationMs": 3840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "That will help you a lot. If you start\nputting it out there a lot of people",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 364720,
+    "dDurationMs": 3840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "will actually get attention that okay\nthis is a person who is building [music]",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 367039,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "something. And then if you actually put\nthat in your resume as an and let's say",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 370160,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you have some users as well some very\nlittle users but you can at least say I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 373600,
+    "dDurationMs": 4719,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "did something and some people are using\nit that is a very good thing to show",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 376560,
+    "dDurationMs": 4400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "credibility and someone that who\nunderstands the entire journey of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 380000,
+    "dDurationMs": 2880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "building something.\n\u003e\u003e Yes.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 381280,
+    "dDurationMs": 6479,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e And is someone who can actually get\nhired because of that. Okay. So one",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 385199,
+    "dDurationMs": 6881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "quick thing so he's not speaking out of\nthe things from the internet. He is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 390160,
+    "dDurationMs": 6560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "himself had done a lot of freelancing in\nhis career. So how someone can get",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 394639,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "started with freelancing because that\nbuilding attitude because I was a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 398160,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "freelancer in college as well. How\nsomeone what are the platform they can",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 401759,
+    "dDurationMs": 4160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "go up to because there are some\nsaturated platforms there are new",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 404960,
+    "dDurationMs": 3840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "platforms right.\n\u003e\u003e What would be your advice for someone to",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 407600,
+    "dDurationMs": 4719,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "get started with?\n\u003e\u003e So uh at least I'll tell you what worked",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 410639,
+    "dDurationMs": 5921,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "for me. I never went to any platforms\nbecause I knew they were saturated. The",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 414400,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "only thing I did was uh I did some cold\nmessaging as well to some [music] people",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 418319,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and after that it has mostly been like I\nhave been always at the right place at",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 421759,
+    "dDurationMs": 4641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the right time. They wanted something to\nbe built. I knew how to build it or at",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 424960,
+    "dDurationMs": 5379,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "least I showed confidence. For example,\nthe very first freelance I did, they",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 427919,
+    "dDurationMs": 2801,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "wanted to pivot from AWS to Azure.\n[music]",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 430400,
+    "dDurationMs": 3840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Okay.\n\u003e\u003e And they wanted all the deployments and",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 432240,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "everything to move from AWS to Azure.\n\u003e\u003e Before this, I had never even worked",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 435919,
+    "dDurationMs": 6241,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "with AWS or Azure.\n\u003e\u003e I had zero experience in terms of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 439759,
+    "dDurationMs": 5521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "working with any cloud infrastructures.\n\u003e\u003e But I knew about the problem statement",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 443680,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "they wanted to solve and I took a day\nand I literally watched [music] anything",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 447120,
+    "dDurationMs": 4799,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and everything I wanted to watch on\nYouTube with respect to that problem",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 450080,
+    "dDurationMs": 5119,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "statement. Then the next day we had a\nmeeting in which I showed very clear",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 453680,
+    "dDurationMs": 4239,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "confidence that I know how to build this\nand I can build this even though I had",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 456639,
+    "dDurationMs": 4721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "no idea how [music] to build this and\nthat confidence worked somehow. I got",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 459520,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that freelance. I it was very little\nmoney also like it was not about the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 462960,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "money it was all about the learning for\nme. I took 2 months built the entire",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 466319,
+    "dDurationMs": 5201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "thing migrated everything and that\nitself was so much of a confidence",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 469919,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "booster for me that money didn't matter\nat all and that was my first freelance",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 473280,
+    "dDurationMs": 5919,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "how I got it and after that it has\nalways been I have been either in the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 477039,
+    "dDurationMs": 5361,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "right position or pitched someone\nrandomly met someone who wanted",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 480560,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "something to be done and most of my\nfreelance has always been I don't know",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 484000,
+    "dDurationMs": 5599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "how to do this but I can read about it\nand do it and I just showed that initial",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 488000,
+    "dDurationMs": 3280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "confidence and I was able to deliver on\nthe same",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 489919,
+    "dDurationMs": 5441,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e I guess that the most important skill\nfor a software engineer to quickly grasp",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 493199,
+    "dDurationMs": 6400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "anything and get started started just\nfor the audience for the motivation.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 497199,
+    "dDurationMs": 6720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "What was the highest paid gig that you\ndid as a freelancer? [music]",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 500879,
+    "dDurationMs": 6751,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Uh what was the amount? [laughter]\n\u003e\u003e Uh more than I make from my full-time",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 506160,
+    "dDurationMs": 5599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "still you have to remember that that\n[laughter] thing is already over dollars",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 510720,
+    "dDurationMs": 4879,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "rupees.\n\u003e\u003e I would say like slightly more than what",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 513760,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "I earn in my full time. It has always\nbeen that like whenever",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 516719,
+    "dDurationMs": 6240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e guys you know how much Microsoft pays to\nSD2s right? You can check on the",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 520800,
+    "dDurationMs": 5920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "internet just one gig and he is earning\nmore than what he earns at a fine",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 524720,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "company. Okay. Coming back to a point\nthe most important question if someone",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 528320,
+    "dDurationMs": 6000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "wants to prepare in the next 90 days\nwhat should be your road map for someone",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 532720,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "who is in college and for someone who is\nin the industry working. I feel the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 536160,
+    "dDurationMs": 4640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "biggest thing that is happening right\nnow is you're not bottlenecked at",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 539360,
+    "dDurationMs": 4800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "anything. So let's say if you want to\nbuild something you're not bottlenecked",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 542480,
+    "dDurationMs": 4080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "on I don't know how to do front end or\nback end or something else. You can",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 545440,
+    "dDurationMs": 4240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "always build it. Mhm.\n\u003e\u003e So for me I would say like start",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 548480,
+    "dDurationMs": 3359,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "building on the go.\n\u003e\u003e Mhm.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 550160,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e And that is the best way right now.\nDefinitely apart from this the standard",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 553680,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "things which is like learning the\ntheoretical concepts like oops OSDBMS",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 557279,
+    "dDurationMs": 5761,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and [music] knowing how uh knowing the\nbasic things about DSA and system design",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 560880,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "are extremely important. So always focus\non that first. I would say like use the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 564880,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "first 60 days to prepare for all these\nthings and use the last 30 days to build",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 568399,
+    "dDurationMs": 4321,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "something [music] out of that because of\nand it is not very important that you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 571519,
+    "dDurationMs": 4961,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "have to build something which is very\ndomain specific or let's say uh dev",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 574959,
+    "dDurationMs": 5521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "specific. For example, when I was in\ncollege, I had zero idea about dev and I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 578880,
+    "dDurationMs": 4160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "used to only do computer programming.\nAnd I'll tell you the three projects",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 581680,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that I had in my resume. The [music]\nfirst one was tic tacto. The second was",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 585200,
+    "dDurationMs": 6000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "one was building a chess and the third\none was building a dictionary. All three",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 588880,
+    "dDurationMs": 5760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "pure algorithm based. Nothing about\ntheir work. None of them actually had a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 592800,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "UI. They were all console terminal\ngames.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 595680,
+    "dDurationMs": 5599,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So I was able to build all the three and\nthey were extremely good projects. Yes.",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 599331,
+    "dDurationMs": 4909,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "[music]"
+    }, {
+      "utf8": " And as of now, I would say if I\nhave to build the same projects, I would",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 602560,
+    "dDurationMs": 6480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "also add a UI on top of them because I'm\nnot moding on that. I can easily use AI",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 606240,
+    "dDurationMs": 6560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to build a very good flashy UI for the\nsame projects. So try to work on your",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 611120,
+    "dDurationMs": 4800,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "strengths and try to build on top of\nthem.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 613200,
+    "dDurationMs": 7920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Got it? And and just to refine that\nanswer a bit more. So DSA as he said is",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 619200,
+    "dDurationMs": 5920,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "a much needed skill. See when it comes\nto CS fundamentals, you can go to",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 622800,
+    "dDurationMs": 7680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "YouTube, learn any good, learn from any\ngood playlist. DSA there are ton of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 627760,
+    "dDurationMs": 6639,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "resources from strive from neat code\nthat you can practice some sheets are",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 632320,
+    "dDurationMs": 5759,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "already available in system design there\nare multiple resources like hello",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 635839,
+    "dDurationMs": 4401,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interview or the book which is very\nfamous",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 638480,
+    "dDurationMs": 7520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e designing data in principle algorithms\n\u003e\u003e yeah very popular book or Alex's system",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 643360,
+    "dDurationMs": 7039,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "design interviews and regarding the\nbuilding the projects use AI to build",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 648000,
+    "dDurationMs": 6560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "them don't restrict yourself but just\nleverage your good skills or leverage",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 652720,
+    "dDurationMs": 7040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "your strengths the software engineering\nin general has become lot harder with AI",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 657519,
+    "dDurationMs": 6241,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "because now everyone [music] can code\nbut not everyone can design and not",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 661920,
+    "dDurationMs": 6400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "everybody is interested in designing\narchitectures. So what would be your or",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 666720,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you want to talk more about any other\ncareer options which are emerging in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 670072,
+    "dDurationMs": 5528,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "[music]"
+    }, {
+      "utf8": " the market? So uh definitely\napplied AI engineering is something that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 673839,
+    "dDurationMs": 5521,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "is booming and everybody wants people\nwho who know how to play around with AI",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 677440,
+    "dDurationMs": 5280,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "who know how to actually use models not\nbuild models but how to use these",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 680800,
+    "dDurationMs": 5360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "models. So that is something I would say\nis looking out for. You should",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 684240,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "definitely no matter if you are in first\nyear, second year, third year or fourth",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 687600,
+    "dDurationMs": 5600,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "year, you should definitely start\nplaying around with these models. Even",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 690959,
+    "dDurationMs": 5361,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "if that means just taking a simple API\nand making API calls to that request.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 695120,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "You will learn a lot. You will\nunderstand okay what are the parameters",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 697600,
+    "dDurationMs": 5359,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "that I can play with? How the response\nis changing eventually you will start",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 701680,
+    "dDurationMs": 4399,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "building on top of that. Okay, I've\nplayed around with one API. Let me start",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 704720,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "working around with orchestration\nplatforms as well like let's say lang",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 707600,
+    "dDurationMs": 6160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "chain autogen these [music] platforms.\n\u003e\u003e You'll do that. you'll realize okay I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 711440,
+    "dDurationMs": 6720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "need to learn about rag as well. So pick\na very basic thing that you can take and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 715920,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "understand use that find the next thing\nuse that and eventually you'll find",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 719600,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "yourself learning a lot building\nsomething with that and that itself will",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 722720,
+    "dDurationMs": 5119,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "become such a commodity for you that\nyou'll be able to sell it anywhere",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 725600,
+    "dDurationMs": 7520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e absolutely very well definfined answer\nso what was your biggest struggle while",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 730560,
+    "dDurationMs": 6079,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you were preparing because see resources\nwere available AI was not there but",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 735040,
+    "dDurationMs": 5680,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "resources were available and the\nprocesses were also simpler",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 738399,
+    "dDurationMs": 6641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e right so what was your biggest struggle\nso uh the biggest thing I would say was",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 742959,
+    "dDurationMs": 5281,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "uh I could practice as much as I wanted.\nI could go to lead code and practice as",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 746639,
+    "dDurationMs": 5121,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "many DSA problems [music] or I could get\ngive any competitive programming",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 749920,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "contest. Similarly for de as well I\ncould try to build very simpler things.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 753200,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "The [music] biggest important thing that\nmatters in an interview is how well you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 756320,
+    "dDurationMs": 4400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "are able to speak and how well you are\nable to understand and explain your",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 759360,
+    "dDurationMs": 5279,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "approach. For example, for my projects\nas well, it did not matter how complex",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 762560,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "my chess game was. It mattered how\neasily I was able to explain everything",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 766160,
+    "dDurationMs": 3840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "because not everybody knows all the\ncomplex AI algorithms used there.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 769633,
+    "dDurationMs": 3247,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "[music]"
+    }, {
+      "utf8": "\n\u003e\u003e So I had to find the right way of",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 771440,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "explaining everything. M\n\u003e\u003e and for that the only way you can get",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 774800,
+    "dDurationMs": 4000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "better is you practice a lot and the\nonly way to practice is giving mock",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 777839,
+    "dDurationMs": 4161,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interviews.\n\u003e\u003e So I was able to give one or two mock",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 780399,
+    "dDurationMs": 4641,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interviews because again mock interviews\nis something that is not easy to give.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 783360,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "You have to find the right person who is\nwilling to take a mock interview for you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 786560,
+    "dDurationMs": 5519,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and is also willing to give very good\nfeedback takes the time to give feedback",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 790480,
+    "dDurationMs": 4400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and you also have to have that much\namount of money as well because mock",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 793440,
+    "dDurationMs": 4959,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interview again is something that nobody\ngives for free as of now.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 796480,
+    "dDurationMs": 5919,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So that becomes a problem. So given the\nconstraint that mock interviewing is a",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 800399,
+    "dDurationMs": 5281,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "very costly thing and it is not an\naccessible thing. Not anyone who is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 804160,
+    "dDurationMs": 4799,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "studying in a tier 2 or tier three\ncollege can afford or can [music] get",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 807279,
+    "dDurationMs": 5201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "access to good mock interviews. I have\nbeen working on something and I built a",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 810560,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "platform by the name of highram.ai where\nyou can go and give any number of mock",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 814160,
+    "dDurationMs": 5520,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "interviews [music] for free any time of\nthe day. Wow that's amazing. So it's",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 817920,
+    "dDurationMs": 6159,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "completely free of course and anybody\ncan go and practice interviews. And I",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 821760,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "remember I used to pull my friends, you\nknow, bribe them for some treat or",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 825920,
+    "dDurationMs": 4960,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "something to get them sit and take my\nmock interview because obviously it",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 829040,
+    "dDurationMs": 7120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "takes time. It takes other person's time\nand effort. Now obviously with AI having",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 833920,
+    "dDurationMs": 6080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "a tool which you have built hierogram.ai\nI have I'll al also share the link in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 838560,
+    "dDurationMs": 5279,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the description that you can use and\npractice these interviews and obviously",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 841920,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "give him feedback so that he can improve\nover time and I can understand you come",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 845760,
+    "dDurationMs": 5439,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "from a freelancing background so you\nwould definitely be very much in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 849120,
+    "dDurationMs": 6719,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "involved in building the whole product\nrather than giving it as a freelance job",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 853600,
+    "dDurationMs": 5840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "what it is different like how it is\ndifferent from other tools available in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 857360,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "the market hiram.ai Yeah. So if you go\nto any platform and let's say you want",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 861040,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "to practice DSA, you can either go to\nlead code or you can watch YouTube",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 864720,
+    "dDurationMs": 4559,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "videos or you can discuss with chat GBT\nas well like why is my solution not",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 867839,
+    "dDurationMs": 4881,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "working. You never get a true\nvoicetooice interaction in terms of how",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 870959,
+    "dDurationMs": 4801,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you would have to solve that problem\nwith an actual interviewer. So what we",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 874480,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "have done is we have tried to replicate\nthis exact thing. So what happens is",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 877279,
+    "dDurationMs": 5201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "when you join an interview the AI agent\nwill come in and take your interview for",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 880959,
+    "dDurationMs": 4401,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "a DSA problem. It will give you a\nproblem and you have to solve that",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 883600,
+    "dDurationMs": 4320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "problem runtime there by talking about\nit. And let's say you have solved the",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 886720,
+    "dDurationMs": 4080,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "problem. You know how to solve this\nproblem. The agent itself will open in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 889519,
+    "dDurationMs": 4721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "code editor. And you'll have to code\nthat entire approach while talking while",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 892880,
+    "dDurationMs": 4560,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "explaining what you're doing, why you're\ndoing and how you're doing it. And once",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 895760,
+    "dDurationMs": 5199,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you are done, it will still ask you\nbasic complexity questions, different",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 899360,
+    "dDurationMs": 5200,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "approaches and how you could have made\nit better or different type of ways of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 902959,
+    "dDurationMs": 4481,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "solving that. And eventually once you\nare done, you'll get a very detailed",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 906079,
+    "dDurationMs": 4721,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "report in terms of what you could have\ndone better in this interview in terms",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 908880,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "of maybe their code was not optimized or\nyou did not write it in the best way.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 912320,
+    "dDurationMs": 4160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "All those things. A very different thing\nthat you have done is you might have",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 914880,
+    "dDurationMs": 5120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "solved the problem in the interview but\nthat is not the only thing that matters",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 917839,
+    "dDurationMs": 5601,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "in an interview. It matters more how you\nsolve that problem. Let's say because",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 921279,
+    "dDurationMs": 5841,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "everybody knows there are a limited set\nof problems on lead code and most people",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 925120,
+    "dDurationMs": 5839,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "are cramming solutions. So, so let's say\nyou're given a standard DSA question.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 929440,
+    "dDurationMs": 4160,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "You would obviously know the solution.\nYou don't have to say the solution out",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 932320,
+    "dDurationMs": 3840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "loud right there. You have to walk\nthrough the solution [music]",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 934720,
+    "dDurationMs": 4720,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e and we judge you on that as well.\nCorrect. Were you able to talk about the",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 937680,
+    "dDurationMs": 5760,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "problem, explain the problem, discuss\nthe test cases, come up with a very",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 941199,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "basic brute force and then work up the\nhill and come up with the most optimized",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 944959,
+    "dDurationMs": 5201,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "approach. So we [music] evaluate you on\nall these things and also the way you",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 948639,
+    "dDurationMs": 4401,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "communicate. Were you articulative\nenough? Were you coherent enough in your",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 951680,
+    "dDurationMs": 5040,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "responses? So we judge you on all the\nthings and we give you a very precise",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 954639,
+    "dDurationMs": 4081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "scoring and examples on why we are\nrating you like this and how you can",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 958000,
+    "dDurationMs": 3839,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "improve better.\n\u003e\u003e And what would be one piece of advice",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 960480,
+    "dDurationMs": 5919,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "you would like to give to everyone who\nis watching? So I would say the time we",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 964800,
+    "dDurationMs": 5440,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "are in is the [music] best time to build\nsomething or learn something because",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 968320,
+    "dDurationMs": 4480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "everything is so accessible.\n\u003e\u003e Previously if you had to build something",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 971519,
+    "dDurationMs": 4081,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "or if you had to learn something you\nwould have to go to [music] a teacher",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 973680,
+    "dDurationMs": 6480,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and ask or search random YouTube videos\nor blogs. Now you have any AI models at",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 978720,
+    "dDurationMs": 3840,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "your hand and you can actually ask the\ntoughest problems you have and it will",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 981600,
+    "dDurationMs": 3679,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "help you with an answer.\n\u003e\u003e Correct?",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 982959,
+    "dDurationMs": 5601,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e So don't bottleneck yourself in terms of\nokay uh I don't know this, I don't know",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 986959,
+    "dDurationMs": 5361,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "how to do this. You have someone who can\nactually help you. So try to use all of",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 990320,
+    "dDurationMs": 4400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "these as a co-pilot for anything that\nyou do",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 993040,
+    "dDurationMs": 4880,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e and try to be very AI savvy [music] and\nAI forward in terms of using these",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 996320,
+    "dDurationMs": 4639,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "because these are this is the future. So\nit is better for you to adopt these and",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 999519,
+    "dDurationMs": 5041,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "learn how to actually work with them\nrather than being on the other side.",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1002560,
+    "dDurationMs": 9360,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "\u003e\u003e Correct? So stop complaining and start\nexecuting because the regret of",
+      "acAsrConf": 0,
+      "isSpeakerChange": 1
+    } ]
+  }, {
+    "tStartMs": 1008880,
+    "dDurationMs": 7120,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "ignorance is very costly. [laughter]\nSee this is what we wanted to cover in",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1014000,
+    "dDurationMs": 6079,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "this video. So if you liked it, comment\non your thoughts and make sure to like",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1018240,
+    "dDurationMs": 6079,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "and subscribe the channel. Also, I will\nshare his LinkedIn ID in the description",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1022320,
+    "dDurationMs": 6400,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "below and also the product he has built,\nhigher ground.AI. You can check it out,",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1026319,
+    "dDurationMs": 6640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "use it, share the feedback and comment\non anything you want to want me to cover",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1031039,
+    "dDurationMs": 6000,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "on this channel. And I'll see you in the\nnext one. Till then, bye-bye. They",
+      "acAsrConf": 0
+    } ]
+  }, {
+    "tStartMs": 1034799,
+    "dDurationMs": 2240,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "can't.",
+      "acAsrConf": 0
+    } ]
+  } ]
+}
