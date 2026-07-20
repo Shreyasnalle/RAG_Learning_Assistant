@@ -25,10 +25,11 @@ def get_stored_chunks(video_url : str) -> List[Dict] :
     conn.close()
     return [
         {
-            "text" : rows[0],
-            "start_time" : rows[1],
-            "end_time" : rows[2]
+            "text" : row[0],
+            "start_time" : row[1],
+            "end_time" : row[2]
         }
+        for row in rows
     ]
 class QueryRouter :
     def __init__(self) :
