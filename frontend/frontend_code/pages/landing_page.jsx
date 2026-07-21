@@ -23,11 +23,9 @@ const PricingVisual = () => {
       const localX = e.clientX - rect.left;
       const localY = e.clientY - rect.top;
 
-      // Limit influence area to make it subtle
       ball.targetX = homeX + (localX - homeX) * 0.2;
       ball.targetY = homeY + (localY - homeY) * 0.2;
 
-      // Clamp movement within 35px
       const dx = ball.targetX - homeX;
       const dy = ball.targetY - homeY;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -46,7 +44,6 @@ const PricingVisual = () => {
       ball.x += (ball.targetX - ball.x) * 0.5;
       ball.y += (ball.targetY - ball.y) * 0.5;
 
-      // Draw background dot grid inside the circular bounds
       ctx.fillStyle = 'rgba(251, 133, 105, 0.15)';
       const dotSpacing = 16;
       for (let x = dotSpacing / 2; x < width; x += dotSpacing) {
@@ -67,9 +64,8 @@ const PricingVisual = () => {
 
       for (let i = numCircles - 1; i >= 0; i--) {
         const radius = baseRadius + i * spacing;
-        const factor = (numCircles - i) / numCircles; // Inner circles offset more
+        const factor = (numCircles - i) / numCircles;
         
-        // Offset circles only in the direction of the mouse displacement
         const cx = homeX + (ball.x - homeX) * factor;
         const cy = homeY + (ball.y - homeY) * factor;
 
@@ -77,10 +73,10 @@ const PricingVisual = () => {
         ctx.arc(cx, cy, radius, 0, Math.PI * 2);
         
         if (i === 0) {
-          ctx.fillStyle = '#fb8569'; // Strong orange solid circle
+          ctx.fillStyle = '#fb8569';
           ctx.fill();
         } else {
-          ctx.strokeStyle = 'rgba(251, 133, 105, 0.8)'; // Darker orange outlines
+          ctx.strokeStyle = 'rgba(251, 133, 105, 0.8)';
           ctx.lineWidth = 1.5;
           ctx.stroke();
         }
@@ -105,7 +101,7 @@ const PricingVisual = () => {
         height: '300px', 
         opacity: 0.95,
         borderRadius: '50%',
-        border: '1.5px solid rgba(251, 133, 105, 0.45)', // Outer rim matching the others
+        border: '1.5px solid rgba(251, 133, 105, 0.45)',
         boxSizing: 'border-box'
       }} 
     />
@@ -164,13 +160,11 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         const dy = mouse.y - dot.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Spring force returning to base position slowly
         const springForceX = (dot.baseX - dot.x) * 0.025;
         const springForceY = (dot.baseY - dot.y) * 0.025;
         dot.vx += springForceX;
         dot.vy += springForceY;
 
-        // If mouse is close and moving, apply jitter
         if (distance < INTERACTION_RADIUS && isMouseMoving) {
           const force = (INTERACTION_RADIUS - distance) / INTERACTION_RADIUS;
           const angle = Math.random() * Math.PI * 2;
@@ -178,7 +172,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           dot.vy += Math.sin(angle) * force * 2.0;
         }
 
-        // Apply friction and update position (dampened for slower ease-back)
         dot.vx *= 0.90;
         dot.vy *= 0.90;
         dot.x += dot.vx;
@@ -288,7 +281,7 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           align-items: center;
           justify-content: center;
           padding: 8px 16px;
-          color: #0d1f1c; /* Dark text */
+          color: #0d1f1c;
           text-decoration: none;
           font-size: 1rem;
           font-weight: 700;
@@ -307,7 +300,7 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #fb8569; /* Solid coral fill */
+          background-color: #fb8569;
           z-index: -1;
           transform-origin: bottom;
           transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
@@ -322,7 +315,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         }
       `}</style>
 
-      {/* Canvas Background */}
       <canvas
         ref={canvasRef}
         style={{
@@ -336,7 +328,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         }}
       />
 
-      {/* Header */}
       <header style={{
         position: 'absolute',
         top: 0,
@@ -378,7 +369,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         </nav>
       </header>
 
-      {/* Main Content */}
       <main style={{
         position: 'relative',
         zIndex: 5,
@@ -426,7 +416,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         boxShadow: '0 20px 80px rgba(0, 0, 0, 0.6)',
         boxSizing: 'border-box',
       }}>
-        {/* About Part */}
         <div id="about" style={{
           transform: activeHighlight === 'about' ? 'scale(1.025)' : 'scale(1)',
           transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -484,10 +473,8 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           </div>
         </div>
 
-        {/* Separator Gap inside the single container */}
         <div style={{ height: '100px' }} />
 
-        {/* Navigation Part */}
         <div id="navigation" style={{
           transform: activeHighlight === 'navigation' ? 'scale(1.025)' : 'scale(1)',
           transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -538,11 +525,10 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         </div>
       </section>
 
-      {/* Pricing Section (Part 04) */}
       <section id="pricing" style={{
         position: 'relative',
         zIndex: 5,
-        width: '90%',
+        width: '60%',
         margin: '0 auto 100px auto',
         backgroundColor: '#0d1f1c',
         borderRadius: '24px',
@@ -562,18 +548,10 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         </div>
         <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.2)', width: '100%', margin: '16px 0 60px 0' }} />
         
-        {/* Container for Visuals and Pricing Cards */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '20px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
           
-          {/* Left Interactive Sphere Visual */}
-          <div style={{ display: 'flex', justifyContent: 'center', flex: '1 1 200px', minWidth: '200px' }}>
-            <PricingVisual />
-          </div>
-
-          {/* Pricing Cards Container */}
-          <div style={{ display: 'flex', gap: '30px', flex: '3 1 600px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '30px', flex: '1 1 auto', justifyContent: 'center', flexWrap: 'wrap' }}>
             
-            {/* Student Card */}
             <div style={{
               flex: '1 1 280px',
               maxWidth: '360px',
@@ -594,8 +572,7 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
 
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '4px' }}>
                 <div style={{ position: 'relative', display: 'inline-block' }}>
-                  <span style={{ fontSize: '2.5rem', fontWeight: '700', color: 'rgba(251, 133, 105, 0.3)' }}>$5<span style={{ fontSize: '1.1rem', fontWeight: '400' }}>/mo</span></span>
-                  {/* Diagonal cut line */}
+                  <span style={{ fontSize: '2.5rem', fontWeight: '700', color: 'rgba(251, 133, 105, 0.3)' }}>$2<span style={{ fontSize: '1.1rem', fontWeight: '400' }}>/mo</span></span>
                   <div style={{
                     position: 'absolute',
                     top: '55%',
@@ -623,7 +600,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
               </a>
             </div>
 
-            {/* Institutions Card */}
             <div style={{
               flex: '1 1 280px',
               maxWidth: '360px',
@@ -641,10 +617,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
               <div>
                 <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: '0 0 8px 0', fontFamily: '"Satoshi", sans-serif', letterSpacing: '0.05em' }}>INSTITUTIONS</h3>
                 <p style={{ fontSize: '0.9rem', opacity: 0.7, margin: 0, fontFamily: '"Satoshi", sans-serif' }}>Scale learning across your organization</p>
-              </div>
-
-              <div style={{ margin: '30px 0' }}>
-                <span style={{ fontSize: '2rem', fontWeight: '800', opacity: 0.8, letterSpacing: '0.1em' }}>YET TO COME</span>
               </div>
 
               <div style={{
@@ -665,15 +637,9 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
 
           </div>
 
-          {/* Right Interactive Sphere Visual */}
-          <div style={{ display: 'flex', justifyContent: 'center', flex: '1 1 200px', minWidth: '200px' }}>
-            <PricingVisual />
-          </div>
-
         </div>
       </section>
 
-      {/* Footer Section */}
       <footer id="contact" style={{
         position: 'relative',
         zIndex: 5,
@@ -684,10 +650,8 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
         color: '#fb8569',
         fontFamily: '"Satoshi", sans-serif',
       }}>
-        {/* Top border bar */}
         <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.25)', width: '100%', marginBottom: '24px' }} />
 
-        {/* First Row: Brand, terms, socials */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -702,7 +666,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
             <span style={{ fontSize: '1.3rem', fontWeight: '800', letterSpacing: '0.15em' }}>SIMPLY</span>
           </div>
 
-          {/* Social Links styled like reference brackets */}
           <div style={{ display: 'flex', gap: '16px' }}>
             <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
               <span>[ </span>
@@ -722,10 +685,8 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           </div>
         </div>
 
-        {/* Middle border bar */}
         <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.25)', width: '100%', margin: '24px 0' }} />
 
-        {/* Features Section */}
         <div style={{ textAlign: 'left', marginBottom: '40px' }}>
           <h4 style={{ fontSize: '1.1rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 16px 0' }}>FEATURES</h4>
           <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', fontSize: '0.9rem', fontWeight: '600', letterSpacing: '0.1em' }}>
@@ -748,10 +709,8 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           </div>
         </div>
 
-        {/* Very thin separator line */}
         <div style={{ height: '1px', backgroundColor: 'rgba(251, 133, 105, 0.1)', width: '100%', marginBottom: '24px' }} />
 
-        {/* Copyright & Made with love Row */}
         <div style={{
           display: 'flex',
           justifyContent: 'flex-start',

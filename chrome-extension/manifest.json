@@ -8,6 +8,10 @@
         "https://*.youtube.com/*",
         "http://localhost:8000/*"
     ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Simply Assistant"
+    },
     "background" : {
         "service_worker" : "background.js"
     },

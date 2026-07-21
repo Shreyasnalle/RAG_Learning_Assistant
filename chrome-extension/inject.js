@@ -1,5 +1,4 @@
 (function () {
-    console.log("Caption interceptor loaded") ;
     const originalFetch = window.fetch;
     const originalXHR = window.XMLHttpRequest.prototype.open;
     window.fetch = async function (...args) {
@@ -16,7 +15,6 @@
             try {
                 const clonedResponse = response.clone();
                 const rawText = await clonedResponse.text();
-                console.log("Caption request detected via fetch");
                 const trackUrlStr = args[0] ? args[0].toString() : "";
                 const videoIdMatch = trackUrlStr.match(/[?&]v=([^&]+)/);
                 const videoUrl = videoIdMatch
@@ -54,7 +52,6 @@
             ) {
                 try {
                     const rawText = this.responseText;
-                    console.log("Caption request detected via XHR");
                     const trackUrlStr = url ? url.toString() : "";
                     const videoIdMatch = trackUrlStr.match(/[?&]v=([^&]+)/);
                     const videoUrl = videoIdMatch
@@ -80,5 +77,4 @@
         })
         return originalXHR.apply(this, [method, url, ...rest]);
     }
-    console.log("Interception hook attached");
 })();

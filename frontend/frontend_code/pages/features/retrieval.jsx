@@ -110,10 +110,8 @@ export default function RetrievalPage({ onNavigate }) {
         }
       `}</style>
 
-      {/* Canvas Background */}
       <DotGridBackground />
 
-      {/* Main Container */}
       <div style={{
         position: 'relative',
         zIndex: 5,
@@ -126,7 +124,6 @@ export default function RetrievalPage({ onNavigate }) {
         border: '1.5px solid rgba(251, 133, 105, 0.2)',
         boxSizing: 'border-box'
       }}>
-        {/* Back Link */}
         <div style={{ position: 'absolute', top: '25px', left: '30px', display: 'inline-block' }} className="nav-link-wrapper">
           <a
             href="#"
@@ -159,7 +156,6 @@ export default function RetrievalPage({ onNavigate }) {
           />
         </div>
 
-        {/* Title */}
         <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '40px' }}>
           <h1 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -175,9 +171,7 @@ export default function RetrievalPage({ onNavigate }) {
           </p>
         </div>
 
-        {/* content columns */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
-          {/* How it works */}
           <div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: '500', marginBottom: '20px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               How it works
@@ -209,7 +203,6 @@ export default function RetrievalPage({ onNavigate }) {
             </div>
           </div>
 
-          {/* Interactive Example */}
           <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <h2 style={{ fontSize: '1.4rem', fontWeight: '500', marginBottom: '20px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               Retrieval Example

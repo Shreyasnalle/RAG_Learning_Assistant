@@ -39,7 +39,6 @@ const ProductivityVisualizer = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw ground baseline (single-line road)
       ctx.beginPath();
       ctx.moveTo(20, 202);
       ctx.lineTo(360, 202);
@@ -48,7 +47,6 @@ const ProductivityVisualizer = () => {
       ctx.stroke();
 
       columns.forEach(col => {
-        // Simple bounding box checks for hover (using isometric width/height area)
         const isHovered = (
           mouse.x >= col.x - col.width / 2 - 10 &&
           mouse.x <= col.x + col.width / 2 + 10 &&
@@ -61,18 +59,16 @@ const ProductivityVisualizer = () => {
         col.currentScale += (col.targetScale - col.currentScale) * 0.15;
 
         if (isHovered) {
-          col.dotOffset += 0.8; // dots move upward
+          col.dotOffset += 0.8;
         } else {
-          // Slow down dots when not hovered
           col.dotOffset += 0.05;
         }
 
         const s = col.currentScale;
         const W = col.width * s;
         const H = col.height * s;
-        const skew = W * 0.35; // isometric skew
+        const skew = W * 0.35;
 
-        // Compute points for isometric projection centered at col.x, col.y
         const topPeak = { x: col.x, y: col.y - H };
         const topLeft = { x: col.x - W / 2, y: col.y - H + skew / 2 };
         const topBottom = { x: col.x, y: col.y - H + skew };
@@ -82,7 +78,6 @@ const ProductivityVisualizer = () => {
         const bottomLeft = { x: col.x - W / 2, y: col.y - skew / 2 };
         const bottomRight = { x: col.x + W / 2, y: col.y - skew / 2 };
 
-        // 0. Draw Floor Shadow
         ctx.save();
         ctx.beginPath();
         const centerY = col.y - skew / 2;
@@ -95,7 +90,6 @@ const ProductivityVisualizer = () => {
         ctx.fill();
         ctx.restore();
 
-        // 1. Draw Left Face (outline, filled dark teal background gradient)
         ctx.beginPath();
         ctx.moveTo(topLeft.x, topLeft.y);
         ctx.lineTo(topBottom.x, topBottom.y);
@@ -113,9 +107,7 @@ const ProductivityVisualizer = () => {
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
-        // Draw dot grid inside Left Face
         ctx.save();
-        // Create clipping region for the left face to contain rising dots
         ctx.beginPath();
         ctx.moveTo(topLeft.x, topLeft.y);
         ctx.lineTo(topBottom.x, topBottom.y);
@@ -128,15 +120,13 @@ const ProductivityVisualizer = () => {
         const numDotCols = 5;
         const dotSpacingY = 12;
         for (let c = 0; c < numDotCols; c++) {
-          const u = (c + 0.5) / numDotCols; // horizontal ratio
+          const u = (c + 0.5) / numDotCols;
           const dx = -W/2 + u * (W/2);
           const px = col.x + dx;
 
           const yTop = topLeft.y * (1 - u) + topBottom.y * u;
           const yBottom = bottomLeft.y * (1 - u) + bottomCenter.y * u;
-          const totalH = yBottom - yTop;
 
-          // Compute rising Y starting points
           const startY = yBottom - (col.dotOffset % dotSpacingY);
           for (let py = startY; py >= yTop; py -= dotSpacingY) {
             ctx.beginPath();
@@ -146,7 +136,6 @@ const ProductivityVisualizer = () => {
         }
         ctx.restore();
 
-        // 2. Draw Right Face (solid fill matching deep dark gradient + outer stroke)
         ctx.beginPath();
         ctx.moveTo(topBottom.x, topBottom.y);
         ctx.lineTo(topRight.x, topRight.y);
@@ -164,7 +153,6 @@ const ProductivityVisualizer = () => {
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
-        // Draw dot grid inside Right Face
         ctx.save();
         ctx.beginPath();
         ctx.moveTo(topBottom.x, topBottom.y);
@@ -176,7 +164,7 @@ const ProductivityVisualizer = () => {
 
         ctx.fillStyle = 'rgba(251, 133, 105, 0.75)';
         for (let c = 0; c < numDotCols; c++) {
-          const u = (c + 0.5) / numDotCols; // horizontal ratio
+          const u = (c + 0.5) / numDotCols;
           const px = col.x + u * (W / 2);
 
           const yTop = topBottom.y * (1 - u) + topRight.y * u;
@@ -191,7 +179,6 @@ const ProductivityVisualizer = () => {
         }
         ctx.restore();
 
-        // 3. Draw Top Face (solid orange gradient fill)
         ctx.beginPath();
         ctx.moveTo(topPeak.x, topPeak.y);
         ctx.lineTo(topLeft.x, topLeft.y);
@@ -209,7 +196,6 @@ const ProductivityVisualizer = () => {
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
-        // 4. Draw Center Highlight Line (front vertical edge to enhance 3D corner depth)
         ctx.beginPath();
         ctx.moveTo(topBottom.x, topBottom.y);
         ctx.lineTo(bottomCenter.x, bottomCenter.y);
@@ -248,7 +234,7 @@ const ProductivityVisualizer = () => {
 export default function AccountPage({ onNavigate }) {
   const canvasRef = useRef(null);
   const [isSignUp, setIsSignUp] = useState(false);
-  const [transitionState, setTransitionState] = useState('idle'); // 'idle', 'sweeping-in', 'sweeping-out'
+  const [transitionState, setTransitionState] = useState('idle');
 
   const handleToggleForm = (targetSignUp) => {
     if (transitionState !== 'idle') return;
@@ -311,13 +297,11 @@ export default function AccountPage({ onNavigate }) {
         const dy = mouse.y - dot.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Spring force returning to base position slowly
         const springForceX = (dot.baseX - dot.x) * 0.025;
         const springForceY = (dot.baseY - dot.y) * 0.025;
         dot.vx += springForceX;
         dot.vy += springForceY;
 
-        // If mouse is close and moving, apply jitter
         if (distance < INTERACTION_RADIUS && isMouseMoving) {
           const force = (INTERACTION_RADIUS - distance) / INTERACTION_RADIUS;
           const angle = Math.random() * Math.PI * 2;
@@ -325,7 +309,6 @@ export default function AccountPage({ onNavigate }) {
           dot.vy += Math.sin(angle) * force * 2.0;
         }
 
-        // Apply friction and update position (dampened for slower ease-back)
         dot.vx *= 0.90;
         dot.vy *= 0.90;
         dot.x += dot.vx;
@@ -409,7 +392,7 @@ export default function AccountPage({ onNavigate }) {
           justify-content: center;
           width: 100%;
           padding: 14px 20px;
-          color: #0d1f1c; /* Dark text */
+          color: #0d1f1c;
           text-decoration: none;
           font-size: 1rem;
           font-weight: 700;
@@ -430,7 +413,7 @@ export default function AccountPage({ onNavigate }) {
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #fb8569; /* Solid coral fill */
+          background-color: #fb8569;
           z-index: -1;
           transform-origin: bottom;
           transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
@@ -478,7 +461,6 @@ export default function AccountPage({ onNavigate }) {
         }
       `}</style>
 
-      {/* Canvas Background */}
       <canvas
         ref={canvasRef}
         style={{
@@ -492,7 +474,6 @@ export default function AccountPage({ onNavigate }) {
         }}
       />
 
-      {/* Account Card Container */}
       <div style={{
         position: 'relative',
         zIndex: 5,
@@ -508,9 +489,8 @@ export default function AccountPage({ onNavigate }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        overflow: 'hidden' // Important to clip the orange sweep
+        overflow: 'hidden'
       }}>
-        {/* Orange Transition Sweep Overlay */}
         <div style={{
           position: 'absolute',
           top: 0,
@@ -525,7 +505,6 @@ export default function AccountPage({ onNavigate }) {
           pointerEvents: 'none'
         }} />
 
-        {/* Back Link to Landing Page */}
         <div style={{ position: 'absolute', top: '20px', left: '30px', zIndex: 6 }}>
           <a href="#" onClick={(e) => { e.preventDefault(); onNavigate(); }} style={{
             color: '#fb8569',
@@ -540,7 +519,6 @@ export default function AccountPage({ onNavigate }) {
         </div>
 
         <div className="account-card-content" style={{ flexDirection: isSignUp ? 'row-reverse' : 'row' }}>
-          {/* Left Column: Curated Tagline & Intro */}
           <div className="left-column" style={{
             flex: '1 1 45%',
             paddingRight: isSignUp ? '0' : '20px',
@@ -573,10 +551,8 @@ export default function AccountPage({ onNavigate }) {
             <ProductivityVisualizer />
           </div>
 
-          {/* Center Orange Divider */}
           <div className="account-divider" />
 
-          {/* Right Column: Dynamic Form (Sign In / Sign Up) */}
           <div style={{
             flex: '1 1 45%',
             display: 'flex',
