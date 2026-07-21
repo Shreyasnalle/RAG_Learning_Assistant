@@ -39,19 +39,12 @@ const ProductivityVisualizer = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw isometric ground platform (oval ring + inner depth ring)
+      // Draw ground baseline (single-line road)
       ctx.beginPath();
-      ctx.ellipse(190, 202, 165, 30, 0, 0, 2 * Math.PI);
-      ctx.fillStyle = '#081311';
-      ctx.fill();
+      ctx.moveTo(20, 202);
+      ctx.lineTo(360, 202);
       ctx.strokeStyle = '#fb8569';
       ctx.lineWidth = 1.5;
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.ellipse(190, 202, 150, 25, 0, 0, 2 * Math.PI);
-      ctx.strokeStyle = 'rgba(251, 133, 105, 0.3)';
-      ctx.lineWidth = 1;
       ctx.stroke();
 
       columns.forEach(col => {
@@ -111,8 +104,8 @@ const ProductivityVisualizer = () => {
         ctx.closePath();
         
         const leftGrad = ctx.createLinearGradient(topLeft.x, topLeft.y, bottomCenter.x, bottomCenter.y);
-        leftGrad.addColorStop(0, '#1c3d37');
-        leftGrad.addColorStop(1, '#0a1715');
+        leftGrad.addColorStop(0, '#242424');
+        leftGrad.addColorStop(1, '#101010');
         ctx.fillStyle = leftGrad;
         ctx.fill();
         
@@ -153,7 +146,7 @@ const ProductivityVisualizer = () => {
         }
         ctx.restore();
 
-        // 2. Draw Right Face (solid fill matching deep teal gradient + outer stroke)
+        // 2. Draw Right Face (solid fill matching deep dark gradient + outer stroke)
         ctx.beginPath();
         ctx.moveTo(topBottom.x, topBottom.y);
         ctx.lineTo(topRight.x, topRight.y);
@@ -162,14 +155,41 @@ const ProductivityVisualizer = () => {
         ctx.closePath();
         
         const rightGrad = ctx.createLinearGradient(topBottom.x, topBottom.y, bottomRight.x, bottomRight.y);
-        rightGrad.addColorStop(0, '#122824');
-        rightGrad.addColorStop(1, '#060e0d');
+        rightGrad.addColorStop(0, '#1a1a1a');
+        rightGrad.addColorStop(1, '#0a0a0a');
         ctx.fillStyle = rightGrad;
         ctx.fill();
         
         ctx.strokeStyle = '#fb8569';
         ctx.lineWidth = 1.5;
         ctx.stroke();
+
+        // Draw dot grid inside Right Face
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(topBottom.x, topBottom.y);
+        ctx.lineTo(topRight.x, topRight.y);
+        ctx.lineTo(bottomRight.x, bottomRight.y);
+        ctx.lineTo(bottomCenter.x, bottomCenter.y);
+        ctx.closePath();
+        ctx.clip();
+
+        ctx.fillStyle = 'rgba(251, 133, 105, 0.75)';
+        for (let c = 0; c < numDotCols; c++) {
+          const u = (c + 0.5) / numDotCols; // horizontal ratio
+          const px = col.x + u * (W / 2);
+
+          const yTop = topBottom.y * (1 - u) + topRight.y * u;
+          const yBottom = bottomCenter.y * (1 - u) + bottomRight.y * u;
+
+          const startY = yBottom - (col.dotOffset % dotSpacingY);
+          for (let py = startY; py >= yTop; py -= dotSpacingY) {
+            ctx.beginPath();
+            ctx.arc(px, py, 1.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        ctx.restore();
 
         // 3. Draw Top Face (solid orange gradient fill)
         ctx.beginPath();
