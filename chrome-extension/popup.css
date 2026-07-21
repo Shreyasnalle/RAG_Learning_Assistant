@@ -264,3 +264,196 @@ html, body {
 .send-btn:hover .send-icon {
   stroke: #ffffff;
 }
+
+/* Auth Gate Overlay */
+.auth-gate {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0d1f1c;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.auth-gate-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+}
+
+.auth-gate-icon {
+  margin-bottom: 16px;
+}
+
+.auth-gate-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fb8569;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.extension-login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.extension-login-form input {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(251, 133, 105, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.extension-login-form input:focus {
+  border-color: #fb8569;
+}
+
+.ext-login-btn {
+  padding: 10px;
+  background-color: #fb8569;
+  color: #0d1f1c;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ext-login-btn:hover {
+  opacity: 0.9;
+}
+
+.ext-error {
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.auth-gate-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(251, 133, 105, 0.2);
+  margin: 12px 0;
+}
+
+.auth-gate-subtext {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.auth-gate-link {
+  color: #fb8569;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: underline;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+
+.auth-gate-link:hover {
+  opacity: 0.8;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 16px;
+  max-height: 440px;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(251, 133, 105, 0.3);
+  border-radius: 4px;
+}
+
+.msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.msg-user {
+  align-self: flex-end;
+  background-color: #fb8569;
+  color: #0d1f1c;
+  font-weight: 600;
+  border-bottom-right-radius: 2px;
+}
+
+.msg-assistant {
+  align-self: flex-start;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(251, 133, 105, 0.2);
+  color: #ffffff;
+  border-bottom-left-radius: 2px;
+}
+
+.msg-loading {
+  align-self: flex-start;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.clarification-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.clarification-btn {
+  padding: 8px 12px;
+  background-color: rgba(251, 133, 105, 0.15);
+  border: 1px solid #fb8569;
+  color: #fb8569;
+  border-radius: 6px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.clarification-btn:hover {
+  background-color: #fb8569;
+  color: #0d1f1c;
+}
+

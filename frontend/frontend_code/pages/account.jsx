@@ -231,13 +231,86 @@ const ProductivityVisualizer = () => {
   );
 };
 
-export default function AccountPage({ onNavigate }) {
+export default function AccountPage({ onNavigate, onLoginSuccess }) {
   const canvasRef = useRef(null);
   const [isSignUp, setIsSignUp] = useState(false);
   const [transitionState, setTransitionState] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const API_BASE = 'http://localhost:8000';
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+    setIsLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const result = await res.json();
+      if (result.success) {
+        localStorage.setItem('user_id', result.user_id);
+        localStorage.setItem('email', result.email);
+        if (result.access_token) {
+          localStorage.setItem('access_token', result.access_token);
+        }
+        if (onLoginSuccess) onLoginSuccess();
+      } else {
+        setErrorMessage(result.error || 'Sign in failed');
+      }
+    } catch (err) {
+      setErrorMessage('Could not connect to server');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, name, mobile_number: mobileNumber })
+      });
+      const result = await res.json();
+      if (result.success) {
+        localStorage.setItem('user_id', result.user_id);
+        localStorage.setItem('email', result.email);
+        if (onLoginSuccess) onLoginSuccess();
+      } else {
+        setErrorMessage(result.error || 'Sign up failed');
+      }
+    } catch (err) {
+      setErrorMessage('Could not connect to server');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleToggleForm = (targetSignUp) => {
     if (transitionState !== 'idle') return;
+    setErrorMessage('');
+    setEmail('');
+    setPassword('');
+    setName('');
+    setMobileNumber('');
+    setConfirmPassword('');
     setTransitionState('sweeping-in');
     setTimeout(() => {
       setIsSignUp(targetSignUp);
@@ -406,6 +479,11 @@ export default function AccountPage({ onNavigate }) {
           background-color: transparent;
         }
 
+        .continue-btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
         .continue-btn::before {
           content: '';
           position: absolute;
@@ -442,6 +520,14 @@ export default function AccountPage({ onNavigate }) {
           width: 1.5px;
           background-color: rgba(251, 133, 105, 0.3);
           margin: 0 40px;
+        }
+
+        .error-message {
+          color: #ff6b6b;
+          font-size: 0.85rem;
+          text-align: center;
+          margin-top: 12px;
+          letter-spacing: 0.05em;
         }
 
         @media (max-width: 768px) {
@@ -573,24 +659,30 @@ export default function AccountPage({ onNavigate }) {
                   SIGN IN
                 </h2>
 
-                <form onSubmit={(e) => e.preventDefault()} style={{ width: '100%' }}>
+                <form onSubmit={handleSignIn} style={{ width: '100%' }}>
                   <input 
                     type="email" 
                     placeholder="EMAIL ID" 
                     className="input-field"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required 
                   />
                   <input 
                     type="password" 
                     placeholder="PASSWORD" 
                     className="input-field"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required 
                   />
                   
-                  <button type="submit" className="continue-btn">
-                    CONTINUE
+                  <button type="submit" className="continue-btn" disabled={isLoading}>
+                    {isLoading ? 'SIGNING IN...' : 'CONTINUE'}
                   </button>
                 </form>
+
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
 
                 <div 
                   onClick={() => handleToggleForm(true)}
@@ -625,12 +717,14 @@ export default function AccountPage({ onNavigate }) {
                   CREATE ACCOUNT
                 </h2>
 
-                <form onSubmit={(e) => e.preventDefault()} style={{ width: '100%' }}>
+                <form onSubmit={handleSignUp} style={{ width: '100%' }}>
                   <input 
                     type="text" 
                     placeholder="NAME" 
                     className="input-field"
                     style={{ marginBottom: '12px' }}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required 
                   />
                   <input 
@@ -638,6 +732,8 @@ export default function AccountPage({ onNavigate }) {
                     placeholder="MOBILE NUMBER" 
                     className="input-field"
                     style={{ marginBottom: '12px' }}
+                    value={mobileNumber}
+                    onChange={(e) => setMobileNumber(e.target.value)}
                     required 
                   />
                   <input 
@@ -645,6 +741,8 @@ export default function AccountPage({ onNavigate }) {
                     placeholder="EMAIL ID" 
                     className="input-field"
                     style={{ marginBottom: '12px' }}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required 
                   />
                   <input 
@@ -652,6 +750,8 @@ export default function AccountPage({ onNavigate }) {
                     placeholder="PASSWORD" 
                     className="input-field"
                     style={{ marginBottom: '12px' }}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required 
                   />
                   <input 
@@ -659,13 +759,17 @@ export default function AccountPage({ onNavigate }) {
                     placeholder="CONFIRM PASSWORD" 
                     className="input-field"
                     style={{ marginBottom: '16px' }}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     required 
                   />
                   
-                  <button type="submit" className="continue-btn">
-                    CREATE ACCOUNT
+                  <button type="submit" className="continue-btn" disabled={isLoading}>
+                    {isLoading ? 'CREATING...' : 'CREATE ACCOUNT'}
                   </button>
                 </form>
+
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
 
                 <div 
                   onClick={() => handleToggleForm(false)}

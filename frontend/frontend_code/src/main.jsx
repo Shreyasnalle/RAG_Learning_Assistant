@@ -7,6 +7,22 @@ import SummaryPage from '../pages/features/summary.jsx'
 
 function App() {
   const [page, setPage] = useState('landing');
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  });
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', 'true');
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('email');
+    localStorage.removeItem('access_token');
+  };
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -39,7 +55,15 @@ function App() {
   };
 
   if (page === 'account') {
-    return <AccountPage onNavigate={() => navigateTo('landing')} />;
+    return (
+      <AccountPage 
+        onNavigate={() => navigateTo('landing')} 
+        onLoginSuccess={() => {
+          handleLoginSuccess();
+          navigateTo('landing');
+        }}
+      />
+    );
   }
   if (page === 'retrieval') {
     return <RetrievalPage onNavigate={() => navigateTo('landing')} />;
@@ -49,6 +73,8 @@ function App() {
   }
   return (
     <LandingPage 
+      isLoggedIn={isLoggedIn}
+      onLogout={handleLogout}
       onNavigateToAccount={() => navigateTo('account')} 
       onNavigateToRetrieval={() => navigateTo('retrieval')}
       onNavigateToSummary={() => navigateTo('summary')}

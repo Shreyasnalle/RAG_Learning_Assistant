@@ -108,9 +108,20 @@ const PricingVisual = () => {
   );
 };
 
-export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval, onNavigateToSummary }) {
+export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount, onNavigateToRetrieval, onNavigateToSummary }) {
   const canvasRef = useRef(null);
   const [activeHighlight, setActiveHighlight] = useState(null);
+
+  const handleProtectedAction = (e, defaultTargetUrl) => {
+    e.preventDefault();
+    if (!isLoggedIn) {
+      onNavigateToAccount();
+    } else {
+      if (defaultTargetUrl) {
+        window.location.href = defaultTargetUrl;
+      }
+    }
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -363,9 +374,15 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           {navItem('PRICING', 'pricing')}
           {navItem('CONTACT', 'contact')}
 
-          <a href="#/account" onClick={(e) => { e.preventDefault(); onNavigateToAccount(); }} className="signup-btn">
-            SIGN IN/SIGN UP
-          </a>
+          {isLoggedIn ? (
+            <a href="#" onClick={(e) => { e.preventDefault(); onLogout(); }} className="signup-btn">
+              LOGOUT
+            </a>
+          ) : (
+            <a href="#/account" onClick={(e) => { e.preventDefault(); onNavigateToAccount(); }} className="signup-btn">
+              SIGN IN/SIGN UP
+            </a>
+          )}
         </nav>
       </header>
 
@@ -513,7 +530,7 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
               "Download SIMPLY from browser extensions"
             </h3>
             
-            <a href="#" className="signup-btn" style={{
+            <a href="#" onClick={(e) => handleProtectedAction(e)} className="signup-btn" style={{
               padding: '12px 28px',
               fontSize: '1rem',
               fontWeight: '700',
@@ -586,7 +603,7 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
                 <span style={{ fontSize: '3rem', fontWeight: '800', color: '#fb8569', lineHeight: '1' }}>FREE</span>
               </div>
 
-              <a href="#" className="signup-btn" style={{
+              <a href="#" onClick={(e) => handleProtectedAction(e)} className="signup-btn" style={{
                 width: '100%',
                 boxSizing: 'border-box',
                 padding: '12px 20px',
@@ -669,11 +686,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           <div style={{ display: 'flex', gap: '16px' }}>
             <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
               <span>[ </span>
-              <span style={{ fontWeight: 'bold' }}>f</span>
-              <span> ]</span>
-            </a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
-              <span>[ </span>
               <span style={{ fontWeight: 'bold' }}>in</span>
               <span> ]</span>
             </a>
@@ -719,8 +731,6 @@ export default function LandingPage({ onNavigateToAccount, onNavigateToRetrieval
           opacity: 0.7,
           letterSpacing: '0.05em'
         }}>
-          <span>© 2026 Make Design. All rights reserved.</span>
-          <span style={{ margin: '0 12px' }}>|</span>
           <span>Made with <span style={{ color: '#ff3b30' }}>❤️</span> by Shreyas Nalle</span>
         </div>
       </footer>

@@ -3,7 +3,7 @@
     "name" : "Caption Interceptor",
     "version" : "1.0",
     "description" : "Intercepts YouTube captions and sends to backend",
-    "permissions" : ["activeTab"],
+    "permissions" : ["activeTab", "storage"],
     "host_permissions" : [
         "https://*.youtube.com/*",
         "http://localhost:8000/*"

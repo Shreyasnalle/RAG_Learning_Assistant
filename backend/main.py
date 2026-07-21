@@ -18,7 +18,7 @@ app = FastAPI(title="Simply backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://www.youtube.com", "https://youtube.com"],
+    allow_origins=["https://www.youtube.com", "https://youtube.com", "http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
