@@ -13,6 +13,7 @@ from query_router import QueryRouter
 from caption_parser import CaptionParser
 from chunk_merger import ChunkMerger
 from database_injector import ChunkInjector
+from db_utils import get_db_connection
 
 app = FastAPI(title="Simply backend")
 
@@ -123,6 +124,22 @@ async def login(data: SignInData):
 
 @app.post("/api/ingest")
 async def ingest_video(data: IngestData):
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute("SELECT COUNT(*) FROM video_chunks WHERE video_id = %s", (data.video_url,))
+            count = cur.fetchone()[0]
+        conn.close()
+        if count > 0:
+            return {
+                "success": True,
+                "already_ingested": True,
+                "chunks_stored": count,
+                "video_url": data.video_url
+            }
+    except Exception as e:
+        print(f"Check existing chunks warning: {e}")
+
     caption_file = f"raw_captions/{data.file_id}.txt"
     if not os.path.exists(caption_file):
         return {"success": False, "error": "Caption file not found for this file_id"}
@@ -133,9 +150,11 @@ async def ingest_video(data: IngestData):
     chunks = merger.merge_segments(segments, target_duration=45.0)
 
     injector = ChunkInjector()
-    injector.connect()
-    injector.store_video_chunks(data.video_url, chunks)
-    injector.close()
+    try:
+        injector.connect()
+        injector.store_video_chunks(data.video_url, chunks)
+    finally:
+        injector.close()
 
     return {
         "success": True,

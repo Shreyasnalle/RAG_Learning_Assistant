@@ -36,6 +36,19 @@ html, body {
   z-index: 10;
 }
 
+.brand {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fb8569;
+  background: none;
+  border: none;
+  padding: 0;
+  user-select: none;
+}
+
 .signup-btn {
   position: relative;
   display: inline-flex;
@@ -44,15 +57,17 @@ html, body {
   padding: 6px 14px;
   color: #0d1f1c;
   font-family: 'Satoshi', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  border: none;
   border-radius: 2px;
   overflow: hidden;
   transition: color 0.3s ease;
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .signup-btn::before {
@@ -76,32 +91,11 @@ html, body {
   transform: scaleY(0);
 }
 
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: rgba(251, 133, 105, 0.1);
-  border: 1px solid rgba(251, 133, 105, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.user-avatar:hover {
-  background-color: rgba(251, 133, 105, 0.25);
-  border-color: #fb8569;
-  transform: scale(1.08);
-}
-
 .content {
   flex: 1;
-  padding: 24px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
   overflow: hidden;
 }
@@ -110,7 +104,19 @@ html, body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  justify-content: flex-end;
   z-index: 1;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.chat-section.empty-state {
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-section.empty-state .chat-messages {
+  display: none;
 }
 
 .input-wrapper {
@@ -133,7 +139,7 @@ html, body {
   height: 44px;
   border-radius: 50%;
   background-color: rgba(13, 31, 28, 0.85);
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(251, 133, 105, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,12 +149,13 @@ html, body {
 }
 
 .plus-btn svg {
-  stroke: #ffffff;
+  stroke: #fb8569;
 }
 
 .plus-btn:hover {
-  border-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fb8569;
+  background-color: rgba(251, 133, 105, 0.15);
+  box-shadow: 0 0 12px rgba(251, 133, 105, 0.25);
 }
 
 .plus-btn:active {
@@ -160,7 +167,7 @@ html, body {
   bottom: 56px;
   left: 0;
   background-color: #0d1f1c;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(251, 133, 105, 0.3);
   border-radius: 12px;
   min-width: 150px;
   padding: 6px;
@@ -196,22 +203,22 @@ html, body {
 }
 
 .dropdown-item svg {
-  stroke: #ffffff;
+  stroke: #fb8569;
   transition: stroke 0.2s ease;
 }
 
 .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background-color: rgba(251, 133, 105, 0.15);
+  color: #fb8569;
 }
 
 .input-wrapper input {
   flex: 1;
   padding: 14px 50px 14px 18px;
   background-color: rgba(13, 31, 28, 0.92);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border: 1.5px solid rgba(251, 133, 105, 0.4);
   border-radius: 24px;
-  color: #ffffff;
+  color: #fb8569;
   font-family: 'Satoshi', sans-serif;
   font-size: 0.9rem;
   outline: none;
@@ -220,19 +227,19 @@ html, body {
 
 .input-wrapper input::placeholder {
   font-family: 'Satoshi', sans-serif;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(251, 133, 105, 0.6);
   font-weight: 500;
   letter-spacing: 0.05em;
 }
 
 .input-wrapper input:hover {
-  border-color: rgba(255, 255, 255, 0.45);
+  border-color: #fb8569;
 }
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  border-color: #fb8569;
+  box-shadow: 0 0 14px rgba(251, 133, 105, 0.3);
   background-color: rgba(13, 31, 28, 0.92);
 }
 
@@ -241,14 +248,14 @@ html, body {
   right: 6px;
   width: 36px;
   height: 36px;
-  border: 1.5px solid #ffffff;
+  border: 1.5px solid #fb8569;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: #fb8569;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .send-btn .send-icon {
@@ -258,11 +265,12 @@ html, body {
 
 .send-btn:hover {
   background-color: #0d1f1c;
-  border-color: #ffffff;
+  border-color: #fb8569;
+  box-shadow: 0 0 10px rgba(251, 133, 105, 0.4);
 }
 
 .send-btn:hover .send-icon {
-  stroke: #ffffff;
+  stroke: #fb8569;
 }
 
 /* Auth Gate Overlay */
@@ -456,4 +464,3 @@ html, body {
   background-color: #fb8569;
   color: #0d1f1c;
 }
-

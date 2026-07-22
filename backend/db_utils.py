@@ -2,18 +2,23 @@ import os
 import psycopg2 
 from dotenv import load_dotenv
 load_dotenv("supabase_key.env")
-def get_db_connection() :
+import time
+
+def get_db_connection(max_retries: int = 3, retry_delay: float = 0.5) :
     db_url = os.getenv("SUPABASE_DB_URL")
     if not db_url :
-        raise ValueError(
-            "supabase db url not found"
-        )
-    try :
-        conn = psycopg2.connect(db_url)
-        print(f"connection of the pgvector to the supabase done")
-        return conn
-    except Exception as e :
-        print(f"could not connect to the supabase")
-        raise e 
+        raise ValueError("supabase db url not found")
+    last_exception = None
+    for attempt in range(max_retries) :
+        try :
+            conn = psycopg2.connect(db_url)
+            print("connection of the pgvector to the supabase done")
+            return conn
+        except Exception as e :
+            last_exception = e
+            print(f"could not connect to the supabase (attempt {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1 :
+                time.sleep(retry_delay)
+    raise last_exception 
 if __name__ == "__main__":
     get_db_connection()

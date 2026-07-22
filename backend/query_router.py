@@ -19,18 +19,21 @@ def classify_intent(question : str) -> str :
 
 def get_stored_chunks(video_url : str) -> List[Dict] :
     conn = get_db_connection()
-    with conn.cursor() as cur :
-        cur.execute("SELECT chunk_text, start_time, end_time FROM video_chunks WHERE video_id = %s ORDER BY chunk_index", (video_url,))
-        rows = cur.fetchall()
-    conn.close()
-    return [
-        {
-            "text" : row[0],
-            "start_time" : row[1],
-            "end_time" : row[2]
-        }
-        for row in rows
-    ]
+    try :
+        with conn.cursor() as cur :
+            cur.execute("SELECT chunk_text, start_time, end_time FROM video_chunks WHERE video_id = %s ORDER BY chunk_index", (video_url,))
+            rows = cur.fetchall()
+        return [
+            {
+                "text" : row[0],
+                "start_time" : row[1],
+                "end_time" : row[2]
+            }
+            for row in rows
+        ]
+    finally :
+        conn.close()
+
 class QueryRouter :
     def __init__(self) :
         self.rag_pipeline = RAGPipeline()
@@ -107,7 +110,9 @@ class QueryRouter :
     def _retrieve_chunks(self, question : str, video_url : str) -> List[Dict] :
         from retriever import VideoRetriever
         retriever = VideoRetriever()
-        retriever.connect()
-        results = retriever.retrieve(query = question, video_url = video_url, top_k = 5)
-        retriever.close()
-        return results
+        try :
+            retriever.connect()
+            results = retriever.retrieve(query = question, video_url = video_url, top_k = 5)
+            return results
+        finally :
+            retriever.close()

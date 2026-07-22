@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const authGate = document.getElementById('auth-gate');
   const mainContent = document.getElementById('main-content');
+  const chatSection = document.getElementById('chat-section');
   const queryInput = document.getElementById('query-input');
   const sendBtn = document.getElementById('send-btn');
   const plusBtn = document.getElementById('plus-btn');
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuSummary = document.getElementById('menu-summary');
   const chatMessages = document.getElementById('chat-messages');
 
-  const userAvatar = document.getElementById('user-avatar');
+  const authNavBtn = document.getElementById('auth-nav-btn');
   const extLoginForm = document.getElementById('extension-login-form');
   const extEmail = document.getElementById('ext-email');
   const extPassword = document.getElementById('ext-password');
@@ -26,10 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
         currentUser = result;
         authGate.style.display = 'none';
         mainContent.style.display = 'flex';
+        if (authNavBtn) {
+          authNavBtn.style.display = 'inline-flex';
+          authNavBtn.textContent = 'LOGOUT';
+        }
       } else {
         currentUser = null;
         authGate.style.display = 'flex';
         mainContent.style.display = 'none';
+        if (authNavBtn) {
+          authNavBtn.style.display = 'none';
+        }
       }
 
       if (result.current_video_url) {
@@ -43,11 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   checkAuth();
 
-  if (userAvatar) {
-    userAvatar.addEventListener('click', () => {
-      chrome.storage.local.remove(['user_id', 'email', 'access_token'], () => {
-        checkAuth();
-      });
+  if (authNavBtn) {
+    authNavBtn.addEventListener('click', () => {
+      if (currentUser && currentUser.user_id) {
+        chrome.storage.local.remove(['user_id', 'email', 'access_token'], () => {
+          checkAuth();
+        });
+      } else {
+        window.open('http://localhost:5173/#/account', '_blank');
+      }
     });
   }
 
@@ -104,6 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const appendMessage = (text, sender, isHtml = false) => {
+    if (chatSection) {
+      chatSection.classList.remove('empty-state');
+    }
+
     const msgDiv = document.createElement('div');
     msgDiv.className = `msg msg-${sender}`;
     if (isHtml) {
