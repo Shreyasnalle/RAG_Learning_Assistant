@@ -70,6 +70,72 @@ class AuthManager :
             "access_token" : access_token
         }
 
+    def get_profile(self, user_id : str) -> dict :
+        try :
+            res = self.admin_client.table("profiles").select("*").eq("id", user_id).execute()
+            user_data = res.data[0] if res.data else {}
+            auth_user = self.admin_client.auth.admin.get_user_by_id(user_id)
+            email = auth_user.user.email if auth_user and auth_user.user else ""
+            return {
+                "success" : True,
+                "name" : user_data.get("name", ""),
+                "mobile_number" : user_data.get("mobile_number", ""),
+                "email" : email
+            }
+        except Exception as e :
+            return {
+                "success" : False,
+                "error" : str(e)
+            }
+
+    def change_password(self, user_id : str, old_password : str, new_password : str) -> dict :
+        try :
+            auth_user = self.admin_client.auth.admin.get_user_by_id(user_id)
+            if not auth_user or not auth_user.user or not auth_user.user.email :
+                return {
+                    "success" : False,
+                    "error" : "User not found"
+                }
+            email = auth_user.user.email
+            try :
+                verify_res = self.client.auth.sign_in_with_password({
+                    "email" : email,
+                    "password" : old_password
+                })
+                if not verify_res.user :
+                    return {
+                        "success" : False,
+                        "error" : "Incorrect old password"
+                    }
+            except Exception :
+                return {
+                    "success" : False,
+                    "error" : "Incorrect old password"
+                }
+
+            self.admin_client.auth.admin.update_user_by_id(user_id, {"password" : new_password})
+            return {
+                "success" : True
+            }
+        except Exception as e :
+            return {
+                "success" : False,
+                "error" : str(e)
+            }
+
+    def delete_account(self, user_id : str) -> dict :
+        try :
+            self.admin_client.table("profiles").delete().eq("id", user_id).execute()
+            self.admin_client.auth.admin.delete_user(user_id)
+            return {
+                "success" : True
+            }
+        except Exception as e :
+            return {
+                "success" : False,
+                "error" : str(e)
+            }
+
 if __name__ == "__main__" :
     auth = AuthManager()
     result = auth.sign_up(

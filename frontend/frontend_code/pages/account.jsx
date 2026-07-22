@@ -292,6 +292,8 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
       if (result.success) {
         localStorage.setItem('user_id', result.user_id);
         localStorage.setItem('email', result.email);
+        if (name) localStorage.setItem('name', name);
+        if (mobileNumber) localStorage.setItem('mobile_number', mobileNumber);
         if (onLoginSuccess) onLoginSuccess();
       } else {
         setErrorMessage(result.error || 'Sign up failed');

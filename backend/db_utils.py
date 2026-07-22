@@ -19,6 +19,6 @@ def get_db_connection(max_retries: int = 3, retry_delay: float = 0.5) :
             print(f"could not connect to the supabase (attempt {attempt + 1}/{max_retries}): {e}")
             if attempt < max_retries - 1 :
                 time.sleep(retry_delay)
-    raise last_exception 
+        raise last_exception 
 if __name__ == "__main__":
     get_db_connection()

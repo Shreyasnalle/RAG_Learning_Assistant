@@ -57,6 +57,20 @@ class SignInData(BaseModel):
     password: str
 
 
+class ProfileData(BaseModel):
+    user_id: str
+
+
+class ChangePasswordData(BaseModel):
+    user_id: str
+    old_password: str
+    new_password: str
+
+
+class DeleteAccountData(BaseModel):
+    user_id: str
+
+
 class IngestData(BaseModel):
     video_url: str
     file_id: str
@@ -119,6 +133,28 @@ async def signup(data: SignUpData):
 @app.post("/api/login")
 async def login(data: SignInData):
     result = auth_manager.sign_in(email=data.email, password=data.password)
+    return result
+
+
+@app.post("/api/user-profile")
+async def get_user_profile(data: ProfileData):
+    result = auth_manager.get_profile(user_id=data.user_id)
+    return result
+
+
+@app.post("/api/change-password")
+async def change_password(data: ChangePasswordData):
+    result = auth_manager.change_password(
+        user_id=data.user_id,
+        old_password=data.old_password,
+        new_password=data.new_password
+    )
+    return result
+
+
+@app.post("/api/delete-account")
+async def delete_account(data: DeleteAccountData):
+    result = auth_manager.delete_account(user_id=data.user_id)
     return result
 
 

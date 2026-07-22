@@ -2,6 +2,7 @@ import { StrictMode, useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import LandingPage from '../pages/landing_page.jsx'
 import AccountPage from '../pages/account.jsx'
+import SettingsPage from '../pages/settings.jsx'
 import RetrievalPage from '../pages/features/retrieval.jsx'
 import SummaryPage from '../pages/features/summary.jsx'
 
@@ -22,6 +23,8 @@ function App() {
     localStorage.removeItem('user_id');
     localStorage.removeItem('email');
     localStorage.removeItem('access_token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('mobile_number');
   };
 
   useEffect(() => {
@@ -29,6 +32,8 @@ function App() {
       const hash = window.location.hash;
       if (hash === '#/account') {
         setPage('account');
+      } else if (hash === '#/settings') {
+        setPage('settings');
       } else if (hash === '#/features/retrieval') {
         setPage('retrieval');
       } else if (hash === '#/features/summary') {
@@ -45,6 +50,8 @@ function App() {
   const navigateTo = (p) => {
     if (p === 'account') {
       window.location.hash = '#/account';
+    } else if (p === 'settings') {
+      window.location.hash = '#/settings';
     } else if (p === 'retrieval') {
       window.location.hash = '#/features/retrieval';
     } else if (p === 'summary') {
@@ -65,6 +72,14 @@ function App() {
       />
     );
   }
+  if (page === 'settings') {
+    return (
+      <SettingsPage
+        onNavigate={() => navigateTo('landing')}
+        onLogout={handleLogout}
+      />
+    );
+  }
   if (page === 'retrieval') {
     return <RetrievalPage onNavigate={() => navigateTo('landing')} />;
   }
@@ -76,6 +91,7 @@ function App() {
       isLoggedIn={isLoggedIn}
       onLogout={handleLogout}
       onNavigateToAccount={() => navigateTo('account')} 
+      onNavigateToSettings={() => navigateTo('settings')}
       onNavigateToRetrieval={() => navigateTo('retrieval')}
       onNavigateToSummary={() => navigateTo('summary')}
     />

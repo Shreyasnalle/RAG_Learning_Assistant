@@ -108,7 +108,7 @@ const PricingVisual = () => {
   );
 };
 
-export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount, onNavigateToRetrieval, onNavigateToSummary }) {
+export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount, onNavigateToSettings, onNavigateToRetrieval, onNavigateToSummary }) {
   const canvasRef = useRef(null);
   const [activeHighlight, setActiveHighlight] = useState(null);
 
@@ -375,8 +375,8 @@ export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,
           {navItem('CONTACT', 'contact')}
 
           {isLoggedIn ? (
-            <a href="#" onClick={(e) => { e.preventDefault(); onLogout(); }} className="signup-btn">
-              LOGOUT
+            <a href="#/settings" onClick={(e) => { e.preventDefault(); onNavigateToSettings(); }} className="signup-btn">
+              PROFILE
             </a>
           ) : (
             <a href="#/account" onClick={(e) => { e.preventDefault(); onNavigateToAccount(); }} className="signup-btn">
