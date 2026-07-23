@@ -43,6 +43,7 @@ class AuthManager :
             "success" : True,
             "user_id" : user_id,
             "email" : email,
+            "name" : name,
             "mobile_number" : mobile_number
         }
     def sign_in(self, email : str, password : str) -> dict :
@@ -73,9 +74,11 @@ class AuthManager :
     def get_profile(self, user_id : str) -> dict :
         try :
             res = self.admin_client.table("profiles").select("*").eq("id", user_id).execute()
-            user_data = res.data[0] if res.data else {}
+            raw = res.data[0] if res.data else {}
+            user_data : dict = raw if isinstance(raw, dict) else {}
             auth_user = self.admin_client.auth.admin.get_user_by_id(user_id)
-            email = auth_user.user.email if auth_user and auth_user.user else ""
+            raw_email = auth_user.user.email if auth_user and auth_user.user else ""
+            email : str = raw_email if isinstance(raw_email, str) else ""
             return {
                 "success" : True,
                 "name" : user_data.get("name", ""),
@@ -135,16 +138,3 @@ class AuthManager :
                 "success" : False,
                 "error" : str(e)
             }
-
-if __name__ == "__main__" :
-    auth = AuthManager()
-    result = auth.sign_up(
-        email = "testuser@eample.com",
-        password = "password123",
-        name = "test user",
-        mobile_number = "1234567899"
-    )
-    print("sign up result : ", result)
-    if result["success"] :
-        login_result = auth.sign_in(email = "testuser@eample.com", password = "password123")
-        print("sign in result : ", login_result)
