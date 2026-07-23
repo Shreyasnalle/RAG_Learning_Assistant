@@ -166,15 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const activeUrl = await getCurrentTabUrl();
       const videoUrl = activeUrl || currentVideoUrl;
 
-      if (currentVideoId && videoUrl) {
-        await fetch(`${API_BASE}/api/ingest`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            video_url: videoUrl,
-            file_id: currentVideoId
-          })
-        }).catch(() => {});
+      if (!videoUrl) {
+        loadingDiv.remove();
+        appendMessage('Could not detect the current YouTube video URL. Please make sure you are on a YouTube watch page.', 'assistant');
+        return;
       }
 
       const askRes = await fetch(`${API_BASE}/api/ask`, {

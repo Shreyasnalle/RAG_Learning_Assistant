@@ -79,6 +79,13 @@ export default function SettingsPage({ onNavigate, onLogout }) {
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const [otpModalOpen, setOtpModalOpen] = useState(false);
+  const [otpCode, setOtpCode] = useState('');
+  const [otpNewPassword, setOtpNewPassword] = useState('');
+  const [otpConfirmPassword, setOtpConfirmPassword] = useState('');
+  const [otpMsg, setOtpMsg] = useState({ text: '', type: '' });
+  const [isOtpSent, setIsOtpSent] = useState(false);
+
   const API_BASE = 'http://localhost:8000';
 
   useEffect(() => {
@@ -111,8 +118,8 @@ export default function SettingsPage({ onNavigate, onLogout }) {
     e.preventDefault();
     setPasswordMsg({ text: '', type: '' });
 
-    if (!oldPassword) {
-      setPasswordMsg({ text: 'Please enter your current password', type: 'error' });
+    if (!oldPassword.trim() || !newPassword.trim() || !confirmPassword.trim()) {
+      setPasswordMsg({ text: 'Please fill in all password fields (Old, New, and Confirm New Password)', type: 'error' });
       return;
     }
 
@@ -231,7 +238,7 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           font-family: 'Satoshi', sans-serif;
           font-size: 0.85rem;
           font-weight: 700;
-          letter-spacing: 0.2em;
+          letter-spacing: 0.15em;
           text-transform: uppercase;
           border: none;
           border-radius: 4px;
@@ -239,6 +246,7 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           cursor: pointer;
           transition: color 0.3s ease;
           background-color: transparent;
+          isolation: isolate;
         }
 
         .action-btn::before {
@@ -454,7 +462,17 @@ export default function SettingsPage({ onNavigate, onLogout }) {
 
             <div style={{ marginTop: '8px', marginBottom: '16px', fontSize: '0.85rem', opacity: 0.9 }}>
               <span>Forget Password? </span>
-              <span style={{ color: '#fb8569', fontWeight: 'bold', textDecoration: 'underline', cursor: 'pointer' }}>
+              <span
+                onClick={() => {
+                  setOtpMsg({ text: '', type: '' });
+                  setOtpCode('');
+                  setOtpNewPassword('');
+                  setOtpConfirmPassword('');
+                  setIsOtpSent(false);
+                  setOtpModalOpen(true);
+                }}
+                style={{ color: '#fb8569', fontWeight: 'bold', textDecoration: 'underline', cursor: 'pointer' }}
+              >
                 Try another way
               </span>
             </div>
@@ -516,6 +534,179 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           </div>
         </div>
       </div>
+
+      {/* OTP Verification Modal */}
+      {otpModalOpen && (
+        <div style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 100,
+          padding: '20px'
+        }}>
+          <div style={{
+            backgroundColor: '#0d1f1c',
+            border: '1.5px solid #fb8569',
+            borderRadius: '16px',
+            padding: '28px 32px',
+            width: '30%',
+            height: '30%',
+            minWidth: '360px',
+            minHeight: '400px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            boxSizing: 'border-box',
+            textAlign: 'center',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.8)'
+          }}>
+            <h3 style={{ color: '#fb8569', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 8px 0', letterSpacing: '0.1em' }}>
+              OTP VERIFICATION
+            </h3>
+            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.82rem', lineHeight: '1.4', margin: '0 0 16px 0' }}>
+              Enter the OTP sent to your registered email ID (<strong style={{ color: '#fb8569' }}>{profile.email || 'your email'}</strong>):
+            </p>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!isOtpSent) {
+                  setOtpMsg({ text: 'Please click SEND OTP first', type: 'error' });
+                  return;
+                }
+                if (!otpCode.trim()) {
+                  setOtpMsg({ text: 'Please enter the OTP and click VERIFY first', type: 'error' });
+                  return;
+                }
+                setOtpMsg({ text: 'Password reset feature UI ready!', type: 'success' });
+              }}
+              style={{ width: '100%', maxWidth: '380px' }}
+            >
+              {/* OTP Input + VERIFY Button Row */}
+              <div style={{ display: 'flex', gap: '8px', width: '100%', marginBottom: '10px', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  placeholder="ENTER 6-DIGIT OTP"
+                  className="input-field"
+                  value={otpCode}
+                  onChange={(e) => setOtpCode(e.target.value)}
+                  maxLength={6}
+                  style={{ textAlign: 'center', letterSpacing: '0.15em', fontSize: '0.85rem', marginBottom: 0, flex: 1 }}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!isOtpSent) return;
+                    if (!otpCode.trim()) {
+                      setOtpMsg({ text: 'Please enter the OTP first', type: 'error' });
+                      return;
+                    }
+                    setOtpMsg({ text: 'OTP verified successfully!', type: 'success' });
+                  }}
+                  disabled={!isOtpSent}
+                  className={isOtpSent ? "action-btn" : ""}
+                  style={isOtpSent ? {
+                    padding: '10px 16px',
+                    fontSize: '0.8rem',
+                    whiteSpace: 'nowrap'
+                  } : {
+                    padding: '10px 16px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'rgba(255, 255, 255, 0.3)',
+                    borderRadius: '4px',
+                    cursor: 'not-allowed',
+                    fontWeight: '700',
+                    fontSize: '0.8rem',
+                    letterSpacing: '0.05em',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  VERIFY
+                </button>
+              </div>
+
+              <input
+                type="password"
+                placeholder="NEW PASSWORD"
+                className="input-field"
+                value={otpNewPassword}
+                onChange={(e) => setOtpNewPassword(e.target.value)}
+                style={{ fontSize: '0.85rem', padding: '10px 14px', marginBottom: '10px' }}
+              />
+
+              <input
+                type="password"
+                placeholder="CONFIRM NEW PASSWORD"
+                className="input-field"
+                value={otpConfirmPassword}
+                onChange={(e) => setOtpConfirmPassword(e.target.value)}
+                style={{ fontSize: '0.85rem', padding: '10px 14px', marginBottom: '10px' }}
+              />
+
+              {otpMsg.text && (
+                <p style={{
+                  marginBottom: '10px',
+                  fontSize: '0.8rem',
+                  color: otpMsg.type === 'error' ? '#ff6b6b' : '#51cf66',
+                  fontWeight: '600'
+                }}>
+                  {otpMsg.text}
+                </p>
+              )}
+
+              {/* Bottom Action Buttons: CANCEL | SEND OTP | RESET */}
+              <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '12px', flexWrap: 'wrap' }}>
+                {/* CANCEL */}
+                <button
+                  type="button"
+                  onClick={() => setOtpModalOpen(false)}
+                  style={{
+                    padding: '9px 18px',
+                    backgroundColor: 'transparent',
+                    border: '1px solid rgba(255, 255, 255, 0.4)',
+                    color: '#ffffff',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    fontWeight: '600',
+                    fontSize: '0.85rem',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  CANCEL
+                </button>
+
+                {/* SEND OTP (Right side of CANCEL) */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsOtpSent(true);
+                    setOtpMsg({ text: 'OTP sent to registered email! You can now click VERIFY.', type: 'success' });
+                  }}
+                  className="action-btn"
+                  style={{ padding: '9px 18px', fontSize: '0.85rem' }}
+                >
+                  SEND OTP
+                </button>
+
+                {/* RESET (Right side of SEND OTP) */}
+                <button
+                  type="submit"
+                  className="action-btn"
+                  style={{ padding: '9px 18px', fontSize: '0.85rem' }}
+                >
+                  RESET
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (
