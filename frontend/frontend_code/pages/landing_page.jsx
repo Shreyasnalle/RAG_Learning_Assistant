@@ -662,12 +662,12 @@ export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,
         zIndex: 5,
         width: '100%',
         backgroundColor: '#0d1f1c',
-        padding: '60px 48px 40px 48px',
+        padding: '20px 48px 40px 48px',
         boxSizing: 'border-box',
         color: '#fb8569',
         fontFamily: '"Satoshi", sans-serif',
       }}>
-        <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.25)', width: '100%', marginBottom: '24px' }} />
+        <div style={{ height: '1.5px', backgroundColor: 'rgba(251, 133, 105, 0.25)', width: '100%', marginTop: '20px', marginBottom: '24px' }} />
 
         <div style={{
           display: 'flex',
@@ -684,12 +684,22 @@ export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,
           </div>
 
           <div style={{ display: 'flex', gap: '16px' }}>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
+            <a 
+              href="https://www.linkedin.com/in/shreyas-nalle-0697bb371/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}
+            >
               <span>[ </span>
               <span style={{ fontWeight: 'bold' }}>in</span>
               <span> ]</span>
             </a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}>
+            <a 
+              href="https://x.com/ShreyasNalle" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'inherit', textDecoration: 'none', fontSize: '1rem' }}
+            >
               <span>[ </span>
               <span style={{ fontWeight: 'bold' }}>𝕏</span>
               <span> ]</span>

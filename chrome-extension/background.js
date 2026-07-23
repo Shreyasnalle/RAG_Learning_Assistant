@@ -3,13 +3,14 @@ chrome.runtime.onMessage.addListener((data, sender, sendResponse) => {
         chrome.storage.local.set({
             user_id: data.user_id,
             email: data.email,
-            access_token: data.access_token
+            access_token: data.access_token,
+            login_timestamp: Date.now().toString()
         });
         return true;
     }
 
     if (data.type === 'LOGOUT') {
-        chrome.storage.local.remove(['user_id', 'email', 'access_token']);
+        chrome.storage.local.remove(['user_id', 'email', 'access_token', 'login_timestamp']);
         return true;
     }
 
@@ -62,6 +63,31 @@ chrome.runtime.onMessage.addListener((data, sender, sendResponse) => {
             } else {
                 console.warn('[Simply] Ingest failed:', ingestResult.error);
             }
+
+            // Immediately check and prefetch chat history for this user & video
+            chrome.storage.local.get(['user_id'], (auth) => {
+                if (auth.user_id) {
+                    fetch(`${API_BASE}/api/chat-history`, {
+                        method: 'POST',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify({
+                            user_id: auth.user_id,
+                            video_url: videoUrl
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(historyResult => {
+                        const messages = historyResult.messages || [];
+                        chrome.storage.local.set({
+                            current_chat_history: messages
+                        });
+                        console.log(`[Simply] Prefetched ${messages.length} chat history messages for: ${videoUrl}`);
+                    })
+                    .catch(err => console.error('[Simply] Chat history prefetch error:', err));
+                } else {
+                    chrome.storage.local.set({ current_chat_history: [] });
+                }
+            });
         })
         .catch(err => console.error('[Simply] Ingest error:', err));
     })

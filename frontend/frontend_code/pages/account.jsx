@@ -260,6 +260,7 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
       if (result.success) {
         localStorage.setItem('user_id', result.user_id);
         localStorage.setItem('email', result.email);
+        localStorage.setItem('login_timestamp', Date.now().toString());
         if (result.access_token) {
           localStorage.setItem('access_token', result.access_token);
         }
@@ -292,6 +293,7 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
       if (result.success) {
         localStorage.setItem('user_id', result.user_id);
         localStorage.setItem('email', result.email);
+        localStorage.setItem('login_timestamp', Date.now().toString());
         if (name) localStorage.setItem('name', name);
         if (mobileNumber) localStorage.setItem('mobile_number', mobileNumber);
         if (onLoginSuccess) onLoginSuccess();

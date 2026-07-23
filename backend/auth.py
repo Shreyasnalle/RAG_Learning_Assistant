@@ -128,7 +128,12 @@ class AuthManager :
 
     def delete_account(self, user_id : str) -> dict :
         try :
+            # Delete in correct order: dependent data first, auth record last
+            # 1. Delete chat history for this user
+            self.admin_client.table("chat_history").delete().eq("user_id", user_id).execute()
+            # 2. Delete profile record
             self.admin_client.table("profiles").delete().eq("id", user_id).execute()
+            # 3. Delete the auth user record (must be last to avoid FK violations)
             self.admin_client.auth.admin.delete_user(user_id)
             return {
                 "success" : True

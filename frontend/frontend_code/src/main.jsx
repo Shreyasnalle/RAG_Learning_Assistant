@@ -7,14 +7,35 @@ import RetrievalPage from '../pages/features/retrieval.jsx'
 import SummaryPage from '../pages/features/summary.jsx'
 
 function App() {
+  const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+  const isSessionValid = () => {
+    const ts = localStorage.getItem('login_timestamp');
+    if (!ts) return false;
+    return (Date.now() - parseInt(ts, 10)) < SESSION_DURATION_MS;
+  };
+
   const [page, setPage] = useState('landing');
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return localStorage.getItem('isLoggedIn') === 'true';
+    // On first render, validate session age
+    if (localStorage.getItem('isLoggedIn') === 'true' && isSessionValid()) {
+      return true;
+    }
+    // Session expired or never set — clear stale data
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('email');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('mobile_number');
+    localStorage.removeItem('login_timestamp');
+    return false;
   });
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
     localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('login_timestamp', Date.now().toString());
   };
 
   const handleLogout = () => {
@@ -25,6 +46,7 @@ function App() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('name');
     localStorage.removeItem('mobile_number');
+    localStorage.removeItem('login_timestamp');
   };
 
   useEffect(() => {

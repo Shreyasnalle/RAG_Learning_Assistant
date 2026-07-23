@@ -1,0 +1,3139 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  } ],
+  "wpWinPositions": [ {
+  
+  } ],
+  "events": [ {
+    "tStartMs": 80,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "Fast API makes it quicker and \neasier to develop API's with Python.  "
+    } ]
+  }, {
+    "tStartMs": 5280,
+    "dDurationMs": 8080,
+    "segs": [ {
+      "utf8": "Tommy will show you how it works in this course, \nhis first API Crash Course. First API is a modern,  "
+    } ]
+  }, {
+    "tStartMs": 13360,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "fast and iperformance web framework for \nbuilding API's with Python. In this video,  "
+    } ]
+  }, {
+    "tStartMs": 19280,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "I will show you how you need to get started \nworking with fast API. First API also has a very  "
+    } ]
+  }, {
+    "tStartMs": 24720,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "good and easy to follow documentation, which I can \nalso recommend. And it is also a great framework  "
+    } ]
+  }, {
+    "tStartMs": 30320,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "for building web applications with Python. During \nthis tutorial, there are some tips on keynotes  "
+    } ]
+  }, {
+    "tStartMs": 35760,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "that you might want to take down. But I already \ndid this for you. So I made a fast API cheat sheet  "
+    } ]
+  }, {
+    "tStartMs": 41440,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "in which you can download for free using the \nlink in the description below. And if you'd  "
+    } ]
+  }, {
+    "tStartMs": 45600,
+    "dDurationMs": 4000,
+    "segs": [ {
+      "utf8": "like more tutorials, ideas, don't forget to \ncheck out my channel as Cody told me, where  "
+    } ]
+  }, {
+    "tStartMs": 49600,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "I teach more on Python, and web development in \ngeneral. The only requirement for this tutorial  "
+    } ]
+  }, {
+    "tStartMs": 54880,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "is that you have the basic knowledge of Python, \nand you have Python installed on your computer  "
+    } ]
+  }, {
+    "tStartMs": 61120,
+    "dDurationMs": 10720,
+    "segs": [ {
+      "utf8": "with a minimum version of 3.6 or higher. Have you \nnoticed said let's dive straight into this video.  "
+    } ]
+  }, {
+    "tStartMs": 73040,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "So the first thing we're going to be talking \nabout is how we're going to install fast API.  "
+    } ]
+  }, {
+    "tStartMs": 78480,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "Now to install fast API on your computer, your \nlaptop is very easy. Because first API is a Python  "
+    } ]
+  }, {
+    "tStartMs": 85120,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "framework, we're gonna use the Python package \nmanager, which is Pip. So you can just open  "
+    } ]
+  }, {
+    "tStartMs": 91440,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "your command prompt if you're on a Windows, \nwhether you're on a Mac, open your terminal,  "
+    } ]
+  }, {
+    "tStartMs": 95520,
+    "dDurationMs": 11200,
+    "segs": [ {
+      "utf8": "and we can just type Python, I think m pip install \nbust API. Now it's very easy to just do command  "
+    } ]
+  }, {
+    "tStartMs": 106720,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "line you need to install fast API. You can also \ndo Dinamo, we like peeping so fast CPI. Or if  "
+    } ]
+  }, {
+    "tStartMs": 112000,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "you're on a Mac, you can do PIP three install for \nCPI, just the normal installation command lines.  "
+    } ]
+  }, {
+    "tStartMs": 118000,
+    "dDurationMs": 7520,
+    "segs": [ {
+      "utf8": "So I just like using Python, by free, just \npersonally, but you can install it anyways. So  "
+    } ]
+  }, {
+    "tStartMs": 125520,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "I that is running. And as you can see \nit says requirement already satisfied.  "
+    } ]
+  }, {
+    "tStartMs": 130160,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "Now if you walk with Python, you know that this \nmeans that I already have this particular library  "
+    } ]
+  }, {
+    "tStartMs": 135680,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "installed on my computer. So because I have it \ninstalled, it's not going to go ahead and install  "
+    } ]
+  }, {
+    "tStartMs": 139920,
+    "dDurationMs": 7680,
+    "segs": [ {
+      "utf8": "that again. Let me just type CLS to clear that \nup. So what that did was it install fast API. So  "
+    } ]
+  }, {
+    "tStartMs": 147600,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "if you do a fast API, you stored it, you go ahead \nand download some files or not just only fast API,  "
+    } ]
+  }, {
+    "tStartMs": 152880,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "some other stuff that you're going to use later, \nlike typing or some other libraries, it's going to  "
+    } ]
+  }, {
+    "tStartMs": 157920,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "install that alone. And there's one more thing \nwe need to install to let's say, Pip, install  "
+    } ]
+  }, {
+    "tStartMs": 165360,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "you you'll recall. Now the reason why we say p \np. So you recall this recall is what we're going  "
+    } ]
+  }, {
+    "tStartMs": 169840,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "to use to run our web server. Now, if you work \nwith other libraries, like for example, Django,  "
+    } ]
+  }, {
+    "tStartMs": 175040,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "you know that Django, you don't need to install \nany external team to run it or your web server.  "
+    } ]
+  }, {
+    "tStartMs": 180320,
+    "dDurationMs": 3760,
+    "segs": [ {
+      "utf8": "Once you just type a command line, if you have \nDjango installed is going to run into a web  "
+    } ]
+  }, {
+    "tStartMs": 184080,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "server. But fast API is totally different. Because \nworking with fast API is a very light library. So  "
+    } ]
+  }, {
+    "tStartMs": 190720,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "you need like an external library just to run \nthat file on the web server. So this UV con is  "
+    } ]
+  }, {
+    "tStartMs": 196480,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "going to allow us to run our first API project \nor file on the web server. Once I press enter,  "
+    } ]
+  }, {
+    "tStartMs": 204080,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "now, I should also be expecting a requirement \nalready satisfied, because I have this particular  "
+    } ]
+  }, {
+    "tStartMs": 208720,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "library installed. As you can see, it tells me \nrequirement already satisfied, the ledgers closed  "
+    } ]
+  }, {
+    "tStartMs": 215280,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "our proposal. The next thing I want to do now, \nthe first thing before I started this, I already  "
+    } ]
+  }, {
+    "tStartMs": 221360,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "gave it to my folder by came to this directory, \nand then I created a Python file name my api.py.  "
+    } ]
+  }, {
+    "tStartMs": 229200,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "And in my Visual Studio code, I already open \nup the file. Yeah, my api.py. So this is the  "
+    } ]
+  }, {
+    "tStartMs": 235440,
+    "dDurationMs": 3040,
+    "segs": [ {
+      "utf8": "file we're going to create in our API's \nare running everything we're gonna do.  "
+    } ]
+  }, {
+    "tStartMs": 239840,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "What I just want to do is to copy this particular \ndirectory for me to my command prompt and CD into  "
+    } ]
+  }, {
+    "tStartMs": 245840,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "that. If I press dir, right now, you can see \nthat I have the file, just to make sure that  "
+    } ]
+  }, {
+    "tStartMs": 252320,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "we're in that particular directory. And \nnow that I know I'm in that directory,  "
+    } ]
+  }, {
+    "tStartMs": 256720,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "let's just go ahead and create our first API. \nNow the reason I just opt into this directory  "
+    } ]
+  }, {
+    "tStartMs": 262560,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "is just simply because when I want to run these \non our locals on our web server later, I need  "
+    } ]
+  }, {
+    "tStartMs": 269040,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "to make sure I am in that particular directory. \nSo I can run the file in that directory. So Oh,  "
+    } ]
+  }, {
+    "tStartMs": 274480,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "this is going to make sense later. But let's \njust go into Visual Studio. Now, first of all,  "
+    } ]
+  }, {
+    "tStartMs": 280000,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "let's just import past API. So \nwe can just do import past API.  "
+    } ]
+  }, {
+    "tStartMs": 288560,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "And if we save this and come into our \ncommand line and run that Python, my API spy,  "
+    } ]
+  }, {
+    "tStartMs": 296800,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "so if that runs without any error, or anything \nlike that, so as you can see it doesn't give  "
+    } ]
+  }, {
+    "tStartMs": 301840,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "us any early response does just because there \nis that's the teller, the first step has been  "
+    } ]
+  }, {
+    "tStartMs": 307840,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "installed successfully. So let's just close that. \nNow let's just go ahead and create our first API.  "
+    } ]
+  }, {
+    "tStartMs": 314000,
+    "dDurationMs": 9840,
+    "segs": [ {
+      "utf8": "Now, well, we need to do to create our first \nAPI, we'll say from first API, import past API.  "
+    } ]
+  }, {
+    "tStartMs": 326320,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "Exactly. So this is just import first API, like \nan object to work when you use this object,  "
+    } ]
+  }, {
+    "tStartMs": 332560,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "or an instance of this object to create our API's \nlater. So now that we have this is imported,  "
+    } ]
+  }, {
+    "tStartMs": 339360,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "we're gonna set up is equals to fast API. We're \ntaking it from this first API, which we imported  "
+    } ]
+  }, {
+    "tStartMs": 346240,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "to our creating like an instance of the first \nAPI object, so we can assess this later. Now this  "
+    } ]
+  }, {
+    "tStartMs": 351760,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "object, it has plenty attributes like the get, \nlet me do let me go into that now by just some  "
+    } ]
+  }, {
+    "tStartMs": 357120,
+    "dDurationMs": 7680,
+    "segs": [ {
+      "utf8": "other things that we're going to use to create our \nAPI later. So now that we have that created, what  "
+    } ]
+  }, {
+    "tStartMs": 364800,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "we want to do is to create an endpoint. Now let me \nexplain what an endpoint is, to an endpoint is one  "
+    } ]
+  }, {
+    "tStartMs": 371680,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "end of a communication channel. So that's why so \ncomplicated. But what that just means for an API,  "
+    } ]
+  }, {
+    "tStartMs": 377680,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "an endpoint in a URL, so let's say we \nhave a URL like on our local hosts, slash,  "
+    } ]
+  }, {
+    "tStartMs": 384880,
+    "dDurationMs": 9440,
+    "segs": [ {
+      "utf8": "delete user. list if a user so for this particular \nURL, the endpoint is this delete user. So this  "
+    } ]
+  }, {
+    "tStartMs": 394320,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "is like the path in a normal URL, we call it the \npath. Let's say we have something like amazon.com.  "
+    } ]
+  }, {
+    "tStartMs": 404880,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "And then we have something that Yeah, just \ndelete user or something like create user.  "
+    } ]
+  }, {
+    "tStartMs": 409280,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "So this is we can say this is our endpoint in \na normal URL. This is the path, we're dealing  "
+    } ]
+  }, {
+    "tStartMs": 413760,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "with API. This is like our endpoint to just have \nthat at the back of your mind on each endpoint,  "
+    } ]
+  }, {
+    "tStartMs": 419920,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "where you're specifying your URLs do \nmy like, perform different operations.  "
+    } ]
+  }, {
+    "tStartMs": 424560,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "So my just get a particular information, \na particular data store might be too late,  "
+    } ]
+  }, {
+    "tStartMs": 430400,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "for example, this great user, the endpoint is \nself explanatory is creating a new user. So  "
+    } ]
+  }, {
+    "tStartMs": 435280,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "that means he will have to post some data to that \nendpoint, so we can create a new user. So again,  "
+    } ]
+  }, {
+    "tStartMs": 441600,
+    "dDurationMs": 4720,
+    "segs": [ {
+      "utf8": "you're gonna understand this when we get straight \ninto it. And there are different type of endpoint  "
+    } ]
+  }, {
+    "tStartMs": 447840,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "methods, body cones, there, there are lots \nthere are not too much, but they are a lot,  "
+    } ]
+  }, {
+    "tStartMs": 452240,
+    "dDurationMs": 12720,
+    "segs": [ {
+      "utf8": "but the core ones get not this get, we have posts, \nwe have routes. And then we have delete, let me  "
+    } ]
+  }, {
+    "tStartMs": 464960,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "just explain this quickly. So the get is used to \njust get an information or return on information  "
+    } ]
+  }, {
+    "tStartMs": 474720,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "just to get or return a data or something like \nthat. And then of course, this is just to create  "
+    } ]
+  }, {
+    "tStartMs": 485280,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "something new, and put it like that with something \nnew, or create like a new object in the database.  "
+    } ]
+  }, {
+    "tStartMs": 493440,
+    "dDurationMs": 8160,
+    "segs": [ {
+      "utf8": "And therefore put this port is used to update \na data or to update something in a particular  "
+    } ]
+  }, {
+    "tStartMs": 501600,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "object. So all these again, you are going to \nunderstand when we are putting all these in all  "
+    } ]
+  }, {
+    "tStartMs": 506720,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "this practically, for updating on Delete is self \nexplanatory, is just used to delete something.  "
+    } ]
+  }, {
+    "tStartMs": 514240,
+    "dDurationMs": 7920,
+    "segs": [ {
+      "utf8": "So as I said, these gets used just to get or \nreturn data or information post is to create  "
+    } ]
+  }, {
+    "tStartMs": 522160,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "something new or just to add something new input \nis used to update something that already exists  "
+    } ]
+  }, {
+    "tStartMs": 528720,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "in that particular database, and delete it \njust to delete like a data from a database  "
+    } ]
+  }, {
+    "tStartMs": 535040,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "or something like that. So now that we have all \nthese known, I already understand all these,  "
+    } ]
+  }, {
+    "tStartMs": 541120,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "let's just go straight into creating the route \nHIV, the real API. Now for me to create a new API,  "
+    } ]
+  }, {
+    "tStartMs": 549440,
+    "dDurationMs": 8240,
+    "segs": [ {
+      "utf8": "I'm going to do at the Add sign up dot get. And \nas you can see, for this API, I'm using Git,  "
+    } ]
+  }, {
+    "tStartMs": 557680,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "and according to the explanation I did like \na few minutes ago, it shows that I want to  "
+    } ]
+  }, {
+    "tStartMs": 562560,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "return on information or we just want \nto show an information. So if I want to,  "
+    } ]
+  }, {
+    "tStartMs": 567120,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "like do something else, like posts, put delete, \nwe're also gonna do all that later in this video.  "
+    } ]
+  }, {
+    "tStartMs": 571760,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "But let's start with get laughter You say app dot \nget a note that this app is getting from the first  "
+    } ]
+  }, {
+    "tStartMs": 577440,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "API instance, which is what we imported, say app \ndot get. And then we're opening a bracket to the  "
+    } ]
+  }, {
+    "tStartMs": 584800,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "current output slash. So this is our endpoint, our \nAPI to the home or right slash, it means our own  "
+    } ]
+  }, {
+    "tStartMs": 591920,
+    "dDurationMs": 6448,
+    "segs": [ {
+      "utf8": "and our own can be like, what what we show when \nwe just come to our own page, like google.com  "
+    } ]
+  }, {
+    "tStartMs": 598368,
+    "dDurationMs": 6272,
+    "segs": [ {
+      "utf8": "does the homepage. So whatever our domain is, \ndoes Just our own page is something like slash,  "
+    } ]
+  }, {
+    "tStartMs": 605520,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "Bessie like delete. So that is another like \nURL, it can be google.com slash delete. But now  "
+    } ]
+  }, {
+    "tStartMs": 612080,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "this is just the homepage just to make sure \nyou get that correctly. But now that we have  "
+    } ]
+  }, {
+    "tStartMs": 616640,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "that we're gonna have a new function, let's name \nthis index, our own or anything wants to name it.  "
+    } ]
+  }, {
+    "tStartMs": 624240,
+    "dDurationMs": 13040,
+    "segs": [ {
+      "utf8": "And the no Ledger's return particular \ndata, series name, ciphers data.  "
+    } ]
+  }, {
+    "tStartMs": 638080,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "So what this is doing now, as we say we are taking \nfrom the app, which is also taken from the past  "
+    } ]
+  }, {
+    "tStartMs": 645280,
+    "dDurationMs": 7680,
+    "segs": [ {
+      "utf8": "API object hours in a get method. And the endpoint \nyou specified is the home page or the home URL.  "
+    } ]
+  }, {
+    "tStartMs": 652960,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "And then under that, we're just going to have a \nnew function, we can name this anything we want,  "
+    } ]
+  }, {
+    "tStartMs": 658160,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "what we just do is to return this particular data. \nNow, this is just a dummy data that we just input.  "
+    } ]
+  }, {
+    "tStartMs": 663760,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "But later on, I'm going to show you how \nyou're going to use it as a Python dictionary.  "
+    } ]
+  }, {
+    "tStartMs": 668880,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "And yeah, normally when we're returning \ndata to be written in Python, your response.  "
+    } ]
+  }, {
+    "tStartMs": 675840,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "This API first API uses JSON, but later on, so I'm \ngoing to show you how to use a Python dictionary  "
+    } ]
+  }, {
+    "tStartMs": 681440,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "and automatically converted to JSON data. But \nfor now, this is just a normal JSON data is being  "
+    } ]
+  }, {
+    "tStartMs": 687280,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "returned. Let's save this particular file. And \nfirst run this and really see what we are doing  "
+    } ]
+  }, {
+    "tStartMs": 693360,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "on our web server. That's when UV call comes in. \nBut let's go back to our command prompt. First,  "
+    } ]
+  }, {
+    "tStartMs": 699360,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "to be able to run these, let's just make sure that \nwe're in the directory of this particular file.  "
+    } ]
+  }, {
+    "tStartMs": 705520,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "And to make sure we just press dir, \nand then we see our file does good.  "
+    } ]
+  }, {
+    "tStartMs": 712560,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "Now for us to run these we need to press after it \nis the first one we need to add is the name of the  "
+    } ]
+  }, {
+    "tStartMs": 720000,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "file, which is my api.py. The second one is the \nname of the variable you use, most of the time,  "
+    } ]
+  }, {
+    "tStartMs": 726480,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "it's always up. And then there's basically two \nthings but ledger says we know that Ledger's roll  "
+    } ]
+  }, {
+    "tStartMs": 733120,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "this on the web server, what I'm going \nto do now I'm going to say yuvika  "
+    } ]
+  }, {
+    "tStartMs": 739680,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "gonna leave a space. And I'm gonna say my API, \nwhich is the name of the file, but now we don't  "
+    } ]
+  }, {
+    "tStartMs": 745440,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "write about api.py, we just write only the name \nof the file, not with the file extension. And then  "
+    } ]
+  }, {
+    "tStartMs": 751760,
+    "dDurationMs": 7920,
+    "segs": [ {
+      "utf8": "we'll put a colon, I'll say up. And this is coming \nfrom right here, which is the variable we give  "
+    } ]
+  }, {
+    "tStartMs": 759680,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "to the object instance of fast API. And then \nwe just put through iPhones, save reload.  "
+    } ]
+  }, {
+    "tStartMs": 768000,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "This is the basic command line just to run our \nfast API project for our server. Once we eat,  "
+    } ]
+  }, {
+    "tStartMs": 773280,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "enter, that you can see it says you've gone \nrunning a PC application startup complete.  "
+    } ]
+  }, {
+    "tStartMs": 781520,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "And it gives us this particular URL. That is \nthe URL that says where we should go to to see  "
+    } ]
+  }, {
+    "tStartMs": 788240,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "our project. I'll just come into my browser \nhere, paste our URL, hit Enter. And boom,  "
+    } ]
+  }, {
+    "tStartMs": 796560,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "you can see that I have named first data, \nwhich is exactly what we returned right here  "
+    } ]
+  }, {
+    "tStartMs": 801840,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "as a response new first data. So this is how \nyou can basically just have a very simple API.  "
+    } ]
+  }, {
+    "tStartMs": 809680,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "Now, pass API as is very cool thing that I like \nmost of everybody that works with fastpay. Like,  "
+    } ]
+  }, {
+    "tStartMs": 817040,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "we just got the documentation \nto automatically generate these  "
+    } ]
+  }, {
+    "tStartMs": 822080,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "good looking UI documentation for your API. \nIf we go to slash Doc's. And we hit enter,  "
+    } ]
+  }, {
+    "tStartMs": 829920,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "CCS fast API swagger UI. This is just like a \nbasic documentation for all the API's you have  "
+    } ]
+  }, {
+    "tStartMs": 836000,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "on these your like website, or like your API \napplication, whatever you want to call it.  "
+    } ]
+  }, {
+    "tStartMs": 841280,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "But as you can see, it says default, we have from \nthe endpoint of UI, just slash. And the function  "
+    } ]
+  }, {
+    "tStartMs": 848240,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "is index, which is right here, function, \ngive it to the index. And as you can see,  "
+    } ]
+  }, {
+    "tStartMs": 853440,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "using a get method, that's what it shows you it is \nit gets metal, they just basically generate these,  "
+    } ]
+  }, {
+    "tStartMs": 860160,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "like API for, like this documentation for our API. \nAnd we can test our API directly from this place.  "
+    } ]
+  }, {
+    "tStartMs": 868160,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "But we don't need to use postman or any external \nservice to test API, you can just come here,  "
+    } ]
+  }, {
+    "tStartMs": 873520,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "click on try it out. I will say it execute. And \nI come down here, he just give me the response,  "
+    } ]
+  }, {
+    "tStartMs": 880480,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "which is named first data of whatever is being \ndone here. Now, we're also gonna go complex,  "
+    } ]
+  }, {
+    "tStartMs": 887200,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "more in the video and show you how to like \nmanipulate all this data very well. But for now,  "
+    } ]
+  }, {
+    "tStartMs": 892000,
+    "dDurationMs": 6827,
+    "segs": [ {
+      "utf8": "this is just the response that is being given back \nto this page. And of course, if we go to the Oh,  "
+    } ]
+  }, {
+    "tStartMs": 898827,
+    "dDurationMs": 7173,
+    "segs": [ {
+      "utf8": "students same response, so To this point \nwe've talked about, first of all, we created  "
+    } ]
+  }, {
+    "tStartMs": 906800,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "our first API, we made sure we installed all our \npast API, you recall on everything we needed.  "
+    } ]
+  }, {
+    "tStartMs": 914160,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "I explained, endpoint, what endpoints are \nand get post, put, delete, implemented.  "
+    } ]
+  }, {
+    "tStartMs": 920800,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "And yet again, we created our first API, and also \nshowed you how to use documentation of fast API.  "
+    } ]
+  }, {
+    "tStartMs": 927760,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "So that's basically all about \nreaching our run our first API.  "
+    } ]
+  }, {
+    "tStartMs": 939360,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "Now, let's talk about our endpoint parameter. \nName parameter is basically used to return a data  "
+    } ]
+  }, {
+    "tStartMs": 946720,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "relating to an input in the part or in the \nendpoint, basically. So we can do that using  "
+    } ]
+  }, {
+    "tStartMs": 954080,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "either a part or a query. So we have two \ninput parameters, which are path parameter  "
+    } ]
+  }, {
+    "tStartMs": 959200,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "and a query parameter. I'm going to show you I \nillustrate these right now. But first of all,  "
+    } ]
+  }, {
+    "tStartMs": 964640,
+    "dDurationMs": 10400,
+    "segs": [ {
+      "utf8": "let's have low year as a new dictionary, our name \nis students. It just filled out correctly, the day  "
+    } ]
+  }, {
+    "tStartMs": 975040,
+    "dDurationMs": 11200,
+    "segs": [ {
+      "utf8": "dense. And there's a key with an ID of one, unless \nyou have that as another dictionary, lesson name.  "
+    } ]
+  }, {
+    "tStartMs": 990000,
+    "dDurationMs": 14080,
+    "segs": [ {
+      "utf8": "Give you like john. These are the \nage this C 17. There's a class  "
+    } ]
+  }, {
+    "tStartMs": 1006800,
+    "dDurationMs": 10720,
+    "segs": [ {
+      "utf8": "yet. So this is just a basic, make that small \ncaps. This is just a basic Python dictionary,  "
+    } ]
+  }, {
+    "tStartMs": 1018160,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "we just have one field India, this is a key, and \nthis is the value. So what we want to do now is  "
+    } ]
+  }, {
+    "tStartMs": 1025120,
+    "dDurationMs": 9760,
+    "segs": [ {
+      "utf8": "that we want to return the data of this particular \nstudent using the student's ID. So in the  "
+    } ]
+  }, {
+    "tStartMs": 1035520,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "field, by key, let's say slash, we \ncan have a parameter like slash,  "
+    } ]
+  }, {
+    "tStartMs": 1042960,
+    "dDurationMs": 3920,
+    "segs": [ {
+      "utf8": "it's then slash one. So while you \nhave one It means is you return  "
+    } ]
+  }, {
+    "tStartMs": 1047840,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "the data with the student the as the ideal \nfor. So before I get into these, let me  "
+    } ]
+  }, {
+    "tStartMs": 1054560,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "explain what I mean by a pass parameter. \nMore. So let me just come down here.  "
+    } ]
+  }, {
+    "tStartMs": 1063760,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "Let's say I have a website like google.com, \nslash, and they have get student  "
+    } ]
+  }, {
+    "tStartMs": 1073280,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "then this is just the basic URL to get a student. \nAnd it can just basically show me all the data we  "
+    } ]
+  }, {
+    "tStartMs": 1080320,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "have in this dictionary. But let's see how to get \nonly a specific study like this to date, which has  "
+    } ]
+  }, {
+    "tStartMs": 1085440,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "the ID of one, and I can add another endpoint. But \nnow this endpoint will be dynamic is going to be  "
+    } ]
+  }, {
+    "tStartMs": 1091760,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "like a parameter that the user inputs, that will \nbe something like slash, then can be one, then  "
+    } ]
+  }, {
+    "tStartMs": 1097680,
+    "dDurationMs": 4907,
+    "segs": [ {
+      "utf8": "when we go to this URL is the user that has the \nidea of Wanda is going to be returned to his to  "
+    } ]
+  }, {
+    "tStartMs": 1102587,
+    "dDurationMs": 5573,
+    "segs": [ {
+      "utf8": "his user as the idea of two. So let's cancel this \nand just go straight into it. So we have this  "
+    } ]
+  }, {
+    "tStartMs": 1108160,
+    "dDurationMs": 8080,
+    "segs": [ {
+      "utf8": "object right here. And then what want to do right \nhere in app dot get place first of all, have a new  "
+    } ]
+  }, {
+    "tStartMs": 1118640,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "endpoint, app dot get also why isn't using I \nget, and this time around, let's say get student.  "
+    } ]
+  }, {
+    "tStartMs": 1127840,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "Now we have this endpoint name gets \nto them. And we'll put slash again,  "
+    } ]
+  }, {
+    "tStartMs": 1131920,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "I now want to take a parameter dummies \nwant to take an ID of what a user should  "
+    } ]
+  }, {
+    "tStartMs": 1136720,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "input. The first To do this, we'll use the \ncurly braces, and they will say student  "
+    } ]
+  }, {
+    "tStartMs": 1143440,
+    "dDurationMs": 8880,
+    "segs": [ {
+      "utf8": "underscore ID. This is just telling us the \nprevious ID huge basically be collected. And now  "
+    } ]
+  }, {
+    "tStartMs": 1153360,
+    "dDurationMs": 8720,
+    "segs": [ {
+      "utf8": "they Jeff, this creates in the normal function \nof Cassie gay student. Now, remember right here,  "
+    } ]
+  }, {
+    "tStartMs": 1162080,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "it was just blank in euros not in India, \nbut now we're collecting students ID  "
+    } ]
+  }, {
+    "tStartMs": 1170080,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "underscore ID. And this should be equivalent \nto whatever you put right in here.  "
+    } ]
+  }, {
+    "tStartMs": 1174880,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "That does what he just being collected. And \nwe have to specify the data type of this,  "
+    } ]
+  }, {
+    "tStartMs": 1181680,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "which is our integer so the ID should be our \ninteger now, or we can just do is to return  "
+    } ]
+  }, {
+    "tStartMs": 1188640,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "students. We're returning students, \nwhich is from year is in the student ID.  "
+    } ]
+  }, {
+    "tStartMs": 1199520,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "So let me explain this. One more Time, what this \nis doing now is that we have these adult guests  "
+    } ]
+  }, {
+    "tStartMs": 1207120,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "slash guest today, slash why now why isn't it \ncurly braces, that's fine like a variable mpg like  "
+    } ]
+  }, {
+    "tStartMs": 1213360,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "variable a dynamic variable. So whatever these \nare input here is what is going to be used to get  "
+    } ]
+  }, {
+    "tStartMs": 1219760,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "the student. So d f, get student \nthere now, initializing the student ID  "
+    } ]
+  }, {
+    "tStartMs": 1227920,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "thing we're giving is like a data type of int, \nthat means it must not be a string or a boolean  "
+    } ]
+  }, {
+    "tStartMs": 1234160,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "value, it has to be an integer. And then we \njust say return students who are turning the  "
+    } ]
+  }, {
+    "tStartMs": 1240320,
+    "dDurationMs": 8240,
+    "segs": [ {
+      "utf8": "student with the students ID. But what I mean by \nthis, you know, in a normal Python dictionary,  "
+    } ]
+  }, {
+    "tStartMs": 1248560,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "if we just want to return these students, \nbecause it has a key of one because the students  "
+    } ]
+  }, {
+    "tStartMs": 1254080,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "want. And this is basically just going to return \nthe value of this one. But since one is to be  "
+    } ]
+  }, {
+    "tStartMs": 1261200,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "dynamic, I want you to do what the user inputs, we \nchange this one to the students ID damage whatever  "
+    } ]
+  }, {
+    "tStartMs": 1267280,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "the user inputs, the key of that is what should \nbe, and not, let's say user input like five,  "
+    } ]
+  }, {
+    "tStartMs": 1273680,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "and we know of that here, just gonna give you \nlike the channel found or something like that. So  "
+    } ]
+  }, {
+    "tStartMs": 1278320,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "let's save this. First of all, let's just \ngo test it out. If we come back here,  "
+    } ]
+  }, {
+    "tStartMs": 1285200,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "and let's refresh this page. Now you can \nsee that we have a large guest student.  "
+    } ]
+  }, {
+    "tStartMs": 1291600,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "And instead he knows the names are Roscoe ID \nthat we call me utilizes students ID is required.  "
+    } ]
+  }, {
+    "tStartMs": 1298880,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "That means we can just test this out, I say \nexecute the we try to try this and execute  "
+    } ]
+  }, {
+    "tStartMs": 1304480,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "T, it says that we need to input something \nhere. Now we put one, I say execute.  "
+    } ]
+  }, {
+    "tStartMs": 1311520,
+    "dDurationMs": 8880,
+    "segs": [ {
+      "utf8": "We see now that gives us a response of named john \n17. On year two, that is basically this one right  "
+    } ]
+  }, {
+    "tStartMs": 1320400,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "here. So if we come here now, and then we \ntry to put something that is not the like  "
+    } ]
+  }, {
+    "tStartMs": 1325840,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "three, I'll say execute. You see the ISIS internal \nsurvey Rodas because there is no detail like the,  "
+    } ]
+  }, {
+    "tStartMs": 1333040,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "of course, let's just go to the URL direct \ndirectory directly, we say get student  "
+    } ]
+  }, {
+    "tStartMs": 1342560,
+    "dDurationMs": 11360,
+    "segs": [ {
+      "utf8": "finish student then slash one. You see now that \nwe have john age, we just have basically dat data  "
+    } ]
+  }, {
+    "tStartMs": 1353920,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "proceed to internal server error. Let's go back \nto the docs, the does what's the path parameter  "
+    } ]
+  }, {
+    "tStartMs": 1361200,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "is basically all about what we can make it more \nwe can add more details to it. Or we can say let's  "
+    } ]
+  }, {
+    "tStartMs": 1367600,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "say we can make it compulsory. So let me come back \nhere. Let's say we want to add more details to  "
+    } ]
+  }, {
+    "tStartMs": 1374880,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "this student id like, you know, when we are \nserving this API to a user, the user manual really  "
+    } ]
+  }, {
+    "tStartMs": 1382480,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "good like you really name this today's idea, we \njust say student ism, I know understand what this  "
+    } ]
+  }, {
+    "tStartMs": 1387440,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "is like, do we need to pass the student name, or \nthe student's age or the class or the ID. So if  "
+    } ]
+  }, {
+    "tStartMs": 1392880,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "we don't have a surface financial name, we can \nuse like, something we need to import. And then  "
+    } ]
+  }, {
+    "tStartMs": 1399280,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "that is going to allow us to have a description of \nit that the user can know what to input. But first  "
+    } ]
+  }, {
+    "tStartMs": 1405040,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "of all, let's come up here and input path. To \nsay that we don't need to have an dialogue,  "
+    } ]
+  }, {
+    "tStartMs": 1411440,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "we can just press comma inputs path, because \nit's from past API inputs in it. So now that  "
+    } ]
+  }, {
+    "tStartMs": 1417840,
+    "dDurationMs": 9040,
+    "segs": [ {
+      "utf8": "we have parts imported, we can just say student \nID, below int equals two, then we can say path.  "
+    } ]
+  }, {
+    "tStartMs": 1428960,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "First of all, we'll say none. Now this non is \nso there, if the student, if the person doesn't  "
+    } ]
+  }, {
+    "tStartMs": 1435680,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "input anything is just going to leave it blank \nor is not going to once Iran is just gonna like  "
+    } ]
+  }, {
+    "tStartMs": 1441200,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "bring out an empty data. So just to like catch \nthe error. Remember, when we did it back year,  "
+    } ]
+  }, {
+    "tStartMs": 1447120,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "when we tried to get without inputting \nsomething, he just told us that we need  "
+    } ]
+  }, {
+    "tStartMs": 1451280,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "to input something. That's just what this \nis doing. And now we can add a description.  "
+    } ]
+  }, {
+    "tStartMs": 1460400,
+    "dDurationMs": 11440,
+    "segs": [ {
+      "utf8": "Now in this description, we can do something like \nwe want the ID of the student. You want to view  "
+    } ]
+  }, {
+    "tStartMs": 1471840,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "like that. So now this is just the description \nwe are giving it. And once we have this,  "
+    } ]
+  }, {
+    "tStartMs": 1477840,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "if we save it on then recall to our code right \nhere. And let's just try to refresh the page to  "
+    } ]
+  }, {
+    "tStartMs": 1488000,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "refresh dogs. And then we say get student.  "
+    } ]
+  }, {
+    "tStartMs": 1495440,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "No, because he writes in distribution. He says \nthe idea of this today you want to say just more,  "
+    } ]
+  }, {
+    "tStartMs": 1500640,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "giving us more description or more details of \nwhat we really want to collect. What you also  "
+    } ]
+  }, {
+    "tStartMs": 1505600,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "more attributes is not just only does it come back \nto our code, we have more attributes in this path,  "
+    } ]
+  }, {
+    "tStartMs": 1511920,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "we have attributes like less than two, let me just \nquickly come down here again and experience it.  "
+    } ]
+  }, {
+    "tStartMs": 1519920,
+    "dDurationMs": 8400,
+    "segs": [ {
+      "utf8": "But we have let greater than gt GT, this just \nmeans greater than, is self explanatory, we have  "
+    } ]
+  }, {
+    "tStartMs": 1528320,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "less than, we have D, which is greater \nthan or equals to also have LD,  "
+    } ]
+  }, {
+    "tStartMs": 1534080,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "which is less than or equal to. So this is just \ntelling us since we are collecting an integer,  "
+    } ]
+  }, {
+    "tStartMs": 1540000,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "we can specify whether the integer want to collect \nmust not be greater than 50, or must not be less  "
+    } ]
+  }, {
+    "tStartMs": 1546000,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "than one or zero or something like that. Let's say \nwe don't want our integer to be greater than zero.  "
+    } ]
+  }, {
+    "tStartMs": 1555600,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "But we want it to be greater than zero, so it \nmust be greater than zero. Let's save now, we come  "
+    } ]
+  }, {
+    "tStartMs": 1562880,
+    "dDurationMs": 11200,
+    "segs": [ {
+      "utf8": "back here, it refresh. Now, let's try it out right \nhere. Let's say we try to use zero and say execute  "
+    } ]
+  }, {
+    "tStartMs": 1575120,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "the gives us this error say, ensure the value is \ngreater than zero. But that's because we specified  "
+    } ]
+  }, {
+    "tStartMs": 1580720,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "in yellow, we don't want it to be less than zero, \nit must be greater than zero. And we can also add  "
+    } ]
+  }, {
+    "tStartMs": 1586240,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "to, let's say we want you to be greater than \nzero, but less than, less than, like three.  "
+    } ]
+  }, {
+    "tStartMs": 1593600,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "That means the number should be from one to \ntwo. So if we go against any of these rules,  "
+    } ]
+  }, {
+    "tStartMs": 1600160,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "for me again, in the refresh button, and \nright here, we tried out the let's say we  "
+    } ]
+  }, {
+    "tStartMs": 1607040,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "do three presses acute trauma give us an error, \nwe say ensure the value is less than three,  "
+    } ]
+  }, {
+    "tStartMs": 1612480,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "when I we do two is gonna give us internal server \nerror does because that data is not found there is  "
+    } ]
+  }, {
+    "tStartMs": 1619680,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "no data with the key of two with do one, you know, \nwe have that data right here. Right here, we just  "
+    } ]
+  }, {
+    "tStartMs": 1626880,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "go here, the key of one to come back here. Now \nyou see that gives us a data that does our we can  "
+    } ]
+  }, {
+    "tStartMs": 1634640,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "just add more values. Or we can Yeah, we can add \nmore values and details to this particular API.  "
+    } ]
+  }, {
+    "tStartMs": 1648400,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "Now let's talk about query parameters. The \nquery is used to pass a value into a URL  "
+    } ]
+  }, {
+    "tStartMs": 1654400,
+    "dDurationMs": 8720,
+    "segs": [ {
+      "utf8": "that is quite similar to the path parameter. Let \nme quickly explain that again. Now in a URL, like  "
+    } ]
+  }, {
+    "tStartMs": 1663840,
+    "dDurationMs": 10400,
+    "segs": [ {
+      "utf8": "I say, google.com, slash, and we have results. Now \nwhen we have these question mark, and then we have  "
+    } ]
+  }, {
+    "tStartMs": 1675760,
+    "dDurationMs": 8720,
+    "segs": [ {
+      "utf8": "variable name equals to something like Python. \nNow in this URL, the query parameter is this  "
+    } ]
+  }, {
+    "tStartMs": 1684480,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "search equals to Python. So this is just basically \ngiving us an like a key and a value. So this is  "
+    } ]
+  }, {
+    "tStartMs": 1692480,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "the name of the variable as we pass undefined is \nvery, very, very similar to the path parameter,  "
+    } ]
+  }, {
+    "tStartMs": 1698720,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "right here. And the path parameter, you know, we \nhave a name of student ID, or we have a value of  "
+    } ]
+  }, {
+    "tStartMs": 1704480,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "whatever the user inputs, that's just our \nwhich is zero. So we can have like a URL,  "
+    } ]
+  }, {
+    "tStartMs": 1710960,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "and then instead of having slash or something to, \nyou know, be on that same endpoint, for right now,  "
+    } ]
+  }, {
+    "tStartMs": 1717547,
+    "dDurationMs": 5733,
+    "segs": [ {
+      "utf8": "is gonna just have a query attached to that \nend point. to having this said, let's just go  "
+    } ]
+  }, {
+    "tStartMs": 1723280,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "straight into using these practically, what \nI want to do now is I want to create a new  "
+    } ]
+  }, {
+    "tStartMs": 1731120,
+    "dDurationMs": 10640,
+    "segs": [ {
+      "utf8": "person a new endpoint, I'll say app dot \nget also. And then let's say slash get,  "
+    } ]
+  }, {
+    "tStartMs": 1742320,
+    "dDurationMs": 7840,
+    "segs": [ {
+      "utf8": "I think by the want to get the student data \nby the name, this right here, we're getting by  "
+    } ]
+  }, {
+    "tStartMs": 1750160,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "the students ID for the difference between the \nquery parameter and the path parameter is that  "
+    } ]
+  }, {
+    "tStartMs": 1755600,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "in the patch parameter, we need to add whatever \nthe parameter wants to collect in the URL in the  "
+    } ]
+  }, {
+    "tStartMs": 1761680,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "endpoint right here. When it query parameter, \nwe don't need to do that. Or we just need to  "
+    } ]
+  }, {
+    "tStartMs": 1765920,
+    "dDurationMs": 9520,
+    "segs": [ {
+      "utf8": "do so coming to our function. This fire function, \nI say get student. And then we'll just say, name  "
+    } ]
+  }, {
+    "tStartMs": 1777280,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "is a string. So right here is very similar. \nYou see it in the path with the student ID is  "
+    } ]
+  }, {
+    "tStartMs": 1784160,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "equals to an integer. But we already defined our \nstudents ID in the URL. But here we didn't define  "
+    } ]
+  }, {
+    "tStartMs": 1790400,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "any team but we are now coming into the function \nand defining it. So once you see something like  "
+    } ]
+  }, {
+    "tStartMs": 1795840,
+    "dDurationMs": 8160,
+    "segs": [ {
+      "utf8": "is it ready, takes it as a query parameter. And \nthen once we have that I'm just going to these our  "
+    } ]
+  }, {
+    "tStartMs": 1804880,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "particular function. And now, once a user \ncomes to this URL and do something like this,  "
+    } ]
+  }, {
+    "tStartMs": 1811760,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "I'll say name equals to like john, we want to \nget the data there as the name of john, to this  "
+    } ]
+  }, {
+    "tStartMs": 1819780,
+    "dDurationMs": 11580,
+    "segs": [ {
+      "utf8": "as duties now, and I use a for loop \nand say for a student, ID, student.  "
+    } ]
+  }, {
+    "tStartMs": 1835520,
+    "dDurationMs": 8720,
+    "segs": [ {
+      "utf8": "If students were brackets, student ID, name.  "
+    } ]
+  }, {
+    "tStartMs": 1849440,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "posts are the name which was passed. \nAnd what we just want to do is return  "
+    } ]
+  }, {
+    "tStartMs": 1864320,
+    "dDurationMs": 14640,
+    "segs": [ {
+      "utf8": "to dance. That particular students \nID, none of this is just return. Data.  "
+    } ]
+  }, {
+    "tStartMs": 1884240,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "Thought. What this is doing is, first of \nall, is looping through the values we have  "
+    } ]
+  }, {
+    "tStartMs": 1890560,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "in this student wise in the key of students \nID. In this student, we say if the students  "
+    } ]
+  }, {
+    "tStartMs": 1898320,
+    "dDurationMs": 3680,
+    "segs": [ {
+      "utf8": "have this student ID, the name of it is \nbecause with name which has been passed,  "
+    } ]
+  }, {
+    "tStartMs": 1902000,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "let me explain his will to we are looping through \nthis student's ID using while looping through this  "
+    } ]
+  }, {
+    "tStartMs": 1907680,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "students dictionary using the students ID. And \nthis Jeanette ID is this. So we can name this  "
+    } ]
+  }, {
+    "tStartMs": 1913040,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "anything right here, we can just say ID anything \nwe don't want to name. But if I say ID pattern  "
+    } ]
+  }, {
+    "tStartMs": 1919040,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "automatically see that as a keyword. So I'm just \ngoing to put a student's ID so it's original.  "
+    } ]
+  }, {
+    "tStartMs": 1925840,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "So now we are looping through it using these, \nI will say if the student with this student ID,  "
+    } ]
+  }, {
+    "tStartMs": 1933360,
+    "dDurationMs": 3520,
+    "segs": [ {
+      "utf8": "the name of it is equals to \nthe name which is being passed,  "
+    } ]
+  }, {
+    "tStartMs": 1936880,
+    "dDurationMs": 7520,
+    "segs": [ {
+      "utf8": "they want to return that particular student. If \nnot, you just say data not found. Now to make  "
+    } ]
+  }, {
+    "tStartMs": 1944400,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "a query parameter, let's just go and test \nit out. Let's come back here. Now issue.  "
+    } ]
+  }, {
+    "tStartMs": 1955760,
+    "dDurationMs": 8240,
+    "segs": [ {
+      "utf8": "Good. So now we have guests by name, or we see \nyet we are name required. We can just you know,  "
+    } ]
+  }, {
+    "tStartMs": 1964000,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "we say john, once we execute that should work. So \nas you can see now is named john, because it gets  "
+    } ]
+  }, {
+    "tStartMs": 1971600,
+    "dDurationMs": 9600,
+    "segs": [ {
+      "utf8": "that is really a value by data with the new module \nwhere we try something like let's say, a team.  "
+    } ]
+  }, {
+    "tStartMs": 1984560,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "We execute, gonna say data loss, because \nwe don't have any data rights in year  "
+    } ]
+  }, {
+    "tStartMs": 1990560,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "with the name of team. So that's basically how to \njust create a very simple query parameter and fast  "
+    } ]
+  }, {
+    "tStartMs": 1997360,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "API. Now to make these our query parameter option \nnow, we can do the so is very simple. Let's say  "
+    } ]
+  }, {
+    "tStartMs": 2004240,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "we just want to make it optional. Like we don't \nwant to require we come here, you see that it  "
+    } ]
+  }, {
+    "tStartMs": 2009520,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "says it is required right here. Let's make this \noption now. We can just say name, right here in  "
+    } ]
+  }, {
+    "tStartMs": 2015760,
+    "dDurationMs": 9840,
+    "segs": [ {
+      "utf8": "this string Kathy equals to not equals to no \nis no more required, we can go year. So dogs  "
+    } ]
+  }, {
+    "tStartMs": 2025600,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "always say get by name, Katsina, it doesn't say \nda required again. That means we can try that's  "
+    } ]
+  }, {
+    "tStartMs": 2031360,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "gonna give us an error or something. They just \nsays data not found. But now is no more require.  "
+    } ]
+  }, {
+    "tStartMs": 2037360,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "Now does one way to do it. But the best practice \nis to use the default option now method that  "
+    } ]
+  }, {
+    "tStartMs": 2045360,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "past API is for us. For us to use \nthese, what we just need to do.  "
+    } ]
+  }, {
+    "tStartMs": 2051840,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "First of all, we'll come right here \nis very easy, we just say optional.  "
+    } ]
+  }, {
+    "tStartMs": 2063840,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "And then equals known. So this is just going \nto make it optional for us. But before we  "
+    } ]
+  }, {
+    "tStartMs": 2070080,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "can use this, we need to make sure we put \nthat option now, they from typing import  "
+    } ]
+  }, {
+    "tStartMs": 2077680,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "option. That is just to make it the best \npractice. Because these are facts epi  "
+    } ]
+  }, {
+    "tStartMs": 2082320,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "recommends that if we need documentation, also \ndo it the normal way or just the other way,  "
+    } ]
+  }, {
+    "tStartMs": 2088000,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "not the normal way. This is the normal way. \nSo we can also do it that way to keep things  "
+    } ]
+  }, {
+    "tStartMs": 2092480,
+    "dDurationMs": 3840,
+    "segs": [ {
+      "utf8": "simple. We just want to you have a clean \ncode and a more readable code as the main  "
+    } ]
+  }, {
+    "tStartMs": 2096880,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "points to make it more readable. We can also \nuse this so right No, this is gonna be like,  "
+    } ]
+  }, {
+    "tStartMs": 2104800,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "not required is going to be optional. So now, \nlet's say we want to add another query parameter  "
+    } ]
+  }, {
+    "tStartMs": 2111520,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "into eloquent to have to query parameters. How do \nwe do this? I'm going to show you something. Yeah,  "
+    } ]
+  }, {
+    "tStartMs": 2116880,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "let's just have a comma, I will say test \nit. So we just have a query parameter  "
+    } ]
+  }, {
+    "tStartMs": 2124400,
+    "dDurationMs": 8480,
+    "segs": [ {
+      "utf8": "of JSON is an integer. So if I try to run \nthis, we should get an error. And I'm going  "
+    } ]
+  }, {
+    "tStartMs": 2132880,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "to show you why we have that error right? \nNow. Let me call me not here, a browser.  "
+    } ]
+  }, {
+    "tStartMs": 2143520,
+    "dDurationMs": 3520,
+    "segs": [ {
+      "utf8": "So okay, you can see that it's \nnot even going if I come here.  "
+    } ]
+  }, {
+    "tStartMs": 2147600,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "Now you see dices syntax \nerror, non default argument,  "
+    } ]
+  }, {
+    "tStartMs": 2151520,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "follows default argument. So what this is just \nsaying is, we have, as you can see, right here,  "
+    } ]
+  }, {
+    "tStartMs": 2158080,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "we have named optional. And then we have test, \nwhich is optional. So Python doesn't allow us to  "
+    } ]
+  }, {
+    "tStartMs": 2166400,
+    "dDurationMs": 9280,
+    "segs": [ {
+      "utf8": "have like, an optional argument before, a required \nargument. So fast the back covers is about Python  "
+    } ]
+  }, {
+    "tStartMs": 2175680,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "doesn't just allow us because Python is a language \nwriting. So we also have to stick with Python.  "
+    } ]
+  }, {
+    "tStartMs": 2180560,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "If we come down year, one thing we can do is to \njust switch to places like changes, or bring it  "
+    } ]
+  }, {
+    "tStartMs": 2186240,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "here or something, we can also do that. But the \nbest way to do this, so we can have a limited  "
+    } ]
+  }, {
+    "tStartMs": 2193760,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "query parameters and have them anywhere we want. \nIt's very easy, what we can use to say asterik sa,  "
+    } ]
+  }, {
+    "tStartMs": 2201760,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "coma. So once we have these, we can now write \nit if we have a default parameter or optional,  "
+    } ]
+  }, {
+    "tStartMs": 2208800,
+    "dDurationMs": 3600,
+    "segs": [ {
+      "utf8": "or whatever required is going to \nwork since we have this now. Gonna  "
+    } ]
+  }, {
+    "tStartMs": 2212400,
+    "dDurationMs": 5400,
+    "segs": [ {
+      "utf8": "be able to take care of anything that comes \nafter it. Never call me on it, refresh. It  "
+    } ]
+  }, {
+    "tStartMs": 2219680,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "that should work. Well. Let's see, let's have \nthat a reloading? Yeah, there we come, you know,  "
+    } ]
+  }, {
+    "tStartMs": 2227440,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "she's ready reloading. And that should \nwork. Now. Let's give it one more trial.  "
+    } ]
+  }, {
+    "tStartMs": 2235920,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "Okay, that's taking a while to reload we \nshouldn't. But that's just basically how to  "
+    } ]
+  }, {
+    "tStartMs": 2240880,
+    "dDurationMs": 2720,
+    "segs": [ {
+      "utf8": "solve that particular error, or when you're having  "
+    } ]
+  }, {
+    "tStartMs": 2244560,
+    "dDurationMs": 11280,
+    "segs": [ {
+      "utf8": "an optional parameter before a required query \nparameter. So I hope you understand that concept.  "
+    } ]
+  }, {
+    "tStartMs": 2260640,
+    "dDurationMs": 3440,
+    "segs": [ {
+      "utf8": "Now let's talk about combining \npath and query parameters together.  "
+    } ]
+  }, {
+    "tStartMs": 2264080,
+    "dDurationMs": 3760,
+    "segs": [ {
+      "utf8": "Now, sometimes you might want to do this, \nwell, most of the time, you might not.  "
+    } ]
+  }, {
+    "tStartMs": 2267840,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "Let's say you want to get two different values \nfrom a user, like let's say his ID on his name, or  "
+    } ]
+  }, {
+    "tStartMs": 2272400,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "the class or whatever, you might want to combine \na query parameter alongside with a path parameter.  "
+    } ]
+  }, {
+    "tStartMs": 2278160,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "First to do these, you know, right here, we \nalready have weary parameter of name and test,  "
+    } ]
+  }, {
+    "tStartMs": 2286000,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "the length of the path parameter, let's \nalso call it the student ID, the slash K,  "
+    } ]
+  }, {
+    "tStartMs": 2294640,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "students underscore ID. And then \nsince we are defining initializers,  "
+    } ]
+  }, {
+    "tStartMs": 2301200,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "to net ID in the path, and we \nalso come here, and then say,  "
+    } ]
+  }, {
+    "tStartMs": 2309440,
+    "dDurationMs": 9520,
+    "segs": [ {
+      "utf8": "dent underscore ID, and then we give it \nint, j comma. So since we have eta on here,  "
+    } ]
+  }, {
+    "tStartMs": 2318960,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "that is a path parameter, which only in the \nfunction that is a query parameter. So that's  "
+    } ]
+  }, {
+    "tStartMs": 2324640,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "just the basic difference you just need to take \nnote of. So we are between these two places does  "
+    } ]
+  }, {
+    "tStartMs": 2330480,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "that. So now we can just easily test this out? \nActually, we even when we collect the students,  "
+    } ]
+  }, {
+    "tStartMs": 2336640,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "Id one organizer for anything? Yeah, because \neverything was doing is basically getting it  "
+    } ]
+  }, {
+    "tStartMs": 2340960,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "by the name. But that's just how you can combine \na query parameter with us come back here. Now.  "
+    } ]
+  }, {
+    "tStartMs": 2347600,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "We hit enter. So if we say get, no, this is \nnot what we need. We want to get by name.  "
+    } ]
+  }, {
+    "tStartMs": 2353760,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "We say get no, you see that we are name \ntest. We should also have students ID  "
+    } ]
+  }, {
+    "tStartMs": 2361360,
+    "dDurationMs": 11040,
+    "segs": [ {
+      "utf8": "to strike out as the key. If we come back here. \nDid I okay, we didn't save our file. Let's make  "
+    } ]
+  }, {
+    "tStartMs": 2372400,
+    "dDurationMs": 9920,
+    "segs": [ {
+      "utf8": "sure we save our file back ducks it and now \nwe have student ID which is also required.  "
+    } ]
+  }, {
+    "tStartMs": 2382320,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "That just the basic concept of like combining \nparameter on a query parameter together.  "
+    } ]
+  }, {
+    "tStartMs": 2394800,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "This part we're going to talk about request \nbody and the POST method. So the request  "
+    } ]
+  }, {
+    "tStartMs": 2401840,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "What it is, is like the information or \ndata pass when creating a new object  "
+    } ]
+  }, {
+    "tStartMs": 2406320,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "using the POST method. Now to do this, first \nof all, let's import something right here  "
+    } ]
+  }, {
+    "tStartMs": 2414000,
+    "dDurationMs": 11600,
+    "segs": [ {
+      "utf8": "for the base. So say from by downtick import \nbase model, just to be more elaborate. The  "
+    } ]
+  }, {
+    "tStartMs": 2425600,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "request body is like the data pass when you \nwant to create a new object or a new data of  "
+    } ]
+  }, {
+    "tStartMs": 2433280,
+    "dDurationMs": 3600,
+    "segs": [ {
+      "utf8": "t. So, I'm going to explain this later, like, \nyou're gonna see what we're talking about, you  "
+    } ]
+  }, {
+    "tStartMs": 2436880,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "don't need to like know the definition or whatever \nthat is, just to know how to use it in a practical  "
+    } ]
+  }, {
+    "tStartMs": 2441760,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "case. So now that we have this base, Moodle \nimporter, we're going to create a new class.  "
+    } ]
+  }, {
+    "tStartMs": 2449440,
+    "dDurationMs": 3200,
+    "segs": [ {
+      "utf8": "And this class, we just want \nit to be similar to the student  "
+    } ]
+  }, {
+    "tStartMs": 2453840,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "dictionary, and let's name the class \nstudent going to take from the base Moodle  "
+    } ]
+  }, {
+    "tStartMs": 2463280,
+    "dDurationMs": 8720,
+    "segs": [ {
+      "utf8": "let's have a name should be a string is \nof an age and use that as an integer.  "
+    } ]
+  }, {
+    "tStartMs": 2473840,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "And then they have a class. Now I \nwould have loved to have a class boy,  "
+    } ]
+  }, {
+    "tStartMs": 2479840,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "Cassie is seen it as a key word. So let's change \nout to like year, the year of the student and  "
+    } ]
+  }, {
+    "tStartMs": 2487120,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "that should be string also, they just call \nme Mr. of class here. So we can use it,  "
+    } ]
+  }, {
+    "tStartMs": 2497120,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "you know that we have these, what we \ncan just do want to create a new path  "
+    } ]
+  }, {
+    "tStartMs": 2501200,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "now. But this time around, \nwe're gonna use a POST method.  "
+    } ]
+  }, {
+    "tStartMs": 2506000,
+    "dDurationMs": 11120,
+    "segs": [ {
+      "utf8": "First to do this just similar to say arts app dot \npost proposed. And now we will say create students  "
+    } ]
+  }, {
+    "tStartMs": 2519280,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "now wants to create a new object of students are \ngoing to take a path parameter, or students ID,  "
+    } ]
+  }, {
+    "tStartMs": 2526720,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "I know what we do, when we take a path parameter, \nwe have to define that in the function. So create,  "
+    } ]
+  }, {
+    "tStartMs": 2534800,
+    "dDurationMs": 14720,
+    "segs": [ {
+      "utf8": "underscore, the desk. router, define our student \nunderscore ID as an integer. And what the next you  "
+    } ]
+  }, {
+    "tStartMs": 2549520,
+    "dDurationMs": 10080,
+    "segs": [ {
+      "utf8": "want to specify is student. The students know \nwhat it is, is basically the details that the  "
+    } ]
+  }, {
+    "tStartMs": 2560240,
+    "dDurationMs": 8560,
+    "segs": [ {
+      "utf8": "that the user submits. So in order to create a new \nstudents object, for using this particular class,  "
+    } ]
+  }, {
+    "tStartMs": 2568800,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "to know the details, let's say the details, the \nname that the user saw me the age and the year  "
+    } ]
+  }, {
+    "tStartMs": 2574160,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "is what is going to be saved in this student. \nSo want it to be because to this student  "
+    } ]
+  }, {
+    "tStartMs": 2581920,
+    "dDurationMs": 2400,
+    "segs": [ {
+      "utf8": "Moodle, you can see that \nthese with a small letter and  "
+    } ]
+  }, {
+    "tStartMs": 2585200,
+    "dDurationMs": 3840,
+    "segs": [ {
+      "utf8": "capital letter. So that's what's really \ndifferent. So this like key value,  "
+    } ]
+  }, {
+    "tStartMs": 2589600,
+    "dDurationMs": 11280,
+    "segs": [ {
+      "utf8": "but now that we have that just go straight to say, \nif the students ID that was passed. In students,  "
+    } ]
+  }, {
+    "tStartMs": 2605200,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "what we just want to do was \nsay, return like an error,  "
+    } ]
+  }, {
+    "tStartMs": 2613840,
+    "dDurationMs": 1200,
+    "segs": [ {
+      "utf8": "say student exists.  "
+    } ]
+  }, {
+    "tStartMs": 2619120,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "So this means that if the student ID in \nis already in students, and the student  "
+    } ]
+  }, {
+    "tStartMs": 2626560,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "ID right here, then what we just do is to say \nreturn an error, does history already exist,  "
+    } ]
+  }, {
+    "tStartMs": 2632160,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "damage the concrete, the same student \nwith a student with the same ID twice.  "
+    } ]
+  }, {
+    "tStartMs": 2638000,
+    "dDurationMs": 9840,
+    "segs": [ {
+      "utf8": "What he does not the case, Justice students. \nWithin the student ID equals to student  "
+    } ]
+  }, {
+    "tStartMs": 2651680,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "I tell you that the student is whatever the user \nbroad or submitted using this post metal, but now  "
+    } ]
+  }, {
+    "tStartMs": 2657920,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "that we have these, we've created a new object of \na student. And then we can just basically return  "
+    } ]
+  }, {
+    "tStartMs": 2667360,
+    "dDurationMs": 9520,
+    "segs": [ {
+      "utf8": "students of that student ID. This \nis just the code we need for this.  "
+    } ]
+  }, {
+    "tStartMs": 2676880,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "So before we test this code, or let me \nexplain what we did in this code, again,  "
+    } ]
+  }, {
+    "tStartMs": 2681040,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "what we're doing in the score above register, we \nare taking a path parameter of an ID. So this is  "
+    } ]
+  }, {
+    "tStartMs": 2687680,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "per parameter alongside with all the details \nof the student, and they were using that to  "
+    } ]
+  }, {
+    "tStartMs": 2692800,
+    "dDurationMs": 7520,
+    "segs": [ {
+      "utf8": "create a new student object. So please just go \nahead and test this code to save the Permian.  "
+    } ]
+  }, {
+    "tStartMs": 2703040,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "ducks. Now you can see that we have posts not \nget any more great students, our students ID  "
+    } ]
+  }, {
+    "tStartMs": 2709840,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "is required. And they can see it says request \nbody also required. That's what I talked about.  "
+    } ]
+  }, {
+    "tStartMs": 2715200,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "Talked about the request body is basically the \ndetails as the name PhD year it needs orders,  "
+    } ]
+  }, {
+    "tStartMs": 2721760,
+    "dDurationMs": 10080,
+    "segs": [ {
+      "utf8": "let's try it out. One of our students \nhave to, though, we'll say, just say, Tim,  "
+    } ]
+  }, {
+    "tStartMs": 2733120,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "give Tim age of 12. See \nnine. Now, if I execute this,  "
+    } ]
+  }, {
+    "tStartMs": 2741920,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "see now that it just gave me the response of \nwhat I just created. But now we have a student  "
+    } ]
+  }, {
+    "tStartMs": 2747200,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "ID of two, if I call to get by student's ID, \nso let's just get the students using the ID,  "
+    } ]
+  }, {
+    "tStartMs": 2753760,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "we should love that now safe. So let's say to say \nexecute. Now we can see that we have this team,  "
+    } ]
+  }, {
+    "tStartMs": 2760960,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "with dummies, it has been saved right here. But \none thing about this is that it's saving it in  "
+    } ]
+  }, {
+    "tStartMs": 2766480,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "like a memory. So if we refresh this page, \nthat is gone. But you know, we are working  "
+    } ]
+  }, {
+    "tStartMs": 2770640,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "with real world applications, you want to save \nlike your database or something like that. So  "
+    } ]
+  }, {
+    "tStartMs": 2775760,
+    "dDurationMs": 8080,
+    "segs": [ {
+      "utf8": "you can see that we created a new object of that \nnow. And then we just use the get to get that URL,  "
+    } ]
+  }, {
+    "tStartMs": 2783840,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "if we want to read what already exists like \ntrue, and want to create it again, let's execute,  "
+    } ]
+  }, {
+    "tStartMs": 2790480,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "we say says error students already exist, we can \ncreate with the same ID twice, does what's good  "
+    } ]
+  }, {
+    "tStartMs": 2797360,
+    "dDurationMs": 9520,
+    "segs": [ {
+      "utf8": "about that? Let's go back to our code. So this is \nbasically how we can just use the POST method and  "
+    } ]
+  }, {
+    "tStartMs": 2806880,
+    "dDurationMs": 8960,
+    "segs": [ {
+      "utf8": "the request body to create a new object in your \nnew object in our data in our database, basically.  "
+    } ]
+  }, {
+    "tStartMs": 2822400,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "Let's talk about the ports method. As I explained \nearlier, in this tutorial, the put method is used  "
+    } ]
+  }, {
+    "tStartMs": 2827520,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "to update something that already exists. So \nto do these, first of all, let's have a new  "
+    } ]
+  }, {
+    "tStartMs": 2834560,
+    "dDurationMs": 13120,
+    "segs": [ {
+      "utf8": "endpoint policy up those goods. This time around, \nwe'll say patch update. affairs today student  "
+    } ]
+  }, {
+    "tStartMs": 2849760,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "and they want to collect the ID of the student. \nSo we know the student in which we are updating.  "
+    } ]
+  }, {
+    "tStartMs": 2857040,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "Now let's have a function saying date. Student  "
+    } ]
+  }, {
+    "tStartMs": 2866560,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "we also have to defend us \ntoday and ID as an integer.  "
+    } ]
+  }, {
+    "tStartMs": 2875920,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "Now students just similar to what \nwe did here, we know our collecting.  "
+    } ]
+  }, {
+    "tStartMs": 2884000,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "Vantage goes to this student. Well, \nnow, I want to explain something. So  "
+    } ]
+  }, {
+    "tStartMs": 2891360,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "right here you can see that it says to that is \nbecause of studio. But when we are posting these  "
+    } ]
+  }, {
+    "tStartMs": 2899680,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "posting a particular data to this URL, I \nwill say this student is equals to student,  "
+    } ]
+  }, {
+    "tStartMs": 2905200,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "everything has to be essentially all the field in \nthe composer. So you've become here now. And we  "
+    } ]
+  }, {
+    "tStartMs": 2912480,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "give a name field and we don't give an age field \nnot going to work if we are using the students  "
+    } ]
+  }, {
+    "tStartMs": 2918240,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "module for the update. So we need to create \na new model, but this time around to make all  "
+    } ]
+  }, {
+    "tStartMs": 2925200,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "of these optional. So the reason for these is so \nthat because when a user want to update a value,  "
+    } ]
+  }, {
+    "tStartMs": 2930640,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "you only want to update the name and not age \nonly wants to update the year and not the name of  "
+    } ]
+  }, {
+    "tStartMs": 2936720,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "a new our body we are using this student \nclass to for the update method. Also.  "
+    } ]
+  }, {
+    "tStartMs": 2946160,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "The scenario as the user as to input all the whole \ndata now means he has to change audio data every  "
+    } ]
+  }, {
+    "tStartMs": 2952480,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "time he wants to update something which is not \na good practice. Let's just quiet and create.  "
+    } ]
+  }, {
+    "tStartMs": 2960000,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "Plus our name is update. Student  "
+    } ]
+  }, {
+    "tStartMs": 2969360,
+    "dDurationMs": 9040,
+    "segs": [ {
+      "utf8": "and does also take from the base model. \nSame thing name. Now we'll say optional.  "
+    } ]
+  }, {
+    "tStartMs": 2980400,
+    "dDurationMs": 14080,
+    "segs": [ {
+      "utf8": "Trained person just to make it optional. To do the \nsame thing for the age. Optional, trained integer  "
+    } ]
+  }, {
+    "tStartMs": 2997760,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "person and then exactly Simply for \nthe class right here we are using year  "
+    } ]
+  }, {
+    "tStartMs": 3007840,
+    "dDurationMs": 12560,
+    "segs": [ {
+      "utf8": "optional and this is a string equals no \nnow we can use this of this students model  "
+    } ]
+  }, {
+    "tStartMs": 3021280,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "as a reference here. So, these notes tonight \nagain these objects today now with these each  "
+    } ]
+  }, {
+    "tStartMs": 3026720,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "of it is optional see we use I gives only one \nvalue the other values can still remain the same  "
+    } ]
+  }, {
+    "tStartMs": 3033296,
+    "dDurationMs": 11584,
+    "segs": [ {
+      "utf8": "does very good. And now, what we just want \nto do to say if student ID not in student  "
+    } ]
+  }, {
+    "tStartMs": 3049920,
+    "dDurationMs": 3440,
+    "segs": [ {
+      "utf8": "will say return an error of like these  "
+    } ]
+  }, {
+    "tStartMs": 3053360,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "particular student does not exist or something \nthe world this is okay let me quickly write that  "
+    } ]
+  }, {
+    "tStartMs": 3062960,
+    "dDurationMs": 11600,
+    "segs": [ {
+      "utf8": "though that under students does not exist, \nwhat this is doing is first of all it checks  "
+    } ]
+  }, {
+    "tStartMs": 3074560,
+    "dDurationMs": 9280,
+    "segs": [ {
+      "utf8": "if the student ID is not a student the damage if \nthe the ID which was being passed to what we're  "
+    } ]
+  }, {
+    "tStartMs": 3083840,
+    "dDurationMs": 4000,
+    "segs": [ {
+      "utf8": "doing is if we want to update this today we're \ngoing to pass the ID of the student then whatever  "
+    } ]
+  }, {
+    "tStartMs": 3087840,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "we want to update. So, it will first check if \nthe ID is present in students will not present  "
+    } ]
+  }, {
+    "tStartMs": 3093680,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "it to you the student does not exist today. You \nalso update does not exist at least you have to  "
+    } ]
+  }, {
+    "tStartMs": 3098960,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "have a student before we can update that data. \nWe have to check that first. But if it exists,  "
+    } ]
+  }, {
+    "tStartMs": 3106320,
+    "dDurationMs": 3280,
+    "segs": [ {
+      "utf8": "we can just do something like students  "
+    } ]
+  }, {
+    "tStartMs": 3113840,
+    "dDurationMs": 13200,
+    "segs": [ {
+      "utf8": "didn't ID equals to student and then \nright now we can just return student  "
+    } ]
+  }, {
+    "tStartMs": 3129600,
+    "dDurationMs": 9360,
+    "segs": [ {
+      "utf8": "This is exactly the same thing we did right here \ndance ID exactly what I'm going to show you where  "
+    } ]
+  }, {
+    "tStartMs": 3138960,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "the arrow is in this particular is not an arrow \nbut where the touch is if we come near now on test  "
+    } ]
+  }, {
+    "tStartMs": 3146660,
+    "dDurationMs": 7900,
+    "segs": [ {
+      "utf8": "days see the refresh button now you can see is \nthe put we have the put method and no let's first  "
+    } ]
+  }, {
+    "tStartMs": 3154560,
+    "dDurationMs": 7840,
+    "segs": [ {
+      "utf8": "of all let's create a new student so straight \nout this are creating with to let's say Team  "
+    } ]
+  }, {
+    "tStartMs": 3164640,
+    "dDurationMs": 11280,
+    "segs": [ {
+      "utf8": "12 nine now we execute this we have a new \nobjects or new data or the counterpart want  "
+    } ]
+  }, {
+    "tStartMs": 3175920,
+    "dDurationMs": 8640,
+    "segs": [ {
+      "utf8": "to update this student. So let's try it out. And \nwhat's up JD students with the ID of two witches  "
+    } ]
+  }, {
+    "tStartMs": 3184560,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "team when I want to change the name to Tom not \nteam we don't need the age or the dummies this  "
+    } ]
+  }, {
+    "tStartMs": 3190640,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "option also we don't want that he doesn't know \nwhat to do. If we execute this now you will see  "
+    } ]
+  }, {
+    "tStartMs": 3196960,
+    "dDurationMs": 7840,
+    "segs": [ {
+      "utf8": "what will happen. So now it says named Tom age no \nyeah no because we didn't specify these he says  "
+    } ]
+  }, {
+    "tStartMs": 3204800,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "no. They were all the way to get your student \nby ID and I just want to get this student  "
+    } ]
+  }, {
+    "tStartMs": 3212560,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "into an execute what is going to happen now you \ncan see he doesn't even show us the age again.  "
+    } ]
+  }, {
+    "tStartMs": 3220320,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "He doesn't show that he's 12 years old. The is \nin year nine. So it has been overwritten so it  "
+    } ]
+  }, {
+    "tStartMs": 3228080,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "because we didn't provide this age on year when we \nare updating it also via ride rides as no damage  "
+    } ]
+  }, {
+    "tStartMs": 3234240,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "has no value. And this arrow is coming because we \njust did students with us today Id is equals to  "
+    } ]
+  }, {
+    "tStartMs": 3241120,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "student needs to know is whatever the user passes. \nSo since we didn't pass anything, it just updated  "
+    } ]
+  }, {
+    "tStartMs": 3247520,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "our student that already has a value of this it \nhas nothing which is but the first take care of  "
+    } ]
+  }, {
+    "tStartMs": 3253520,
+    "dDurationMs": 10320,
+    "segs": [ {
+      "utf8": "these we are going to have to do it in like a \nmanual way to come up here to say if a student  "
+    } ]
+  }, {
+    "tStartMs": 3268000,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "Let's name is not posting non  "
+    } ]
+  }, {
+    "tStartMs": 3277520,
+    "dDurationMs": 7840,
+    "segs": [ {
+      "utf8": "numbers if there is something in what the user \npast then doesn't want to update on say to  "
+    } ]
+  }, {
+    "tStartMs": 3289200,
+    "dDurationMs": 8160,
+    "segs": [ {
+      "utf8": "dance. Dance ID does the name will be \nupdated to the student. This one does name  "
+    } ]
+  }, {
+    "tStartMs": 3299200,
+    "dDurationMs": 3920,
+    "segs": [ {
+      "utf8": "is exactly the kind of code wants to \nuse I'm also going to do the same thing  "
+    } ]
+  }, {
+    "tStartMs": 3303120,
+    "dDurationMs": 16720,
+    "segs": [ {
+      "utf8": "for the age and the class or the year, the \neve student that age is not equals to none.  "
+    } ]
+  }, {
+    "tStartMs": 3322480,
+    "dDurationMs": 11360,
+    "segs": [ {
+      "utf8": "See, the dance with a student ID, the \nparticular student does age equals to  "
+    } ]
+  }, {
+    "tStartMs": 3339440,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "the dent. But ah, Now, last time, we're gonna \nhave to do it for the year, that's here,  "
+    } ]
+  }, {
+    "tStartMs": 3346400,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "now equals to none, I mean, you're giving us an \nempty value, then that's the only time when we now  "
+    } ]
+  }, {
+    "tStartMs": 3354720,
+    "dDurationMs": 8240,
+    "segs": [ {
+      "utf8": "want to update sort of data particular value, but \na particular key, so you don't give us something,  "
+    } ]
+  }, {
+    "tStartMs": 3362960,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "we are not going to update it. When we give \nus something, we're going to update it,  "
+    } ]
+  }, {
+    "tStartMs": 3369280,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "then to a year. This is just the code to take \ncare of that error. So now we save this. Now,  "
+    } ]
+  }, {
+    "tStartMs": 3376080,
+    "dDurationMs": 2960,
+    "segs": [ {
+      "utf8": "this is very good, because we've \ntaken care of that particular error.  "
+    } ]
+  }, {
+    "tStartMs": 3379840,
+    "dDurationMs": 10000,
+    "segs": [ {
+      "utf8": "And now let's just go ahead and come back \ninto your and then we eat fresh, this.  "
+    } ]
+  }, {
+    "tStartMs": 3390960,
+    "dDurationMs": 16480,
+    "segs": [ {
+      "utf8": "Great, but what wants to do first of all, \nlet's create a new dent to him. Both yes or no.  "
+    } ]
+  }, {
+    "tStartMs": 3414160,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "Let's execute. And now we have that, let's \ncome to our outputs and update that team.  "
+    } ]
+  }, {
+    "tStartMs": 3420320,
+    "dDurationMs": 11920,
+    "segs": [ {
+      "utf8": "For now we want him to be 15 years old to Let's \nleave this name as blank. Well, now the age wanted  "
+    } ]
+  }, {
+    "tStartMs": 3432240,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "to be 15. So you can see that now we didn't pass \nthe name or the year. But if it executes, only  "
+    } ]
+  }, {
+    "tStartMs": 3440000,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "so let's see where the error is coming from this \nexpecting proper name equals interval codes. Okay,  "
+    } ]
+  }, {
+    "tStartMs": 3446240,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "so it wants this to be in double cordial because \nit's JSON data. Let's do this or execute.  "
+    } ]
+  }, {
+    "tStartMs": 3455200,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "Okay, especially improperly named interval \ncodes. Okay, this gives us an error  "
+    } ]
+  }, {
+    "tStartMs": 3464080,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "enclosed in double quotes. Let's see. Now \nlet me tell you where the arrow is from if  "
+    } ]
+  }, {
+    "tStartMs": 3468720,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "you don't have anything after it, like you \ndo have another value right here something,  "
+    } ]
+  }, {
+    "tStartMs": 3473200,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "just remove this comma, we don't need this \nactually, we should not need that because an  "
+    } ]
+  }, {
+    "tStartMs": 3478640,
+    "dDurationMs": 3840,
+    "segs": [ {
+      "utf8": "integer to make sure you don't have a comma at \nthe end if there's not enough to read. So now  "
+    } ]
+  }, {
+    "tStartMs": 3482480,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "let's hit execute. And if we come here now you see \nthere are only 15 was updated and alighted at 15.  "
+    } ]
+  }, {
+    "tStartMs": 3488720,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "But only 15 was updated. Now we have team \na nice to intact. So this is what we want,  "
+    } ]
+  }, {
+    "tStartMs": 3494960,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "we can also do it again. And now we can just \nupdate our name. And we wanted our name.  "
+    } ]
+  }, {
+    "tStartMs": 3501760,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "Now be Tom. The execute procedure, we now have \nTom age of 15. year over year nine, this is  "
+    } ]
+  }, {
+    "tStartMs": 3509760,
+    "dDurationMs": 7920,
+    "segs": [ {
+      "utf8": "exactly what we want. If we come back, you know \nand try to get to didn't try it out. Let's try to  "
+    } ]
+  }, {
+    "tStartMs": 3519120,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "do it, you can see that we have \nthe named song working perfectly  "
+    } ]
+  }, {
+    "tStartMs": 3523440,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "the age on the year. So this is exactly what we \nwant to get. This is our main go. I'll also come  "
+    } ]
+  }, {
+    "tStartMs": 3531040,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "down here to get by name. Let's test that out. \nSo let's try it out. We have to we have the  "
+    } ]
+  }, {
+    "tStartMs": 3537840,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "name of Tom. And as I said this can be anything \nbecause we're not using it. If we execute this now  "
+    } ]
+  }, {
+    "tStartMs": 3546080,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "it gives us an internal server error does \nbecause of course that doesn't. It doesn't.  "
+    } ]
+  }, {
+    "tStartMs": 3555920,
+    "dDurationMs": 8240,
+    "segs": [ {
+      "utf8": "Now there are so let's see slash to the name of \nsong on test 32. So the reason why is because  "
+    } ]
+  }, {
+    "tStartMs": 3564160,
+    "dDurationMs": 7680,
+    "segs": [ {
+      "utf8": "we definitely changed some values right here \nare some code right here in where we're start  "
+    } ]
+  }, {
+    "tStartMs": 3572740,
+    "dDurationMs": 8940,
+    "segs": [ {
+      "utf8": "to get to take care of the liter. But now that's \nbasically how we can just update some data in our  "
+    } ]
+  }, {
+    "tStartMs": 3583040,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "in our database if we are using a real \ndata. It's not like a memory or like  "
+    } ]
+  }, {
+    "tStartMs": 3587920,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "I will say a cookie because the cookies in the \nbrowser or is it like a memory once we refresh  "
+    } ]
+  }, {
+    "tStartMs": 3592320,
+    "dDurationMs": 8080,
+    "segs": [ {
+      "utf8": "or like a session once we refresh that is gone. \nBut now, this is how we can just simply do this on  "
+    } ]
+  }, {
+    "tStartMs": 3601440,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "I hope you understood why we went about doing \nthese. So if you read this code will you see  "
+    } ]
+  }, {
+    "tStartMs": 3606720,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "our saying if this, whatever the value is \nis not known, that means it is not empty,  "
+    } ]
+  }, {
+    "tStartMs": 3614960,
+    "dDurationMs": 3040,
+    "segs": [ {
+      "utf8": "then that means there's something \nthere that doesn't want to update it.  "
+    } ]
+  }, {
+    "tStartMs": 3618000,
+    "dDurationMs": 9840,
+    "segs": [ {
+      "utf8": "So I hope you understood what exactly what \nwe did in this bar. And this next part,  "
+    } ]
+  }, {
+    "tStartMs": 3630320,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "we are going to look into the Delete method. The \ndelete method is self explanatory, just delete  "
+    } ]
+  }, {
+    "tStartMs": 3636400,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "a data object from our database. What we \ncan just do know is to add a new endpoint,  "
+    } ]
+  }, {
+    "tStartMs": 3642720,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "we can say add up dot delete, and then  "
+    } ]
+  }, {
+    "tStartMs": 3650880,
+    "dDurationMs": 8560,
+    "segs": [ {
+      "utf8": "slash delete shouldn't blush let's take \nthe idea of the student want to delete  "
+    } ]
+  }, {
+    "tStartMs": 3660160,
+    "dDurationMs": 12240,
+    "segs": [ {
+      "utf8": "as a path parameter, and then define \nour function. Elite student new student  "
+    } ]
+  }, {
+    "tStartMs": 3675380,
+    "dDurationMs": 4860,
+    "segs": [ {
+      "utf8": "this guy ID wants you to be an \ninteger as well we're collecting  "
+    } ]
+  }, {
+    "tStartMs": 3682080,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "and now we'll check if the \nstudent ID is not in student.  "
+    } ]
+  }, {
+    "tStartMs": 3696400,
+    "dDurationMs": 4000,
+    "segs": [ {
+      "utf8": "So if he's not a student, that means \nit doesn't exist and we just return  "
+    } ]
+  }, {
+    "tStartMs": 3700400,
+    "dDurationMs": 3680,
+    "segs": [ {
+      "utf8": "an error that what you're trying to \ndelete is not even in our database,  "
+    } ]
+  }, {
+    "tStartMs": 3704080,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "it needs to be in the database for \nyou to be able to delete it to arrow  "
+    } ]
+  }, {
+    "tStartMs": 3713600,
+    "dDurationMs": 8560,
+    "segs": [ {
+      "utf8": "judgment does not exist then you have to create \nus to know first before you can try to delete  "
+    } ]
+  }, {
+    "tStartMs": 3723520,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "but it does not decay, go ahead \nwith our code and delete that  "
+    } ]
+  }, {
+    "tStartMs": 3732400,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "that's two different questionnaires ID from the \nstudents and they just return back a message  "
+    } ]
+  }, {
+    "tStartMs": 3744480,
+    "dDurationMs": 12480,
+    "segs": [ {
+      "utf8": "thing that didn't deleted successfully now \nthis is a basic way to just be able to delete  "
+    } ]
+  }, {
+    "tStartMs": 3758800,
+    "dDurationMs": 10960,
+    "segs": [ {
+      "utf8": "data or value from a database first come here \nand test this out. Now if we play around with the  "
+    } ]
+  }, {
+    "tStartMs": 3769760,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "pose first of all we have to create a new \nobject before we can do that. So let's see do  "
+    } ]
+  }, {
+    "tStartMs": 3779740,
+    "dDurationMs": 16100,
+    "segs": [ {
+      "utf8": "this a for Jerry 20 years let's \nsee year 13 Now let's execute this  "
+    } ]
+  }, {
+    "tStartMs": 3798640,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "case study exit so as you can see I press that \ntwice so that's why I say students exists but I  "
+    } ]
+  }, {
+    "tStartMs": 3804240,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "come here to my get without really created it when \nI press it the first time when I mistakenly press  "
+    } ]
+  }, {
+    "tStartMs": 3809840,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "it again so let's say to execute we can see we \nhave Jerry 20 years return. If I come down now to  "
+    } ]
+  }, {
+    "tStartMs": 3816560,
+    "dDurationMs": 6040,
+    "segs": [ {
+      "utf8": "delete you can see we have this delete function. \nNow that we have this delete function is is  "
+    } ]
+  }, {
+    "tStartMs": 3823200,
+    "dDurationMs": 8160,
+    "segs": [ {
+      "utf8": "right out now by just typing to an eating execute \nj student deleted successfully. Now we might  "
+    } ]
+  }, {
+    "tStartMs": 3831360,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "not know if they are related it let's just go \nahead and press check to see if we execute now.  "
+    } ]
+  }, {
+    "tStartMs": 3837760,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "He says internal server error does \nbecause the student doesn't exist  "
+    } ]
+  }, {
+    "tStartMs": 3841840,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "again. So you also come in now and try to execute \nagain. He says student does no it is I'm a student  "
+    } ]
+  }, {
+    "tStartMs": 3848320,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "I'm trying to delete does not exist. So \nthis is how we can use the Delete method.  "
+    } ]
+  }, {
+    "tStartMs": 3853440,
+    "dDurationMs": 8160,
+    "segs": [ {
+      "utf8": "The Fast API geysers gonna be all for this video. \nThank you so much for watching to this point. In  "
+    } ]
+  }, {
+    "tStartMs": 3861600,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "this video we talked about fast API's and all the \nbasics and fundamentals you need to start working  "
+    } ]
+  }, {
+    "tStartMs": 3866960,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "with fast API. Thank you once again for watching \nthis video and I'll see you in the next one."
+    } ]
+  } ]
+}

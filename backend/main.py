@@ -10,6 +10,7 @@ import json
 
 from auth import AuthManager
 from query_router import QueryRouter
+from chat_history import ChatHistoryManager
 from caption_parser import CaptionParser
 from chunk_merger import ChunkMerger
 from database_injector import ChunkInjector
@@ -37,6 +38,7 @@ app.add_middleware(PrivateNetworkMiddleware)
 
 auth_manager = AuthManager()
 query_router = QueryRouter()
+chat_history_manager = ChatHistoryManager()
 
 
 class CaptionData(BaseModel):
@@ -71,6 +73,11 @@ class DeleteAccountData(BaseModel):
     user_id: str
 
 
+class ChatHistoryData(BaseModel):
+    user_id: str
+    video_url: str
+
+
 class IngestData(BaseModel):
     video_url: str
     file_id: str
@@ -88,15 +95,25 @@ class ClarificationData(BaseModel):
     user_id: str
 
 
+def normalize_youtube_url(url: str) -> str:
+    if not url:
+        return ""
+    match = re.search(r"[?&]v=([^&]+)", url)
+    if match:
+        return f"https://www.youtube.com/watch?v={match.group(1)}"
+    return url
+
+
 @app.post("/api/captions")
 async def receive_captions(data: CaptionData):
-    print(f"Received captions for: {data.videourl[:70]}...")
+    clean_url = normalize_youtube_url(data.videourl)
+    print(f"Received captions for: {clean_url[:70]}...")
 
-    if len(data.rawtext) < 5000:
-        print(f"Skipping — payload too small ({len(data.rawtext)} chars), likely a partial caption")
+    if len(data.rawtext) < 100:
+        print(f"Skipping — payload too small ({len(data.rawtext)} chars), likely invalid caption")
         return {"status": "skipped", "reason": "payload too small"}
 
-    match = re.search(r"[?&]v=([^&]+)", data.videourl)
+    match = re.search(r"[?&]v=([^&]+)", clean_url)
     video_id = match.group(1) if match else str(uuid.uuid4())
 
     os.makedirs("raw_captions", exist_ok=True)
@@ -107,7 +124,7 @@ async def receive_captions(data: CaptionData):
         f.write(data.rawtext)
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump({
-            "video_url": data.videourl,
+            "video_url": clean_url,
             "track_url": data.trackurl
         }, f)
 
@@ -115,7 +132,7 @@ async def receive_captions(data: CaptionData):
     return {
         "status": "success",
         "video_id": video_id,
-        "video_url": data.videourl
+        "video_url": clean_url
     }
 
 
@@ -160,10 +177,11 @@ async def delete_account(data: DeleteAccountData):
 
 @app.post("/api/ingest")
 async def ingest_video(data: IngestData):
+    clean_url = normalize_youtube_url(data.video_url)
     try:
         conn = get_db_connection()
         with conn.cursor() as cur:
-            cur.execute("SELECT COUNT(*) FROM video_chunks WHERE video_id = %s", (data.video_url,))
+            cur.execute("SELECT COUNT(*) FROM video_chunks WHERE video_id = %s", (clean_url,))
             count = cur.fetchone()[0]
         conn.close()
         if count > 0:
@@ -171,7 +189,7 @@ async def ingest_video(data: IngestData):
                 "success": True,
                 "already_ingested": True,
                 "chunks_stored": count,
-                "video_url": data.video_url
+                "video_url": clean_url
             }
     except Exception as e:
         print(f"Check existing chunks warning: {e}")
@@ -188,22 +206,23 @@ async def ingest_video(data: IngestData):
     injector = ChunkInjector()
     try:
         injector.connect()
-        injector.store_video_chunks(data.video_url, chunks)
+        injector.store_video_chunks(clean_url, chunks)
     finally:
         injector.close()
 
     return {
         "success": True,
         "chunks_stored": len(chunks),
-        "video_url": data.video_url
+        "video_url": clean_url
     }
 
 
 @app.post("/api/ask")
 async def ask_question(data: AskData):
+    clean_url = normalize_youtube_url(data.video_url)
     result = query_router.handle_query(
         question=data.question,
-        video_url=data.video_url,
+        video_url=clean_url,
         user_id=data.user_id
     )
     return result
@@ -211,12 +230,24 @@ async def ask_question(data: AskData):
 
 @app.post("/api/resolve-clarification")
 async def resolve_clarification(data: ClarificationData):
+    clean_url = normalize_youtube_url(data.video_url)
     result = query_router.resolve_clarification(
         choice_key=data.choice_key,
-        video_url=data.video_url,
+        video_url=clean_url,
         user_id=data.user_id
     )
     return result
+
+
+@app.post("/api/chat-history")
+async def get_chat_history_endpoint(data: ChatHistoryData):
+    clean_url = normalize_youtube_url(data.video_url)
+    messages = chat_history_manager.get_chat_history(user_id=data.user_id, video_url=clean_url)
+    return {
+        "success": True,
+        "video_url": clean_url,
+        "messages": messages
+    }
 
 
 @app.get("/")

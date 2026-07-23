@@ -110,7 +110,7 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           });
         }
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoadingProfile(false));
   }, []);
 
@@ -169,16 +169,33 @@ export default function SettingsPage({ onNavigate, onLogout }) {
 
     setIsDeleting(true);
     try {
-      await fetch(`${API_BASE}/api/delete-account`, {
+      const res = await fetch(`${API_BASE}/api/delete-account`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id: userId })
       });
+      const data = await res.json();
+      if (data.success) {
+        // Clear all local session data before navigating away
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('email');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('name');
+        localStorage.removeItem('mobile_number');
+        localStorage.removeItem('login_timestamp');
+        setDeleteConfirmOpen(false);
+        onLogout();
+        onNavigate();
+      } else {
+        setDeleteConfirmOpen(false);
+        alert(`Account deletion failed: ${data.error || 'Unknown error. Please try again.'}`);
+      }
     } catch (err) {
+      setDeleteConfirmOpen(false);
+      alert('Could not connect to server. Please check your connection and try again.');
     } finally {
       setIsDeleting(false);
-      onLogout();
-      onNavigate();
     }
   };
 
@@ -305,7 +322,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
         .danger-btn:hover {
           background-color: rgba(248, 81, 73, 0.22);
           border-color: #f85149;
-          box-shadow: 0 0 12px rgba(248, 81, 73, 0.25);
         }
 
         .danger-btn-delete {
@@ -326,7 +342,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           background-color: #f85149;
           color: #0d1f1c;
           border-color: #f85149;
-          box-shadow: 0 0 16px rgba(248, 81, 73, 0.4);
         }
       `}</style>
 
@@ -724,20 +739,46 @@ export default function SettingsPage({ onNavigate, onLogout }) {
             backgroundColor: '#0d1f1c',
             border: '1.5px solid #f85149',
             borderRadius: '16px',
-            padding: '28px',
-            maxWidth: '420px',
+            padding: '28px 32px',
+            maxWidth: '460px',
             width: '100%',
-            textAlign: 'center',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.8)'
+            textAlign: 'left'
           }}>
-            <h3 style={{ color: '#f85149', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 10px 0' }}>
-              ARE YOU ABSOLUTELY SURE?
+            <h3 style={{ color: '#f85149', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 14px 0', textTransform: 'uppercase', letterSpacing: '0.05em', textAlign: 'center'}}>
+              Delete Account Confirmation
             </h3>
-            <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.85rem', lineHeight: '1.5', margin: '0 0 20px 0' }}>
-              This will permanently delete your user account, transcript history, and profile records. This action cannot be undone.
+
+            <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.9rem', lineHeight: '1.5', margin: '0 0 10px 0' }}>
+              Deleting your account will permanently remove the following:
             </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+
+            <ul style={{
+              color: 'rgba(255, 255, 255, 0.75)',
+              fontSize: '0.82rem',
+              lineHeight: '1.6',
+              margin: '0 0 18px 0',
+              paddingLeft: '20px'
+            }}>
+              <li>Your personal profile details</li>
+              <li>Your account authentication records and security credentials</li>
+              <li>Your saved interaction history</li>
+            </ul>
+
+            <div style={{
+              color: '#f85149',
+              fontSize: '0.9rem',
+              fontWeight: '800',
+              letterSpacing: '0.05em',
+              margin: '0 0 20px 0',
+              textAlign: 'center',
+              textTransform: 'uppercase'
+            }}>
+              ARE YOU SURE TO DELETE THIS ACCOUNT?
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
               <button
+                type="button"
                 onClick={() => setDeleteConfirmOpen(false)}
                 style={{
                   padding: '9px 18px',
@@ -753,12 +794,13 @@ export default function SettingsPage({ onNavigate, onLogout }) {
                 CANCEL
               </button>
               <button
+                type="button"
                 onClick={handleDeleteAccount}
                 disabled={isDeleting}
                 className="danger-btn-delete"
                 style={{ padding: '9px 18px' }}
               >
-                {isDeleting ? 'DELETING...' : 'YES, DELETE ACCOUNT'}
+                {isDeleting ? 'DELETING...' : 'DELETE ACCOUNT'}
               </button>
             </div>
           </div>

@@ -13,20 +13,38 @@ class RAGPipeline :
             base_url = "https://api.groq.com/openai/v1"
         )
     def generate_answer(self, question : str, retrieved : list) -> str :
-        if not retrieved :
-            return "I don't have relevant information from this video to answer this question"
         context = []
-        for chunk in retrieved :
-            context.append(f"{chunk['start_time']:.1f}s : {chunk['text']}")
-        system_prompt = "You are a helpful and knowledgeable teaching assistant. Answer the student's question using only the video content provided below. If the video content does not contain enough information to answer, say so clearly before giving a brief general expression. When relevant, mention the approximate timepstamp where the topic was covered. Be clear, educational and encouraging in tone."
-        user_prompt = f"Video content {context} Student Question : {question}"
+        if retrieved:
+            for chunk in retrieved:
+                sec = float(chunk['start_time'])
+                mins = int(sec // 60)
+                secs = int(sec % 60)
+                timestamp_str = f"[{mins:02d}:{secs:02d}]"
+                context.append(f"{timestamp_str} : {chunk['text']}")
+
+        system_prompt = (
+            "You are a helpful, knowledgeable, and highly structured AI teaching assistant (like Gemini).\n"
+            "Your task is to answer the student's question accurately, directly, and comprehensively without ambiguity.\n\n"
+            "Guidelines:\n"
+            "1. Primary Source: Use the provided video content snippet if it contains relevant information. Whenever referencing video content, include the exact timestamp in MM:SS format (e.g. `[01:31]`).\n"
+            "2. Supplementary Knowledge: If the video content does not fully answer the question, seamlessly answer using your own extensive knowledge base on the topic.\n"
+            "3. No Disclaimers: DO NOT include disclaimers, apologies, or meta-statements like 'The video does not contain enough information' or 'According to the video'. Simply provide the direct, correct, and structured answer.\n\n"
+            "Formatting & Visual Style Guidelines:\n"
+            "- Structure your response cleanly with well-spaced paragraphs (separate each paragraph with a blank line).\n"
+            "- Use bold text (`**term**`) VERY SPARINGLY — only for key technical words or crucial terms. Do NOT bold whole sub-topic headers or full sentences.\n"
+            "- Use bullet points (`- `) for lists, steps, or multiple items.\n"
+            "- Put code snippets, shell commands, or technical syntax inside code blocks (e.g. ```pip install fastapi```) or inline code (`code`).\n"
+            "- Keep the tone concise, encouraging, educational, and confident."
+        )
+
+        user_prompt = f"Video content: {context if context else 'None'}\nStudent Question: {question}"
         response = self.client.chat.completions.create(
             model = "llama-3.3-70b-versatile",
             messages = [
                 {"role" : "system", "content" : system_prompt},
                 {"role" : "user", "content" : user_prompt}
             ],
-            temperature = 0.7
+            temperature = 0.5
         )
         return response.choices[0].message.content or ""
 def load_video_url(caption_file_path : str) -> str :
