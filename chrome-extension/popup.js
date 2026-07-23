@@ -21,51 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentVideoUrl = '';
   let currentVideoId = '';
 
-  const loadChatHistory = async () => {
-    if (!currentUser || !currentUser.user_id) return;
-
-    chrome.storage.local.get(['current_chat_history', 'current_video_url'], async (storage) => {
-      const activeUrl = await getCurrentTabUrl();
-      const videoUrl = activeUrl || storage.current_video_url || currentVideoUrl;
-
-      const renderMessages = (messages) => {
-        chatMessages.innerHTML = '';
-        if (messages && messages.length > 0) {
-          if (chatSection) chatSection.classList.remove('empty-state');
-          messages.forEach((msg) => {
-            appendMessage(msg.message, msg.role);
-          });
-        } else {
-          if (chatSection) chatSection.classList.add('empty-state');
-        }
-      };
-
-      if (storage.current_chat_history && storage.current_chat_history.length > 0) {
-        renderMessages(storage.current_chat_history);
-      }
-
-      if (videoUrl && currentUser && currentUser.user_id) {
-        try {
-          const res = await fetch(`${API_BASE}/api/chat-history`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              user_id: currentUser.user_id,
-              video_url: videoUrl
-            })
-          });
-          const data = await res.json();
-          if (data.success && data.messages) {
-            chrome.storage.local.set({ current_chat_history: data.messages });
-            renderMessages(data.messages);
-          }
-        } catch (err) {
-          console.warn('[Simply] Failed to load chat history from backend:', err);
-        }
-      }
-    });
-  };
-
   const checkAuth = () => {
     chrome.storage.local.get(['user_id', 'email', 'access_token', 'login_timestamp', 'current_video_url', 'current_video_id'], (result) => {
       let isExpired = false;
@@ -110,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  checkAuth();
+
 
   if (authNavBtn) {
     authNavBtn.addEventListener('click', () => {
@@ -499,6 +454,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // loadChatHistory must be defined after getCurrentTabUrl and appendMessage
+  const loadChatHistory = async () => {
+    if (!currentUser || !currentUser.user_id) return;
+
+    chrome.storage.local.get(['current_chat_history', 'current_video_url'], async (storage) => {
+      const activeUrl = await getCurrentTabUrl();
+      const videoUrl = activeUrl || storage.current_video_url || currentVideoUrl;
+
+      const renderMessages = (messages) => {
+        chatMessages.innerHTML = '';
+        if (messages && messages.length > 0) {
+          if (chatSection) chatSection.classList.remove('empty-state');
+          messages.forEach((msg) => {
+            appendMessage(msg.message, msg.role);
+          });
+        } else {
+          if (chatSection) chatSection.classList.add('empty-state');
+        }
+      };
+
+      if (storage.current_chat_history && storage.current_chat_history.length > 0) {
+        renderMessages(storage.current_chat_history);
+      }
+
+      if (videoUrl && currentUser && currentUser.user_id) {
+        try {
+          const res = await fetch(`${API_BASE}/api/chat-history`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              user_id: currentUser.user_id,
+              video_url: videoUrl
+            })
+          });
+          const data = await res.json();
+          if (data.success && data.messages) {
+            chrome.storage.local.set({ current_chat_history: data.messages });
+            renderMessages(data.messages);
+          }
+        } catch (err) {
+          console.warn('[Simply] Failed to load chat history from backend:', err);
+        }
+      }
+    });
+  };
+
   const handleSend = async () => {
     const question = queryInput.value.trim();
     if (!question) return;
@@ -590,4 +591,8 @@ document.addEventListener('DOMContentLoaded', () => {
   queryInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') handleSend();
   });
+
+  // Run auth check AFTER all functions are defined (loadChatHistory, appendMessage, getCurrentTabUrl)
+  const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+  checkAuth();
 });

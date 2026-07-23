@@ -55,7 +55,7 @@ class QueryRouter :
             if not last_question :
                 chunks = get_stored_chunks(video_url)
                 answer = self.summary_pipeline.generate_video_summary(chunks)
-                self.chat_history.save_message(user_id, video_url, "asistant", answer)
+                self.chat_history.save_message(user_id, video_url, "assistant", answer)
                 return {
                     "type" : "answer",
                     "answer" : answer
@@ -69,7 +69,7 @@ class QueryRouter :
             }
         retriever_result = self._retrieve_chunks(question, video_url)
         answer = self.rag_pipeline.generate_answer(question, retriever_result)
-        self.chat_history.save_message(user_id, video_url, "assitant", answer)
+        self.chat_history.save_message(user_id, video_url, "assistant", answer)
         return {
             "type" : "answer",
             "answer" : answer
@@ -88,20 +88,20 @@ class QueryRouter :
             last_question = self.chat_history.get_last_user_question(user_id, video_url)
             if not last_question :
                 answer = "I dont have a previous question to refer back to"
-                self.chat_history.save_message(user_id, video_url, "assitant", answer)
+                self.chat_history.save_message(user_id, video_url, "assistant", answer)
                 return {
                     "type" : "answer",
                     "answer" : answer
                 }
             retriever_results = self._retrieve_chunks(last_question, video_url)
             answer = self.rag_pipeline.generate_answer(last_question, retriever_results)
-            self.chat_history.save_message(user_id, video_url, "assitant", answer)
+            self.chat_history.save_message(user_id, video_url, "assistant", answer)
             return {
                 "type" : "answer",
                 "answer" : answer
             }
         answer = "Sorry, I didn't understand that choice"
-        self.chat_history.save_message(user_id, video_url, "assitant", answer)
+        self.chat_history.save_message(user_id, video_url, "assistant", answer)
         return {
             "type" : "answer",
             "answer" : answer
