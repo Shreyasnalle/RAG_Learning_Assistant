@@ -93,4 +93,68 @@
         });
         return originalXHR.apply(this, [method, url, ...rest]);
     };
+
+    // ---- SPA Navigation: Active caption fetching on video change ----
+    // YouTube is a SPA. When navigating between videos, the page doesn't reload,
+    // so the fetch interceptor above may miss the caption request (it fires too early).
+    // We hook yt-navigate-finish and actively fetch captions after the page settles.
+
+    let spaLastFetchedVideoId = null;
+
+    async function spaFetchCaptionsForVideo() {
+        if (!isWatchPage()) return;
+        const videoId = new URLSearchParams(window.location.search).get("v");
+        if (!videoId) return;
+        if (videoId === spaLastFetchedVideoId) return;
+
+        // Wait for player to init with new video's data
+        await new Promise(r => setTimeout(r, 2000));
+
+        // Verify we're still on the same video
+        if (!isWatchPage()) return;
+        const currentId = new URLSearchParams(window.location.search).get("v");
+        if (currentId !== videoId) return;
+
+        let captionTrackUrl = null;
+
+        // Read ytInitialPlayerResponse (available in MAIN world via inject.js)
+        try {
+            const playerResp = window.ytInitialPlayerResponse || {};
+            const tracks = playerResp?.captions?.playerCaptionsTracklistRenderer?.captionTracks || [];
+            let track = tracks.find(t => t.languageCode === "en" || t.languageCode === "en-US");
+            if (!track) track = tracks[0];
+            if (track && track.baseUrl) {
+                captionTrackUrl = track.baseUrl + "&fmt=json3";
+            }
+        } catch (e) {}
+
+        // Fallback to direct timedtext API
+        if (!captionTrackUrl) {
+            captionTrackUrl = `https://www.youtube.com/api/timedtext?lang=en&v=${videoId}&fmt=json3`;
+        }
+
+        try {
+            const res = await originalFetch(captionTrackUrl);
+            if (!res.ok) return;
+            const rawText = await res.text();
+            if (!rawText || rawText.length < 30) return;
+
+            spaLastFetchedVideoId = videoId;
+
+            window.dispatchEvent(
+                new CustomEvent("captions intercepted", {
+                    detail: {
+                        sourceurl: `https://www.youtube.com/watch?v=${videoId}`,
+                        trackurl: captionTrackUrl,
+                        body: rawText
+                    }
+                })
+            );
+        } catch (err) {
+            // No captions available or network issue — silently ignore
+        }
+    }
+
+    window.addEventListener("yt-navigate-finish", spaFetchCaptionsForVideo);
+    window.addEventListener("yt-page-data-updated", spaFetchCaptionsForVideo);
 })();

@@ -587,9 +587,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  sendBtn.addEventListener('click', handleSend);
+  // Dynamic auto-resizing for the textarea input
+  const adjustInputHeight = () => {
+    queryInput.style.height = 'auto';
+    const newHeight = Math.min(queryInput.scrollHeight, 100);
+    queryInput.style.height = `${newHeight}px`;
+  };
+
+  queryInput.addEventListener('input', adjustInputHeight);
+
+  sendBtn.addEventListener('click', () => {
+    handleSend();
+    setTimeout(adjustInputHeight, 0);
+  });
+
   queryInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') handleSend();
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault(); // Don't add newline
+      handleSend();
+      setTimeout(adjustInputHeight, 0);
+    }
   });
 
   // Run auth check AFTER all functions are defined (loadChatHistory, appendMessage, getCurrentTabUrl)
