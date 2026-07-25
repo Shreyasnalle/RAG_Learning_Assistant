@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+requests
+supabase
+openai
+sentence-transformers
+pgvector
+psycopg2-binary
+torch
