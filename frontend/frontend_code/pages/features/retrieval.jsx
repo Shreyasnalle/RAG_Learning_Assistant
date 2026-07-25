@@ -80,6 +80,9 @@ export default function RetrievalPage({ onNavigate }) {
       padding: '40px 20px'
     }}>
       <style>{`
+        * {
+          font-family: 'Satoshi', sans-serif !important;
+        }
         body, html {
           margin: 0;
           padding: 0;
@@ -160,14 +163,14 @@ export default function RetrievalPage({ onNavigate }) {
           <h1 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: '400',
-            letterSpacing: '0.2em',
+            letterSpacing: '0.1em',
             textTransform: 'uppercase',
             margin: '0 0 10px 0'
           }}>
             Semantic Retrieval
           </h1>
           <p style={{ fontSize: '1.1rem', opacity: 0.8, maxWidth: '600px', margin: '0 auto' }}>
-            Find precise segments in transcripts and extract cited insights instantly from YouTube videos.
+            Finds precise segments in transcripts and extract cited insights instantly from videos.
           </p>
         </div>
 
@@ -181,7 +184,7 @@ export default function RetrievalPage({ onNavigate }) {
                 <span style={{ fontSize: '0.85rem', color: '#fb8569', fontWeight: 'bold', display: 'block', marginBottom: '6px' }}>STEP 01</span>
                 <h3 style={{ fontSize: '1.1rem', margin: '0 0 8px 0', fontWeight: 'bold' }}>Transcript Chunking</h3>
                 <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.7, lineHeight: '1.5' }}>
-                  The video transcript is parsed and grouped into cohesive, semantic blocks of text to maintain logical context.
+                  The video transcript is parsed and grouped into cohesive and semantic blocks of text to maintain logical context.
                 </p>
               </div>
 
@@ -209,16 +212,16 @@ export default function RetrievalPage({ onNavigate }) {
             </h2>
             <div className="step-card" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>User Question:</p>
+                 <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>User Question:</p>
                 <div style={{ fontStyle: 'italic', opacity: 0.9, backgroundColor: 'rgba(251, 133, 105, 0.1)', padding: '10px 14px', borderRadius: '4px', marginBottom: '20px' }}>
-                  "What model did Anthropic launch and what is its performance?"
+                  "What is pydantic?"
                 </div>
 
                 <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>Retrieved Transcript segment:</p>
                 <div className="example-box">
-                  <span style={{ fontSize: '0.8rem', color: '#fb8569', fontWeight: 'bold', display: 'block', marginBottom: '4px' }}>[03:14 - 03:52]</span>
+                  <span style={{ fontSize: '0.8rem', color: '#fb8569', fontWeight: 'bold', display: 'block', marginBottom: '4px' }}>[01:12 - 01:45]</span>
                   <p style={{ margin: 0, fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.4' }}>
-                    "...today Anthropic introduces Claude 3.5 Sonnet. It sets new industry benchmarks for graduate-level reasoning and undergraduate-level knowledge, outperforming competitive models..."
+                    "...Pydantic is a data validation and settings management library for Python. It enforces type hints at runtime, and provides user-friendly errors when data is invalid..."
                   </p>
                 </div>
               </div>
@@ -226,7 +229,7 @@ export default function RetrievalPage({ onNavigate }) {
               <div style={{ marginTop: '24px', borderTop: '1px solid rgba(251, 133, 105, 0.15)', paddingTop: '16px' }}>
                 <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>Generated Answer:</p>
                 <p style={{ margin: 0, fontSize: '0.88rem', opacity: 0.9, lineHeight: '1.5' }}>
-                  Anthropic launched **Claude 3.5 Sonnet**, which sets new industry benchmarks in graduate-level reasoning and undergraduate-level knowledge, outperforming other competitor models <span style={{ color: '#fb8569', fontWeight: 'bold' }}>[03:14]</span>.
+                  Pydantic is a Python library used for data validation and settings management. It enforces type hints at runtime and generates user-friendly validation errors when data is invalid <span style={{ color: '#fb8569', fontWeight: 'bold' }}>[01:12]</span>.
                 </p>
               </div>
             </div>

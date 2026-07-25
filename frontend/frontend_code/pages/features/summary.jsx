@@ -80,6 +80,9 @@ export default function SummaryPage({ onNavigate }) {
       padding: '40px 20px'
     }}>
       <style>{`
+        * {
+          font-family: 'Satoshi', sans-serif !important;
+        }
         body, html {
           margin: 0;
           padding: 0;
@@ -163,14 +166,14 @@ export default function SummaryPage({ onNavigate }) {
           <h1 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: '400',
-            letterSpacing: '0.2em',
+            letterSpacing: '0.1em',
             textTransform: 'uppercase',
             margin: '0 0 10px 0'
           }}>
             Video Summarization
           </h1>
           <p style={{ fontSize: '1.1rem', opacity: 0.8, maxWidth: '600px', margin: '0 auto' }}>
-            Condense long-form lecture videos and presentations into high-impact outlines and actionable takeaways.
+            Condense long form lecture videos and presentations into high impact outlines and actionable takeaways.
           </p>
         </div>
 
@@ -184,7 +187,7 @@ export default function SummaryPage({ onNavigate }) {
                 <span style={{ fontSize: '0.85rem', color: '#fb8569', fontWeight: 'bold', display: 'block', marginBottom: '6px' }}>STEP 01</span>
                 <h3 style={{ fontSize: '1.1rem', margin: '0 0 8px 0', fontWeight: 'bold' }}>Intent Routing</h3>
                 <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.7, lineHeight: '1.5' }}>
-                  If your request contains summary triggers (e.g. "summarize", "outline"), the Query Router shifts the task to the Summary Pipeline.
+                  If your request contains summary triggers (e.g. "summarize", "outline") the Query Router shifts the task to the Summary Pipeline.
                 </p>
               </div>
 
@@ -192,7 +195,7 @@ export default function SummaryPage({ onNavigate }) {
                 <span style={{ fontSize: '0.85rem', color: '#fb8569', fontWeight: 'bold', display: 'block', marginBottom: '6px' }}>STEP 02</span>
                 <h3 style={{ fontSize: '1.1rem', margin: '0 0 8px 0', fontWeight: 'bold' }}>Dynamic Map-Reduce</h3>
                 <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.7, lineHeight: '1.5' }}>
-                  The entire transcript is divided into chapters. The model summarizes each chapter independently and then rolls them into a master summary.
+                  The entire transcript is divided into blocks. The model summarizes each block independently and then rolls them into a master summary.
                 </p>
               </div>
 
@@ -200,7 +203,7 @@ export default function SummaryPage({ onNavigate }) {
                 <span style={{ fontSize: '0.85rem', color: '#fb8569', fontWeight: 'bold', display: 'block', marginBottom: '6px' }}>STEP 03</span>
                 <h3 style={{ fontSize: '1.1rem', margin: '0 0 8px 0', fontWeight: 'bold' }}>Structured Output</h3>
                 <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.7, lineHeight: '1.5' }}>
-                  Output is formatted with bulleted key takeaways, core conceptual terms, and chronological timestamps for easy navigation.
+                  Output is formatted with bulleted key takeaways, core conceptual terms and chronological timestamps for easy navigation.
                 </p>
               </div>
             </div>
@@ -214,30 +217,24 @@ export default function SummaryPage({ onNavigate }) {
               <div>
                 <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>User Question:</p>
                 <div style={{ fontStyle: 'italic', opacity: 0.9, backgroundColor: 'rgba(251, 133, 105, 0.1)', padding: '10px 14px', borderRadius: '4px', marginBottom: '20px' }}>
-                  "Summarize this lecture video."
+                  "Summary of this machine learning video"
                 </div>
 
-                <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>Generated Output:</p>
+                 <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>Generated Output:</p>
                 <div style={{ backgroundColor: 'rgba(13, 31, 28, 0.8)', borderLeft: '4px solid #fb8569', padding: '16px', borderRadius: '4px' }}>
-                  <div className="summary-chapter">
-                    <span style={{ fontSize: '0.8rem', color: '#fb8569', fontWeight: 'bold' }}>Chapter 1: Intro to Neural Networks [00:00 - 05:30]</span>
-                    <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.4' }}>
-                      Explains artificial neurons (perceptrons) and their activation functions (Sigmoid, ReLU).
-                    </p>
-                  </div>
-                  <div className="summary-chapter">
-                    <span style={{ fontSize: '0.8rem', color: '#fb8569', fontWeight: 'bold' }}>Chapter 2: Backpropagation [05:31 - 12:45]</span>
-                    <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.4' }}>
-                      Focuses on gradient descent optimization and partial derivative calculations via Chain Rule.
-                    </p>
-                  </div>
+                  <p style={{ margin: '0 0 12px 0', fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.5' }}>
+                    The video provides a clear and well-organized conceptual walkthrough of standard supervised machine learning workflows. The speaker explains the role of labeled datasets, training sets, and the primary distinctions between regression and classification tasks.
+                  </p>
+                  <p style={{ margin: 0, fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.5' }}>
+                    Additionally, it covers model evaluation using performance metrics like Mean Squared Error (MSE), alongside weight optimization mechanics using Gradient Descent.
+                  </p>
                 </div>
               </div>
 
               <div style={{ marginTop: '20px', borderTop: '1px solid rgba(251, 133, 105, 0.15)', paddingTop: '16px' }}>
                 <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 4px 0' }}>Key Takeaway:</p>
                 <p style={{ margin: 0, fontSize: '0.88rem', opacity: 0.9, lineHeight: '1.5' }}>
-                  The video serves as an entry-level guide to backpropagation, highlighting computational efficiency optimization in training.
+                  The video provides a high-level conceptual walkthrough of standard supervised learning algorithms and optimization mechanics.
                 </p>
               </div>
             </div>

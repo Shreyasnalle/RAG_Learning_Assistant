@@ -116,23 +116,48 @@ async def receive_captions(data: CaptionData):
     match = re.search(r"[?&]v=([^&]+)", clean_url)
     video_id = match.group(1) if match else str(uuid.uuid4())
 
-    os.makedirs("raw_captions", exist_ok=True)
-    file_path = f"raw_captions/{video_id}.txt"
-    meta_path = f"raw_captions/{video_id}_meta.json"
+    # Check if already ingested in database
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute("SELECT COUNT(*) FROM video_chunks WHERE video_id = %s", (clean_url,))
+            count = cur.fetchone()[0]
+        conn.close()
+        if count > 0:
+            print(f"Video already in DB ({count} chunks): {clean_url}")
+            return {
+                "status": "success",
+                "video_id": video_id,
+                "video_url": clean_url,
+                "already_ingested": True,
+                "chunks_stored": count
+            }
+    except Exception as e:
+        print(f"Check existing chunks warning: {e}")
 
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(data.rawtext)
-    with open(meta_path, "w", encoding="utf-8") as f:
-        json.dump({
-            "video_url": clean_url,
-            "track_url": data.trackurl
-        }, f)
+    # Parse and chunk in-memory directly
+    parser = CaptionParser()
+    segments = parser.parse_raw_text(data.rawtext)
 
-    print(f"Saved to: {file_path}")
+    if not segments:
+        return {"status": "error", "reason": "Failed to parse caption segments"}
+
+    merger = ChunkMerger()
+    chunks = merger.merge_segments(segments, target_duration=45.0)
+
+    injector = ChunkInjector()
+    try:
+        injector.connect()
+        injector.store_video_chunks(clean_url, chunks)
+    finally:
+        injector.close()
+
+    print(f"Directly ingested {len(chunks)} chunks into DB for: {clean_url}")
     return {
         "status": "success",
         "video_id": video_id,
-        "video_url": clean_url
+        "video_url": clean_url,
+        "chunks_stored": len(chunks)
     }
 
 
@@ -184,37 +209,14 @@ async def ingest_video(data: IngestData):
             cur.execute("SELECT COUNT(*) FROM video_chunks WHERE video_id = %s", (clean_url,))
             count = cur.fetchone()[0]
         conn.close()
-        if count > 0:
-            return {
-                "success": True,
-                "already_ingested": True,
-                "chunks_stored": count,
-                "video_url": clean_url
-            }
+        return {
+            "success": True,
+            "already_ingested": True,
+            "chunks_stored": count,
+            "video_url": clean_url
+        }
     except Exception as e:
-        print(f"Check existing chunks warning: {e}")
-
-    caption_file = f"raw_captions/{data.file_id}.txt"
-    if not os.path.exists(caption_file):
-        return {"success": False, "error": "Caption file not found for this file_id"}
-    parser = CaptionParser()
-    segments = parser.parse_raw_captions(caption_file)
-    
-    merger = ChunkMerger()
-    chunks = merger.merge_segments(segments, target_duration=45.0)
-
-    injector = ChunkInjector()
-    try:
-        injector.connect()
-        injector.store_video_chunks(clean_url, chunks)
-    finally:
-        injector.close()
-
-    return {
-        "success": True,
-        "chunks_stored": len(chunks),
-        "video_url": clean_url
-    }
+        return {"success": True, "already_ingested": True, "video_url": clean_url}
 
 
 @app.post("/api/ask")
