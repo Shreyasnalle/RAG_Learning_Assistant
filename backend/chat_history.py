@@ -5,7 +5,6 @@ from typing import List, Optional, cast
 
 load_dotenv("supabase_key.env")
 
-
 class ChatHistoryManager:
     def __init__(self):
         supabase_url = os.getenv("SUPABASE_URL")
@@ -27,26 +26,33 @@ class ChatHistoryManager:
                 "role": role,
                 "message": message
             }).execute()
+            print(f"[ChatHistory] Successfully saved message for user {user_id} on {video_url}")
             return {"success": True}
         except Exception as e:
+            print(f"[ChatHistory] ERROR saving message: {e}")
             return {
                 "success": False,
                 "error": str(e)
             }
 
     def get_chat_history(self, user_id: str, video_url: str, limit: int = 50) -> List:
-        response = (
-            self.client.table("chat_history")
-            .select("role, message")
-            .eq("user_id", user_id)
-            .eq("video_url", video_url)
-            .order("created_at", desc=True)
-            .limit(limit)
-            .execute()
-        )
-        messages = response.data or []
-        messages.reverse()
-        return messages
+        try:
+            response = (
+                self.client.table("chat_history")
+                .select("role, message")
+                .eq("user_id", user_id)
+                .eq("video_url", video_url)
+                .order("created_at", desc=True)
+                .limit(limit)
+                .execute()
+            )
+            messages = response.data or []
+            messages.reverse()
+            print(f"[ChatHistory] Retrieved {len(messages)} messages for user {user_id} on {video_url}")
+            return messages
+        except Exception as e:
+            print(f"[ChatHistory] ERROR retrieving messages: {e}")
+            return []
 
     def get_last_user_question(self, user_id: str, video_url: str) -> Optional[str]:
         response = (

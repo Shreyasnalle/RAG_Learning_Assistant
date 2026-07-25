@@ -9,8 +9,28 @@ class RAGPipeline:
     def __init__(self):
         self.client = OpenAI(
             api_key=os.getenv("GROQ_API_KEY"),
-            base_url="https://api.groq.com/openai/v1"
+            base_url="https://api.groq.com/openai/v1",
+            timeout=15.0
         )
+
+    def _create_completion(self, messages: list, temperature: float = 0.5) -> str:
+        models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "gemma2-9b-it"]
+        last_error = None
+        for m in models:
+            try:
+                response = self.client.chat.completions.create(
+                    model=m,
+                    messages=messages,
+                    temperature=temperature
+                )
+                if response.choices and response.choices[0].message.content:
+                    return response.choices[0].message.content
+            except Exception as e:
+                last_error = e
+                if "rate_limit" in str(e).lower() or "429" in str(e) or "400" in str(e):
+                    continue
+                break
+        return f"I apologize, but I encountered an issue or rate limit: {str(last_error)}"
 
     def generate_answer(self, question: str, retrieved: list) -> str:
         context = []
@@ -36,16 +56,16 @@ class RAGPipeline:
             "- Use bold text (`**term**`) VERY SPARINGLY — only for truly critical technical terms or key concepts, max 2-3 bold words per response.\n"
             "- Use bullet points (`- `) for lists, steps, or multiple items.\n"
             "- Put code snippets, shell commands, or technical syntax inside code blocks (e.g. ```pip install fastapi```) or inline code (`code`).\n"
-            "- Keep the tone concise, encouraging, educational, and confident."
         )
 
-        user_prompt = f"Video content: {context if context else 'None'}\nStudent Question: {question}"
-        response = self.client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            temperature=0.5
-        )
-        return response.choices[0].message.content or ""
+        context_text = "\n".join(context)
+        try:
+            return self._create_completion(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": f"Context snippets:\n{context_text}\n\nStudent's Question:\n{question}"}
+                ],
+                temperature=0.5
+            )
+        except Exception as e:
+            return f"I encountered an error while answering: {str(e)}"

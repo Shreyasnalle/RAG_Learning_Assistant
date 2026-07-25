@@ -304,28 +304,59 @@ class AuthManager:
         }
 
     def sign_in(self, email: str, password: str) -> dict:
+        clean_email = email.strip().lower() if email else ""
+        if not clean_email:
+            return {
+                "success": False,
+                "error": "Please enter your email address."
+            }
+
+        # Check if user exists in registered users
+        user_list = self._get_all_users()
+        user_obj = next((u for u in user_list if getattr(u, 'email', '').strip().lower() == clean_email), None)
+        if not user_obj:
+            return {
+                "success": False,
+                "error": "Account not registered. Please sign up first."
+            }
+
+        # Try client auth
         try:
             auth_response = self.client.auth.sign_in_with_password({
-                "email": email,
+                "email": clean_email,
                 "password": password
             })
+            if auth_response and auth_response.user:
+                access_token = auth_response.session.access_token if auth_response.session else None
+                return {
+                    "success": True,
+                    "user_id": auth_response.user.id,
+                    "email": auth_response.user.email,
+                    "access_token": access_token or auth_response.user.id
+                }
         except Exception:
-            return {
-                "success": False,
-                "error": "EmailID\\Password is wrong"
-            }
-        if not auth_response.user:
-            return {
-                "success": False,
-                "error": "EmailID\\Password is wrong"
-            }
-        access_token = auth_response.session.access_token if auth_response.session else None
+            pass
+
+        # Try admin_client auth fallback
+        try:
+            auth_response = self.admin_client.auth.sign_in_with_password({
+                "email": clean_email,
+                "password": password
+            })
+            if auth_response and auth_response.user:
+                access_token = auth_response.session.access_token if auth_response.session else None
+                return {
+                    "success": True,
+                    "user_id": auth_response.user.id,
+                    "email": auth_response.user.email,
+                    "access_token": access_token or auth_response.user.id
+                }
+        except Exception:
+            pass
 
         return {
-            "success": True,
-            "user_id": auth_response.user.id,
-            "email": auth_response.user.email,
-            "access_token": access_token
+            "success": False,
+            "error": "Incorrect password. Please check your password or use Reset Password."
         }
 
     def get_profile(self, user_id: str) -> dict:

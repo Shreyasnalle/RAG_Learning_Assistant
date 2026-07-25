@@ -330,6 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
   menuSummary.addEventListener('click', () => {
     dropdown.classList.remove('show');
     queryInput.value = 'Summarize this video';
+    handleSend();
+    setTimeout(adjustInputHeight, 0);
   });
 
   const escapeHtml = (str) => {
@@ -425,11 +427,24 @@ document.addEventListener('DOMContentLoaded', () => {
     return new Promise((resolve) => {
       if (chrome.tabs && chrome.tabs.query) {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-          if (tabs && tabs[0] && tabs[0].url) {
+          if (tabs && tabs[0] && tabs[0].url && tabs[0].url.includes('youtube.com/watch')) {
             resolve(tabs[0].url);
-          } else {
-            resolve(currentVideoUrl || '');
+            return;
           }
+          chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs2) => {
+            if (tabs2 && tabs2[0] && tabs2[0].url && tabs2[0].url.includes('youtube.com/watch')) {
+              resolve(tabs2[0].url);
+              return;
+            }
+            chrome.tabs.query({ url: '*://*.youtube.com/watch*' }, (ytTabs) => {
+              const activeYt = (ytTabs || []).find(t => t.active) || (ytTabs || [])[0];
+              if (activeYt && activeYt.url) {
+                resolve(activeYt.url);
+              } else {
+                resolve(currentVideoUrl || '');
+              }
+            });
+          });
         });
       } else {
         resolve(currentVideoUrl || '');
@@ -437,12 +452,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const loadChatHistory = async () => {
-    if (!currentUser || !currentUser.user_id) return;
+  const normalizeUrl = (url) => {
+    if (!url) return '';
+    const match = url.match(/[?&]v=([^&]+)/);
+    return match ? `https://www.youtube.com/watch?v=${match[1]}` : url;
+  };
 
-    chrome.storage.local.get(['current_chat_history', 'current_video_url'], async (storage) => {
+  const updateLocalHistory = (videoUrl, ...newMsgs) => {
+    chrome.storage.local.get(['current_chat_history', 'current_video_url'], (storage) => {
+      let history = (normalizeUrl(storage.current_video_url) === videoUrl && Array.isArray(storage.current_chat_history)) 
+        ? [...storage.current_chat_history] 
+        : [];
+      newMsgs.forEach(m => history.push(m));
+      chrome.storage.local.set({
+        current_chat_history: history,
+        current_video_url: videoUrl
+      });
+    });
+  };
+
+  const syncChatHistoryFromBackend = async (userId, videoUrl) => {
+    if (!userId || !videoUrl) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/chat-history`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${currentUser?.access_token || currentUser?.user_id || userId}`
+        },
+        body: JSON.stringify({ user_id: userId, video_url: videoUrl })
+      });
+      const data = await res.json();
+      if (data.success && Array.isArray(data.messages)) {
+        chrome.storage.local.get(['current_chat_history', 'current_video_url'], (storage) => {
+          if (storage.current_video_url === videoUrl && Array.isArray(storage.current_chat_history)) {
+            if (data.messages.length < storage.current_chat_history.length) {
+              return; // Prevent race condition where backend hasn't saved yet
+            }
+          }
+          chrome.storage.local.set({
+            current_chat_history: data.messages,
+            current_video_url: videoUrl
+          });
+        });
+      }
+    } catch (e) {}
+  };
+
+  const loadChatHistory = async () => {
+    chrome.storage.local.get(['user_id', 'current_chat_history', 'current_video_url'], async (storage) => {
+      const userId = storage.user_id || (currentUser ? currentUser.user_id : null);
+      if (!userId) return;
+
       const activeUrl = await getCurrentTabUrl();
-      const videoUrl = activeUrl || storage.current_video_url || currentVideoUrl;
+      const rawUrl = activeUrl || storage.current_video_url || currentVideoUrl;
+      const videoUrl = normalizeUrl(rawUrl);
 
       const renderMessages = (messages) => {
         chatMessages.innerHTML = '';
@@ -456,24 +520,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
-      if (storage.current_chat_history && storage.current_chat_history.length > 0) {
+      let initialRenderDone = false;
+      if (storage.current_video_url === videoUrl && storage.current_chat_history && storage.current_chat_history.length > 0) {
         renderMessages(storage.current_chat_history);
+        initialRenderDone = true;
       }
 
-      if (videoUrl && currentUser && currentUser.user_id) {
+      if (videoUrl) {
         try {
           const res = await fetch(`${API_BASE}/api/chat-history`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${currentUser?.access_token || currentUser?.user_id || userId}`
+            },
             body: JSON.stringify({
-              user_id: currentUser.user_id,
+              user_id: userId,
               video_url: videoUrl
             })
           });
           const data = await res.json();
-          if (data.success && data.messages) {
-            chrome.storage.local.set({ current_chat_history: data.messages });
-            renderMessages(data.messages);
+          if (data.success && Array.isArray(data.messages)) {
+            if (data.messages.length > 0) {
+              chrome.storage.local.set({ 
+                current_chat_history: data.messages,
+                current_video_url: videoUrl
+              });
+              renderMessages(data.messages);
+            } else {
+              chrome.storage.local.set({ 
+                current_chat_history: [],
+                current_video_url: videoUrl
+              });
+              renderMessages([]);
+            }
           }
         } catch (err) {
         }
@@ -497,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const activeUrl = await getCurrentTabUrl();
-      const videoUrl = activeUrl || currentVideoUrl;
+      const videoUrl = normalizeUrl(activeUrl || currentVideoUrl);
 
       if (!videoUrl) {
         loadingDiv.remove();
@@ -509,7 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${currentUser.access_token || ''}`
+          'Authorization': `Bearer ${currentUser.access_token || currentUser.user_id || ''}`
         },
         body: JSON.stringify({
           question: question,
@@ -520,8 +600,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const askData = await askRes.json();
       loadingDiv.remove();
 
+      if (!askRes.ok) {
+        if (askRes.status === 401) {
+          chrome.storage.local.remove(['user_id', 'email', 'access_token', 'login_timestamp', 'current_chat_history'], () => {
+            currentUser = null;
+            checkAuth();
+          });
+          appendMessage('Session expired or user account not found. Please sign in again.', 'assistant');
+          return;
+        }
+        const errDetail = askData.detail || askData.error || 'Server error occurred.';
+        appendMessage(`Sorry, an error occurred: ${errDetail}`, 'assistant');
+        return;
+      }
+
       if (askData.type === 'answer') {
         appendMessage(askData.answer, 'assistant');
+        updateLocalHistory(videoUrl, { role: 'user', message: question }, { role: 'assistant', message: askData.answer });
+        syncChatHistoryFromBackend(currentUser.user_id, videoUrl);
       } else if (askData.type === 'needs_clarification') {
         const clarifDiv = document.createElement('div');
         clarifDiv.className = 'msg msg-assistant';
@@ -544,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: { 
                   'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${currentUser.access_token || ''}`
+                  'Authorization': `Bearer ${currentUser.access_token || currentUser.user_id || ''}`
                 },
                 body: JSON.stringify({
                   choice_key: opt.key,
@@ -553,7 +649,21 @@ document.addEventListener('DOMContentLoaded', () => {
               });
               const resData = await resRes.json();
               resolveLoading.remove();
+              if (!resRes.ok) {
+                if (resRes.status === 401) {
+                  chrome.storage.local.remove(['user_id', 'email', 'access_token', 'login_timestamp', 'current_chat_history'], () => {
+                    currentUser = null;
+                    checkAuth();
+                  });
+                  appendMessage('Session expired or user account not found. Please sign in again.', 'assistant');
+                  return;
+                }
+                appendMessage('Failed to resolve clarification: ' + (resData.detail || resData.error || 'Server error'), 'assistant');
+                return;
+              }
               appendMessage(resData.answer || 'Completed', 'assistant');
+              updateLocalHistory(videoUrl, { role: 'user', message: `Selected: ${opt.label}` }, { role: 'assistant', message: resData.answer || 'Completed' });
+              syncChatHistoryFromBackend(currentUser.user_id, videoUrl);
             } catch (err) {
               resolveLoading.remove();
               appendMessage('Failed to resolve clarification', 'assistant');
@@ -565,6 +675,8 @@ document.addEventListener('DOMContentLoaded', () => {
         clarifDiv.appendChild(optionsDiv);
         chatMessages.appendChild(clarifDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+      } else {
+        appendMessage(askData.answer || askData.message || 'Completed', 'assistant');
       }
     } catch (err) {
       loadingDiv.remove();

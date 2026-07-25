@@ -4,17 +4,17 @@ from summary_rag_pipeline import SummaryPipeline
 from chat_history import ChatHistoryManager
 from db_utils import get_db_connection
 
-specific_video_words = ["video", "whole video", "entire video", "full video", "full lecture", "complete video", "complete lecture", "lecture"]
-summary_trigger_words = ["summarize", "summary", "brief", "intro"]
+specific_video_words = ["video", "whole video", "entire video", "full video", "full lecture", "complete video", "complete lecture", "lecture", "this", "course"]
+summary_trigger_words = ["summarize", "summary", "brief", "overview", "recap", "gist", "about", "intro"]
 
 
 def classify_intent(question: str) -> str:
-    lower_question = question.lower()
+    lower_question = question.lower().strip()
     contains_summary_word = any(word in lower_question for word in summary_trigger_words)
     if not contains_summary_word:
         return "normal"
-    contains_sepcific_video_word = any(word in lower_question for word in specific_video_words)
-    if contains_sepcific_video_word:
+    contains_specific_video_word = any(word in lower_question for word in specific_video_words)
+    if contains_specific_video_word or lower_question in ("summarize", "summary", "summarize this video", "summarize video"):
         return "specific_summary"
     return "vague"
 
@@ -44,6 +44,7 @@ class QueryRouter:
         self.chat_history = ChatHistoryManager()
 
     def handle_query(self, question: str, video_url: str, user_id: str) -> Dict:
+        previous_question = self.chat_history.get_last_user_question(user_id, video_url)
         self.chat_history.save_message(user_id, video_url, "user", question)
         intent = classify_intent(question)
         if intent == "specific_summary":
@@ -55,8 +56,7 @@ class QueryRouter:
                 "answer": answer
             }
         if intent == "vague":
-            last_question = self.chat_history.get_last_user_question(user_id, video_url)
-            if not last_question:
+            if not previous_question:
                 chunks = get_stored_chunks(video_url)
                 answer = self.summary_pipeline.generate_video_summary(chunks)
                 self.chat_history.save_message(user_id, video_url, "assistant", answer)
@@ -80,6 +80,8 @@ class QueryRouter:
         }
 
     def resolve_clarification(self, choice_key: str, video_url: str, user_id: str) -> Dict:
+        user_label = "Summary of this video" if choice_key == "video" else ("Answer based on your last question" if choice_key == "last_question" else choice_key)
+        self.chat_history.save_message(user_id, video_url, "user", f"Selected: {user_label}")
         if choice_key == "video":
             chunks = get_stored_chunks(video_url)
             answer = self.summary_pipeline.generate_video_summary(chunks)

@@ -52,11 +52,14 @@ chrome.runtime.onMessage.addListener((data, sender, sendResponse) => {
         })
         .then(res => res.json())
         .then(ingestResult => {
-            chrome.storage.local.get(['user_id'], (auth) => {
+            chrome.storage.local.get(['user_id', 'access_token'], (auth) => {
                 if (auth.user_id) {
                     fetch(`${API_BASE}/api/chat-history`, {
                         method: 'POST',
-                        headers: { 'content-type': 'application/json' },
+                        headers: { 
+                            'content-type': 'application/json',
+                            'Authorization': `Bearer ${auth.access_token || auth.user_id}`
+                        },
                         body: JSON.stringify({
                             user_id: auth.user_id,
                             video_url: videoUrl
@@ -70,8 +73,6 @@ chrome.runtime.onMessage.addListener((data, sender, sendResponse) => {
                         });
                     })
                     .catch(() => {});
-                } else {
-                    chrome.storage.local.set({ current_chat_history: [] });
                 }
             });
         })

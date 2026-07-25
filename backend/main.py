@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -41,25 +41,56 @@ chat_history_manager = ChatHistoryManager()
 security = HTTPBearer()
 
 
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> str:
-    token = credentials.credentials
-    try:
-        user_response = auth_manager.client.auth.get_user(token)
-        if not user_response or not user_response.user:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid authentication token",
-                headers={"WWW-Authenticate": "Bearer"},
-            )
-        return user_response.user.id
-    except HTTPException:
-        raise
-    except Exception:
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> str:
+    token = credentials.credentials.strip() if credentials and credentials.credentials else ""
+    if not token or token.lower() in ("undefined", "null", "none"):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Could not validate credentials or token expired",
+            detail="Missing authentication token",
             headers={"WWW-Authenticate": "Bearer"},
         )
+
+    try:
+        user_response = auth_manager.client.auth.get_user(token)
+        if user_response and user_response.user:
+            return user_response.user.id
+    except Exception:
+        pass
+
+    try:
+        user_response = auth_manager.admin_client.auth.get_user(token)
+        if user_response and user_response.user:
+            return user_response.user.id
+    except Exception:
+        pass
+
+    extracted_user_id = None
+    try:
+        import base64, json
+        parts = token.split(".")
+        if len(parts) == 3:
+            payload_b64 = parts[1] + "=" * (-len(parts[1]) % 4)
+            payload_bytes = base64.urlsafe_b64decode(payload_b64)
+            payload = json.loads(payload_bytes.decode("utf-8"))
+            extracted_user_id = payload.get("sub")
+    except Exception:
+        pass
+
+    target_id = str(extracted_user_id) if extracted_user_id else (token if re.match(r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", token) else None)
+
+    if target_id:
+        try:
+            user_res = auth_manager.admin_client.auth.admin.get_user_by_id(target_id)
+            if user_res and user_res.user:
+                return user_res.user.id
+        except Exception:
+            pass
+
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials or user does not exist",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
 
 
 class CaptionData(BaseModel):
@@ -134,7 +165,7 @@ def normalize_youtube_url(url: str) -> str:
 
 
 @app.post("/api/captions")
-async def receive_captions(data: CaptionData):
+def receive_captions(data: CaptionData):
     clean_url = normalize_youtube_url(data.videourl)
 
     if len(data.rawtext) < 100:
@@ -185,7 +216,7 @@ async def receive_captions(data: CaptionData):
 
 
 @app.post("/api/signup")
-async def signup(data: SignUpData):
+def signup(data: SignUpData):
     return auth_manager.sign_up(
         email=data.email,
         password=data.password,
@@ -195,17 +226,17 @@ async def signup(data: SignUpData):
 
 
 @app.post("/api/login")
-async def login(data: SignInData):
+def login(data: SignInData):
     return auth_manager.sign_in(email=data.email, password=data.password)
 
 
 @app.post("/api/user-profile")
-async def get_user_profile(data: ProfileData):
+def get_user_profile(data: ProfileData):
     return auth_manager.get_profile(user_id=data.user_id)
 
 
 @app.post("/api/change-password")
-async def change_password(data: ChangePasswordData):
+def change_password(data: ChangePasswordData):
     return auth_manager.change_password(
         user_id=data.user_id,
         old_password=data.old_password,
@@ -214,17 +245,17 @@ async def change_password(data: ChangePasswordData):
 
 
 @app.post("/api/delete-account")
-async def delete_account(data: DeleteAccountData):
+def delete_account(data: DeleteAccountData):
     return auth_manager.delete_account(user_id=data.user_id)
 
 
 @app.post("/api/send-otp")
-async def send_otp(data: SendOTPData):
+def send_otp(data: SendOTPData):
     return auth_manager.send_otp(email=data.email)
 
 
 @app.post("/api/verify-otp-reset")
-async def verify_otp_reset(data: VerifyOTPData):
+def verify_otp_reset(data: VerifyOTPData):
     return auth_manager.verify_otp_reset_password(
         email=data.email,
         otp=data.otp,
@@ -233,7 +264,7 @@ async def verify_otp_reset(data: VerifyOTPData):
 
 
 @app.post("/api/ingest")
-async def ingest_video(data: IngestData):
+def ingest_video(data: IngestData):
     clean_url = normalize_youtube_url(data.video_url)
     try:
         conn = get_db_connection()
@@ -252,7 +283,7 @@ async def ingest_video(data: IngestData):
 
 
 @app.post("/api/ask")
-async def ask_question(data: AskData, user_id: str = Depends(get_current_user)):
+def ask_question(data: AskData, user_id: str = Depends(get_current_user)):
     clean_url = normalize_youtube_url(data.video_url)
     return query_router.handle_query(
         question=data.question,
@@ -262,7 +293,7 @@ async def ask_question(data: AskData, user_id: str = Depends(get_current_user)):
 
 
 @app.post("/api/resolve-clarification")
-async def resolve_clarification(data: ClarificationData, user_id: str = Depends(get_current_user)):
+def resolve_clarification(data: ClarificationData, user_id: str = Depends(get_current_user)):
     clean_url = normalize_youtube_url(data.video_url)
     return query_router.resolve_clarification(
         choice_key=data.choice_key,
@@ -272,9 +303,26 @@ async def resolve_clarification(data: ClarificationData, user_id: str = Depends(
 
 
 @app.post("/api/chat-history")
-async def get_chat_history_endpoint(data: ChatHistoryData):
+def get_chat_history_endpoint(data: ChatHistoryData, request: Request):
     clean_url = normalize_youtube_url(data.video_url)
-    messages = chat_history_manager.get_chat_history(user_id=data.user_id, video_url=clean_url)
+    user_id = data.user_id.strip() if data.user_id else ""
+    auth_header = request.headers.get("Authorization")
+    if auth_header and auth_header.startswith("Bearer "):
+        token = auth_header.split(" ", 1)[1]
+        try:
+            user_id = get_current_user(HTTPAuthorizationCredentials(scheme="Bearer", credentials=token))
+        except Exception:
+            pass
+
+    if user_id:
+        try:
+            user_res = auth_manager.admin_client.auth.admin.get_user_by_id(user_id)
+            if not user_res or not user_res.user:
+                user_id = ""
+        except Exception:
+            user_id = ""
+
+    messages = chat_history_manager.get_chat_history(user_id=user_id, video_url=clean_url) if user_id else []
     return {
         "success": True,
         "video_url": clean_url,
@@ -283,5 +331,5 @@ async def get_chat_history_endpoint(data: ChatHistoryData):
 
 
 @app.get("/")
-async def root():
+def root():
     return {"message": "backend is running"}

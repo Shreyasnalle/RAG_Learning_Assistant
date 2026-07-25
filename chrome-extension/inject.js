@@ -2,53 +2,56 @@
     function isWatchPage() {
         return window.location.pathname === "/watch" && window.location.search.includes("v=");
     }
+
     const originalFetch = window.fetch;
     const originalXHR = window.XMLHttpRequest.prototype.open;
+    let spaLastFetchedVideoId = null;
 
+    function dispatchCaptions(videoUrl, trackUrl, rawText) {
+        if (!rawText || rawText.length < 30) return;
+        const videoIdMatch = videoUrl.match(/[?&]v=([^&]+)/);
+        const videoId = videoIdMatch ? videoIdMatch[1] : null;
+        if (!videoId) return;
+
+        spaLastFetchedVideoId = videoId;
+        window.dispatchEvent(
+            new CustomEvent("captions intercepted", {
+                detail: {
+                    sourceurl: `https://www.youtube.com/watch?v=${videoId}`,
+                    trackurl: trackUrl || "",
+                    body: rawText
+                }
+            })
+        );
+    }
+
+    // Intercept fetch network requests for captions
     window.fetch = async function (...args) {
         const response = await originalFetch(...args);
-        if (!isWatchPage()) return response;
-        const url = args[0] ? args[0].toString().toLowerCase() : "";
-        if (
-            url.includes("timedtext") ||
-            url.includes(".vtt") ||
-            url.includes(".srt") ||
-            url.includes("subtitle") ||
-            url.includes("caption") ||
-            url.includes("/tracks")
-        ) {
-            try {
-                const clonedResponse = response.clone();
-                const rawText = await clonedResponse.text();
-                const trackUrlStr = args[0] ? args[0].toString() : "";
-                const videoIdMatch = trackUrlStr.match(/[?&]v=([^&]+)/);
-                const videoUrl = videoIdMatch
-                    ? `https://www.youtube.com/watch?v=${videoIdMatch[1]}`
-                    : window.location.href;
-                const currentVideoId = new URLSearchParams(window.location.search).get("v");
-                const captionVideoId = videoIdMatch ? videoIdMatch[1] : null;
-                if (captionVideoId && currentVideoId && captionVideoId !== currentVideoId) {
-                    return response;
-                }
-                window.dispatchEvent(
-                    new CustomEvent(
-                        "captions intercepted",
-                        {
-                            detail: {
-                                sourceurl: videoUrl,
-                                trackurl: args[0],
-                                body: rawText
-                            }
-                        }
-                    )
-                );
-            }
-            catch (err) {
+        if (isWatchPage()) {
+            const url = args[0] ? args[0].toString().toLowerCase() : "";
+            if (
+                url.includes("timedtext") ||
+                url.includes(".vtt") ||
+                url.includes(".srt") ||
+                url.includes("subtitle") ||
+                url.includes("caption") ||
+                url.includes("/tracks")
+            ) {
+                try {
+                    const clonedResponse = response.clone();
+                    const rawText = await clonedResponse.text();
+                    const trackUrlStr = args[0] ? args[0].toString() : "";
+                    const currentVideoId = new URLSearchParams(window.location.search).get("v");
+                    const videoUrl = `https://www.youtube.com/watch?v=${currentVideoId}`;
+                    dispatchCaptions(videoUrl, trackUrlStr, rawText);
+                } catch (err) {}
             }
         }
         return response;
     };
 
+    // Intercept XHR network requests for captions
     window.XMLHttpRequest.prototype.open = function (method, url, ...rest) {
         this.addEventListener("load", function () {
             if (!isWatchPage()) return;
@@ -64,61 +67,85 @@
                 try {
                     const rawText = this.responseText;
                     const trackUrlStr = url ? url.toString() : "";
-                    const videoIdMatch = trackUrlStr.match(/[?&]v=([^&]+)/);
-                    const videoUrl = videoIdMatch
-                        ? `https://www.youtube.com/watch?v=${videoIdMatch[1]}`
-                        : window.location.href;
-
                     const currentVideoId = new URLSearchParams(window.location.search).get("v");
-                    const captionVideoId = videoIdMatch ? videoIdMatch[1] : null;
-                    if (captionVideoId && currentVideoId && captionVideoId !== currentVideoId) {
-                        return;
-                    }
-                    window.dispatchEvent(
-                        new CustomEvent(
-                            "captions intercepted",
-                            {
-                                detail: {
-                                    sourceurl: videoUrl,
-                                    trackurl: url,
-                                    body: rawText
-                                }
-                            }
-                        )
-                    );
-                }
-                catch (err) {
-                }
+                    const videoUrl = `https://www.youtube.com/watch?v=${currentVideoId}`;
+                    dispatchCaptions(videoUrl, trackUrlStr, rawText);
+                } catch (err) {}
             }
         });
         return originalXHR.apply(this, [method, url, ...rest]);
     };
 
-    let spaLastFetchedVideoId = null;
-
-    async function spaFetchCaptionsForVideo() {
+    async function extractAndFetchCaptions() {
         if (!isWatchPage()) return;
         const videoId = new URLSearchParams(window.location.search).get("v");
         if (!videoId) return;
-        if (videoId === spaLastFetchedVideoId) return;
 
-        await new Promise(r => setTimeout(r, 2000));
+        let captionTracks = [];
 
-        if (!isWatchPage()) return;
-        const currentId = new URLSearchParams(window.location.search).get("v");
-        if (currentId !== videoId) return;
-
-        let captionTrackUrl = null;
-
+        // 1. Check movie_player tracklist
         try {
-            const playerResp = window.ytInitialPlayerResponse || {};
-            const tracks = playerResp?.captions?.playerCaptionsTracklistRenderer?.captionTracks || [];
-            let track = tracks.find(t => t.languageCode === "en" || t.languageCode === "en-US");
-            if (!track) track = tracks[0];
-            if (track && track.baseUrl) {
-                captionTrackUrl = track.baseUrl + "&fmt=json3";
+            const mp = document.getElementById("movie_player");
+            if (mp && typeof mp.getOption === "function") {
+                const tracklist = mp.getOption("captions", "tracklist");
+                if (Array.isArray(tracklist) && tracklist.length > 0) {
+                    captionTracks = tracklist;
+                }
             }
         } catch (e) {}
+
+        // 2. Check ytd-watch-flexy playerData
+        if (captionTracks.length === 0) {
+            try {
+                const flexy = document.querySelector("ytd-watch-flexy");
+                if (flexy && flexy.playerData?.captions?.playerCaptionsTracklistRenderer?.captionTracks) {
+                    captionTracks = flexy.playerData.captions.playerCaptionsTracklistRenderer.captionTracks;
+                }
+            } catch (e) {}
+        }
+
+        // 3. Check movie_player.getPlayerResponse() (Most reliable for SPA)
+        if (captionTracks.length === 0) {
+            try {
+                const mp = document.getElementById("movie_player");
+                if (mp && typeof mp.getPlayerResponse === "function") {
+                    const response = mp.getPlayerResponse();
+                    if (response?.captions?.playerCaptionsTracklistRenderer?.captionTracks) {
+                        captionTracks = response.captions.playerCaptionsTracklistRenderer.captionTracks;
+                    }
+                }
+            } catch (e) {}
+        }
+
+        // 3.5. Check ytInitialPlayerResponse (fallback)
+        if (captionTracks.length === 0) {
+            try {
+                if (window.ytInitialPlayerResponse?.captions?.playerCaptionsTracklistRenderer?.captionTracks) {
+                    captionTracks = window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.captionTracks;
+                }
+            } catch (e) {}
+        }
+
+        // 4. Check ytplayer config args
+        if (captionTracks.length === 0) {
+            try {
+                const rawResp = window.ytplayer?.config?.args?.raw_player_response;
+                const parsed = typeof rawResp === "string" ? JSON.parse(rawResp) : rawResp;
+                if (parsed?.captions?.playerCaptionsTracklistRenderer?.captionTracks) {
+                    captionTracks = parsed.captions.playerCaptionsTracklistRenderer.captionTracks;
+                }
+            } catch (e) {}
+        }
+
+        let captionTrackUrl = null;
+        if (captionTracks.length > 0) {
+            let track = captionTracks.find(t => t.languageCode === "en" || t.languageCode === "en-US" || t.languageCode === "en-GB" || (t.vssId && t.vssId.includes(".en")));
+            if (!track) track = captionTracks[0];
+            if (track) {
+                const base = track.baseUrl || track.url || "";
+                captionTrackUrl = base + (base && !base.includes("fmt=") ? "&fmt=json3" : "");
+            }
+        }
 
         if (!captionTrackUrl) {
             captionTrackUrl = `https://www.youtube.com/api/timedtext?lang=en&v=${videoId}&fmt=json3`;
@@ -130,21 +157,42 @@
             const rawText = await res.text();
             if (!rawText || rawText.length < 30) return;
 
-            spaLastFetchedVideoId = videoId;
-
-            window.dispatchEvent(
-                new CustomEvent("captions intercepted", {
-                    detail: {
-                        sourceurl: `https://www.youtube.com/watch?v=${videoId}`,
-                        trackurl: captionTrackUrl,
-                        body: rawText
-                    }
-                })
-            );
-        } catch (err) {
-        }
+            dispatchCaptions(`https://www.youtube.com/watch?v=${videoId}`, captionTrackUrl, rawText);
+        } catch (err) {}
     }
 
-    window.addEventListener("yt-navigate-finish", spaFetchCaptionsForVideo);
-    window.addEventListener("yt-page-data-updated", spaFetchCaptionsForVideo);
+    function triggerCaptionExtraction() {
+        if (!isWatchPage()) return;
+        const videoId = new URLSearchParams(window.location.search).get("v");
+        if (!videoId) return;
+
+        extractAndFetchCaptions();
+        setTimeout(extractAndFetchCaptions, 300);
+        setTimeout(extractAndFetchCaptions, 1000);
+        setTimeout(extractAndFetchCaptions, 2500);
+    }
+
+    window.addEventListener("yt-navigate-finish", () => {
+        spaLastFetchedVideoId = null;
+        triggerCaptionExtraction();
+    });
+    window.addEventListener("yt-page-data-updated", triggerCaptionExtraction);
+    window.addEventListener("popstate", triggerCaptionExtraction);
+
+    const originalPushState = history.pushState;
+    const originalReplaceState = history.replaceState;
+    history.pushState = function (...args) {
+        originalPushState.apply(this, args);
+        spaLastFetchedVideoId = null;
+        triggerCaptionExtraction();
+    };
+    history.replaceState = function (...args) {
+        originalReplaceState.apply(this, args);
+        triggerCaptionExtraction();
+    };
+
+    document.addEventListener("DOMContentLoaded", triggerCaptionExtraction);
+    window.addEventListener("load", triggerCaptionExtraction);
+
+    triggerCaptionExtraction();
 })();
