@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener((data, sender, sendResponse) => {
         return true;
     }
 
-    const API_BASE = 'https://simply-kwm.onrender.com';
+    const API_BASE = 'https://simply-kwrn.onrender.com';
 
     fetch(`${API_BASE}/api/captions`, {
         method: 'POST',
