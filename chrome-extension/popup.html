@@ -12,7 +12,7 @@
 <body>
   <div class="popup-container">
     <header class="header">
-      <div class="brand">SIMPLY</div>
+      <a href="http://localhost:5173/#/" target="_blank" class="brand" style="text-decoration: none;">SIMPLY</a>
       <button id="auth-nav-btn" class="signup-btn" style="display: none;">LOGOUT</button>
     </header>
 
@@ -26,13 +26,13 @@
         <form id="extension-login-form" class="extension-login-form">
           <input type="email" id="ext-email" placeholder="EMAIL ID" required />
           <input type="password" id="ext-password" placeholder="PASSWORD" required />
-          <button type="submit" id="ext-login-btn" class="ext-login-btn">SIGN IN</button>
           <div id="ext-error" class="ext-error"></div>
+          <button type="submit" id="ext-login-btn" class="ext-login-btn">SIGN IN</button>
         </form>
 
         <div class="auth-gate-divider"></div>
         <p class="auth-gate-subtext">Don't have an account?</p>
-        <a href="http://localhost:5173/" target="_blank" class="auth-gate-link">CREATE ONE ON SIMPLY →</a>
+        <a href="http://localhost:5173/#/account" target="_blank" class="auth-gate-link">CREATE ONE ON SIMPLY →</a>
       </div>
     </div>
 

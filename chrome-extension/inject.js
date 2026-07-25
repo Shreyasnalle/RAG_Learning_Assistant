@@ -4,6 +4,7 @@
     }
     const originalFetch = window.fetch;
     const originalXHR = window.XMLHttpRequest.prototype.open;
+
     window.fetch = async function (...args) {
         const response = await originalFetch(...args);
         if (!isWatchPage()) return response;
@@ -43,11 +44,11 @@
                 );
             }
             catch (err) {
-                
             }
         }
         return response;
     };
+
     window.XMLHttpRequest.prototype.open = function (method, url, ...rest) {
         this.addEventListener("load", function () {
             if (!isWatchPage()) return;
@@ -87,17 +88,11 @@
                     );
                 }
                 catch (err) {
-                    
                 }
             }
         });
         return originalXHR.apply(this, [method, url, ...rest]);
     };
-
-    // ---- SPA Navigation: Active caption fetching on video change ----
-    // YouTube is a SPA. When navigating between videos, the page doesn't reload,
-    // so the fetch interceptor above may miss the caption request (it fires too early).
-    // We hook yt-navigate-finish and actively fetch captions after the page settles.
 
     let spaLastFetchedVideoId = null;
 
@@ -107,17 +102,14 @@
         if (!videoId) return;
         if (videoId === spaLastFetchedVideoId) return;
 
-        // Wait for player to init with new video's data
         await new Promise(r => setTimeout(r, 2000));
 
-        // Verify we're still on the same video
         if (!isWatchPage()) return;
         const currentId = new URLSearchParams(window.location.search).get("v");
         if (currentId !== videoId) return;
 
         let captionTrackUrl = null;
 
-        // Read ytInitialPlayerResponse (available in MAIN world via inject.js)
         try {
             const playerResp = window.ytInitialPlayerResponse || {};
             const tracks = playerResp?.captions?.playerCaptionsTracklistRenderer?.captionTracks || [];
@@ -128,7 +120,6 @@
             }
         } catch (e) {}
 
-        // Fallback to direct timedtext API
         if (!captionTrackUrl) {
             captionTrackUrl = `https://www.youtube.com/api/timedtext?lang=en&v=${videoId}&fmt=json3`;
         }
@@ -151,7 +142,6 @@
                 })
             );
         } catch (err) {
-            // No captions available or network issue — silently ignore
         }
     }
 

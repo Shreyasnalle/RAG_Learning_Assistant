@@ -596,7 +596,7 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
         }} />
 
         <div style={{ position: 'absolute', top: '20px', left: '30px', zIndex: 6 }}>
-          <a href="#" onClick={(e) => { e.preventDefault(); onNavigate(); }} style={{
+          <a href="#/" onClick={(e) => { e.preventDefault(); onNavigate(); }} style={{
             color: '#fb8569',
             textDecoration: 'none',
             fontSize: '0.85rem',
@@ -604,7 +604,7 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
             letterSpacing: '0.15em',
             textTransform: 'uppercase'
           }}>
-            ← BACK
+            ← BACK TO LANDING
           </a>
         </div>
 
@@ -619,14 +619,18 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
             textAlign: 'left',
             boxSizing: 'border-box'
           }}>
-            <h1 style={{
-              fontSize: 'clamp(2.2rem, 3.5vw, 3rem)',
-              fontWeight: '400',
-              lineHeight: '1.1',
-              letterSpacing: '0.2rem',
-              textTransform: 'uppercase',
-              margin: '0 0 20px 0'
-            }}>
+            <h1 
+              onClick={(e) => { e.preventDefault(); onNavigate(); }}
+              style={{
+                fontSize: 'clamp(2.2rem, 3.5vw, 3rem)',
+                fontWeight: '400',
+                lineHeight: '1.1',
+                letterSpacing: '0.2rem',
+                textTransform: 'uppercase',
+                margin: '0 0 20px 0',
+                cursor: 'pointer'
+              }}
+            >
               SIMPLY
             </h1>
             <p style={{
@@ -681,12 +685,12 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
                     required 
                   />
                   
+                  {errorMessage && <div className="error-message" style={{ marginBottom: '16px' }}>{errorMessage}</div>}
+
                   <button type="submit" className="continue-btn" disabled={isLoading}>
                     {isLoading ? 'SIGNING IN...' : 'CONTINUE'}
                   </button>
                 </form>
-
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
 
                 <div 
                   onClick={() => handleToggleForm(true)}
@@ -768,12 +772,12 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
                     required 
                   />
                   
+                  {errorMessage && <div className="error-message" style={{ marginBottom: '16px' }}>{errorMessage}</div>}
+
                   <button type="submit" className="continue-btn" disabled={isLoading}>
                     {isLoading ? 'CREATING...' : 'CREATE ACCOUNT'}
                   </button>
                 </form>
-
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
 
                 <div 
                   onClick={() => handleToggleForm(false)}

@@ -132,7 +132,7 @@ export default function SummaryPage({ onNavigate }) {
       }}>
         <div style={{ position: 'absolute', top: '25px', left: '30px', display: 'inline-block' }} className="nav-link-wrapper">
           <a
-            href="#"
+            href="#/"
             onClick={(e) => { e.preventDefault(); onNavigate(); }}
             className="back-btn"
             style={{

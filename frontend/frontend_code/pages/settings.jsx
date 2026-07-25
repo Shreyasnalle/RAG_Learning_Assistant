@@ -176,7 +176,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
       });
       const data = await res.json();
       if (data.success) {
-        // Clear all local session data before navigating away
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('user_id');
         localStorage.removeItem('email');
@@ -361,10 +360,9 @@ export default function SettingsPage({ onNavigate, onLogout }) {
         boxSizing: 'border-box',
         overflowY: 'auto'
       }}>
-        {/* Back Link */}
         <div style={{ position: 'absolute', top: '22px', left: '26px', display: 'inline-block' }} className="nav-link-wrapper">
           <a
-            href="#"
+            href="#/"
             onClick={(e) => { e.preventDefault(); onNavigate(); }}
             style={{
               color: '#fb8569',
@@ -393,7 +391,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           />
         </div>
 
-        {/* Title */}
         <div style={{ textAlign: 'center', marginTop: '35px', marginBottom: '24px' }}>
           <h1 style={{
             fontSize: 'clamp(1.5rem, 2.5vw, 2.4rem)',
@@ -406,7 +403,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           </h1>
         </div>
 
-        {/* Section 1: Profile Info */}
         <div style={{
           backgroundColor: 'rgba(255, 255, 255, 0.015)',
           border: '1.5px solid rgba(251, 133, 105, 0.2)',
@@ -438,7 +434,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           )}
         </div>
 
-        {/* Section 2: Change Password */}
         <div style={{
           backgroundColor: 'rgba(255, 255, 255, 0.015)',
           border: '1.5px solid rgba(251, 133, 105, 0.2)',
@@ -501,7 +496,7 @@ export default function SettingsPage({ onNavigate, onLogout }) {
             <p style={{
               marginTop: '12px',
               fontSize: '0.85rem',
-              color: passwordMsg.type === 'error' ? '#ff6b6b' : '#51cf66',
+              color: passwordMsg.type === 'error' ? '#ff6b6b' : '#fb8569',
               fontWeight: '600'
             }}>
               {passwordMsg.text}
@@ -509,7 +504,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
           )}
         </div>
 
-        {/* Section 3: Danger Zone */}
         <div className="danger-zone-box">
           <div className="danger-row">
             <div>
@@ -550,7 +544,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
         </div>
       </div>
 
-      {/* OTP Verification Modal */}
       {otpModalOpen && (
         <div style={{
           position: 'fixed',
@@ -587,21 +580,61 @@ export default function SettingsPage({ onNavigate, onLogout }) {
             </p>
 
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
+                setOtpMsg({ text: '', type: '' });
+
                 if (!isOtpSent) {
                   setOtpMsg({ text: 'Please click SEND OTP first', type: 'error' });
                   return;
                 }
                 if (!otpCode.trim()) {
-                  setOtpMsg({ text: 'Please enter the OTP and click VERIFY first', type: 'error' });
+                  setOtpMsg({ text: 'Please enter the 6-digit OTP code', type: 'error' });
                   return;
                 }
-                setOtpMsg({ text: 'Password reset feature UI ready!', type: 'success' });
+                if (!otpNewPassword.trim() || !otpConfirmPassword.trim()) {
+                  setOtpMsg({ text: 'Please enter and confirm your new password', type: 'error' });
+                  return;
+                }
+                if (otpNewPassword.length < 6) {
+                  setOtpMsg({ text: 'New password must be at least 6 characters long', type: 'error' });
+                  return;
+                }
+                if (otpNewPassword !== otpConfirmPassword) {
+                  setOtpMsg({ text: 'Passwords do not match', type: 'error' });
+                  return;
+                }
+
+                const userEmail = profile.email || localStorage.getItem('email');
+                try {
+                  const res = await fetch(`${API_BASE}/api/verify-otp-reset`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      email: userEmail,
+                      otp: otpCode.trim(),
+                      new_password: otpNewPassword
+                    })
+                  });
+                  const data = await res.json();
+                  if (data.success) {
+                    setOtpMsg({ text: 'Password reset successfully!', type: 'success' });
+                    setTimeout(() => {
+                      setOtpModalOpen(false);
+                      setOtpCode('');
+                      setOtpNewPassword('');
+                      setOtpConfirmPassword('');
+                      setOtpMsg({ text: '', type: '' });
+                    }, 1500);
+                  } else {
+                    setOtpMsg({ text: data.error || 'Invalid or expired OTP', type: 'error' });
+                  }
+                } catch (err) {
+                  setOtpMsg({ text: 'Could not connect to server', type: 'error' });
+                }
               }}
               style={{ width: '100%', maxWidth: '380px' }}
             >
-              {/* OTP Input + VERIFY Button Row */}
               <div style={{ display: 'flex', gap: '8px', width: '100%', marginBottom: '10px', alignItems: 'center' }}>
                 <input
                   type="text"
@@ -611,7 +644,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
                   onChange={(e) => setOtpCode(e.target.value)}
                   maxLength={6}
                   style={{ textAlign: 'center', letterSpacing: '0.15em', fontSize: '0.85rem', marginBottom: 0, flex: 1 }}
-                  required
                 />
                 <button
                   type="button"
@@ -621,7 +653,7 @@ export default function SettingsPage({ onNavigate, onLogout }) {
                       setOtpMsg({ text: 'Please enter the OTP first', type: 'error' });
                       return;
                     }
-                    setOtpMsg({ text: 'OTP verified successfully!', type: 'success' });
+                    setOtpMsg({ text: 'OTP ready for verification! Enter new password and click RESET.', type: 'success' });
                   }}
                   disabled={!isOtpSent}
                   className={isOtpSent ? "action-btn" : ""}
@@ -664,20 +696,27 @@ export default function SettingsPage({ onNavigate, onLogout }) {
                 style={{ fontSize: '0.85rem', padding: '10px 14px', marginBottom: '10px' }}
               />
 
-              {otpMsg.text && (
-                <p style={{
-                  marginBottom: '10px',
-                  fontSize: '0.8rem',
-                  color: otpMsg.type === 'error' ? '#ff6b6b' : '#51cf66',
-                  fontWeight: '600'
-                }}>
-                  {otpMsg.text}
-                </p>
-              )}
+              <div style={{
+                minHeight: '34px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '10px',
+                textAlign: 'center'
+              }}>
+                {otpMsg.text && (
+                  <p style={{
+                    margin: 0,
+                    fontSize: '0.8rem',
+                    color: otpMsg.type === 'error' ? '#ff6b6b' : '#fb8569',
+                    fontWeight: '600'
+                  }}>
+                    {otpMsg.text}
+                  </p>
+                )}
+              </div>
 
-              {/* Bottom Action Buttons: CANCEL | SEND OTP | RESET */}
               <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '12px', flexWrap: 'wrap' }}>
-                {/* CANCEL */}
                 <button
                   type="button"
                   onClick={() => setOtpModalOpen(false)}
@@ -696,12 +735,31 @@ export default function SettingsPage({ onNavigate, onLogout }) {
                   CANCEL
                 </button>
 
-                {/* SEND OTP (Right side of CANCEL) */}
                 <button
                   type="button"
-                  onClick={() => {
-                    setIsOtpSent(true);
-                    setOtpMsg({ text: 'OTP sent to registered email! You can now click VERIFY.', type: 'success' });
+                  onClick={async () => {
+                    const userEmail = profile.email || localStorage.getItem('email');
+                    if (!userEmail) {
+                      setOtpMsg({ text: 'No registered email found', type: 'error' });
+                      return;
+                    }
+                    setOtpMsg({ text: 'Sending OTP email via Supabase...', type: 'info' });
+                    try {
+                      const res = await fetch(`${API_BASE}/api/send-otp`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: userEmail })
+                      });
+                      const data = await res.json();
+                      if (data.success) {
+                        setIsOtpSent(true);
+                        setOtpMsg({ text: data.message || `OTP email sent to ${userEmail}! Please check your email inbox.`, type: 'success' });
+                      } else {
+                        setOtpMsg({ text: data.error || 'Failed to send OTP email', type: 'error' });
+                      }
+                    } catch (err) {
+                      setOtpMsg({ text: 'Could not connect to server', type: 'error' });
+                    }
                   }}
                   className="action-btn"
                   style={{ padding: '9px 18px', fontSize: '0.85rem' }}
@@ -709,7 +767,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
                   SEND OTP
                 </button>
 
-                {/* RESET (Right side of SEND OTP) */}
                 <button
                   type="submit"
                   className="action-btn"
@@ -723,7 +780,6 @@ export default function SettingsPage({ onNavigate, onLogout }) {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (
         <div style={{
           position: 'fixed',

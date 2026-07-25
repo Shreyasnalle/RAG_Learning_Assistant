@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
           isExpired = true;
         }
       } else if (result.user_id) {
-        // If user_id exists but timestamp was not stored yet, initialize it
         chrome.storage.local.set({ login_timestamp: Date.now().toString() });
       }
 
@@ -44,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         loadChatHistory();
       } else {
-        // Not logged in or session expired — clear stale data
         if (result.user_id && isExpired) {
           chrome.storage.local.remove(['user_id', 'email', 'access_token', 'login_timestamp', 'current_chat_history']);
         }
@@ -65,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-
-
   if (authNavBtn) {
     authNavBtn.addEventListener('click', () => {
       if (currentUser && currentUser.user_id) {
@@ -79,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3D Columns Visualizer for Auth Gate (Exact match with account.jsx)
   const initAuthVisualizer = () => {
     const canvas = document.getElementById('auth-visualizer-canvas');
     if (!canvas) return;
@@ -112,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Baseline floor line
       ctx.beginPath();
       ctx.moveTo(10, 126);
       ctx.lineTo(250, 126);
@@ -152,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const bottomLeft = { x: col.x - W / 2, y: col.y - skew / 2 };
         const bottomRight = { x: col.x + W / 2, y: col.y - skew / 2 };
 
-        // Floor Shadow
         ctx.save();
         ctx.beginPath();
         const centerY = col.y - skew / 2;
@@ -165,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fill();
         ctx.restore();
 
-        // Left Face
         ctx.beginPath();
         ctx.moveTo(topLeft.x, topLeft.y);
         ctx.lineTo(topBottom.x, topBottom.y);
@@ -211,7 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         ctx.restore();
 
-        // Right Face
         ctx.beginPath();
         ctx.moveTo(topBottom.x, topBottom.y);
         ctx.lineTo(topRight.x, topRight.y);
@@ -255,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         ctx.restore();
 
-        // Top Cap
         ctx.beginPath();
         ctx.moveTo(topPeak.x, topPeak.y);
         ctx.lineTo(topLeft.x, topLeft.y);
@@ -273,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.lineWidth = 1.2;
         ctx.stroke();
 
-        // Center seam line
         ctx.beginPath();
         ctx.moveTo(topBottom.x, topBottom.y);
         ctx.lineTo(bottomCenter.x, bottomCenter.y);
@@ -318,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             checkAuth();
           });
         } else {
-          extError.textContent = data.error || 'Invalid credentials';
+          extError.textContent = data.error || 'EmailID\\Password is wrong';
         }
       } catch (err) {
         extError.textContent = 'Failed to connect to server';
@@ -363,20 +352,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!text) return '';
     let html = escapeHtml(text);
 
-    // Code blocks ```code```
     html = html.replace(/```([\s\S]*?)```/g, (match, p1) => {
       return `<pre><code>${p1.trim()}</code></pre>`;
     });
 
-    // Inline code `code`
     html = html.replace(/`([^`]+)`/g, (match, p1) => {
       return `<code>${p1}</code>`;
     });
 
-    // Bold **text**
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 
-    // Convert seconds timestamps [91.4s] or 91.4s to [MM:SS] format
     html = html.replace(/\[(\d+(\.\d+)?s)\]/g, (match, p1) => {
       const mmss = formatSecondsToMMSS(p1);
       return `<span class="timestamp-text">[${mmss}]</span>`;
@@ -386,10 +371,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return `<span class="timestamp-text">[${mmss}]</span>`;
     });
 
-    // Format MM:SS timestamps like [01:31] or [12:45]
     html = html.replace(/\[(\d{1,2}:\d{2})\]/g, '<span class="timestamp-text">[$1]</span>');
 
-    // Process line by line for bullet points and paragraphs
     const lines = html.split('\n');
     let inList = false;
     let result = [];
@@ -454,7 +437,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // loadChatHistory must be defined after getCurrentTabUrl and appendMessage
   const loadChatHistory = async () => {
     if (!currentUser || !currentUser.user_id) return;
 
@@ -494,7 +476,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMessages(data.messages);
           }
         } catch (err) {
-          console.warn('[Simply] Failed to load chat history from backend:', err);
         }
       }
     });
@@ -526,11 +507,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const askRes = await fetch(`${API_BASE}/api/ask`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${currentUser.access_token || ''}`
+        },
         body: JSON.stringify({
           question: question,
-          video_url: videoUrl,
-          user_id: currentUser.user_id
+          video_url: videoUrl
         })
       });
 
@@ -559,11 +542,13 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
               const resRes = await fetch(`${API_BASE}/api/resolve-clarification`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${currentUser.access_token || ''}`
+                },
                 body: JSON.stringify({
                   choice_key: opt.key,
-                  video_url: videoUrl,
-                  user_id: currentUser.user_id
+                  video_url: videoUrl
                 })
               });
               const resData = await resRes.json();
@@ -587,7 +572,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Dynamic auto-resizing for the textarea input
   const adjustInputHeight = () => {
     queryInput.style.height = 'auto';
     const newHeight = Math.min(queryInput.scrollHeight, 100);
@@ -603,13 +587,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   queryInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault(); // Don't add newline
+      e.preventDefault();
       handleSend();
       setTimeout(adjustInputHeight, 0);
     }
   });
 
-  // Run auth check AFTER all functions are defined (loadChatHistory, appendMessage, getCurrentTabUrl)
-  const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+  const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
   checkAuth();
 });

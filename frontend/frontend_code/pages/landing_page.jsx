@@ -355,14 +355,17 @@ export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,
         backgroundColor: '#0d1f1c',
         boxShadow: '0 0.25px 3px rgba(255, 201, 159, 0.33)',
       }}>
-        <div style={{
+        <a href="#/" onClick={(e) => { e.preventDefault(); window.location.hash = '#/'; }} style={{
           fontSize: '1.55rem',
           fontWeight: '800',
           letterSpacing: '0.15em',
-          textTransform: 'uppercase'
+          textTransform: 'uppercase',
+          color: '#fb8569',
+          textDecoration: 'none',
+          cursor: 'pointer'
         }}>
           SIMPLY
-        </div>
+        </a>
 
         <nav style={{
           display: 'flex',
@@ -680,7 +683,7 @@ export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,
           letterSpacing: '0.08em'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '1.3rem', fontWeight: '800', letterSpacing: '0.15em' }}>SIMPLY</span>
+            <a href="#/" onClick={(e) => { e.preventDefault(); window.location.hash = '#/'; }} style={{ fontSize: '1.3rem', fontWeight: '800', letterSpacing: '0.15em', color: '#fb8569', textDecoration: 'none', cursor: 'pointer' }}>SIMPLY</a>
           </div>
 
           <div style={{ display: 'flex', gap: '16px' }}>
@@ -712,22 +715,24 @@ export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,
         <div style={{ textAlign: 'left', marginBottom: '40px' }}>
           <h4 style={{ fontSize: '1.1rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 16px 0' }}>FEATURES</h4>
           <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', fontSize: '0.9rem', fontWeight: '600', letterSpacing: '0.1em' }}>
-            <span 
-              onClick={onNavigateToRetrieval} 
-              style={{ opacity: 0.8, cursor: 'pointer', transition: 'opacity 0.2s' }}
+            <a 
+              href="#/features/retrieval"
+              onClick={(e) => { e.preventDefault(); onNavigateToRetrieval(); }}
+              style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8, cursor: 'pointer', transition: 'opacity 0.2s' }}
               onMouseEnter={(e) => e.target.style.opacity = '1'}
               onMouseLeave={(e) => e.target.style.opacity = '0.8'}
             >
               RETRIEVAL
-            </span>
-            <span 
-              onClick={onNavigateToSummary} 
-              style={{ opacity: 0.8, cursor: 'pointer', transition: 'opacity 0.2s' }}
+            </a>
+            <a 
+              href="#/features/summary"
+              onClick={(e) => { e.preventDefault(); onNavigateToSummary(); }}
+              style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8, cursor: 'pointer', transition: 'opacity 0.2s' }}
               onMouseEnter={(e) => e.target.style.opacity = '1'}
               onMouseLeave={(e) => e.target.style.opacity = '0.8'}
             >
               SUMMARY
-            </span>
+            </a>
           </div>
         </div>
 

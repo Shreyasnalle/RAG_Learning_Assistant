@@ -1,18 +1,18 @@
 import os
-from openai import OpenAI 
-from typing import List, Dict
-from retriever import VideoRetriever
-import json
+from openai import OpenAI
 from dotenv import load_dotenv
-from file_utils import get_latest_caption_file
+
 load_dotenv("groq_api.env")
-class RAGPipeline :
-    def __init__(self) :
+
+
+class RAGPipeline:
+    def __init__(self):
         self.client = OpenAI(
-            api_key = os.getenv("GROQ_API_KEY"),
-            base_url = "https://api.groq.com/openai/v1"
+            api_key=os.getenv("GROQ_API_KEY"),
+            base_url="https://api.groq.com/openai/v1"
         )
-    def generate_answer(self, question : str, retrieved : list) -> str :
+
+    def generate_answer(self, question: str, retrieved: list) -> str:
         context = []
         if retrieved:
             for chunk in retrieved:
@@ -41,38 +41,11 @@ class RAGPipeline :
 
         user_prompt = f"Video content: {context if context else 'None'}\nStudent Question: {question}"
         response = self.client.chat.completions.create(
-            model = "llama-3.3-70b-versatile",
-            messages = [
-                {"role" : "system", "content" : system_prompt},
-                {"role" : "user", "content" : user_prompt}
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
             ],
-            temperature = 0.5
+            temperature=0.5
         )
         return response.choices[0].message.content or ""
-def load_video_url(caption_file_path : str) -> str :
-    meta_path = caption_file_path.replace(".txt", "_meta.json")
-    with open(meta_path, "r", encoding = "utf-8") as f :
-        meta = json.load(f)
-    return meta["video_url"]
-if __name__ == "__main__" :
-    caption_file = get_latest_caption_file("raw_captions")
-    print(f"using latest caption file : {caption_file}")
-
-    video_url = load_video_url(caption_file)
-    question = input("Ask any question : ")
-
-    retriever = VideoRetriever()
-    retriever.connect()
-    retrieved_chunks = retriever.retrieve(query = question, video_url = video_url, top_k = 5)
-    retriever.close()
-
-    if not retrieved_chunks :
-        print(f"no chunks found for this {video_url}, check that it matches what was stored")
-    else :
-        rag = RAGPipeline()
-        answer = rag.generate_answer(question, retrieved_chunks)
-        print("Question:", question)
-        print("\nRetrieved chunks used :")
-        for chunk in retrieved_chunks :
-            print(f"[{chunk['start_time']:.1f}s] {chunk['text']}")
-        print("\nAnswer", answer)

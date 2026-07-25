@@ -7,7 +7,7 @@ import RetrievalPage from '../pages/features/retrieval.jsx'
 import SummaryPage from '../pages/features/summary.jsx'
 
 function App() {
-  const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+  const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
 
   const isSessionValid = () => {
     const ts = localStorage.getItem('login_timestamp');
@@ -17,11 +17,9 @@ function App() {
 
   const [page, setPage] = useState('landing');
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    // On first render, validate session age
     if (localStorage.getItem('isLoggedIn') === 'true' && isSessionValid()) {
       return true;
     }
-    // Session expired or never set — clear stale data
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user_id');
     localStorage.removeItem('email');

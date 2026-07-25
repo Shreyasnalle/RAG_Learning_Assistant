@@ -1,12 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from pydantic import BaseModel
 from typing import Optional
 import uuid
-import os
 import re
-import json
 
 from auth import AuthManager
 from query_router import QueryRouter
@@ -39,6 +38,28 @@ app.add_middleware(PrivateNetworkMiddleware)
 auth_manager = AuthManager()
 query_router = QueryRouter()
 chat_history_manager = ChatHistoryManager()
+security = HTTPBearer()
+
+
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> str:
+    token = credentials.credentials
+    try:
+        user_response = auth_manager.client.auth.get_user(token)
+        if not user_response or not user_response.user:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid authentication token",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        return user_response.user.id
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Could not validate credentials or token expired",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
 
 class CaptionData(BaseModel):
@@ -73,6 +94,16 @@ class DeleteAccountData(BaseModel):
     user_id: str
 
 
+class SendOTPData(BaseModel):
+    email: str
+
+
+class VerifyOTPData(BaseModel):
+    email: str
+    otp: str
+    new_password: str
+
+
 class ChatHistoryData(BaseModel):
     user_id: str
     video_url: str
@@ -86,13 +117,11 @@ class IngestData(BaseModel):
 class AskData(BaseModel):
     question: str
     video_url: str
-    user_id: str
 
 
 class ClarificationData(BaseModel):
     choice_key: str
     video_url: str
-    user_id: str
 
 
 def normalize_youtube_url(url: str) -> str:
@@ -107,16 +136,13 @@ def normalize_youtube_url(url: str) -> str:
 @app.post("/api/captions")
 async def receive_captions(data: CaptionData):
     clean_url = normalize_youtube_url(data.videourl)
-    print(f"Received captions for: {clean_url[:70]}...")
 
     if len(data.rawtext) < 100:
-        print(f"Skipping — payload too small ({len(data.rawtext)} chars), likely invalid caption")
         return {"status": "skipped", "reason": "payload too small"}
 
     match = re.search(r"[?&]v=([^&]+)", clean_url)
     video_id = match.group(1) if match else str(uuid.uuid4())
 
-    # Check if already ingested in database
     try:
         conn = get_db_connection()
         with conn.cursor() as cur:
@@ -124,7 +150,6 @@ async def receive_captions(data: CaptionData):
             count = cur.fetchone()[0]
         conn.close()
         if count > 0:
-            print(f"Video already in DB ({count} chunks): {clean_url}")
             return {
                 "status": "success",
                 "video_id": video_id,
@@ -132,10 +157,9 @@ async def receive_captions(data: CaptionData):
                 "already_ingested": True,
                 "chunks_stored": count
             }
-    except Exception as e:
-        print(f"Check existing chunks warning: {e}")
+    except Exception:
+        pass
 
-    # Parse and chunk in-memory directly
     parser = CaptionParser()
     segments = parser.parse_raw_text(data.rawtext)
 
@@ -152,7 +176,6 @@ async def receive_captions(data: CaptionData):
     finally:
         injector.close()
 
-    print(f"Directly ingested {len(chunks)} chunks into DB for: {clean_url}")
     return {
         "status": "success",
         "video_id": video_id,
@@ -163,41 +186,50 @@ async def receive_captions(data: CaptionData):
 
 @app.post("/api/signup")
 async def signup(data: SignUpData):
-    result = auth_manager.sign_up(
+    return auth_manager.sign_up(
         email=data.email,
         password=data.password,
         name=data.name,
         mobile_number=data.mobile_number
     )
-    return result
 
 
 @app.post("/api/login")
 async def login(data: SignInData):
-    result = auth_manager.sign_in(email=data.email, password=data.password)
-    return result
+    return auth_manager.sign_in(email=data.email, password=data.password)
 
 
 @app.post("/api/user-profile")
 async def get_user_profile(data: ProfileData):
-    result = auth_manager.get_profile(user_id=data.user_id)
-    return result
+    return auth_manager.get_profile(user_id=data.user_id)
 
 
 @app.post("/api/change-password")
 async def change_password(data: ChangePasswordData):
-    result = auth_manager.change_password(
+    return auth_manager.change_password(
         user_id=data.user_id,
         old_password=data.old_password,
         new_password=data.new_password
     )
-    return result
 
 
 @app.post("/api/delete-account")
 async def delete_account(data: DeleteAccountData):
-    result = auth_manager.delete_account(user_id=data.user_id)
-    return result
+    return auth_manager.delete_account(user_id=data.user_id)
+
+
+@app.post("/api/send-otp")
+async def send_otp(data: SendOTPData):
+    return auth_manager.send_otp(email=data.email)
+
+
+@app.post("/api/verify-otp-reset")
+async def verify_otp_reset(data: VerifyOTPData):
+    return auth_manager.verify_otp_reset_password(
+        email=data.email,
+        otp=data.otp,
+        new_password=data.new_password
+    )
 
 
 @app.post("/api/ingest")
@@ -215,30 +247,28 @@ async def ingest_video(data: IngestData):
             "chunks_stored": count,
             "video_url": clean_url
         }
-    except Exception as e:
+    except Exception:
         return {"success": True, "already_ingested": True, "video_url": clean_url}
 
 
 @app.post("/api/ask")
-async def ask_question(data: AskData):
+async def ask_question(data: AskData, user_id: str = Depends(get_current_user)):
     clean_url = normalize_youtube_url(data.video_url)
-    result = query_router.handle_query(
+    return query_router.handle_query(
         question=data.question,
         video_url=clean_url,
-        user_id=data.user_id
+        user_id=user_id
     )
-    return result
 
 
 @app.post("/api/resolve-clarification")
-async def resolve_clarification(data: ClarificationData):
+async def resolve_clarification(data: ClarificationData, user_id: str = Depends(get_current_user)):
     clean_url = normalize_youtube_url(data.video_url)
-    result = query_router.resolve_clarification(
+    return query_router.resolve_clarification(
         choice_key=data.choice_key,
         video_url=clean_url,
-        user_id=data.user_id
+        user_id=user_id
     )
-    return result
 
 
 @app.post("/api/chat-history")

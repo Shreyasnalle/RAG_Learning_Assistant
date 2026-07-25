@@ -386,6 +386,8 @@ html, body {
   color: #ff6b6b;
   font-size: 0.75rem;
   margin-top: 4px;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .auth-gate-divider {
