@@ -86,7 +86,7 @@ export default function SettingsPage({ onNavigate, onLogout }) {
   const [otpMsg, setOtpMsg] = useState({ text: '', type: '' });
   const [isOtpSent, setIsOtpSent] = useState(false);
 
-  const API_BASE = 'http://localhost:8000';
+  const API_BASE = 'https://simply-kwm.onrender.com';
 
   useEffect(() => {
     const userId = localStorage.getItem('user_id');

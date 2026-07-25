@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const extLoginBtn = document.getElementById('ext-login-btn');
   const extError = document.getElementById('ext-error');
 
-  const API_BASE = 'http://localhost:8000';
+  const API_BASE = 'https://simply-kwm.onrender.com';
   let currentUser = null;
   let currentVideoUrl = '';
   let currentVideoId = '';

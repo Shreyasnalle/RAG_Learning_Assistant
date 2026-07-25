@@ -244,7 +244,7 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
   const [mobileNumber, setMobileNumber] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const API_BASE = 'http://localhost:8000';
+  const API_BASE = 'https://simply-kwm.onrender.com';
 
   const handleSignIn = async (e) => {
     e.preventDefault();
