@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.storage.local.get(['current_chat_history', 'current_video_url'], (storage) => {
           if (storage.current_video_url === videoUrl && Array.isArray(storage.current_chat_history)) {
             if (data.messages.length < storage.current_chat_history.length) {
-              return; // Prevent race condition where backend hasn't saved yet
+              return;
             }
           }
           chrome.storage.local.set({

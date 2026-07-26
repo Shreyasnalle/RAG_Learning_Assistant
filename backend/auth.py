@@ -312,7 +312,6 @@ class AuthManager:
                 "error": "Please enter your email address."
             }
 
-        # Check if user exists in registered users
         user_list = self._get_all_users()
         user_obj = next((u for u in user_list if getattr(u, 'email', '').strip().lower() == clean_email), None)
         if not user_obj:
@@ -321,7 +320,6 @@ class AuthManager:
                 "error": "Account not registered. Please sign up first."
             }
 
-        # Try client auth
         try:
             auth_response = self.client.auth.sign_in_with_password({
                 "email": clean_email,
@@ -338,7 +336,6 @@ class AuthManager:
         except Exception:
             pass
 
-        # Try admin_client auth fallback
         try:
             auth_response = self.admin_client.auth.sign_in_with_password({
                 "email": clean_email,

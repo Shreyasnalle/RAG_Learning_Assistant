@@ -25,7 +25,7 @@
         );
     }
 
-    // Intercept fetch network requests for captions
+
     window.fetch = async function (...args) {
         const response = await originalFetch(...args);
         if (isWatchPage()) {
@@ -51,7 +51,7 @@
         return response;
     };
 
-    // Intercept XHR network requests for captions
+
     window.XMLHttpRequest.prototype.open = function (method, url, ...rest) {
         this.addEventListener("load", function () {
             if (!isWatchPage()) return;
@@ -83,7 +83,7 @@
 
         let captionTracks = [];
 
-        // 1. Check movie_player tracklist
+
         try {
             const mp = document.getElementById("movie_player");
             if (mp && typeof mp.getOption === "function") {
@@ -94,7 +94,7 @@
             }
         } catch (e) {}
 
-        // 2. Check ytd-watch-flexy playerData
+
         if (captionTracks.length === 0) {
             try {
                 const flexy = document.querySelector("ytd-watch-flexy");
@@ -104,7 +104,7 @@
             } catch (e) {}
         }
 
-        // 3. Check movie_player.getPlayerResponse() (Most reliable for SPA)
+
         if (captionTracks.length === 0) {
             try {
                 const mp = document.getElementById("movie_player");
@@ -117,7 +117,7 @@
             } catch (e) {}
         }
 
-        // 3.5. Check ytInitialPlayerResponse (fallback)
+
         if (captionTracks.length === 0) {
             try {
                 if (window.ytInitialPlayerResponse?.captions?.playerCaptionsTracklistRenderer?.captionTracks) {
@@ -126,7 +126,7 @@
             } catch (e) {}
         }
 
-        // 4. Check ytplayer config args
+
         if (captionTracks.length === 0) {
             try {
                 const rawResp = window.ytplayer?.config?.args?.raw_player_response;

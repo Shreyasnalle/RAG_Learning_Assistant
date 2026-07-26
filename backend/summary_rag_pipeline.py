@@ -90,7 +90,6 @@ class SummaryPipeline:
                     temperature=0.5
                 )
 
-            # For very long transcripts, split into 3-4 section blocks
             num_sections = min(4, max(2, len(full_text) // max_chars_per_prompt + 1))
             step = len(chunks) // num_sections
             section_summaries = []
