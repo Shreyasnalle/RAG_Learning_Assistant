@@ -6,7 +6,7 @@ load_dotenv("supabase_key.env")
 load_dotenv()
 
 HF_API_KEY = os.getenv("HUGGING_FACE")
-API_URL = "https://api-inference.huggingface.co/pipeline/feature-extraction/BAAI/bge-small-en-v1.5"
+API_URL = "https://router.huggingface.co/hf-inference/models/BAAI/bge-small-en-v1.5"
 headers = {"Authorization": f"Bearer {HF_API_KEY}"}
 
 def get_embeddings(texts):
