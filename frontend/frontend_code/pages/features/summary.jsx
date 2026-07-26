@@ -223,7 +223,7 @@ export default function SummaryPage({ onNavigate }) {
                  <p style={{ fontWeight: 'bold', fontSize: '0.95rem', margin: '0 0 8px 0' }}>Generated Output:</p>
                 <div style={{ backgroundColor: 'rgba(13, 31, 28, 0.8)', borderLeft: '4px solid #fb8569', padding: '16px', borderRadius: '4px' }}>
                   <p style={{ margin: '0 0 12px 0', fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.5' }}>
-                    The video provides a clear and well-organized conceptual walkthrough of standard supervised machine learning workflows. The speaker explains the role of labeled datasets, training sets, and the primary distinctions between regression and classification tasks.
+                    The video provides a clear and well-organized conceptual walkthrough of standard supervised machine learning workflows. The speaker explains the role of labeled datasets, training sets and the primary distinctions between regression and classification tasks.
                   </p>
                   <p style={{ margin: 0, fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.5' }}>
                     Additionally, it covers model evaluation using performance metrics like Mean Squared Error (MSE), alongside weight optimization mechanics using Gradient Descent.

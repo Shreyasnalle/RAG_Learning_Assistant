@@ -4,6 +4,7 @@ import psycopg2
 from dotenv import load_dotenv
 
 load_dotenv("supabase_key.env")
+load_dotenv()
 
 
 def get_db_connection(max_retries: int = 3, retry_delay: float = 0.5):

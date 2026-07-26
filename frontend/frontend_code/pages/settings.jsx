@@ -119,7 +119,7 @@ export default function SettingsPage({ onNavigate, onLogout }) {
     setPasswordMsg({ text: '', type: '' });
 
     if (!oldPassword.trim() || !newPassword.trim() || !confirmPassword.trim()) {
-      setPasswordMsg({ text: 'Please fill in all password fields (Old, New, and Confirm New Password)', type: 'error' });
+      setPasswordMsg({ text: 'Please fill in all password fields (Old, New and Confirm New Password)', type: 'error' });
       return;
     }
 

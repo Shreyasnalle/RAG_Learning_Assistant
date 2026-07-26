@@ -640,7 +640,7 @@ export default function AccountPage({ onNavigate, onLoginSuccess }) {
               margin: '0 0 24px 0',
               letterSpacing: '0.08em'
             }}>
-              Your learning shouldn't require ten tabs. Process transcripts, query concepts, and extract cited insights right where you watch.
+              Your learning shouldn't require ten tabs. Process transcripts, query concepts and extract cited insights right where you watch.
             </p>
             <ProductivityVisualizer />
           </div>

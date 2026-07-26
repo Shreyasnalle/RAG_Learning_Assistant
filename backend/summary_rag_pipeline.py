@@ -4,6 +4,7 @@ from typing import List, Dict
 from dotenv import load_dotenv
 
 load_dotenv("groq_api.env")
+load_dotenv()
 
 
 class SummaryPipeline:

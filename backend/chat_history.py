@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from typing import List, Optional, cast
 
 load_dotenv("supabase_key.env")
+load_dotenv()
 
 class ChatHistoryManager:
     def __init__(self):

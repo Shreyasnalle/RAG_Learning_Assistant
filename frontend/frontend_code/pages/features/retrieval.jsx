@@ -221,7 +221,7 @@ export default function RetrievalPage({ onNavigate }) {
                 <div className="example-box">
                   <span style={{ fontSize: '0.8rem', color: '#fb8569', fontWeight: 'bold', display: 'block', marginBottom: '4px' }}>[01:12 - 01:45]</span>
                   <p style={{ margin: 0, fontSize: '0.85rem', opacity: 0.8, lineHeight: '1.4' }}>
-                    "...Pydantic is a data validation and settings management library for Python. It enforces type hints at runtime, and provides user-friendly errors when data is invalid..."
+                    "...Pydantic is a data validation and settings management library for Python. It enforces type hints at runtime and provides user-friendly errors when data is invalid..."
                   </p>
                 </div>
               </div>
