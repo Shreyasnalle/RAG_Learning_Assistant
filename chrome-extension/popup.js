@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
           checkAuth();
         });
       } else {
-        window.open('http://localhost:5173/', '_blank');
+        window.open('https://simply-rouge.vercel.app/', '_blank');
       }
     });
   }
