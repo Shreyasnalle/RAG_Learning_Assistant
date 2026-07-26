@@ -1,13 +1,9 @@
---extra-index-url https://download.pytorch.org/whl/cpu
-
 fastapi
 uvicorn
 pydantic
 python-dotenv
 requests
 supabase
-openai
-sentence-transformers
+groq
 pgvector
 psycopg2-binary
-torch

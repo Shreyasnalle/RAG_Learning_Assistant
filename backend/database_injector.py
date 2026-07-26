@@ -1,4 +1,4 @@
-from sentence_transformers import SentenceTransformer
+from hf_embed import get_embeddings
 from pgvector.psycopg2 import register_vector
 from typing import List, Dict
 from db_utils import get_db_connection
@@ -6,7 +6,6 @@ from db_utils import get_db_connection
 
 class ChunkInjector:
     def __init__(self):
-        self.model = SentenceTransformer("all-MiniLM-L6-v2")
         self.conn = None
 
     def connect(self):
@@ -21,7 +20,7 @@ class ChunkInjector:
         with self.conn.cursor() as cur:
             cur.execute("DELETE FROM video_chunks WHERE video_id = %s", (video_url,))
         texts = [seg["text"] for seg in segments]
-        embeddings = self.model.encode(texts).tolist()
+        embeddings = get_embeddings(texts)
         with self.conn.cursor() as cur:
             for i, seg in enumerate(segments):
                 cur.execute("""
