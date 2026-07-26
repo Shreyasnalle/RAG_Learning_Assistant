@@ -108,7 +108,11 @@ const PricingVisual = () => {
   );
 };
 
-export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount, onNavigateToSettings, onNavigateToRetrieval, onNavigateToSummary }) {
+export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,  onNavigateToSettings,
+  onNavigateToRetrieval,
+  onNavigateToSummary,
+  onNavigateToPolicies
+}) {
   const canvasRef = useRef(null);
   const [activeHighlight, setActiveHighlight] = useState(null);
 
@@ -740,12 +744,22 @@ export default function LandingPage({ isLoggedIn, onLogout, onNavigateToAccount,
 
         <div style={{
           display: 'flex',
+          gap: '16px',
           justifyContent: 'flex-start',
           alignItems: 'center',
           fontSize: '0.8rem',
           opacity: 0.7,
           letterSpacing: '0.05em'
         }}>
+          <a 
+            href="#/policies"
+            onClick={(e) => { e.preventDefault(); onNavigateToPolicies(); }}
+            style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer', transition: 'opacity 0.2s' }}
+            onMouseEnter={(e) => e.target.style.opacity = '1'}
+            onMouseLeave={(e) => e.target.style.opacity = '0.8'}
+          >
+            POLICIES
+          </a>
           <span>Made with <span style={{ color: '#ff3b30' }}>❤️</span> by Shreyas Nalle</span>
         </div>
       </footer>

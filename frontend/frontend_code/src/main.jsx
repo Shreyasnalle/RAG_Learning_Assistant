@@ -5,6 +5,7 @@ import AccountPage from '../pages/account.jsx'
 import SettingsPage from '../pages/settings.jsx'
 import RetrievalPage from '../pages/features/retrieval.jsx'
 import SummaryPage from '../pages/features/summary.jsx'
+import PoliciesPage from '../pages/policies.jsx'
 
 function App() {
   const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
@@ -58,6 +59,8 @@ function App() {
         setPage('retrieval');
       } else if (hash === '#/features/summary') {
         setPage('summary');
+      } else if (hash === '#/policies') {
+        setPage('policies');
       } else {
         setPage('landing');
       }
@@ -76,6 +79,8 @@ function App() {
       window.location.hash = '#/features/retrieval';
     } else if (p === 'summary') {
       window.location.hash = '#/features/summary';
+    } else if (p === 'policies') {
+      window.location.hash = '#/policies';
     } else {
       window.location.hash = '';
     }
@@ -106,6 +111,9 @@ function App() {
   if (page === 'summary') {
     return <SummaryPage onNavigate={() => navigateTo('landing')} />;
   }
+  if (page === 'policies') {
+    return <PoliciesPage onNavigate={() => navigateTo('landing')} />;
+  }
   return (
     <LandingPage 
       isLoggedIn={isLoggedIn}
@@ -114,6 +122,7 @@ function App() {
       onNavigateToSettings={() => navigateTo('settings')}
       onNavigateToRetrieval={() => navigateTo('retrieval')}
       onNavigateToSummary={() => navigateTo('summary')}
+      onNavigateToPolicies={() => navigateTo('policies')}
     />
   );
 }
