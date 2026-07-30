@@ -25,7 +25,6 @@
         );
     }
 
-
     window.fetch = async function (...args) {
         const response = await originalFetch(...args);
         if (isWatchPage()) {
@@ -50,7 +49,6 @@
         }
         return response;
     };
-
 
     window.XMLHttpRequest.prototype.open = function (method, url, ...rest) {
         this.addEventListener("load", function () {
@@ -83,7 +81,6 @@
 
         let captionTracks = [];
 
-
         try {
             const mp = document.getElementById("movie_player");
             if (mp && typeof mp.getOption === "function") {
@@ -94,7 +91,6 @@
             }
         } catch (e) {}
 
-
         if (captionTracks.length === 0) {
             try {
                 const flexy = document.querySelector("ytd-watch-flexy");
@@ -103,7 +99,6 @@
                 }
             } catch (e) {}
         }
-
 
         if (captionTracks.length === 0) {
             try {
@@ -117,7 +112,6 @@
             } catch (e) {}
         }
 
-
         if (captionTracks.length === 0) {
             try {
                 if (window.ytInitialPlayerResponse?.captions?.playerCaptionsTracklistRenderer?.captionTracks) {
@@ -125,7 +119,6 @@
                 }
             } catch (e) {}
         }
-
 
         if (captionTracks.length === 0) {
             try {
