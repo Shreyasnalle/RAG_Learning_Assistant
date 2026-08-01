@@ -68,7 +68,7 @@ npm run dev
 
 To test changes to the browser extension:
 1. Open your browser and go to `chrome://extensions/` or `edge://extensions/`
-2. Turn on "Developer mode"
+2. Turn on "Developer's mode"
 3. Click "Load unpacked" and select the `chrome-extension` folder in this repository
 
 ### 5. Make a Pull Request
